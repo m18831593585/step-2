@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+    // 转换为字符串
+    var a = 3;
+
+    // 强制转换法 所有隐式转换都使用强制转换法
+    a = String(a); // 构造函数转换法
+    console.log(a)
+
+    // 其他各数据类型转换为字符串时, 也是用String强制转换法
+    var a = true;
+    console.log(String(a)) // true
+
+    var a = undefined;
+    console.log(String(a)) // undefined
+
+    var b;
+    var c = "a"
+    console.log(b + c) // undefineda
+
+    var a = null
+    console.log(String(a)) // null
+
+    var o = {a:1, b:2}
+    console.log(String(o)) // [object Object]  所有对象转换为字符串时都是
+
+    var obj = {}
+    var b = "a"
+    obj[b] = 10 // obj.a == 10
+
+    var arr = [1,2,3,4]
+    console.log(String(arr)) // "1,2,3,4"
+
+    var arr = [1]
+    console.log(String(arr)) // "1"
+
+    var arr = []
+    console.log(String(arr)) // ""
+
+
+
+    var a = 3
+    var b = a.toString()
+    console.log(b) // 3
+
+    var a = 255
+    // toString(进制) 2~36 只能正整数不能小数
+    // toString(2.5) 相当于 toString(2)
+    console.log(a.toString(16)) // FF 转换为16进制的字符串
+
+    var a = 255.119999
+    // toFixed(n) 保留n位小数, 并四舍五入
+    console.log(a.toFixed(2)) //255.12 保留2位小数, 并四舍五入
+
+
+    // 也可以把a转换为字符串
+    var a = 4;
+    a+=""
+
+
+
+
+
+
+
+    // 将任何内容转换为数值
+
+    // 强制转换
+    var a = "10" // 10
+    var a = "10a" // NaN
+    var a = "" // 0
+    var a = 'a10' // NaN
+    var a = true // 1
+    var a = false // 0
+    var a = undefined // NaN
+    var a = null // 0
+    var a = {a: 0} // NaN
+    var a = [1,2] // NaN     =>  1,2  =>  NaN  包含逗号  (数组先转换为字符串再转换为数字)
+    var a = [1] // 1    =>  1  =>  1  不包含逗号
+    console.log(Number(a))
+
+    console.log([10] - 3) // 7
+    console.log([] - 3) // -3
+
+
+
+    //     parseInt() 按进制转换整数   parseFloat() 转换为十进制小数 Float没有第二个参数
+    var b = "10a"
+    console.log(parseInt(b)) // 10    当作10进制转换为10进制
+
+    var a = "10"
+    console.log(parseInt(a, 2)) // 2    把10当作二进制转换为10进制
+
+    var a = "a10"
+    console.log(parseInt(a)) // NaN
+
+    var a = "12.45"
+    console.log(parseInt(a)) // 12
+
+
+
+    // 所有数据转换为布尔值
+    // ""    0    false    undefined    NaN    强制转换为布尔值都为false
+    // 剩余的都为true
+
+    var a = " " // true
+    var a = "" // false
+    var a = 0 // false
+    console.log(Boolean(a))
+
+
+    var a;
+    if (a) {
+        console.log("aa")
+    }
+
+
+    // 强制转换为对象
+    var a = 1
+    console.log(Object(a))
+
+
+
+</script>
+</body>
+</html>

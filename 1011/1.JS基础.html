@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--async 异步, 加载同时不影响下面加载, 加载完就马上执行-->
+    <script src="./js/a.js" async></script>
+
+    <!--defer 也是异步, 等待页面渲染树加载结束后再执行-->
+    <script src="./js/b.js" defer></script>
+
+    <!--模块化-->
+    <script type="module">
+        import Box from "./js/c.js";
+    </script>
+
+    <!--文本-->
+    <script type="text/html"></script>
+
+
+    <script>
+
+        function click() {
+            console.log(123)
+        }
+
+    </script>
+
+</head>
+<body>
+
+
+<button onclick="console.log(123)">按钮</button>
+<button onclick="click()">按钮</button>
+
+
+<!--使用javascript:void(0)阻止超链接跳转-->
+<a href="javascript:void(0)">1234</a>
+
+
+
+
+<script>
+
+
+</script>
+
+</body>
+</html>

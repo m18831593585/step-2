@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    // 行注释
+    /*块注释*/
+
+    var a = a /*+ b + c*/;
+
+    // 块注释不能嵌套
+    /*
+    var b = a /!*+ b*!/;
+    */
+
+
+    /*
+    * 函数是干什么, 有什么作用
+    *   1. 参数有哪些, 分别是什么数据类型, 哪些是必写参数, 哪些是默认参数
+    *   2. 函数返回什么, 返回类型, 返回数据的结构
+    *   3. 函数内部每句话的含义
+    * 函数创建的时间, 修改时间, 函数修改的版本问题罗列
+    * */
+    function fn(a) {
+        return 1;
+    }
+
+
+    // 数值打印在控制台为蓝色, 字符为黑色
+    console.log(1)
+    console.log("1")
+
+    console.log(1)
+    console.debug(2)
+    console.trace(3)
+    console.info(4)
+
+</script>
+
+<div class="div1"></div>
+
+<script>
+    var div = document.getElementById("div");
+    console.log(div)
+    console.dir(div)
+
+    // 报错
+    console.error("错误")
+
+    function fns() {
+        throw new Error("报错")
+    }
+    fns()
+
+    function bug() {
+        console.log(1); debugger; // 手动增加断点
+    }
+
+    /*
+    * 状态码304: 读缓存
+    *
+    * */
+
+</script>
+</body>
+</html>

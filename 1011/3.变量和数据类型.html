@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+
+<script>
+    // 在计算机内部有一个栈的存储空间, 开辟一个空间, 并且给这个空间起名, 就是变量名, 空间中存放的结果就是变量值
+    var a = 3;
+
+
+    // window 浏览器的根元素 BOM的根元素
+
+    // 对象
+    张三 = {
+        鼻子: 1,
+        嘴巴: 1,
+        编程: function () {
+            console.log("开发javascript")
+        },
+        做饭: function () {
+            console.log("做饭")
+        }
+    }
+    // 点语法语言
+    console.log(张三.嘴巴)
+    张三.编程()
+
+
+    // 早期所有的变量都是window的属性
+    // 当调用window的属性和方法时, 一般可以省略window
+    x = 5; // window.x = 5;
+    console.log(window.x) // 5
+
+    // 后来改用var定义来区分变量还是window的属性
+    var x = 3;
+    // ES6以后禁止将window属性和变量绑定在一起, 严格模式和模块开发将会抵制这种写法
+
+    a = 5;
+    console.log(a) // 5
+
+    var a;
+    console.log(a) //undefined
+
+    a;
+    console.log(a) // 报错 a is not defined
+
+
+
+    /*
+    * 变量命名
+    *   1. 变量名必须 字母 / 下划线 / $ 开头, 不能以数字或其他符号开头
+    *   2. 变量名不能使用关键词和保留字, 不能与window属性和方法同名
+    *   3. javascript变量使用驼峰式命名  getObjectName, 如果是临时变量或参数可以使用_开头  _name  /  html里不区分大小写, 使用-命名  get-name
+    *   4. 变量命名和常量命名区分  变量命名不使用全部大写, 常量命名必须使用全大写 _区分  EVENT_ID
+    * */
+
+
+    /*
+        const b1 = 1;
+        b1 = 2; // 报错, 常量不能重新赋值
+    */
+
+    // 变量的范围 变量的作用域 => 函数中详解
+
+
+
+    // ?????
+    var a = 1;
+    {
+        a = 4;
+        function a(){
+
+        }
+        a = 5;
+        function a(){
+
+        }
+        a = 6;
+        function a(){
+
+        }
+        a = 7;
+        console.log(a, "___")
+    }
+    console.log(a)
+
+
+
+    /*
+    * 数据类型
+    * 5种基础类型 和 1种复杂类型
+    * 基础类型
+    *   - string
+    *   - number
+    *   - boolean
+    *   - undefined
+    *   - null
+    *   - Symbol (ES6)
+    * 复杂类型
+    *   - Object
+    * */
+
+    // 字符型
+    var a1 = "a";
+    var a2 = 'ab';
+    var a3 = `ab`; // ES6
+    var a = '"西游记"这个电视剧不错'; // 外面用的单引号里面就要用双引号
+
+    // 数值型
+    var a1 = 1;
+    var a2 = -1;
+    var a3 = 1.5;
+    var a4 = 1.5e+2; // 1.5 * 10 ^ 2
+    var a5 = 1.5e-2; // 1.5 * 10 ^ -2
+    var a6 = 056; //8进制  ES6取消
+    var a7 = 0xFF; //16进制
+
+    // 布尔型
+    var a = true;
+    var b = false;
+
+    // undefined
+    var a; // 开辟一个空间, 定义这个空间名称, 如果这个空间已经开辟, 沿用以前的结果, 如果没有开辟, 开辟一个空间赋值undefined
+    var b = undefined; // 开辟一个空间, 起名为b, 不管以前有没有相同的名称空间, 全部赋值为undefined
+
+
+    // null 空值  实际上null的类型属于对象型
+    var a = null; // 主要用于清除对象的应用关系, 更新引用关系列表
+
+    // undefined 一般用于定义时使用, 作起始未赋值的标识
+    // null 作用是清除引用关系, 所以只用于赋值为对象的变量清空
+
+    //对象
+    var o = {
+        a: 1,
+        b: 2,
+        c: function (){
+
+        }
+    }
+
+
+    var a = 5;
+    // 判断变量值的类型
+    console.log(typeof(a))
+
+
+    var a;
+    console.log(a) //function a
+    function a() {
+
+    }
+
+</script>
+</body>
+</html>
