@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    var x = 3;
+    x = x + 3;
+
+    var x1, x2, x3;
+
+    var x = 1,
+        y = 2,
+        z = 3;
+
+    // 任何一个表达式都具备返回结果
+    console.log(x+3)
+    console.log(y=x=3)
+
+    // 加法
+    var x = 1;
+    var y = 2;
+    console.log(x+y) // 3
+
+    // 任意类型和字符相加时, 会将任意类型隐式转换为字符然后首尾相连
+    var x="a";
+    console.log(x+3)
+
+    // ! 隐式转换为布尔值并取反
+    var x = 1;
+    console.log(!x+"aa") // falseaa
+
+    var o = {
+        a: 1,
+        b: 2
+    };
+    console.log(o+"aa" == {}+"aa") // true  均为[object Object]aa
+
+    console.log([1,2,3] + 4) //1,2,34
+    console.log([1] + 4) // 14
+
+</script>
+</body>
+</html>
