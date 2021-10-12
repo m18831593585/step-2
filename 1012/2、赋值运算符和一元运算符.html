@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var a=4;
+        // 步长
+        // 赋值运算符运算与算术运算符运算一致
+        // a+=3;
+        // a=a+3;
+        // a+="a";
+        // console.log(a)
+
+        // console.log(a+=1);
+        // var b=a+=1+"a";
+        // console.log(b,a);
+
+
+        // 赋值运算符的优先级基本最低，除了,以外
+        // a+="";
+        // var b="10";
+        // b-=0;
+        // console.log(b)
+
+
+        // var x=3;
+        // x++;
+        // 等同于x=x+1;
+        // x+=1; 不同  一元运算符都会按数值运算
+        // console.log(x);
+
+        // var x="4";
+        // x+=1;
+        // x++;
+        // console.log(x);
+
+        // 赋值运算符和一元运算符，都是赋值处理，因此应该是变量运算
+        // console.log(5++);
+        // var x=[];
+        // var x=[5];
+        // x++
+        // console.log(x);
+
+
+        // x++;
+        // ++x;
+
+        // var x=1;
+        // console.log(x++);//1  先返回x，再让x+1
+        // console.log(++x);//2; 先让x+1,然后返回x+1的结果
+
+        // var x=1;
+        // var y=++x;
+        // var y=x++;
+        // console.log(y)
+
+
+        // var x=1;
+            //    1    2     3     4     3   3     4     5   5 +2
+            //  1    2     3     4      3   3    4     5     5 +2
+        // var y=x + ++x + ++x + ++x - --x + x + ++x + ++x - x++ + 2;
+
+        // var x=1;
+        // var y=2;
+        //  2+1+4+2+9+2
+        // y+= 2 + x++ + x*2 + x++ + x*3;
+        // console.log(x,y)
+        // var x=1;
+        // var y=2*++x;
+        // console.log(y)
+    </script>
+</body>
+</html>
