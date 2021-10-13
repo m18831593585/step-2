@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 1200px;
+        }
+
+        td {
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        //  do while   语句不管是否循环多次，至少都会执行一次的
+        // 不管是否需要循环，至少执行一次将数据赋值给最终的结果
+        // var i=101,s=0;
+        // do{
+        //     s+=i;
+        //     i++;
+        // }while(i<=100);
+
+        // console.log(s)
+
+
+        // 创建表格
+        // var str = "<table>",
+        //     i = 0,
+        //     j = 0;
+
+        // do {
+        //     str += "<tr>";
+        //     j = 0;
+        //     do {
+        //         str += "<td></td>";
+        //     } while (++j < 10);
+        //     str += "</tr>";
+        // } while (++i < 10);
+
+        // str += "</table>";
+
+        // document.body.innerHTML += str;
+
+
+        // var s=0;
+        // for(var i=0;i<=100;i++){
+        //     s+=i;
+        // }
+        // console.log(i);
+
+
+        // 它是错的
+        // for(var s=0,i=0;i<=100;i++){
+        //     s+=i;
+        // }
+        // console.log(s);
+
+
+        // for(var s=0,i=-1;i++<=100;){
+        //     s+=i;
+        // }
+
+        // for(var s=0,i=-1;i++<=100;) s+=i;
+
+        // for(var s=0,i=-1;i++<100;s+=i);
+        // for(var s=0,i=0;i<=100;s+=i++);
+        // console.log(s)
+
+
+        // while(true){
+
+        // }
+        
+        // var i=0;
+        // for(;;){
+        //     if(i==50)break;
+        //     i++;
+        // }
+
+
+
+        // for(var i=0;;){
+        //     if(i==50)break;
+        //     i++;
+        // }
+
+
+        // var linked={
+        //         value:1,
+        //         next:{
+        //             value:2,
+        //             next:{
+        //                 value:3,
+        //                 next:{
+        //                     value:4,
+        //                     next:{
+        //                         value:5,
+        //                         next:null
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
+
+
+        //     for(;linked;linked=linked.next) console.log(linked.value);
+
+
+
+        // for(var i=0;i<10;i++){
+        //     if(i==5) continue;
+        //     console.log(i);
+        // }
+
+
+        // xt:for(var i=2,j=2;i<100;i++){
+        //     for(j=2;j<i;j++)if(i%j===0)continue xt;
+        //     console.log(i);
+        // }
+
+
+        // var s="";
+        // for(var i=0;i<10;i++){
+        //     for(var k=10;k>i;k--){
+        //         s+="&ensp;"
+        //     }
+        //     for(var j=0;j<=i;j++){
+        //         s+="*";
+        //     }
+        //     for(var l=1;l<=i;l++){
+        //         s+="*";
+        //     }
+        //     s+="<br>";
+        // }
+
+        // document.body.innerHTML=s;
+
+
+
+        
+    </script>
+</body>
+
+</html>

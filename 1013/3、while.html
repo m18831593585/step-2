@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1"></div>
+    <!-- <ul id="ul1"></ul> -->
+    <script>
+
+        // var div=document.getElementById("div1");
+        // div.innerHTML   在div中设置div里面的html文本
+        // div.innerHTML="<span></span>";
+        // div.innerHTML+="<span></span>";
+        //
+        //
+        // document.body  body标签
+        //
+        // 文档当中写入
+        // document.write("<p></p>");
+        //
+        // document.onclick=function(){
+        //     console.log("aaa")
+        // }
+        //
+        // document.body.innerHTML=""
+        // document.write("");
+        //
+        // document.body.innerHTML="<div></div>";
+        //     直接写入时，DOM树还没有生成，就会直接加在DOM树中
+        //     document.write("<div></div>");
+        //     document.body.innerHTML+="<div></div>"
+        //
+        //     DOM树已经生成并且渲染完毕了，这时候点击重新写入时，让body清空回流写入div
+        //     当DOM树生成并且渲染完成后，不能再使用document.write
+        //     document.onclick=function(){
+        //         document.write("<div></div>");
+        //     }
+        //     document.onclick=function(){
+        //         document.body.innerHTML+="<div></div>"
+        //     }
+        //
+        //
+        //     document.body.innerHTML+="<div></div>";
+        //     document.body.innerHTML+="<div></div>";
+        //     document.body.innerHTML+="<div></div>";
+        //     document.body.innerHTML+="<div></div>";
+        //     document.body.innerHTML+="<div></div>";
+        //     document.body.innerHTML+="<div></div>";
+        //     document.body.innerHTML+="<div></div>";
+        //     document.body.innerHTML+="<div></div>";
+        //
+        //
+        //     var i=0;
+        //     当循环的语句块执行完成后回到前面的条件中判断条件是否为true，如果为true，
+        //     继续进入循环语句块，如果为false时，执行循环语句块后面的语句，不再进入
+        //     while(i<50){
+        //         document.body.innerHTML+="<div></div>";
+        //         i++;
+        //     }
+        //
+        //
+        //
+        //
+        //     var ul=document.getElementById("ul1"),
+        //         str="",
+        //         i=0;
+        //
+        //     while(i<50){
+        //         str+="<li>"+i+"</li>";
+        //         i++;
+        //     }
+        //     ul.innerHTML=str;
+
+
+            // ---------------------
+
+
+            // var i=0,s=0;
+            // while(s+=i++,i<=100);//如果没有{}循环语句块，必须使用;结束
+            // console.log(s);
+                // 条件每次都会运行一次
+            // while(条件){
+            //     循环的语句块
+            // }
+
+            // while(++i<=100) s+=i; //语句块只有一句，就省略{}
+            //  console.log(s)
+
+
+
+
+            // 10个ul
+
+            // var i=0,
+            //     j=0,
+            //     str="";
+            // while(i<10){
+            //     str+="<ul>";
+            //     j=0;
+            //     while(j<10){
+            //         str+="<li>"+j+"</li>";
+            //         j++;
+            //     }
+            //     str+="</ul>";
+            //     i++;
+            // }
+
+            // document.body.innerHTML=str;
+
+
+
+            // 斐波那契数列
+            // var i=0,
+            //     j=1,
+            //     temp=0,
+            //     str=i+","+j+",";
+            
+            // while(j+i<100){
+            //     temp=j;
+            //     j+=i;
+            //     i=temp;
+            //     str+=j+","
+            // }
+            // console.log(str)
+
+                // 37
+                // 2-36
+
+            // 求素数
+            // var i=2,j=0,bool=true;
+            // while(i<100){
+            //     j=2;
+            //     bool=true;
+            //     while(j<i){
+            //         if(i%j===0){
+            //             bool=false;
+            //         }
+            //         j++;
+            //     }
+            //     if(bool){
+            //         console.log(i+"是素数")
+            //     }
+            //     i++;
+            // }
+
+
+
+            // 水仙花数
+            // 100-999   234===2*2*2+3*3*3+4*4*4
+            // var i=100;
+            // while(i<1000){
+            //     var a=~~(i/100);
+            //     var b=~~(i/10)%10;
+            //     var c=i%10;
+            //     if(a*a*a+b*b*b+c*c*c===i){
+            //         console.log(i+"是水仙花数")
+            //     }
+            //     i++;
+            // }
+
+
+
+
+            // break和continue
+                
+                // break 跳出后不再进入循环
+            // var i=0;
+            // while(i<100){
+            //     console.log(i);
+            //     if(i===50) break;
+            //     i++;
+            // }
+         
+
+
+            // var i=0;
+            // while(i<100){
+            //     i++;
+            //     if(i===50) continue;//当遇到continue跳出本次循环，重新判定循环条件，进入下次循环
+            //     console.log(i);
+            // }
+
+
+
+            // var i=2,j=0,bool=true;
+            // while(i<100){
+            //     j=2;
+            //     bool=true;
+            //     while(j<i){
+            //         if(i%j===0){
+            //             bool=false;
+            //             break;
+            //         }
+            //         j++;
+            //     }
+            //     if(bool){
+            //         console.log(i+"是素数")
+            //     }
+            //     i++;
+            // }
+
+
+
+            // var str="09AZaz";
+            // 48-57   65-90 97-122
+            // console.log(str.charCodeAt(5));
+            // var i=47;
+            // var s="";
+            // while(i++<122){
+            //     if(i>57 && i<65) continue;
+            //     if(i>90 && i<97) continue;
+            //     s+=String.fromCharCode(i);
+            // }
+            // console.log(s);
+
+
+        //     var i=0;
+        //    xietian: while(i<10){
+        //         j=0;
+        //         while(j<10){
+        //             console.log(i,j);
+        //             if(j===5) break xietian;
+        //             j++;
+        //         }
+        //         i++;
+        //     }
+
+
+        // var i=0;
+        //    xietian: while(i++<10){
+        //         j=0;
+        //         while(j<10){
+        //             console.log(i,j);
+        //             if(j===5) continue xietian;
+        //             j++;
+        //         }
+              
+        //     }
+
+
+
+            // 求素数
+        // var i=2,j=0,bool=true;
+        //     while(i<100){
+        //         j=2;
+        //         bool=true;
+        //         while(j<i){
+        //             if(i%j===0){
+        //                 bool=false;
+        //                 break;
+        //             }
+        //             j++;
+        //         }
+        //         if(bool){
+        //             console.log(i+"是素数")
+        //         }
+        //         i++;
+        //     }
+
+  // 求素数优化1
+        //  var i=1,j=0;
+        //  xt: while(i++<100){
+        //         j=2;
+        //         while(j<i){
+        //             if(i%j===0)continue xt;
+        //             j++;
+        //         }
+        //         console.log(i+"是素数")
+                
+        //     }
+
+
+ // 求素数优化2
+        // var i=1,j=0;
+        //  xt: while(i++<100){
+        //         j=1;
+        //         while(++j<i){
+        //             if(i%j===0)continue xt;
+               
+        //         }
+        //         console.log(i+"是素数")
+                
+        //     }
+
+ // 求素数优化3
+            // var i=1,j=0;
+            // xt:while(j=1,i++<100){
+            //     while(++j<i) if(i%j===0) continue xt;
+            //     console.log(i+"是素数");
+            // }
+
+
+
+
+            // 遍历链表
+            // var linked={
+            //     value:1,
+            //     next:{
+            //         value:2,
+            //         next:{
+            //             value:3,
+            //             next:{
+            //                 value:4,
+            //                 next:{
+            //                     value:5,
+            //                     next:null
+            //                 }
+            //             }
+            //         }
+            //     }
+            // }
+            // 深度遍历
+            // while(linked){
+            //     console.log(linked.value);
+            //     linked=linked.next;
+            // }
+
+
+
+            // var i=-2,s=0;
+            
+            // while(true){
+            //     if(i===50) break;
+            //     if(i>75) break;
+            //     i+=3;
+            //     s+=i;
+            // }
+            // console.log(s);
+    </script>
+</body>
+</html>

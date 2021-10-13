@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    // const ul1 = document.getElementById("ul1")
+    // for (let i = 0; i < 50; i++) {
+    //     ul1.innerHTML += "<li>"+ i +"</li>"
+    // }
+
+
+    // let i = 0,
+    //     j = 0,
+    //     str = "<table>";
+    // while (i < 10) {
+    //     str += "<tr>"
+    //     j = 0
+    //     while (j < 10) {
+    //         str += "<td>" + j + "</td>"
+    //         j++
+    //     }
+    //     str += "</tr>"
+    //     i++
+    // }
+    // str += "</table>"
+    // document.body.innerHTML = str
+
+    // 求素数
+    // let i = 1,
+    //     j = 0;
+    // outer: while (j = 1, i++ < 100) {
+    //     while (++j < i) if (i % j === 0) continue outer;
+    //     console.log(i + "是素数");
+    // }
+    //
+    // var linked={
+    //     value:1,
+    //     next:{
+    //         value: 2,
+    //         next: {
+    //             value:3,
+    //             next: null,
+    //         }
+    //     }
+    // }
+    //
+    //
+    // for (let p = linked; p; console.log(p.value), p = p.next) ;
+
+    let str = ""
+    for (let i = 0, j = 0, k = 0; i < 10; i++) {
+        for (k=0; k < 10 - i; k++) {
+            str += "&ensp;"
+        }
+
+        for (j = 0; j < i + 1; j++) {
+            str += "*"
+        }
+        str += "<br>"
+    }
+    document.body.innerHTML = str
+
+
+</script>
+</body>
+</html>

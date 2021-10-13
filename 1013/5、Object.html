@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var obj={a:1,b:2}
+        // var eric={
+        //     name:"张三",
+        //     age:25,
+        //     sex:"男",
+        //     tel:"18516543456",
+        //     email:"10897654@qq.com",
+        //     play:function(){
+        //         console.log("玩游戏")
+        //     }
+        // }
+
+        // console.log(eric.name);//属性
+        // eric.play();
+
+        // name 就是属性名   张三  属性值
+        // key键   value值    键值对
+        // key是唯一的
+        
+        // var a="hobby";
+        // eric.hobby="游戏";
+        // eric[a]="游戏"
+
+        // object[key]=value;
+        // console.log(eric)
+
+
+        // var obj={
+        //     [a]:"游泳",
+        //     a:"游戏",
+        //     ["b"]:"你好"
+        // }
+        // console.log(obj)
+
+
+        // var arr=["a"];
+        // var o={a:1};
+        // var s=10;
+        // var l=true;
+        // 对象的key只能是字符型或者Symbol
+        // var obj={
+        //     [arr]:1,
+        //     [o]:2,
+        //     [s]:3,
+        //     [l]:4
+        // }
+
+
+        // console.log(obj.a);
+        // console.log(obj[{}]);
+        // console.log(obj["10"]);
+        // console.log(obj[!undefined]);
+    
+
+
+        // var obj={};
+        // var o={a:1};
+        // var o1={a:2};
+        // obj[o]=10;
+        // console.log(obj[o1])
+        
+        // var obj={};
+        // o.a=10;
+        // 当key不存在时，value就是undefined
+        // console.log(o.b);
+
+
+
+        var obj={
+            a:1,
+            b:2,
+            c:3,
+            d:4,
+            e:{
+                a:1,
+                b:2,
+                c:3,
+                e:{
+                    a:1,
+                    b:2,
+                    c:3
+                }
+            }
+        }
+
+        console.log(obj);
+        obj.a=10;
+
+
+        delete obj.a;
+        // 对象没有长度，不清楚存储了多少个键值对
+
+        // for(var key in obj){
+        //     console.log(key,obj[key])
+        // }
+    </script>
+</body>
+</html>

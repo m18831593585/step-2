@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a="a";
+
+        // NaN和NaN不等
+        // console.log(Number(a)==NaN);
+
+        // console.log(isNaN(Number(a)));
+        // console.log(Number.isNaN(Number(a)))
+
+
+        // console.log(isNaN(a));//隐式转换为数值，然后判断是否是NaN
+        // console.log(Number.isNaN(a));//不转换直接判断是不是NaN,只有数值型的NaN才是true，其他都是false
+
+        // 与===比较相似
+    //    console.log( Object.is(2,2))
+    //    console.log(Object.is(Number(a),NaN))
+    //    console.log(Object.is(a,NaN))
+
+
+    // var a="ab";
+    // 1、先将a隐式转换为数值，判断是不是NaN
+    // console.log(isNaN(a));
+
+    // 2、不管给入的是什么，先判断它不是数值型，如果不是数值型直接返回false，如果是数值型，判断是不是NaN
+//    a/=2;
+    // console.log(Number.isNaN(a))
+    // console.log(Object.is(a,NaN));
+    </script>
+</body>
+</html>
