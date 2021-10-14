@@ -52,23 +52,16 @@
     //
     // for (let p = linked; p; console.log(p.value), p = p.next) ;
 
-    // let str = ""
-    // for (let i = 0, j = 0, k = 0; i < 10; i++) {
-    //     for (k=0; k < 10 - i;k++ ) {
-    //         str += "&ensp;"
-    //     }
-    //
-    //     for (j = 0; j < i + 1; j++) {
-    //         str += "*"
-    //     }
-    //     str += "<br>"
-    // }
-    // document.body.innerHTML = str
-
     let str = ""
-    for (let i = 0; i < 10; str += "<br>", i++) {
-        for (let k = 0; k++ < 10 - i; str += "&ensp;") ;
-        for (let j = 0; j++ < i + 1; str += "*") ;
+    for (let i = 0, j = 0, k = 0; i < 10; i++) {
+        for (k=0; k < 10 - i; k++) {
+            str += "&ensp;"
+        }
+
+        for (j = 0; j < i + 1; j++) {
+            str += "*"
+        }
+        str += "<br>"
     }
     document.body.innerHTML = str
 
