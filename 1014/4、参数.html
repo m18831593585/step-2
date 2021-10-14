@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // function fn(a,b,c){
+
+        // }
+
+        // fn(1,2,3);
+
+
+        // a,b,c  形参 也是函数作用域中局部变量
+        // 1，2，3 实参，执行函数带入的值
+
+        // 实参是按照形参的顺序一一赋值
+
+
+        // function fn(a,b){
+
+        // }
+        // fn(1,2,3);
+
+
+        // function fn(a,b,c){
+        //     // c就是undefined
+        // }
+        // fn(1,2);
+
+
+        // 参数 分为  必填参数、默认值参数、可选参数、不定量参数
+
+        // ES5
+        // function fn(a,a){
+        //     console.log(a);
+        // }
+
+        // fn(4,5);
+
+        // "use strtic";
+        //     // ES5后半期加入严格模式，禁止同名参数
+        // function fn(a){
+
+        // }
+
+
+        // function fn(a,b){
+        //     if(b===undefined) b=0;//使用这种方式来完成对于为传值参数的默认设置
+        // }
+        // fn(5);
+
+
+        // function fn(a,b,c){
+        //     if(c===undefined) c=b;
+        //     console.log(a,c);
+        // }
+        // var obj={a:1};
+        // fn(1,2,obj);
+        // fn(1,obj);
+
+        // ES5
+        // function fn(a,b,c,d){
+        //     console.log(arguments);
+        //     // arguments 列表型对象
+        // }
+        // fn(1,2,3,4,5,6,7);
+
+        // ES6 可以设置参数默认值
+        // function fn(a,b=0){
+        //     console.log(a,b)
+        // }
+        // fn(5);
+
+        // 不定量的参数使用...arg  arg将是对应的数组
+        // function fn(a,b,...arg){
+        //     console.log(a,b,arg);
+        // }
+
+        // fn(1,2,3,4,5,6,7);
+
+
+
+
+        // js是一种弱类型语言，意味着参数类型可以任意填入，这就会造成，函数内执行的结果可能与预期不符
+
+        // function fn(a,b){
+        //     console.log(a+b);
+        // }
+
+        // fn("3","5");
+
+        // function fn(obj){
+        //     if(typeof obj==="object" && obj!==null){
+        //         obj.a=10;
+        //         console.log(obj.a);
+        //     }else{
+        //         throw new Error("不是对象")
+        //     }
+        // }
+
+        // fn({a:1});
+        // fn(5)
+
+
+        // 把函数当成参数传入另一个函数执行，这种方式叫做回调
+        // function fn(f){
+        //     f();
+        // }
+        // function fn1(){
+        //     console.log("a")
+        // }   
+
+        // fn(fn1);
+
+
+
+        // argumnets
+
+        // function fn(a,b){
+        //     // console.log(arguments);
+        //     // for(var i=0;i<arguments.length;i++){
+        //     //     console.log(arguments[i])
+        //     // }
+        //     // console.log(arguments.length,fn.length);//arguments.length实参长度,fn.length形参长度
+
+        //     // console.log(arguments.callee);//当前函数
+        //     console.log(arguments.callee.caller);//调用当前函数的上下文函数，如果在window中调用，则是null
+        // }
+        // fn(1,2,3,4,5);
+
+
+        // var obj={
+        //     a:1,
+        //     b:2,
+        //     c:function(){
+        //         console.log(this.c===arguments.callee);
+        //     }
+        // }
+        // obj.c();
+
+
+        // ES6严格模式禁止这种方式的使用
+        // function fn(f){
+        //     f();
+        // }
+        // function fn1(){
+        //     console.log(arguments.callee.caller);
+        //     console.log(fn1.caller);
+        // }
+
+        // function fn2(){
+        //     fn1();
+        // }
+
+        // fn2();
+
+        // fn(fn1);
+        // fn1();
+
+
+
+        // arguments 和this的问题
+        // 回调函数中执行后，执行的回调函数中this指向window
+        // 回调函数如果使用的是arguments调用回调，在执行的回调函数中this指向调用当前函数的上下文环境中函数的arguments
+        var obj = {
+            a: 1,
+            b: function () {
+                function fn(f) {
+                    // f();
+                    arguments[0]();
+                }
+
+                function fn1() {
+                    console.log(this);
+                }
+
+                fn(fn1,4,5,6);
+            
+                // function fn(){
+                //     console.log(this);
+                // }
+                // fn();
+            }
+        }
+
+        obj.b();
+    </script>
+</body>
+
+</html>

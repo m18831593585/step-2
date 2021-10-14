@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 作用域  变量
+
+        // 变量污染
+
+        // 全局变量  在script标签中定义的变量都是全局变量
+        //  局部变量  在function(){}定义变量都是局部变量,仅对自身后其内部函数的函数空间中有效
+
+        // 全局变量  
+        // var a=3;
+        // function fn(){
+        //     // 局部变量
+        //     var b=4;
+        //     function fn1(){
+        //         var c=5;
+        //     }
+
+        //     function fn2(){
+        //         var c=6;
+        //     }
+        // }
+
+
+        // window.a
+        // window.fn
+
+
+
+        // var obj={a:1};
+        // obj.a
+
+
+
+
+        // var a=10;
+        // var b=20;
+        // function fn(){
+        //     console.log(b);
+        //     console.log(a);
+        //     var a=20;
+        //     var b=30;
+
+        //     function fn1(){
+
+        //         console.log(a);
+        //         var a=30;
+
+        //     }
+        //     fn1();
+        // }
+
+        // fn();
+
+
+        // ES5 中直接执行的命名函数中this是window
+        // var a=10;
+        // function fn(){
+        //     console.log(this.a);
+        //     var a=20;
+        // }
+        // fn();
+
+
+
+        // 参数也是局部变量
+        // function fn(a,b){
+        //     console.log(a)
+        //     var a=5;
+        //     console.log(a);
+        // }
+
+        // fn(3,5);
+
+
+
+        // function fn(o){
+        //     o.a=10;
+        // }
+
+        // var obj={a:1};
+        // fn(obj);
+        // console.log(obj);
+
+
+        // function fn(o){
+        //     o={b:2};
+        // }
+
+        // var obj={a:1};
+        // fn(obj);
+        // console.log(obj);
+
+
+        //         var obj = {
+        //     fn2: function () {
+        //     //   console.log(fn2)
+        //       // 想输出fn2属性的值
+        //       console.log(this.fn2) 
+        //     }
+        //   }
+        //   obj.fn2() 
+
+
+
+
+
+        // 关于对象中this
+
+        // var a=10;
+        //     var obj={
+        //         a:1,
+        //         b:2,
+        //         c:this.a,//当前对象外的this
+        //         d:function(){
+        //             console.log(this.b);//this指向当前对象，谁调用d函数，this就是谁
+
+        //             var o={
+        //                 e:this.a
+        //             }
+        //             console.log(o);
+        //         }
+        //     }
+
+
+        //     console.log(obj);
+        //     obj.d();
+
+
+
+        // var  obj={
+        //     a:1,
+        //     b:function(){
+        //         console.log(this.a);
+        //     }
+        // }
+        // var o=obj;
+        // obj={a:2};
+        // o.b();
+
+        // var name = 'World!';
+        // (function () {
+        //     if (typeof name === 'undefined') {
+        //         var name = 'Jack'
+        //         console.log(name)
+        //     } else {
+        //         console.log(name)
+        //     }
+        // })()
+
+
+        function fn(){
+            var fn=1;
+            function fn(){
+                console.log("aaa");
+            }
+            fn();
+        }
+
+        fn();
+
+        // 1、命名函数预解析时，不单纯开辟了空间，还将函数赋值给了这个变量，因此，命名函数
+        // 定义在任何位置都等同于在开始就定义完成
+
+        // 2、只要在函数内部使用了var 定义变量或者参数传入的变量，都是局部变量，一旦有局部变量
+        // 则不能再调用到外部同名变量了，那么这个变量也是预解析了。定义前获取就是undefined，
+        // 定义后获取就是这个变量的值
+        
+        // 3、变量调用只能调用到当前作用域及当前作用域所有父代作用域范围的非同名变量，不能调用
+        // 到当前作用域中子代的作用域范围变量
+
+        // var a=1;
+        // function fn(){
+        //     var b=2;
+        //     function fn1(){
+        //         var c=3;
+        //         function fn2(){
+        //             var d=10;
+        //         }
+        //     }
+        // }
+
+        // (function(){
+        //     var a=1;
+        //     var b=2;
+        // })();
+
+        // (function(){
+        //     var a=3;
+        //     var b=5;
+        // })();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 对象使用key和value存储数据，key是字符类型，如果不是字符类型，就会隐式转换为字符类型
+        var obj = {};
+        // 点语法描述a，是字符串a属性
+        obj.a = 1;
+
+        // var a="b";
+        // obj.后面只能是字符串，不能是变量
+        // obj.a
+        // obj[a]=1 //使用obj[key] key就是这里的变量
+        // console.log(obj.b)
+
+        // var c=10;
+        // obj[c]=100;
+        // console.log(obj.10)//这种写法错误的，因为点语法中属性名不能以数字开头
+
+        // var c=["ab"];
+        // obj[c]=100;
+        // 数组转换为字符串，作为key，value是100
+        // console.log(obj.ab)
+
+        // var c={a:1};
+        // obj[c]=100;
+        // console.log(obj["[object Object]"])
+
+        // var a="ab";
+        // var o={
+        //     [a]:10,
+        //     ["a"]:100
+        // }
+
+
+        // var obj={a:1};
+        // console.log(obj);
+        // obj.a=100;
+
+
+        // var obj={
+        //     a:1,
+        //     b:2,
+        //     c:{
+        //         p:10
+        //     }
+        // }
+        // console.log(obj)
+
+        // 将对象转换为一个JSON格式的字符串
+        // console.log(JSON.stringify(obj));
+        // var str='{"ab":10,"cd":"abc"}';
+        // 将JSON格式字符串转换为对象
+        // console.log(JSON.parse(str));
+        // obj.a=100;
+        // obj.c.p=100;
+
+
+        // 在栈中开辟一个变量名的空间，存储了一个堆中的引用地址，这种都是引用类型
+
+        // 数值对象
+        // var a=new Number(5);
+        // console.log(a)
+
+        // var b=10;
+        // b.toString();
+
+        // var a=new String("a");
+
+        // var str="a";
+        // console.log(str.charCodeAt(0));
+        // str.charCodeAt(0);
+
+
+        // var a=new Boolean(true);
+        // console.log(a)
+
+        // var b=true;
+        // console.log(b.toString())
+
+        // 万物皆对象 （undefined，null）
+
+
+        // undefined和null 的区别  typeof null   为啥是object
+
+        // var a=3;
+        // a=undefined;//将栈中这个空间变量清空
+
+
+        // var a=3;
+        // a=null;
+
+
+        // var  obj={a:1};
+        // obj=null;
+        // console.log(typeof obj)
+        // var o=obj;
+        // obj={a:1};
+        // o={a:2};
+        // 内存泄漏  不断引用新的对象，但是并没有清除掉不再引用的对象，造成这些对象在堆中形成无法使用孤儿对象
+        // 垃圾回收机制 System.gc()
+        // null 作用，第一个清除栈中变量的引用关系，第二清除堆中该对象的引用列表中该变量名
+
+
+
+
+        // var o={a:1};
+        // var o1=o;
+        // o.a=10;
+        // console.log(o1.a);
+
+
+        // var o={a:1};
+        // var o1=o;
+        // o={a:10}
+        // console.log(o1.a);
+
+
+        // var a = {n: 1}
+        // var b = a
+        // a.x = a = {n: 2};
+        // a=a.x={n:2};
+        // console.log(b,a);
+
+        // a={n:1}   b={n:1}
+
+        // a={n:1,x:{n:2}}  b={n:1,x:{n:2}}
+        // a={n:2}  b={n:1,x:{n:2}}
+
+
+        //   delete obj.a;
+        //   delete obj["a"];
+
+
+        // var obj={a:1,b:2};
+        // var o=obj;
+        // obj.a=10;
+        // console.log(o)
+
+
+        // 对象的复制
+        // var obj={a:1,b:2,c:3};
+        // var o={};
+
+        // for(var key in obj){
+        //     // var value=obj[key];
+        //     // console.log(key,value)
+        //     // o[key]=value;
+        //     o[key]=obj[key];
+        // }
+        // obj.a=100;
+        // console.log(o)
+
+
+        // 浅复制
+        // var obj = {
+        //     a: 1,
+        //     b: 2,
+        //     c: {
+        //         d: 10
+        //     }
+        // }
+
+        // var o={};
+        // for(var key in obj){
+        //     if(typeof obj[key]==="object"){
+        //         for(var prop in obj[key]){
+        //             o[key]={};
+        //             o[key][prop]=obj[key][prop];
+        //         }
+        //     }else{
+        //         o[key]=obj[key];
+        //     }
+
+
+        // }
+        // obj.a=10;
+        // obj.c.d=100;
+        // console.log(o)
+
+
+        // var obj={a:1,b:2,c:3};
+        // var o=Object.assign({},obj);
+        // var o={};
+        // Object.assign(o,obj);
+        // Object.assign(目标对象,源对象);
+        //     obj.a=10;
+        // console.log(o);
+
+
+
+        // var obj = {
+        //     a: 1,
+        //     b: 2,
+        //     c: 3,
+        //     d: {
+        //         e: 10,
+        //         f: 100,
+        //         g:function(){
+        //             console.log("aaa")
+        //         }
+        //     }
+        // };
+
+        // var str=JSON.stringify(obj);
+        // var o=JSON.parse(str);
+        // obj.a=10;
+        // obj.d.e=0;
+        // console.log(o)
+
+        // var o = JSON.parse(JSON.stringify(obj));
+        // obj.d.e = 100;
+        // console.log(o);
+
+
+
+    </script>
+</body>
+
+</html>
