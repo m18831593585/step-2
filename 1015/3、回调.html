@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // function fn(f){
+        //     f();
+        // }
+        // function fn1(n){
+        //     console.log("aa")
+        // }
+
+        // fn(fn1,3);
+
+        // 使用回调函数时，this指向分为两个，一个是指向window，另一个指向调用回调函数的上下文函数的arguments
+
+        // 在达到某个条件时，或者运行到某个时间时才去让这个函数执行
+        // 回调函数无法传参
+        // 回调函数如何传参
+        // animation.a=10;
+        // var id=setInterval(animation,1000);
+        // var n=0;
+        // function animation(){
+        //     console.log("aaa")
+        //     n++;
+        //     if(n===5)clearInterval(id);
+           
+        // }
+
+        // var id=setInterval(fn(5),1000);
+
+        // function fn(n){
+        //     animation.a=n;
+        //     return animation
+        // }
+
+        // function animation(){
+        //     console.log(animation.a);
+        // }
+
+
+        // var id=setInterval(animation(4,5),1000);
+
+        // function animation(n,m){
+        //     return function(){
+        //         console.log(n,m)
+        //     }
+        // }
+
+
+            // 1000毫秒后执行该回调函数，执行完成后再也不执行了
+    //    var id=setTimeout(function(){
+    //       clearTimeout(id);
+    //     },1000);
+
+
+        // document.addEventListener("click",clickhandler);
+
+        // function clickhandler(e){
+
+        // }
+    </script>
+</body>
+</html>

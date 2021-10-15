@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 将函数写在块语句中，命名函数只会预解析，不会预赋值,并且执行块语句时，赋值函数
+        // 如果块语句中出现变量和函数名相同时，执行语句块最后打印的是正常顺序赋值的结果
+        // 但是在语句块外，变量是最后一个同名函数上面的赋值变量结果
+        // 如果语句块中变量和函数名相同时，只有一个变量和一个函数，函数在变量前时，最后打印
+        // 变量是函数，如果变量在函数前时，最后打印的结果是变量
+        // 在块语句中，不管有几个同名函数，都会被最后一个同名函数覆盖掉
+
+        // var a=1;
+        // {
+        //     a=3;
+        //     function a(){
+        //         console.log("c")
+        //     }
+        //     a=5;
+        // }
+
+        // console.log(a)
+
+
+
+
+        // var a=1;
+        // if(a>2){
+        //    a=3
+        //     function a(){
+        //         console.log("aa")
+        //     }
+        //     a=2;
+        // }
+        // console.log(a)
+    </script>
+</body>
+</html>
