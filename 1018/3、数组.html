@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 数组是一个无序元素的紧密结构的有序列表
+
+
+        //有序列表 排序
+        // 紧密结构  列表具备长度，而且这个长度会自动根据列表内容变化而变化，添加，删除消耗性能大，速度慢
+        // 可以遍历，有对应的下标，可以根据下标遍历到数组的所有元素
+
+        // 里面的存的无序元素，意味着元素可以不区分先后顺序，而且不能避免重复
+
+        // 新建数组  引用类型
+        // 字面量创建数组  数组的长度不固定（在js中数组的长度是可变）
+        // var arr=[];
+        // var arr=[1,2,,3,4];
+
+
+        // 实例化创建数组（构造函数实例化）
+        // var arr=new Array();
+
+        // var arr=new Array(3,4,5,6);
+        // var arr=new Array(1);
+        // var arr=new Array("a");
+        // var arr=new Array([1]);
+        // 如果使用实例化或者构造函数创建数组时，参数如果仅有一个并且是数值，那么这个数值必须是
+        // 正整型，如果小数和负数都会报错。而这个正整数是数组的预设长度,里面都放入空元素,无法
+        // 通过这种方式创建一个数值元素的数组
+        // 如果给入参数是一个并且不是数值类型，则会将这个数据作为数组的第0个元素
+        // console.log(arr)
+
+        // 构造函数创建
+        // var arr=Array();
+
+
+        // 通过对象创建数组
+        // var arr=new Object([]);
+        
+
+        // console.log([]===[]);
+
+        // var arr1=[1,2,,3,4,5];
+        // console.log(arr1)
+
+
+        // var a=1;
+        // var b=2;
+        // var c=3;
+        // var d=4;
+
+        // var arr=[1,2,3,4];
+
+
+
+        // function randomColor(){
+        //     return "#"+Array(6).fill(1).map(function(){
+        //         return (~~(Math.random()*16)).toString(16)
+        //     }).join("");
+        // }
+
+
+        // function randomColor(){
+        //     return Array(6).fill(1).reduce(function(value,item){
+        //         return value+(~~(Math.random()*16)).toString(16);
+        //     },"#")   
+        // }
+
+
+
+
+
+
+
+        var arr=["a","b",,"c",undefined,"d","e"];
+        // arr.length   数组中元素的个数
+        // 下标  每个元素在数组中位置，从0开始计算
+        // 下标变量  数组所对应的下标的存储单元叫做下标变量
+        // 元素 就是组成数组的最基本单元，叫做元素或者元，也叫下标变量的值
+
+        // arr.length   5
+        //下标   1
+        // 下标变量   arr[1]
+        // 元素   "b"
+
+        // console.log(arr[3])
+            // 最大下标是数组的长度-1
+
+        var arr1=[];
+        // for(var i=0;i<arr.length;i++){
+        //     // console.log(i,arr[i]);
+        //     // if(arr[i]===undefined) continue;
+        //     arr1[i]=arr[i];
+        // }
+        // console.log(arr1,arr);
+
+
+
+        // var obj={a:1,b:2,c:3};
+        // for(var key in obj){
+
+        // }
+
+        // console.log("d" in obj);//可枚举判断，key和value
+        // console.log(obj["d"])
+        // arr.a=10;
+        
+        // for(var i=0;i<arr.length;i++){
+        //     console.log(i,arr[i]);
+        // }
+
+        // for(var index in arr){
+        //     console.log(index,arr[index]);
+        // }
+        // 当把数组作为对象枚举遍历时，数组中下标就变为对象的key属性，对象key属性就是字符串
+
+        // for in最好不要作为数组遍历方式使用，会遍历到数组的所有属性，包括对象属性
+
+        // 后面讲解，这是迭代器变量
+        // for(var value of arr){
+        //     console.log(value)
+        // }
+
+
+
+
+        // for(var i=0;i<arr.length;i++){
+        //     if(!(i in arr))continue;
+        //     arr1[i]=arr[i]
+        // }
+
+        // console.log(arr,arr1);
+
+
+
+        // arr[7]=10;
+        // console.log(arr)
+
+        // var len=arr.length;
+        // for(var i=len;i<len+10;i++){
+        //     arr[i]=i+10;
+        // }
+        // console.log(arr)
+
+        // for(var i=0;i<10;i++){
+        //     arr[arr.length]=i+10;
+        // }
+        // console.log(arr)
+
+
+        // 给数组的尾部添加元素
+        // arr[arr.length]=值
+        // arr[0]=0; 替换数组的最头部元素
+
+
+        // arr.length 是一个可读可写不可删除不可枚举的属性
+
+        // delete arr.length;
+        // console.log(arr)
+
+        // arr.length=20;//多出来的是空白元素
+        // console.log(arr)
+
+        // arr.length=5;//如果长度比原来小，就会把多出来元素删除
+        // console.log(arr)
+
+        // arr.length=0;//清空数组
+        // var arr=[1,2,3,4];
+        // arr=[];//错误的
+        // arr.length=0;
+
+
+        // arr.length--;//删除数组的最尾部元素
+
+
+    </script>
+</body>
+</html>

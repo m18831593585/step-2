@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = [1, 2, 3];
+        // arr.push(5,6,7,8);
+        // push 可以向数组添加一个或者多个元素，返回添加元素后数组的新长度
+        //     function fill(arr,value,len){
+        //         while(arr.push(value)<len);
+        //     }
+
+        // var arr=[1,2,3];
+        // fill(arr,1,20);
+        // console.log(arr);
+
+        // arr.push(4,5,6,7);
+        // arr.push(4,5,[3,4,5]);
+        // console.log(arr)
+
+
+
+        // var item= arr.pop()
+        // console.log(arr,item)
+
+        //     var str="http://www.163.com/a/b/index.html";
+        //    str= str.split("/").pop();
+        //    console.log(str)
+
+
+        //    var len=arr.unshift(0,-1);
+        //    console.log(len,arr)
+
+
+        //    var item=arr.shift();
+        //    console.log(item,arr)
+
+
+
+        // push
+
+
+        function arrayPush(arr) {
+            if (!arr || arr.constructor !== Array) throw new Error(arr + "is not Array!");
+            if (arguments.length === 1) return arr.length;
+            for (var i = 1; i < arguments.length; i++) {
+                arr[arr.length] = arguments[i];
+            }
+            return arr.length;
+        }
+
+
+        // pop
+
+        function arrayPop(arr) {
+            if (!arr || arr.constructor !== Array) throw new Error(arr + "is not Array!");
+            if (arr.length === 0) return;
+            var item = arr[arr.length - 1];
+            arr.length--;
+            return item;
+        }
+
+
+        // unshift
+        function arrayUnshift(arr) {
+            if (!arr || arr.constructor !== Array) throw new Error(arr + "is not Array!");
+            var len = arguments.length - 1;
+            if (!len) return arr.length;
+            for (var i = arr.length + len - 1; i >= 0; i--) {
+                if (i - len >= 0) arr[i] = arr[i - len];
+                else arr[i] = arguments[i + 1];
+            }
+            return arr.length;
+        }
+
+        //     var arr=[3,4,5]
+        //    var len= arrayUnshift(arr,0)
+        //     console.log(len,arr)
+
+        // shift
+
+        function arrShift(arr) {
+            if (!arr || arr.constructor !== Array) throw new Error(arr + "is not Array!");
+            if (arr.length === 0) return;
+            var item = arr[0];
+            for (var i = 0; i < arr.length - 1; i++) {
+                arr[i] = arr[i + 1];
+            }
+            arr.length--;
+            return item;
+        }
+
+
+        var arr = [1];
+        var item = arrShift(arr);
+        console.log(item, arr);
+
+
+        // console.log("a")
+        // for(var i=0;i<10000000000;i++){
+
+        // }
+        // console.log("b")
+
+
+        // var i=0;
+        // function fn(){
+        //     i++;
+        //     if(i>20000) return;
+        //     fn();
+        // }
+        // fn();
+    </script>
+</body>
+
+</html>

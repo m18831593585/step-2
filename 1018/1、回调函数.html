@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // init();
+        // function init(){
+        //     var a=100;
+        //     setTimeout(animation(a),5000);
+        // }
+
+        // function animation(n){
+        //     return function(){
+        //         console.log(n);
+        //     }
+        // }
+
+
+        // document.addEventListener("click",clickHandler);
+        // function clickHandler(e){
+        //     console.log("aaa")
+        // }
+
+// 1--------
+        // function showRedLight(){
+        //     setTimeout(function(){
+        //         console.log("红灯");
+        //         showYellowLight();
+        //     },2000);
+        // }
+
+
+        // function showYellowLight(){
+        //     setTimeout(function(){
+        //         console.log("黄灯");
+        //         showGreenLight();
+        //     },2000);
+        // }
+
+
+        // function showGreenLight(){
+        //     setTimeout(function(){
+        //         console.log("绿灯");
+        //         showRedLight();
+        //     },2000);
+        // }
+
+        // showRedLight();
+
+        
+// 2------通过传入函数，执行不同的模块
+        // function showRedLight(fn,fn1){
+        //     setTimeout(function(){
+        //         console.log("红灯");
+        //         fn(fn1,showRedLight)
+        //     },2000);
+        // }
+
+
+        // function showYellowLight(fn,fn1){
+        //     setTimeout(function(){
+        //         console.log("黄灯");
+        //         fn(fn1,showYellowLight);
+        //     },2000);
+        // }
+
+
+        // function showGreenLight(fn,fn1){
+        //     setTimeout(function(){
+        //         console.log("绿灯");
+        //         fn(fn1,showGreenLight);
+        //     },2000);
+        // }
+
+        // showYellowLight(showRedLight,showGreenLight)
+
+
+
+        // 桥接模式
+        // function fn(f){
+        //     var sum=0;
+        //     for(var i=0;i<10;i++){
+        //       sum+=f(i);
+        //     }
+        //      return sum;
+        // }
+
+        // function getSum(n){
+        //     n+=10;
+        //     return n;
+        // }
+        // function getProduct(n){
+        //     return n*10;
+        // }
+
+        // fn(getSum);
+        // fn(getProduct)
+
+    //    var s=fn(function(n){
+    //         return n*10;
+    //     });
+
+    //     var s=fn(function(n){
+    //         return n*100;
+    //     })
+    //     console.log(s)
+     
+
+
+        // 回调也可以做循环
+
+    //     var i=0,sum=0;
+    //     function fn(f){
+    //         if(i>3) return sum;
+    //         sum+=i;
+    //         f(fn);
+    //     }
+
+    //     function fn1(f){
+    //         i++;
+    //         f(fn1);
+    //     }
+
+    //    var s=fn(fn1);
+    //    console.log(sum)
+
+
+
+
+
+        //  var i=0,sum=0;
+        // function fn(fn1){
+        //     if(i>3) return sum;
+        //     sum+=i;
+        //    return  fn1(fn2);
+        // }
+
+        // function fn1(fn2){
+        //     i++;
+        //    return fn2(fn3)
+        // }
+
+        // function fn2(fn3){
+        //     if(i>3) return sum;
+        //     sum+=i;
+        //    return  fn3(fn4);
+        // }
+
+        // function fn3(fn4){
+        //     i++;
+        //    return fn4(fn5)
+        // }
+
+        // function fn4(fn5){
+        //     if(i>2) return sum;
+        //     sum+=i;
+        //    return fn5(fn6);
+        // }
+
+        // function fn5(fn6){
+        //     i++;
+        //    return fn6()
+        // }
+        // function fn6(){
+        //     if(i>2) return sum;
+        //     // sum+=i;
+           
+        // }
+
+        // fn(fn1);
+
+
+
+    //     var i=0,sum=0;
+    //     function fn(f){
+    //         if(i>100) return sum;
+    //         sum+=i;
+    //        return f(fn);
+    //     }
+
+    //     function fn1(f){
+    //         i++;
+    //        return f(fn1);
+    //     }
+
+    //    var s=fn(fn1);
+    //    console.log(s)
+
+
+
+   
+        // function fn(f,sum,i){
+        //     if(sum===undefined) sum=0;
+        //     if(i===undefined) i=0;
+        //     if(i>100) return sum;
+        //     sum+=i;
+        //    return f(fn,sum,i);
+        // }
+
+    //     function fn1(f,sum,i){
+    //         i++;
+    //        return f(fn1,sum,i);
+    //     }
+
+    //    var s=fn(fn1);
+    //    console.log(s)
+
+
+
+
+
+    // 分离
+
+    //      function fn(f,sum,i){
+    //         if(sum===undefined) sum=0;
+    //         if(i===undefined) i=0;
+    //         if(i>100) return sum;
+    //         sum+=i;
+    //        return f(fn,sum,i);
+    //     }
+
+    //    var s=fn(function(f,sum,i){
+    //         i+=2;
+    //         return f(arguments.callee,sum,i);
+    //     });
+    //     console.log(s)
+    </script>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <div></div>
+        <div id="div1"></div>
+        <div>
+            <span id="span1"></span>
+            <span></span>
+            <span id="span2"></span>
+            <span></span>
+        </div>
+        <span id="span3"></span>
+        <span>
+            <div id="div2">
+                <div></div>
+                <div id="div3"></div>
+                <div>
+                    <span></span>
+                    <span id="span4"></span>
+                    <span>
+                        <div>
+                            <div></div>
+                            <div id="div4"></div>
+                            <div id="div5">
+                                <span></span>
+                                <span></span>
+                                <span id="span5"></span>
+                                <span></span>
+                            </div>
+                            <span></span>
+                            <span></span>
+                            <span id="span6"></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </span>
+                    <span></span>
+                </div>
+                <span></span>
+                <span></span>
+                <span id="span7"></span>
+                <span></span>
+                <span></span>
+            </div>
+        </span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div>
+        <span></span>
+        <span></span>
+        <span id="span8"></span>
+        <span></span>
+    </div>
+    <ul>
+        <li id="li0"></li>
+        <li>
+            <ul>
+                <li id="li1"></li>
+                <li>
+                    <ul>
+                        <li></li>
+                        <li id="li2">
+
+                        </li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </li>
+                <li id="li3"></li>
+                <li></li>
+            </ul>
+        </li>
+        <li></li>
+        <li id="li4"></li>
+    </ul>
+    <script>
+        // 递归就是当前函数自己执行自己
+        // 递归最容易出现的问题时，堆栈上限溢出（死循环）
+
+        // var i=0;
+        // function fn(){
+        //     i++;
+        //     if(i>100) return;
+        //     fn();  
+        // }
+        // fn();
+
+
+
+        // var i=0,sum=0;
+        // function fn(){
+        //     i++;
+        //     if(i>100) return sum;
+        //     sum+=i;
+        //     return  fn();
+        // }
+
+        // var s=fn();
+        // console.log(s)
+
+
+        // var i=0,sum=0;
+        // function fn(){
+        //     i++;
+        //     if(i>3) return sum;
+        //     sum+=i;
+        //    var s=fn1();
+        //     console.log("bbb");
+        //     return s;
+        // }
+        // function fn1(){
+        //     i++;
+        //     if(i>3) return sum;
+        //     sum+=i;
+        //     return  fn2();
+        // }
+        // function fn2(){
+        //     i++;
+        //     if(i>3) return sum;
+        //     sum+=i;
+        //     var s=fn3();
+        //     console.log("aa");
+        //     return s;
+        // }
+        // function fn3(){
+        //     i++;
+        //     if(i>3) return sum;
+        //     sum+=i;
+        //     // return  fn1();
+        // }
+
+        // var s=fn();
+        // console.log(s)
+
+
+        // function fn(i,s){
+        //     if(i===undefined) i=0;
+        //     if(s===undefined) s=0;
+        //     i++;
+        //     s+=i;
+        //     if(i>=100) return s;
+        //     return fn(i,s)
+        // }
+
+
+        // var s=fn();
+        // console.log(s)
+
+
+        // 深遍历对象
+        // var obj = {
+        //     a: 1,
+        //     b: 2,
+        //     c: {
+        //         a: 3,
+        //         b: 4,
+        //         c: {
+        //             a: 5,
+        //             b: 6,
+        //             d: {
+        //                 a: 7,
+        //                 b: 8
+        //             }
+        //         }
+        //     }
+        // }
+
+
+        // function fn(obj){
+        //     for(var key in obj){
+        //         // console.log(key,obj[key])
+        //         if(obj[key] && typeof obj[key]==="object"){
+        //             fn(obj[key]);
+        //         }else{
+        //             console.log(key,obj[key]);
+        //         }
+        //     }
+        // }
+
+        // fn(obj);
+
+
+        // 对象深复制
+        //     function fn(obj,o){
+        //         if(o===undefined) o={};
+        //         for(var key in obj){
+        //             if(obj[key] && typeof obj[key]==="object"){
+        //                 o[key]={}
+        //                  fn(obj[key],o[key]);
+        //             }else{
+        //                 o[key]=obj[key];
+        //             }
+        //         }
+        //         return o;
+        //     }
+        //   var o=fn(obj);
+
+        //     // obj.c.a=100;
+        //     console.log(o,obj);
+
+
+
+        // 遍历树结果
+        // console.log(document.body.children)
+        // var disc = {}
+
+        // function getAllElem(elem) {
+        //     if (elem.id) {
+        //         disc[elem.id] = elem;
+        //     }
+        //     for (var i = 0; i < elem.children.length; i++) {
+        //         getAllElem(elem.children[i])
+        //     }
+        // }
+
+        // getAllElem(document.body);
+
+
+
+        // 二叉树遍历
+
+        // var tree={
+        //     left:{
+        //         left:{
+        //             left:{
+        //                 left:null,
+        //                 right:null,
+        //                 value:8
+        //             },
+        //             right:{
+        //                 left:null,
+        //                 right:null,
+        //                 value:9
+        //             },
+        //             value:4
+        //         },
+        //         right:{
+        //             left:{
+        //                 left:null,
+        //                 right:null,
+        //                 value:10
+        //             },
+        //             right:{
+        //                 left:null,
+        //                 right:null,
+        //                 value:11
+        //             },
+        //             value:5
+        //         },
+        //         value:2
+        //     },
+        //     right:{
+        //         left:{
+        //             left:{
+        //                 left:null,
+        //                 right:null,
+        //                 value:12
+        //             },
+        //             right:{
+        //                 left:null,
+        //                 right:null,
+        //                 value:13
+        //             },
+        //             value:6
+        //         },
+        //         right:{
+        //             left:{
+        //                 left:null,
+        //                 right:null,
+        //                 value:14
+        //             },
+        //             right:{
+        //                 left:null,
+        //                 right:null,
+        //                 value:15
+        //             },
+        //             value:7
+        //         },
+        //         value:3
+        //     },
+        //     value:1
+        // }
+    
+
+        // function fn(tree){
+        //     console.log(tree.value);
+        //     if(tree.left) fn(tree.left);
+        //     if(tree.right) fn(tree.right);
+        // }
+        // function fn(tree){
+        //     if(tree.left) fn(tree.left);
+        //     console.log(tree.value);
+        //     if(tree.right) fn(tree.right);
+        // }
+        // function fn(tree){
+        //     if(tree.left) fn(tree.left);
+        //     if(tree.right) fn(tree.right);
+        //     console.log(tree.value);
+        // }
+
+        // fn(tree);
+
+       
+    </script>
+</body>
+
+</html>
