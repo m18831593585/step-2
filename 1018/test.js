@@ -16,6 +16,10 @@ console.log(arr)
 // arrayFill(arr, 1, 2, 5)
 // console.log(arr)
 
-function arrayPush(arr){
+function arrayUnshift(arr){
+    // 在数组头部添加一个或多个元素 返回新长度
+    if(!arr || arr.constructor !== Array) throw new Error(arr+" is not an array")
     
 }
+
+

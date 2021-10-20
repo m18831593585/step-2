@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr=[1,2,3,4,5,6,7,8];
+        // console.log(arr.join());
+        // console.log(arr.join("#"));
+        // console.log(arr.join("+"));
+        // console.log(arr.join(undefined));
+        // console.log(arr.join(null));
+
+        // join 重构
+        // function arrayJoin(arr,separator){
+        //     if(!arr || arr.constructor!==Array) throw new Error(arr+"not is Array");
+        //     if(separator===undefined) separator=",";
+        //     separator=String(separator);
+        //     var str="";
+        //     for(var i=0;i<arr.length;i++){
+        //         if(i===arr.length-1) return str+=arr[i];
+        //         str+=arr[i]+separator;
+        //     }
+        // }
+
+        // console.log(arrayJoin(arr));
+        // console.log(arrayJoin(arr,"#"));
+        // console.log(arrayJoin(arr,"+"));
+        // console.log(arrayJoin(arr,undefined));
+        // console.log(arrayJoin(arr,null));
+        // console.log(arrayJoin(arr,0));
+        // console.log(arrayJoin(arr,""));
+        
+        // 复制数组
+    //    var arr1=arr.slice();
+    // var arr1=arr.slice(2,4);
+    // var arr1=arr.slice(-5,7);
+    // var arr1=arr.slice(-5,-2);
+    // var arr1=arr.slice(-5);
+    // var arr1=arr.slice(-1);
+        // var arr1=arr.slice("a");
+        // console.log(arr1)
+
+            function arraySlice(arr,start,end){
+                if(!arr || arr.constructor!==Array) throw new Error(arr+"not is Array");
+                start =~~start;
+                if(isNaN(end)) end=arr.length;
+                end=parseInt(end);
+                start=Number(start);
+                start= start <0 ? (start+arr.length<0 ? 0 : start+arr.length) : start;
+                end=end<0 ? (end+arr.length<0 ? 0 : end+arr.length) : end ;
+                var arr1=[];
+                for(var i=start;i<end;i++){
+                    arr1[arr1.length]=arr[i];
+                }
+                return arr1;
+            }
+            var arr1=arraySlice(arr);
+            var arr1=arraySlice(arr,2,4);
+            var arr1=arraySlice(arr,-5,7);
+            var arr1=arraySlice(arr,-5,-2);
+            var arr1=arraySlice(arr,-5);
+            var arr1=arraySlice(arr,"a");
+          
+            console.log(arr1);
+            // var a=-2;
+            // a=~~(a>0 && a);
+            // console.log(a)
+            // var divs=document.getElementsByTagName("div");
+            // divs=[].slice.call(divs)
+    </script>
+</body>
+</html>

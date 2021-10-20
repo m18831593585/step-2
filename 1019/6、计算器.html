@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .con {
+            border: 1px solid #000000;
+            width: 500px;
+            height: 600px;
+            text-align: center;
+            position: relative;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+
+        .con>div {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000000;
+            box-shadow: 2px 2px 2px #cccccc;
+            float: left;
+            margin: 11px;
+            text-align: center;
+            font-size: 40px;
+            line-height: 100px;
+            user-select: none;
+        }
+
+        .con>input {
+            width: 90%;
+            height: 30px;
+            line-height: 30px;
+            font-size: 25px;
+            text-align: right;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            box-shadow: 3px 3px 3px #cccccc;
+            outline: none;
+            padding: 5px 10px;
+            background-color: white;
+            border: 1px solid #000000;
+        }
+
+        .clear::after {
+            content: "";
+            clear: both;
+            display: block;
+            height: 0;
+            visibility: hidden;
+            overflow: hidden;
+        }
+
+        .clear {
+            zoom: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="con clear">
+        <input type="text" id="input" value="0" disabled />
+        <div class="divs" id="div1">7</div>
+        <div class="divs" id="div2">8</div>
+        <div class="divs" id="div3">9</div>
+        <div class="divs" id="div4">-</div>
+        <div class="divs" id="div5">4</div>
+        <div class="divs" id="div6">5</div>
+        <div class="divs" id="div7">6</div>
+        <div class="divs" id="div8">+</div>
+        <div class="divs" id="div9">1</div>
+        <div class="divs" id="div10">2</div>
+        <div class="divs" id="div11">3</div>
+        <div class="divs" id="div12">*</div>
+        <div class="divs" id="div13">C</div>
+        <div class="divs" id="div14">0</div>
+        <div class="divs" id="div15">=</div>
+        <div class="divs" id="div16">/</div>
+    </div>
+
+    <script>
+        var divs, input, type;
+        var firstValue = 0,
+            secondValue = 0,
+            result = 0;
+
+        init();
+
+        function init() {
+            divs = [].slice.call(document.getElementsByClassName("divs"));
+            input = document.getElementById("input");
+            divs.forEach(function (item) {
+                item.addEventListener("click", clickHandler);
+            })
+        }
+
+        function clickHandler(e) {
+            switch (true) {
+                case this.innerHTML < 10 && this.innerHTML >= 0:
+                    numberTotal(this.innerHTML);
+                    break;
+                case this.innerHTML === "=":
+                    resultValue();
+                    break;
+                case this.innerHTML === "C":
+                    clear()
+                    break;
+                case ["+", "-", "*", "/"].includes(this.innerHTML):
+                    calculate(this.innerHTML);
+                    break;
+            }
+        }
+
+        function clear() {
+            input.value = "0";
+            firstValue = 0;
+            secondValue = 0;
+            type = undefined;
+            result=0;
+        }
+
+
+        function numberTotal(n) {
+            if(result!=0) result=0;
+            if (!type) {
+                firstValue = Number(firstValue + n).toString()
+                input.value = firstValue;
+            } else {
+                secondValue = Number(secondValue + n).toString();
+                input.value = firstValue + type + secondValue;
+            }
+
+        }
+
+        function calculate(_type) {
+            if(result!==0){
+                firstValue=result;
+                result=0;
+            }else{
+                firstValue =input.value;
+            }
+            type = _type;
+            input.value += _type;
+        }
+
+        function resultValue() {
+            if(result) return;
+            switch (type) {
+                case "+":
+                    result = Number(firstValue) + Number(secondValue);
+                    break;
+                case "-":
+                    result = firstValue - secondValue;
+                    break;
+                case "*":
+                    result = firstValue * secondValue;
+                    break;
+                case "/":
+                    result = firstValue / secondValue;
+                    break;
+            }
+            input.value += "=" + result;
+            firstValue = 0;
+            secondValue = 0;
+            type = undefined;
+        }
+    </script>
+</body>
+
+</html>

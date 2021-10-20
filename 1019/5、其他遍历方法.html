@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = [1, 2, 3, 4, 5, 6];
+        // 其中只有有一个满足条件
+        var bool = arr.some(function (item, index, arr) {
+            return item > 3;
+        });
+        // 所有都必须满足条件，返回true，否则直接返回false
+        var bool1 = arr.every(function (item, index, arr) {
+            return item > 3;
+        });
+        console.log(bool, bool1);
+
+
+        function arraySome(arr, fn) {
+            if (!arr || arr.constructor !== Array) throw new Error(arr + "not is Array");
+            for (var i = 0; i < arr.length; i++) {
+                if (!(i in arr)) continue;
+                if (fn(arr[i], i, arr)) return true;
+            }
+            return false;
+        }
+
+        function arrayEvery(arr, fn) {
+            if (!arr || arr.constructor !== Array) throw new Error(arr + "not is Array");
+            for (var i = 0; i < arr.length; i++) {
+                if (!(i in arr)) continue;
+                if (!fn(arr[i], i, arr)) return false;
+            }
+            return true;
+        }
+
+
+
+        var arr1 = arr.filter(function (item, index, arr) {
+            return item > 3;
+        })
+
+        console.log(arr1, arr)
+
+
+        function arrayFilter(arr, fn) {
+            if (!arr || arr.constructor !== Array) throw new Error(arr + "not is Array");
+            var arr1 = [];
+            for (var i = 0; i < arr.length; i++) {
+                if (!(i in arr)) continue;
+                if (fn(arr[i], i, arr)) arr1.push(arr[i]);
+            }
+            return arr1;
+        }
+
+
+        // 归并 value就是每次遍历的归并值，第一次value是数组的第0项
+        // var sum=arr.reduce(function(value,item,index,arr){
+        //     console.log(value,item,index);
+        //     return value+item;
+        // })
+
+        // 函数后的参数100是归并的初始值
+        // var sum=arr.reduce(function(value,item,index,arr){
+        //     console.log(value,item,index);
+        //     return value+item;
+        // },100)
+        // console.log(sum)
+
+
+
+        // function arrayReduce(arr,fn,initValue){
+        //     if (!arr || arr.constructor !== Array) throw new Error(arr + "not is Array");
+        //     var i=0;
+        //     if(initValue===undefined){
+        //         initValue=arr[0];
+        //         i=1;
+        //     }
+        //     for(;i<arr.length;i++){
+        //        initValue=fn(initValue,arr[i],i,arr);
+        //     }
+        //     return initValue;
+        // }
+
+
+
+        // var arr=[2,3,4,5,6];
+        // var arr1=arr.reduce(function(value,item,i){
+        //     value[i]=item+10;
+        //     return value;
+        // },[]);
+        // console.log(arr1)
+
+
+        // var arr=[2,3,4,5,6];
+        // some
+        // var bool=arr.reduce(function(value,item){
+        //     if(item>3) value=true;
+        //     return value;
+        // },false)
+        // every
+        // var bool=arr.reduce(function(value,item){
+        //     if(item<=3) value=false;
+        //     return value;
+        // },true)
+        // console.log(bool)
+
+
+        // var arr1=arr.reduce(function(value,item){
+        //     if(item>3) value.push(item);
+        //     return value;
+        // },[]);
+
+        // console.log(arr1)
+
+
+        var arr = [1, 2, 3, 2, 1, 2, 4, 4, 3, 2, 1, 3, 4];
+        //    var obj=arr.reduce(function(value,item){
+        //         if(!value[item])value[item]=0;
+        //         value[item]++;
+        //         return value;
+        //     },{});
+        //     console.log(obj)
+
+
+        // var arr1=arr.reduce(function(value,item){
+        //     if(!value.includes(item)) value.push(item);
+        //     return value;
+        // },[]);
+        // console.log(arr1)
+
+
+        var list = [{
+                id: 10001,
+                name: "计算器1",
+                price: 3000,
+                num: 2
+            },
+            {
+                id: 10002,
+                name: "计算器2",
+                price: 4000,
+                num: 1
+            },
+            {
+                id: 10003,
+                name: "计算器3",
+                price: 5000,
+                num: 3
+            },
+            {
+                id: 10004,
+                name: "计算器4",
+                price: 6000,
+                num: 5
+            },
+            {
+                id: 10005,
+                name: "计算器5",
+                price: 7000,
+                num: 6
+            },
+            {
+                id: 10006,
+                name: "计算器6",
+                price: 6000,
+                num: 6
+            },
+        ];
+
+
+        // var arr1=list.filter(function(item){
+        //     return item.price===6000;
+        // })
+        // console.log(arr1)
+
+        // var item=list.reduce(function(value,item){
+        //     if(item.price===6000 && !value) value=item;
+        //     return value;
+        // },null);
+        // console.log(item);
+
+
+
+        //    var obj=list.find(function(item,index,arr){
+        //         return item.price===9000;
+        //     });
+        //     console.log(obj)
+
+
+        //     function arrayFind(array,fn){
+        //         if (!arr || arr.constructor !== Array) throw new Error(arr + "not is Array");
+        //         for(var i=0;i<arr.length;i++){
+        //             if(!(i in arr)) continue;
+        //             if(fn(arr[i],i,arr)) return arr[i];
+        //         }
+        // }
+
+
+        // var index = list.findIndex(function (item, index, arr) {
+        //     return item.price === 6000;
+        // });
+        // console.log(index);
+
+        // function arrayFindIndex(array, fn) {
+        //     if (!arr || arr.constructor !== Array) throw new Error(arr + "not is Array");
+        //     for (var i = 0; i < arr.length; i++) {
+        //         if (!(i in arr)) continue;
+        //         if (fn(arr[i], i, arr)) return i;
+        //     }
+        //     return -1;
+        // }
+
+
+        // arr.reduceRight(function(value,item,index,arr){
+
+        // })
+
+
+        // function arrayReduceRight(arr,fn,initValue){
+        //     if (!arr || arr.constructor !== Array) throw new Error(arr + "not is Array");
+        //     var i=arr.length-1;
+        //     if(initValue===undefined){
+        //         initValue=arr[0];
+        //         i--;
+        //     }
+        //     for(;i>=0;i--){
+        //        initValue=fn(initValue,arr[i],i,arr);
+        //     }
+        //     return initValue;
+        // }
+
+
+        // 扁平化数组
+        // var arr = [
+        //     [1, 2, 3],
+        //     [-4,[-1,-2]],
+        //     [4, 5, 6], 7, 8, 9
+        // ]
+        // var arr1 = arr.flatMap(function (item, index, arr) {
+        //     return item;
+        // })
+        // console.log(arr1)
+
+
+        // function arrayFlatMap(array,fn){
+        //         if (!arr || arr.constructor !== Array) throw new Error(arr + "not is Array");
+        //        var arr1=[];
+        //         for(var i=0;i<arr.length;i++){
+        //             if(!(i in arr)) continue;
+        //         //    arr1=arr1.concat(fn(arr[i],i,arr))
+        //             var item=fn(arr[i],i,arr);
+        //             if(item && item.constructor===Array){
+        //                 for(var j=0;j<item.length;j++){
+        //                     arr1.push(item[j]);
+        //                 }
+        //             }else{
+        //                 arr1.push(item);
+        //             }
+        //         }
+        //         return arr1;
+        // }
+
+
+        var arr=[
+            [1,2,3,[4,5,6,[7,8,9]]],10,11,[12,13,[14,[15,[16,17,[18,[19]]]]]]
+        ];
+
+        // 扁平数组
+        function flatMap(arr,target){
+            if(target===undefined) target=[];
+            for(var i=0;i<arr.length;i++){
+                if(arr[i] && arr[i].constructor===Array){
+                    flatMap(arr[i],target);
+                }else{
+                    target.push(arr[i]);
+                }
+            }
+            return target;
+        }
+
+       var list=flatMap(arr);
+       console.log(list)
+    </script>
+</body>
+
+</html>

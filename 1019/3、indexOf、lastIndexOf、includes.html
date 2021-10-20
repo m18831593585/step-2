@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var arr=[2,3,,4,undefined,5,6];
+        // console.log(arr.indexOf(3));
+        // console.log(arr.indexOf());
+        // console.log(arr.indexOf("a"))
+        // var arr=[1,2,3,2,,3,1,2,3,4];
+        // console.log(arr.indexOf(2,-4))
+        // console.log(arr.indexOf(2))
+        // console.log(arr.indexOf(2,2))
+
+        // var index=-1;
+        // while(~(index=arr.indexOf(2,index+1))) console.log(index);
+
+        //    console.log( arr.lastIndexOf(2))
+        //    console.log( arr.lastIndexOf(2,5))
+
+
+        // console.log(arr.includes(2))
+        // console.log(arr.includes(0))
+        // console.log(arr[2],arr.at(2))
+
+
+        function arrayIndexOf(arr, item, fromStart) {
+            if (!arr || arr.constructor !== Array) throw new Error(arr + "not is Array");
+            fromStart = ~~fromStart;
+            if (fromStart < 0) fromStart = (fromStart + arr.length) < 0 ? 0 : fromStart + arr.length;
+            for (var i = fromStart; i < arr.length; i++) {
+                if (!(i in arr)) continue;
+                if (arr[i] === item) return i;
+            }
+            return -1;
+        }
+
+        // console.log(arrayIndexOf(arr))
+        // console.log(arrayIndexOf(arr,3))
+        // console.log(arrayIndexOf(arr,"a"))
+        // console.log(arrayIndexOf(arr,2,-4))
+        // console.log(arrayIndexOf(arr,2,2))
+        // console.log(arrayIndexOf(arr))
+
+
+        function arrayLastIndexOf(arr, item, fromEnd) {
+            if (!arr || arr.constructor !== Array) throw new Error(arr + "not is Array");
+            if (fromEnd === undefined) fromEnd = arr.length - 1;
+            fromEnd = ~~fromEnd;
+            if (fromEnd < 0) fromEnd = (fromEnd + arr.length) < 0 ? 0 : fromEnd + arr.length;
+            for (var i = fromEnd; i >= 0; i--) {
+                if (!(i in arr)) continue;
+                if (arr[i] === item) return i;
+            }
+            return -1;
+        }
+
+
+        // var arr=[1,2,3,2,,3,1,2,3,4];
+        // console.log(arrayLastIndexOf(arr,3,7))
+
+
+        function arrayIncludes(arr, item) {
+            for (var i = 0; i < arr.length; i++) {
+                if (!(i in arr)) continue;
+                if (arr[i] === item) return true;
+            }
+            return false;
+        }
+
+        // console.log(arrayIncludes(arr,1))
+
+        // var arr=[1,2,3,2,,3,1,2,6,3,2,1,2,7,5,7,8,3,4];
+
+        // 元素计数
+        // var obj={};
+        // for(var i=0;i<arr.length;i++){
+        //     if(!(i in arr)) continue;
+        //     if(!obj[arr[i]])obj[arr[i]]=0;
+        //     obj[arr[i]]++;
+        // }
+        // console.log(obj)
+
+
+
+        // 数组去重
+        // for(var i=0;i<arr.length;i++){
+        //     for(var j=i+1;j<arr.length;){
+        //         if(arr[i]===arr[j]) arr.splice(j,1);
+        //         else j++
+        //     }
+        // }
+        // console.log(arr)
+
+
+        // var arr1=[];
+        // for(var i=0;i<arr.length;i++){
+        //     var bool=false;
+        //     for(var j=0;j<arr1.length;j++){
+        //         if(arr1[j]===arr[i]){
+        //             bool=true;
+        //             break;
+        //         }
+        //     }
+        //     if(!bool) arr1.push(arr[i]);
+        // }
+
+
+        //     var arr1=[];
+        //     xt: for(var i=0;i<arr.length;i++){
+        //         for(var j=0;j<arr1.length;j++){
+        //             if(arr1[j]===arr[i]) continue xt;
+        //         }
+        //         arr1.push(arr[i]);
+        //     }
+
+        // console.log(arr1)
+
+
+        // var arr1=[];
+        // for(var i=0;i<arr.length;i++){
+        //     if(arr1.indexOf(arr[i])<0) arr1.push(arr[i])
+        // }
+
+        // var arr1=[];
+        // for(var i=0;i<arr.length;i++){
+        //     if(!(~arr1.indexOf(arr[i]))) arr1.push(arr[i])
+        // }
+
+        //  var arr1=[];
+        // for(var i=0;i<arr.length;i++){
+        //     if(!arr1.includes(arr[i])) arr1.push(arr[i])
+        // }
+        // console.log(arr1)
+
+
+        var arr = [1, 2, 3, 2, , 3, 1, 2, 6, 3, 2, 1, 2, 7, 5, 7, 8, 3, 4];
+        var arr1 = [2, 5, 10, 4];
+
+        // 将两个数组中相同元素放在一个新数组中
+        // var arr2=[];
+        // for(var i=0;i<arr.length;i++){
+        //     if(arr1.includes(arr[i]) && !arr2.includes(arr[i])) arr2.push(arr[i]);
+        // }
+        // console.log(arr2)
+
+
+        // 将两个数组中不同的元素放在一个新数组中
+        // var arr2 = [];
+        // function difer(arr) {
+        //     for (var i = 0; i < arr.length; i++) {
+        //         for (var j = i + 1; j < arr.length;) {
+        //             if (arr[i] === arr[j]) arr.splice(j, 1);
+        //             else j++
+        //         }
+        //     }
+        //     return arr;
+        // }
+
+        // function getCountObj(arr){
+        //      var obj={};
+        //     for(var i=0;i<arr.length;i++){
+        //         if(!(i in arr)) continue;
+        //         if(!obj[arr[i]])obj[arr[i]]=0;
+        //         obj[arr[i]]++;
+        //     }
+        //     return obj
+        // }
+
+        // arr=difer(arr).concat(difer(arr1));
+        // var obj=getCountObj(arr);
+        // for(var i=0;i<arr.length;i++){
+        //     if(!(i in arr)){
+        //         arr2.length++;
+        //         continue;
+        //     }
+        //     if(obj[arr[i]]>1) continue;
+        //     arr2.push(arr[i]);
+        // }
+     
+        // console.log(arr2);
+
+
+
+
+        // var arr5=[1,2,3];
+        // arr5.length++;
+        // arr5.push(4);
+        // console.log(arr5)
+    </script>
+</body>
+
+</html>

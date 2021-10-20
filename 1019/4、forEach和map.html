@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var a = 1;
+        var c;
+
+        // try不管运行了多少，只有没有错误之前都是有效的，如果一旦遇到错误直接执行catch部分语句
+        // 不管报不报错都执行finally语句
+        // try{
+        //     a++;
+        //     c=a+b;
+        // }catch(e){
+        //   console.log(e);
+        //   console.log(a)
+        // }finally{
+        //     console.log("aaa")
+        // }
+        var arr = [1, 2, 3, 4, 5, 6];
+        // arr.forEach()
+        // var s=0;
+        // var arr1 = [];
+
+
+        // 解决遇到forEach中断跳出
+        // try {
+        //     arr.forEach(function (item, index, arr) {
+        //         // console.log(item,index,arr);
+        //         // if(item>3) arr1.push(item);
+        //         // return "a"
+        //         if (item === 3) throw new Error("aa");
+        //         console.log(item);
+        //     })
+        // } catch (e) {
+
+        // }
+        // console.log("aaa")
+        // console.log(arr1)
+
+
+        function arrayForEach(array,fn){
+            if (!arr || arr.constructor !== Array) throw new Error(arr + "not is Array");
+            for(var i=0;i<arr.length;i++){
+                if(!(i in arr)) continue;
+                fn(arr[i],i,arr);
+            }
+        }
+
+
+        var arr=[1,2,3,4,5];
+        arrayForEach(arr,function(item,index,arr){
+            console.log(item,index,arr);
+        })
+
+
+        // 将遍历执行函数的返回结果放在新数组对应的下标，最后返回的新数组长度与原数组相同
+        function arrayMap(arr,fn){
+            if (!arr || arr.constructor !== Array) throw new Error(arr + "not is Array");
+            var arr1=[];
+            for(var i=0;i<arr.length;i++){
+                if(!(i in arr)) continue;
+                arr1[i]=fn(arr[i],i,arr);
+            }
+            return arr1;
+        }
+
+
+        // var arr1=arr.map(function(item,index,arr){
+        //     return item+10;
+        // })
+        // console.log(arr1);
+
+
+
+        // var list=[
+        //     {id:10001,name:"计算器1",price:3000,num:2},
+        //     {id:10002,name:"计算器2",price:4000,num:1},
+        //     {id:10003,name:"计算器3",price:5000,num:3},
+        //     {id:10004,name:"计算器4",price:6000,num:5},
+        //     {id:10005,name:"计算器5",price:7000,num:6},
+        // ];
+
+        // list.forEach(function(item){
+        //     item.total=item.price*item.num;
+        // })
+        // console.log(list)
+
+        // var list1=list.map(function(item){
+        //     return {id:item.id,name:item.name,price:item.price,num:item.num,total:item.price*item.num};
+        // })
+        // console.log(list1,list)
+
+
+        // var arr=[4,5,6];
+        // arr.forEach(function(item){
+        //     item=item+10;
+        // })
+        // console.log(arr)
+
+
+
+        // function fn(item){
+        //     item.a=10;
+        // }
+        // var o={a:1};
+        // fn(o);
+        // console.log(o)
+
+
+        // function fn(item){
+        //     a=10;
+        // }
+        // var a=5;
+        // fn(a)
+    </script>
+</body>
+
+</html>
