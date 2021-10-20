@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div><a href="#">超链接1</a></div>
+    <div><a href="#">超链接2</a></div>
+    <div><a href="#">超链接3</a></div>
+    <div><a href="#">超链接4</a></div>
+    <div><a href="#">超链接5</a></div>
+  
+    <script>
+
+        // for(var i=0;i<10;i++){
+        //     setTimeout(function(){
+        //         console.log(i);
+        //     },1000);
+        // }
+        // i=0;
+
+        // setTimeout(function(){
+        //     i=7;
+        // },500);
+        // for(i=20;i<100;i++){
+
+        // }
+        
+        // setTimeout(function(){
+        //     console.log("a")
+        // })//1ms
+
+        // setTimeout(console.log(1),1000);
+
+
+        // for(var i=0;i<10;i++){
+        //     setTimeout(function(i){
+        //         console.log(i);
+        //     },1,i)
+        // }
+
+        // for(var i=0;i<10;i++){
+        //     setTimeout(function(){
+        //         console.log(i)
+        //     },0);//1ms 开启最小时间为1ms
+        // }
+
+
+        // for(var i=0;i<10;i++){
+        //     (function(i){
+        //         setTimeout(function(){
+        //             console.log(i);
+        //         },1000);
+        //     })(i);
+        // }
+
+
+        // 同步和异步
+
+        // var arr=[1,2,3];
+        // var arr1=[3,4,5];
+        // arr.push(10);
+        // arr.filter()
+        // arr.push();
+
+        // 判断某个元素是不是数组
+        // Array.isArray()
+
+        // console.log(Array.isArray(5))
+        // console.log(Array.isArray({a:1,b:2}))
+        // console.log(Array.isArray([1,2,3,4]))
+
+
+        // Array.isArray_1=function(item){
+        //     return item && item.constructor===Array;
+        // }
+
+
+        // Array.from  将迭代器转换为数组，同时还可以将迭代器遍历，并且返回新的数组，与map相似
+        var divs=document.getElementsByTagName("div");
+        // console.log(divs);
+    //    var arr=Array.from(divs);
+    //    console.log(arr)
+
+    //    console.log(divs)
+
+    //    var arr=Array.from(divs,function(item,index){
+    //         // console.log(item,index);
+    //         return "<span>"+item.innerHTML+"</span>"
+    //     });
+    //     console.log(arr)
+
+
+    // 有问题的
+        // Array.from_1=function(iterable,fn){
+        //     var arr=[].slice.call(iterable);
+        //     if(fn===undefined || typeof fn!=="function")
+        //     return arr;
+        //     for(var i=0;i<arr.length;i++){
+        //        arr[i]=fn(arr[i],i);
+        //     }
+        //     return arr;
+        // }
+
+    //    var arr1=Array.from_1(divs,function(item,index){
+    //         return item.innerHTML
+    //     });
+    //     console.log(arr1)
+
+    // var set=new Set([1,2,3,4,5]);
+    //  var arr1=Array.from_1(set);
+    // var arr1=Array.from(set);
+    //  console.log(arr1)
+
+
+
+    
+    </script>
+</body>
+</html>
