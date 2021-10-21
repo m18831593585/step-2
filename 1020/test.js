@@ -50,7 +50,7 @@ function showNum() {
         let o = {}
         for (let i = 0; i < arr.length; i++) {
             if (!(i in arr)) continue
-                if (!o[arr[i]]) o[arr[i]] = 0
+            if (!o[arr[i]]) o[arr[i]] = 0
             o[arr[i]]++
         }
         return o

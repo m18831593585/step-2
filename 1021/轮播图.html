@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        #crousel{
+            width: 100vw;
+            height: 45vw;
+            position: relative;
+        }
+        #crousel>img{
+            width: 100%;
+            height: 100%;
+            display: block;
+            position: absolute;
+            opacity: 0;
+            transition:  all 0.5s;
+            
+        }
+        #crousel>ul{
+            position: absolute;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            top: 45vw;
+        }
+        #crousel>ul>li{
+            width: 20%;
+            float: left;
+        }
+        #crousel>ul img{
+            width: 100%;
+            border:2px solid transparent;
+            box-sizing: border-box;
+        }
+       
+    </style>
+</head>
+<body>
+    <div id="crousel">
+        <img class="showImg" src="./img/a.jpg">
+        <img class="showImg" src="./img/b.jpg">
+        <img class="showImg" src="./img/c.jpg">
+        <img class="showImg" src="./img/d.jpg">
+        <img class="showImg" src="./img/e.jpg">
+        <ul>
+            <li><a href="#0"><img class="icon" src="./img/a.jpg"></a></li>
+            <li><a href="#1"><img class="icon" src="./img/b.jpg"></a></li>
+            <li><a href="#2"><img  class="icon" src="./img/c.jpg"></a></li>
+            <li><a href="#3"><img class="icon" src="./img/d.jpg"></a></li>
+            <li><a href="#4"><img class="icon" src="./img/e.jpg"></a></li>
+        </ul>
+    </div>
+    <script>
+        var icons,showImgs;
+        var prevList={};
+
+        init();
+        function init(){
+            icons=Array.from(document.getElementsByClassName("icon"));
+            showImgs=Array.from(document.getElementsByClassName("showImg"));
+            // icons.forEach(function(item){
+            //     item.addEventListener("click",clickHandler);
+            // });
+            changePrev(0,"icon","borderColor");
+            changePrev(0,"showImg","opacity");
+            window.addEventListener("hashchange",hashChangehandler);
+        }
+
+        function hashChangehandler(e){
+            // console.log(location.hash);
+            var index=Number(location.hash.slice(1));
+            changePrev(index,"icon","borderColor");
+            changePrev(index,"showImg","opacity");
+        }
+
+        // function clickHandler(e){
+        //     var index=icons.indexOf(this);
+        //     // changePrevOpacity(index);
+        //     // changePrev(index);
+        //     changePrev(index,"icon","borderColor");
+        //     changePrev(index,"showImg","opacity");
+        // }
+
+
+        function changePrev(index,name,styleName){
+            if(prevList[name]){
+                prevList[name].style[styleName]=styleName==="borderColor" ? "transparent" : 0;
+            }
+            prevList[name]=name==="icon" ? icons[index] : showImgs[index];
+            prevList[name].style[styleName]=styleName==="borderColor" ? "red" : "1";
+        }
+
+        // function changePrev(index){
+        //     if(prevIcon){
+        //         prevIcon.style.borderColor="transparent"
+        //     }
+        //     prevIcon=icons[index];
+        //     prevIcon.style.borderColor="red";
+        // }
+
+        // function changePrevOpacity(index){
+        //     if(prevImg){
+        //         prevImg.style.opacity="0";
+        //     }
+        //     prevImg=showImgs[index];
+        //     prevImg.style.opacity="1";
+        // }
+
+
+    </script>
+
+</body>
+</html>

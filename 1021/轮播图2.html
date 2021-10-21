@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        #crousel{
+            width: 100vw;
+            height: 45vw;
+            position: relative;
+        }
+        #crousel>img{
+            width: 100%;
+            height: 100%;
+            display: block;
+            position: absolute;
+            opacity: 0;
+            transition:  all 0.5s;
+            
+        }
+        #crousel>ul{
+            position: absolute;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            top: 45vw;
+        }
+        #crousel>ul>li{
+            width: 20%;
+            float: left;
+        }
+        #crousel>ul img{
+            width: 100%;
+            border:2px solid transparent;
+            box-sizing: border-box;
+        }
+       
+    </style>
+</head>
+<body>
+    <div id="crousel">
+        <img class="showImg" src="./img/a.jpg">
+        <img class="showImg" src="./img/b.jpg">
+        <img class="showImg" src="./img/c.jpg">
+        <img class="showImg" src="./img/d.jpg">
+        <img class="showImg" src="./img/e.jpg">
+        <ul>
+            <li><img class="icon" src="./img/a.jpg"></li>
+            <li><img class="icon" src="./img/b.jpg"></li>
+            <li><img  class="icon" src="./img/c.jpg"></li>
+            <li><img class="icon" src="./img/d.jpg"></li>
+            <li><img class="icon" src="./img/e.jpg"></li>
+        </ul>
+    </div>
+    <script>
+        var icons,showImgs;
+        var prevList={};
+
+        init();
+        function init(){
+            var index=history.state || 0;
+            icons=Array.from(document.getElementsByClassName("icon"));
+            showImgs=Array.from(document.getElementsByClassName("showImg"));
+            icons.forEach(function(item){
+                item.addEventListener("click",clickHandler);
+            });
+            history.replaceState(index,"showimg");
+            changePrev(index,"icon","borderColor");
+            changePrev(index,"showImg","opacity");
+            // popstate只有点击历史回退和前进时，才会触发popstate事件
+           window.addEventListener("popstate",popstateHandler);
+        }
+
+        function popstateHandler(e){
+            changePrev(history.state,"icon","borderColor");
+            changePrev(history.state,"showImg","opacity");
+        }
+       
+        function clickHandler(e){
+            var index=icons.indexOf(this);
+            history.pushState(index,"showimg");
+            changePrev(index,"icon","borderColor");
+            changePrev(index,"showImg","opacity");
+        }
+
+
+        function changePrev(index,name,styleName){
+            if(prevList[name]){
+                prevList[name].style[styleName]=styleName==="borderColor" ? "transparent" : 0;
+            }
+            prevList[name]=name==="icon" ? icons[index] : showImgs[index];
+            prevList[name].style[styleName]=styleName==="borderColor" ? "red" : "1";
+        }
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <a href="#1">1</a>
+    <a href="#2">2</a>
+    <a href="#3">3</a> -->
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <div id="div1"></div>
+    <script>
+        // BOM  Browser Object Model     root   window
+        // DOM  Document Object Model    root  document
+
+
+        // window  
+        // window.document
+        // document  ->>  DOCTYPE定义 +     HTML标签--->head  body
+        // location  本地
+        // screen  屏幕
+        // history  历史
+        // navigator  导航
+
+
+
+        // open("http://www.163.com","网易","width=200,height=200")
+        // close();
+
+        // console.log(innerWidth,innerHeight);//可视内容宽高
+        // console.log(outerWidth,outerHeight);//窗口宽高
+
+        // 窗口距离屏幕左上角位置
+        // console.log(screenX,screenY);
+        // console.log(screenLeft,screenTop);
+
+        // 重载
+        // location.reload(); 
+
+        // setTimeout(function(){
+        //     location.reload();
+        // },3000);
+
+
+        // location.href="http://www.163.com";
+        // location.assign("http://www.163.com");
+        // location.replace("http://www.163.com")
+
+        // 获取当前页面的地址，assign
+        // console.log(location.href)
+
+        // document.addEventListener("click",clickHandler);
+
+        // function clickHandler(e){
+        //     // location.href="http://www.163.com";//有历史记录
+        //     // location.assign("http://www.163.com");//有历史记录
+        //     // location.replace("http://www.163.com");//没有历史记录
+        // }
+
+
+        // console.log(location.hash);
+        // console.log(location.search)
+
+        // console.log(location.hash,location.search)
+
+        // console.log(location.pathname)
+        // console.log(location.hostname)
+        // console.log(location.port)
+        // console.log(location.protocol)
+
+
+        // console.log(screen.width,screen.height);//屏幕实际宽高
+        // console.log(screen.availWidth,screen.availHeight);//屏幕减去附件宽高
+
+        // Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36
+        //    console.log( navigator.userAgent)
+
+        //    console.log( navigator.platform)
+            // navigator.geolocation.getCurrentPosition(function(pos){
+            //     console.log(pos)
+            // },function(err){
+            //     console.log(err)
+            // })
+
+
+            // history  历史
+            // history.back();//回退
+            // history.forward();//前进
+            // history.go(0);//刷新
+            // history.go(-1);//回退一个历史
+            // history.go(1);//前进一个历史
+            // history.length  历史长度
+            // history.pushState() 创建历史，并且在历史中插入状态数据
+            // history.replaceState()  替换当前历史记录的状态数据
+            // history.state  历史中当前的状态数据
+            
+        
+            // CSR   Client Side Render
+            // SSR   Server Side Render
+
+            // SEO优化  搜索引擎优化
+
+
+            // var bns=Array.from(document.getElementsByTagName("a"));
+            // var div1=document.getElementById("div1");
+            // window.addEventListener("hashchange",hashChangeHandler);
+            // bns.forEach(function(item){
+            //     item.addEventListener("click",clickhandler);
+            // })
+
+            // function clickhandler(e){
+            //     // console.log(this)
+            //     div1.innerHTML=this.innerHTML;
+            //     // location.href="http://localhost:5500/4%E3%80%81BOM.html#"+this.innerHTML;
+            // }
+
+            // function hashChangeHandler(e){
+            //     // console.log(location.hash);
+            //     div1.innerHTML=location.hash.slice(1);
+            // }
+
+
+
+
+
+            // var bns=Array.from(document.getElementsByTagName("button"));
+            // var div1=document.getElementById("div1");
+            // window.addEventListener("popstate",popstateHandler);
+           
+            // bns.forEach(function(item){
+            //     item.addEventListener("click",clickhandler);
+            // })
+
+            // function clickhandler(e){
+            //     // history.pushState(this.innerHTML,this.innerHTML,"#"+this.innerHTML)
+            //     history.pushState(this.innerHTML,"title");
+            //     div1.innerHTML=this.innerHTML;
+            // }
+            
+            // function popstateHandler(e){
+            //     div1.innerHTML=history.state;
+            // }
+
+
+            
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="show">00:00:00</div>
+    <button id="start">开始</button>
+    <button id="reset">重置</button>
+    <script>
+
+        var show,startBn,resetBn,startDate;
+        var pauseBoolean=true,addUp=0;
+
+        init();
+        function init(){
+            show=document.getElementById("show");
+            startBn=document.getElementById("start");
+            resetBn=document.getElementById("reset");
+            startBn.addEventListener("click",startHandler);
+            resetBn.addEventListener("click",resetHandler);
+            setInterval(animation,5);
+        }
+
+
+        function startHandler(e){
+            startBn.innerHTML=(pauseBoolean=!pauseBoolean) ? "开始" : "暂停";
+           if(!pauseBoolean){
+                startDate=new Date();
+           }else{
+                addUp=new Date()-startDate+addUp;
+           }
+        }
+
+        function resetHandler(e){
+            addUp=0;
+            startBn.innerHTML="开始";
+            pauseBoolean=true;
+            show.innerHTML="00:00:00";
+        }
+
+        function animation(){
+            if(pauseBoolean) return;
+            var num=(new Date()-startDate)+addUp;
+            var m=String(~~(num/60000)).padStart(2,"0");
+            var s=String(~~((num-m*60000)/1000)).padStart(2,"0");
+            var ms=String(~~(num%1000/10)).padStart(2,"0");
+            show.innerHTML=m+":"+s+":"+ms;
+        }
+
+        // 365100/60000=6.51=6;
+        // 365100-6*60000=5100/1000=5.1=5
+        // 365100%1000=100=10
+        // 365秒   100毫秒
+        // 6分 5秒 100毫秒
+
+
+        // 二零二一年十月二十一日 星期四 十一时三十分五十秒
+        // 二零二一年十月二十一日 星期四 十一时三十分零五秒
+        // 二零二一年十月二十一日 星期四 十一时零八分零五秒
+        // 二零二一年十月二十一日 星期四 九时零八分零五秒
+    </script>
+</body>
+</html>
