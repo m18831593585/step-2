@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>秒表</title>
+</head>
+<body>
+<button>开始</button>
+<button>重置</button>
+<div id="time">00:00:00</div>
+
+
+<script>
+    var btn,div,paused=true;
+    var time=0, startTime, m, s, ms, timer;
+    init()
+    function init(){
+        btn=document.getElementsByTagName("button")
+        div=document.getElementById("time")
+
+        btn[0].addEventListener("click", beginPause)
+        btn[1].addEventListener("click", reset)
+    }
+
+    function beginPause(){
+        if(paused){
+            start()
+        }else{
+            pause()
+        }
+        paused=!paused
+    }
+
+    function start(){
+        startTime=Date.now()
+        timer = setInterval(render, 100)
+        btn[0].innerText="暂停"
+    }
+
+    function render(){
+        time+=Date.now()-startTime;
+        m=~~(time/(1000*60))
+        s=~~(~~(time/1000)%60)
+        ms=time%1000
+        div.innerHTML=m+":"+s+":"+ms
+    }
+
+    function pause(){
+        clearInterval(timer)
+        btn[0].innerText="开始"
+    }
+
+    function (){}
+
+    function reset(){
+        time=0
+        div.innerHTML="00:00:00"
+        clearInterval(timer)
+        paused=true
+    }
+
+</script>
+</body>
+</html>
