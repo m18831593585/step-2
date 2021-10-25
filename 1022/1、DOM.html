@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <div></div> -->
+    <div id="div1" class="divs" name="ab">
+        <div id="div2" class="divs" name="cd">
+            <span>1</span>
+            <span>2</span>
+        </div>
+    </div>
+    <span></span>
+    <span></span>
+    <form action="#" id="form1">
+        <input type="text" name="user">
+        <input type="radio" name="sex" value="男">
+        <input type="radio" name="sex" value="女">
+    </form>
+    <form action="#" id="form2">
+        <input type="text" name="user">
+        <input type="radio" name="sex" value="男">
+        <input type="radio" name="sex" value="女">
+    </form>
+    <script>
+        // console.log(document.body.childNodes[0].nodeName)
+        // console.log(document.body.childNodes[0].nodeType)
+        // console.log(document.body.childNodes[0].nodeValue)
+
+        // console.log(document.nodeName);
+        // console.log(document.body.childNodes[1].nodeName)
+        // console.log(document.body.childNodes[3].nodeName==="DIV")
+        // 标签就是大写的标签名
+
+
+
+      var div= document.getElementById("div1");
+
+        // 获取到HTMLCollection
+    //   var divs=document.getElementsByTagName("div");
+    //   var divs1=document.getElementsByClassName("divs");
+    //   length 长度    
+    // item(index)   divs[0]
+    // namedItem(name) 根据name属性获取对应的元素
+        // console.log(div);
+        // console.log(divs.namedItem("cd"))
+        // console.log(divs1)
+
+
+        // 可以通过父元素获取后代中是否有这个标签的列表
+        // var  divs=div.getElementsByTagName("span");
+        // 可以通过父元素获取后代中是否有这个class的列表
+        // var divs=div.getElementsByClassName("divs");
+        // console.log(divs)
+
+
+        // 根据标签属性的name获取，不能根据父元素获取后代中name元素
+
+        // NodeList 可以通过getElementsByName获取到节点列表
+        // var sex=document.getElementsByName("sex");
+        // var div=document.getElementsByName("ab");
+        // console.log(div)
+        // console.log(sex)
+        // sex.forEach(function(item,index,list){
+        //     console.log(item,index,list)
+        // })
+
+
+        // console.log(sex.item(0));//sex[0]
+        // 错误
+        // var form1=document.getElementById("form1");
+        // var sex=form1.getElementsByName("sex");
+        // console.log(sex)
+
+
+        // 获取列表中第一个元素
+        // document.querySelector()
+        // 获取整个列表  NodeList
+        // document.querySelectorAll()
+
+
+        // 将会把所有div标签放在一个列表中，获取其中第一个div
+        // var div=document.querySelector("div");
+        // 获取所有div列表
+        // var divs=document.querySelectorAll("div");
+        // 可以根据父元素获取其子元素内容
+        // var divs=div.querySelectorAll("div");
+
+        // console.log(div)
+        // console.log(divs)
+
+        // document.querySelector("div .divs");
+        // document.querySelector("div.divs");
+        // document.querySelector("div>.divs");
+        // document.querySelector("div+.divs");
+        // document.querySelector("[type]");
+        // document.querySelector("[type=sex]");
+
+            var div1=document.getElementById("div1");
+            // document.body.children  body所有子元素  就是所有标签，只是标签
+            // document.body.childNodes  body所有子节点  子节点包括 标签，文本，换行，注释等等
+
+            // document是节点不是元素，因此parentElement找不到document，但是parentNode可以找到
+            // console.log(div1.parentElement.parentElement)
+            // console.log(div1.parentNode.parentNode.parentNode);
+
+            // 第一个子元素
+            // console.log(div1.firstElementChild)
+            // 第一个子节点
+            // console.log(div1.firstChild)
+
+            // 最后一个子元素
+            // console.log(div1.lastElementChild)
+            // 最后一个子节点
+            // console.log(div1.lastChild)
+
+            // 下一个兄弟元素
+            // console.log(div1.nextElementSibling)
+            // 下一个兄弟节点
+            // console.log(div1.nextSibling)
+
+            // 上一个兄弟元素
+            // console.log(div.previousElementSibling);
+            // 上一个兄弟节点
+            // console.log(div.previousSibling);
+          
+
+    </script>
+</body>
+</html>

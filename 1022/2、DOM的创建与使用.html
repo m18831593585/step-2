@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1">
+        <span>1</span>
+    </div>
+
+    <div id="div2">
+        a
+        <div>b
+            <span>c</span>
+        </div>
+    </div>
+    <script>
+        // var span=document.querySelector("span");
+
+        // var div1=document.getElementById("div1");
+        // div1.innerHTML+="<div></div>";
+        // div1.innerHTML=div1.innerHTML+"<div></div>"
+        // span.innerHTML="2"
+        // console.log(span)
+
+        // document.createElement(标签名)  根据标签名创建一个DOM元素
+        // var div2=document.createElement("div");
+        // 父元素.appendChild(子元素) 将子元素插入在父元素的尾部（追加在父元素里面最后）
+        // div1.appendChild(div2);
+        // span.innerHTML="2"
+
+
+        // var ul=document.createElement("ul");
+        // document.body.appendChild(ul);
+        // for(var i=0;i<10;i++){
+        //     var li=document.createElement("li");
+        //     ul.appendChild(li);
+        // }
+
+
+// 碎片容器 一般用于在已经放在DOM树中父容器里面插入大量的元素时
+    //    var elem=document.createDocumentFragment()
+
+    //    document.addEventListener("click",clickHandler);
+    //    function clickHandler(e){
+    //         // var ul=document.createElement("ul");
+    //         // for(var i=0;i<10;i++){
+    //         //     var li=document.createElement("li");
+    //         //     ul.appendChild(li);
+    //         // }
+    //         // document.body.appendChild(ul);
+
+    //         var elem=document.createDocumentFragment();
+    //         for(var i=0;i<100;i++){
+    //             var divs=document.createElement("div");
+    //             elem.appendChild(divs);
+    //         }
+    //         document.body.appendChild(elem);
+
+    //    }
+
+
+
+    // function ce(type,parent){
+    //     var elem=document.createElement(type);
+    //     if(typeof parent==="string") parent=document.querySelector(parent);
+    //     if(parent) parent.appendChild(elem);
+    //     return elem;
+    // }
+
+
+    //     var ul=ce("ul");
+    //     for(var i=0;i<10;i++){
+    //         ce("li",ul);
+    //     }
+
+    //     document.body.appendChild(ul);
+
+
+
+    // 插入在某个元素的前面
+    // var div=document.createElement("div");
+    // var div1=document.querySelector("#div1");
+    // 父元素.insertBefore(新元素,要插入在这个元素之前)
+    // document.body.insertBefore(div,div1);
+
+
+
+    // 创建文本节点
+    // var txt=document.createTextNode("你好");
+    // document.body.insertBefore(txt,div1);
+
+
+
+    // var img=document.createElement("img");
+    // var img=new Image();//创建img元素
+
+
+        // var 新元素=元素.cloneNode(深浅布尔值)
+        // var div1=document.getElementById("div1");
+        // var div2=div1.cloneNode(false);//浅复制  只复制当前标签和标签的属性
+        // var div2=div1.cloneNode(true);//深复制  会将这个标签内子元素及后代也复制
+        // document.body.appendChild(div2);
+
+
+        // var div1=document.getElementById("div1");
+        // 父元素.removeChild(子元素)
+        // document.body.removeChild(div1);
+        // 子元素.remove()
+        // div1.remove();
+
+
+
+        // var divs=document.createElement("div");
+        // divs.innerHTML="123";
+        // var div1=document.getElementById("div1");
+
+        // 替换元素   父元素.replaceChild(新元素，要替换的元素)
+        // document.body.replaceChild(divs,div1);
+
+
+        var div2=document.getElementById("div2");
+        // console.log(div2.innerHTML)
+        // div2.innerHTML="<span></span>"
+
+        // 只能获取当前元素的文本和后代中文本
+        // console.log(div2.innerText)
+        // div2.innerText="cccc"
+
+        // 保留了div2的后代中的所有文本节点，包括换行
+        // console.log(div2.textContent);
+        // div2.textContent="<span></span>";//字符串
+    </script>
+</body>
+</html>

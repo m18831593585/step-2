@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            height: 50px;
+            background-color: red;
+        }
+        /* div::after
+        {
+            content: "abc";
+        } */
+        /* .div1{
+            width: 50px;
+            height: 50px;
+        }
+        .div2{
+            width: 100px;
+            height: 100px;
+        }
+        .div3{
+            width: 150px;
+            height: 150px;
+        } */
+    </style>
+    <!-- <link href="./a.css" rel="stylesheet"> -->
+    <!-- <script src="./a.js" defer></script> -->
+</head>
+<body>
+    <div style="width: 50px;"></div>
+    <div class="div1"></div>
+    <div class="div2">1</div>
+    <div class="div3">2</div>
+    <div class="div4">2</div>
+    <div class="div5">2</div>
+    <div class="div6">2</div>
+    <div class="div7">2</div>
+    <!-- <div style="background-color: red;"></div> -->
+    <script>
+        /* 
+            1、css样式
+            2、行内样式
+            js如何处理这两个内容
+        */
+
+
+        // 行内样式
+        var div=document.querySelector("div");
+        // div.style='background-color:red;width:50px;height:50px;';
+        // div.style 在变为DOM渲染树以后就会变为对象 CSSStyleDeclaration类型
+        // 因为对象属性名的要求不能使用-，所以所有css样式将-去掉，并且使用驼峰式命名
+        // div.style.backgroundColor="red";
+        // div.style.width="50px";
+        // div.style.height="50px";
+        // 会自动更新转换为行内样式
+        // div.style.a="10px";
+
+        // div.style="width:100px"
+        // 超文本标签在页面运行到最下面时才会完成DOM树，并且完成DOM树的渲染
+        // console.log(div.style.width);
+
+        // 标签中设置了行内属性，通过div.style这种方式是不可以获取到的，
+        // 但是通过div.style设置的是可以获取到的
+        // console.log(div.style.height)
+
+
+        // 如果需要获取到标签的属性或者css样式设置属性，这些属性都是在DOM树渲染完成后计算得到的，
+        // 因此无法直接获取到
+        // 但是DOM提供了一个临时可以进行计算的方法
+    //    var style=getComputedStyle(div);
+    //    console.log(style.width);
+    //    console.log(style.height)
+    //    ::before and ::after 可以用于获取计算后样式
+    //    var style1=getComputedStyle(div,":after");
+    //    console.log(style1.content);
+
+    // 这个方法对于IE8及一下不支持
+        // IE8及一下浏览器支持，谷歌火狐和IE8以上不支持
+        // var style=div.currentStyle;
+        // console.log(style)
+
+        // DOM 设置样式都是针对某一个DOM元素的，这种设置时都会被设为行内样式
+
+
+        
+
+        // CSS样式
+        // 这个列表中放入到这里为止之前所有的style设置css和link引入的css列表内容
+        // 这个style是一个对象型列表，包括对象属性和索引下标
+        // 索引下标是指设置的样式属性
+        // 而属性是指所有样式属性
+        // 可以根据所有下标找到已经设置的属性名，然后根据这些属性名获取到对应的属性值
+
+        // document.styleSheets  style列表，不同style标签或者link，就会形成不同列表
+        // document.styleSheets[0].cssRules 第0个style列表中，所有css设置列表
+        // document.styleSheets[0].cssRules[0].style 
+        // 第0个style列表中，第0个css列表中，所有设置样式
+
+        // console.log(document.styleSheets[0].cssRules[0].style);
+        // 可以修改css样式
+        // for(var i=0;i<document.styleSheets[0].cssRules[0].style.length;i++){
+        //    var key=document.styleSheets[0].cssRules[0].style[i];
+        //     console.log(document.styleSheets[0].cssRules[0].style[key])
+        //     // 因为css都是设置为-，所以不能使用大写，只有js设置的才用大写
+        //     if(key==="background-color"){
+        //         document.styleSheets[0].cssRules[0].style[key]="green";
+        //     }
+        // }
+
+
+
+
+        // 添加新的css样式
+        // var styles=document.createElement("style");
+        // document.head   head标签
+        // document.head.appendChild(styles);
+
+        // 任何DOM元素只有放入在页面中才可以通过获取DOM获取到
+            // 因为刚放入，所以就是styleSheets中最后一个
+        // console.log(document.styleSheets[document.styleSheets.length-1])
+        // var stylesheet=document.styleSheets[document.styleSheets.length-1];
+        // console.log(stylesheet)
+        // 通过js添加css
+        // stylesheet.addRule(".div2","color:#FFFFFF;font-size:30px;",stylesheet.cssRules.length)
+        // stylesheet.addRule(".div3","color:blue;font-size:40px;",stylesheet.cssRules.length)
+
+
+        // 这种插入方法支持IE8及一下
+        // stylesheet.insertRule(".div2 {color:#FFFF00;font-size:30px}",stylesheet.cssRules.length);
+        // 删除方法
+        // stylesheet.removeRule(0)
+
+
+        // var list={
+        //     ".div1":{
+        //         width:"50px",
+        //         height:"50px",
+        //         "background-color":"red"
+        //     },
+        //     ".div2":{
+        //         width:"100px",
+        //         height:"100px",
+        //         "background-color":"blue"
+        //     },
+        //     ".div3":{
+        //         width:"150px",
+        //         height:"150px",
+        //         "background-color":"green"
+        //     },
+        //     ".div3:hover":{
+        //         width:"200px",
+        //         height:"200px",
+        //     }
+        // }
+
+
+        // var style=document.createElement("style");
+        // document.head.appendChild(style);
+        // var stylesheet=document.styleSheets[document.styleSheets.length-1];
+        // for(var key in list){
+        //     var str="";
+        //     for(var prop in list[key]){
+        //         str+=prop+":"+list[key][prop]+";"
+        //     }
+        //     stylesheet.addRule(key,str,stylesheet.cssRules.length)
+        // }
+
+        // var style=document.createElement("style");
+        // document.head.appendChild(style);
+        // var stylesheet=document.styleSheets[document.styleSheets.length-1];
+
+        // for(var i=0;i<10;i++){
+        //     stylesheet.addRule(".div"+i,"width:"+(i+1)*50+"px;height:"+(i+1)*50+"px;",stylesheet.cssRules.length)
+        // }
+
+        
+    </script>
+</body>
+</html>

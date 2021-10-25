@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        document.addEventListener("click",clickHandler);
+
+
+        function clickHandler(e){
+            console.log(e.x,e.y);//鼠标点击的位置
+            var div=document.createElement("div");
+            // div.style.position="absolute";
+            // div.style.width="50px";
+            // div.style.height="50px";
+            // div.style.backgroundColor="red";
+            // div.style.left=e.x-25+"px";
+            // div.style.top=e.y-25+"px";
+            // var obj={
+            //     position:"absolute",
+            //     width:"50px",
+            //     height:"50px",
+            //     backgroundColor:'red',
+            //     left:e.x-25+"px",
+            //     top:e.y-25+"px"
+            // }
+
+            // for(var key in obj){
+            //     div.style[key]=obj[key];
+            // }
+            // Object.assign(div.style,{
+            //     position:"absolute",
+            //     width:"50px",
+            //     height:"50px",
+            //     backgroundColor:'red',
+            //     left:e.x-25+"px",
+            //     top:e.y-25+"px"
+            // })
+
+            // Object.assign(div.style,{
+            //     width:"50px",
+            //     height:"50px",
+            //     border:"1px solid #000000",
+            //     backgroundColor:"red",
+            //     position:"left",
+            //     left:e.x-25+"px",
+            //     top:e.y-25+"px"
+            // } as CSSStyleDeclaration)  typescript
+            document.body.appendChild(div);
+        }
+    </script>
+</body>
+</html>

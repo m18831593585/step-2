@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div1{
+            width: 100px;
+            height: 2000px;
+            background-color: red;
+            padding: 20px;
+            margin: 50px;
+            border:2px solid #000;
+            /* overflow: scroll; */
+        }
+        .div2{
+            width: 300px;
+            height: 3000px;
+            border:1px solid #000;
+            /* position: relative;
+            top:2000px; */
+        }
+        .div3{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin: 50px;
+            border:3px solid #000;
+            overflow: scroll;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="div1">asdjkahsdkjahsdkjahsdkjahdakjdhsakjsdajksd</div> -->
+    <div class="div2">
+        <div class="div3">
+            askdjaskldjasdk<br>
+            askdjaskldjasdk<br>
+            askdjaskldjasdk<br>
+            askdjaskldjasdk<br>
+            askdjaskldjasdk<br>
+            askdjaskldjasdk<br>
+            askdjaskldjasdk<br>
+            askdjaskldjasdk<br>
+            askdjaskldjasdk<br>
+            askdjaskldjasdk<br>
+            askdjaskldjasdk<br>
+            askdjaskldjasdk<br>
+        </div>
+    </div>
+    <script>
+        // document.body   body
+        // document.head  head
+        // document.title   title
+        // document.documentElement   html标签
+        
+
+        // 宽度和高度
+        // clientWidth clientHeight    客户宽高
+        // offsetWidth offsetHeight    偏移宽高
+        // scrollWidth scrollHeight    滚动条宽高
+
+        // 元素
+        // body和html
+
+
+
+        // var div1=document.querySelector(".div1");
+        // console.log(div1.clientWidth,div1.clientHeight);//宽度+padding-滚动条宽度（在不同的浏览器和系统下是不同的）
+
+        // console.log(div1.offsetWidth,div1.offsetHeight);//宽度+padding+border （绝对的）这个元素占位大小
+
+        // console.log(div1.scrollWidth,div1.scrollHeight);//容器内实际内容的宽高+padding(LeftPadding)
+
+        // div1.style.width=div1.scrollWidth+"px";
+        // div1.style.height=div1.scrollHeight+"px";
+
+
+
+        // body  html
+        // console.log(document.body.clientWidth,document.body.clientHeight);
+        //body的宽高（浏览器的宽度-滚动条宽度(可能没有)-2*margin），
+        // 高度因内容被撑开 最小是0
+
+        // console.log(document.documentElement.clientWidth,document.documentElement.clientHeight);
+        //html宽高  浏览器宽度-滚动条宽度（可能没有）
+        // 高度 （可视高度）
+
+
+        // 和clienWidth，clientHeight相同
+        // console.log(document.body.offsetWidth,document.body.offsetHeight);
+        // 实际html的内容宽度，高度
+        // console.log(document.documentElement.offsetWidth,document.documentElement.offsetHeight);
+
+        // body实际内容宽高
+        // console.log(document.body.scrollWidth,document.body.scrollHeight);
+
+        // html的实际内容宽高，但是如果实际内容高度小于视口高度时，scrollHeight等同于视口高度
+        // console.log(document.documentElement.scrollWidth,document.documentElement.scrollHeight);
+
+
+
+        // 任何没有放在页面中的元素，都无法获取它宽高和后面讲位置
+
+        // var div=document.querySelector("div");
+        // console.log(div.clientWidth,div.clientHeight)
+
+        // var div1=document.createElement("div");
+        // div1.innerHTML="abc";
+        // console.log(div1.clientWidth,div1.clientHeight);
+
+
+        // 不管获取宽高还是后面获取位置，都需要重新将渲染树拆开，并且重新计算css样式后才可以获取到
+        // 这就意味着使用获取宽高和位置会产生回流或者重绘。如果只是获取就会重绘，如果设置就会回流
+        // 先拆开了渲染DOM树，然后获取宽度，页面重绘了，接着设置css样式，页面回流了
+        // document.addEventListener("click",clickHandler);
+        // function clickHandler(e){
+        //     div.style.width=div.offsetWidth+10+"px";
+        // }
+
+
+
+        // 位置
+
+        var div3=document.querySelector(".div3");
+        console.log(div3.clientLeft,div3.clientTop);//边线粗细
+        console.log(div3.offsetLeft,div3.offsetTop);
+        //相对父容器左上顶点坐标（父容器做了定位），如果父容器没有定位向上寻找定位直到HTML标签的距离
+        console.log(div3.scrollLeft,div3.scrollTop);//滚动条距离  可读可写
+
+        // setInterval(function(){
+        //     div3.scrollTop+=10;
+        // },1000)
+
+        // 当滚动条改变时
+        // div3.addEventListener("scroll",scrollHandler);
+
+        // function scrollHandler(e){
+        //     console.log(div3.scrollTop,div3.scrollHeight,div3.clientHeight);
+        // }
+
+
+        // 滚动条的高度=clientHeight/scrollHeight*clientHeight
+
+        // 滚动条高度/clientHeight=clientHeight/scrollHeight
+
+        // 滚动条垂直位置 y
+
+        // scrollTop=clientHeight/scrollHeight*y
+
+
+        // scrollTop  max=scrollHeight-clientHeight;  min=0;
+
+
+
+
+        // body和html的位置
+        // clientLeft clientTop
+        // offsetLeft offsetTop
+        // scrollTop scrollLeft
+        // 低版本的谷歌浏览器中，窗口的滚动条是body的scrollTop，scrollLeft
+        // 但是现在版本中窗口的滚动条是html的scrollTop，scrollLeft
+
+
+        // 这里我们发现滚动没有发生改变，原因页面还没完成渲染，窗口的高度还没有重新计算
+        // 设置这个值后，再重新计算了内容滚动条又被恢复到0了
+        // document.documentElement.scrollTop=200;
+        
+
+        // 当点击页面前，页面已经完成DOM的渲染，宽高已经计算完成，所以可以更改scrollTop
+        // document.addEventListener("click",clickHandler);
+        // function clickHandler(e){
+        //     document.documentElement.scrollTop=200
+        // }
+
+
+        // document.addEventListener("scroll",scrollHandler);
+
+        // function scrollHandler(e){
+        //     console.log(document.documentElement.scrollTop)
+        // }
+
+
+
+
+    </script>
+</body>
+</html>

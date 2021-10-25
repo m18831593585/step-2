@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <button>按钮</button> -->
+    <script>
+
+        // var bn=document.querySelector("button");
+        // 点击按钮时 交互事件，系统交互触发的事件
+        // 系统事件
+        // bn.onclick=function(){
+        //     console.log("aaa")
+        // }
+
+        // bn.addEventListener("click",clickHandler);
+        // function clickHandler(e){
+        //     console.log("bbb")
+        // }
+
+
+        // 任何继承或者实例化EventTarget类型的对象都可以做事件的处理
+
+        // console.log(EventTarget);
+
+        // 实例化这种类型
+        // var t=new EventTarget();
+        // 这种类型下面有三个方法
+        /* 
+            addEventListener()  侦听事件
+            removeEventListener()  删除事件
+            dispatchEvent()  派发事件（抛发事件）
+        */
+
+        // bn-->HTMLButtonElement-->HTMLElement-->Element-->Node-->EventTarget-->Object
+        // div-->HTMLDivElement
+
+        // document -->HTMLDocument->Document-->Node-->EventTarget-->Object
+        // window-->Window-->WindowProperties-->EventTarget--->Object
+        // 所有的HTML标签都是继承于HTMLElement
+
+        // console.dir(window);
+
+
+        // 给要侦听的对象增加一个耳朵
+        // var obj=new EventTarget();
+        // obj.addEventListener(事件类型，事件回调函数)
+        // obj.addEventListener("xietian",xietianHandler);
+
+        // new Event(事件类型)  事件类型必须是字符串
+        // var evt=new Event("xietian");
+        // 向增加了耳朵的对象派发事件
+        // obj.dispatchEvent(evt);
+
+        /* 
+            1、先侦听，再派发
+            2、侦听的对象和派发对象是同一个
+            3、侦听的事件类型（type）与派发的事件类型相同
+        
+        */
+
+
+        // function xietianHandler(e){
+        //     // 就是派发的事件 evt
+        //     console.log(e,"_____");
+        //     console.log(e===evt);
+        // }
+
+
+
+
+        // bn.addEventListener("click",clickHandler);
+
+
+        // var evt=new Event("click");
+        // bn.dispatchEvent(evt);
+        // function clickHandler(e){
+        //     console.log("aaa")
+        // }
+
+
+
+        // Event 就是所有事件类型的基础，所有事件的基类
+        // MouseEvent  鼠标事件类型，基于Event创建出来的
+
+        // document.addEventListener("click",clickHandler);
+        // var evt=new MouseEvent("click",{clientX:10,clientY:20});
+        // evt.clientX=10;
+        // evt.clientY=20;
+        // document.dispatchEvent(evt);
+
+
+        // function clickHandler(e){
+        //     // console.log(e.clientX,e.clientY); // 鼠标点击相对视口位置
+        //     // console.log(e.x,e.y)
+        //     ce("div",{
+        //         width:"50px",
+        //         height:"50px",
+        //         backgroundColor:"red",
+        //         position:"absolute",
+        //         left:e.clientX-25+"px",
+        //         top:e.clientY-25+"px"
+        //     },"body");
+        // }
+
+        // function ce(type,style,parent){
+        //     var elem=document.createElement(type);
+        //     if(style) Object.assign(elem.style,style);
+        //     if(typeof parent==="string") parent=document.querySelector(parent);
+        //     if(parent) parent.appendChild(elem);
+        //     return elem;
+        // }
+
+
+
+
+        // var list=Array(30).fill(1).map(function(){
+        //     return {x:~~(Math.random()*document.documentElement.clientWidth),y:~~(Math.random()*document.documentElement.clientHeight)};
+        // })
+
+        // setInterval(function(){
+        //     if(list.length===0) return;
+        //     var item=list.pop();
+        //     var evt=new MouseEvent("click",{clientX:item.x,clientY:item.y});
+        //     document.dispatchEvent(evt);
+        // },1000);
+
+        // 按键精灵
+
+
+
+
+
+
+
+
+
+        // var obj1={
+        //     a:function(){
+        //         var abc=10;
+        //         // 引用关系存在，强耦合
+        //         obj2.b(abc);
+        //     },
+        //     b:function(){
+
+        //     }
+        // }
+
+        // var obj2={
+        //     a:function(){
+
+        //     },
+        //     b:function(n){
+        //         console.log(n);
+        //     }
+        // }
+
+        // obj1.a();
+
+        // 耦合的关系就会造成代码在修改时，需要考虑多处内容处理，尤其是代码直接的关联性
+
+
+        // 解耦，让代码之间的关联很小，以至于删除了其中一个，另外一个不会报错
+
+
+        // 没有在obj1中调用obj2，也没有在obj2中调用obj1，这样，不管替换或者删除那个
+        // 都不会影响到另外一个对象的错误触发
+
+        // 但是我利用document作为中介，为两个对象中的数据进行传递
+        // 利用事件的抛发侦听机制
+
+        var obj1={
+            a:function(){
+                var abc=10;
+                var evt=new Event("elema");
+                evt.abc=abc;
+                document.dispatchEvent(evt);
+            }
+        }
+        var obj2={
+            a:function(){
+                document.addEventListener("elema",this.b)
+            },
+            b:function(e){
+                // console.log("aaa")
+                console.log(e.abc);
+            }
+        }
+
+        obj2.a();
+        // obj1.a();
+
+
+    </script>
+</body>
+</html>

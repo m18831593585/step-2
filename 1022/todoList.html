@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="#">
+        <input type="text">
+    </form>
+    <label>待办事项:</label><ul id="todo"></ul>
+    <label>已办事项</label><ul id="undo"></ul>
+    <script>
+
+        var from,todo,undo;
+        var  todoList=[],
+            undoList=[]
+        init()
+        function init(){
+            from=document.querySelector("form");
+            todo=document.querySelector("#todo");
+            undo=document.querySelector("#undo");
+            from.addEventListener("submit",submitHandler);
+        }
+
+        function submitHandler(e){
+            e.preventDefault();//阻止提交
+            var txt=from.firstElementChild.value;
+            if(txt.trim().length===0) return;
+            from.firstElementChild.value=""
+            todoList.push(txt);
+            updateUl(todo,todoList);
+        }
+
+
+        function updateUl(ul,list){
+            ul.innerHTML="";
+            var elem=document.createDocumentFragment();
+            for(var i=0;i<list.length;i++){
+                var li=document.createElement("li");
+                var ck=document.createElement("input");
+                ck.ul=ul;
+                ck.lists=list;
+                ck.addEventListener("click",clickhandler);
+                ck.type="checkbox";
+                var span=document.createElement("span");
+                span.textContent=list[i];
+                li.appendChild(ck);
+                li.appendChild(span);
+                elem.appendChild(li);
+            }
+            ul.appendChild(elem);
+        }
+
+
+        function clickhandler(e){
+            var index=Array.from(this.parentElement.parentElement.children).indexOf(this.parentElement);
+            // console.log(this.ul,this.lists)
+            var elem=this.lists.splice(index,1);
+            updateUl(this.ul,this.lists);
+            if(this.ul===todo){
+                undoList.push(elem);
+                updateUl(undo,undoList);
+            }else{
+                todoList.push(elem);
+                updateUl(todo,todoList);
+            }
+           
+        }
+    </script>
+</body>
+</html>
