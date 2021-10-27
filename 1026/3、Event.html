@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* rem 相对根元素 html的font-size大小 */
+        html{
+            font-size: 100px;
+        }
+        body{
+            font-size: 16px;
+        }
+        .div1{
+            width: 2rem;
+            height: 2rem;
+            background-color: coral;
+        }
+    </style>
+</head>
+<body>
+    <form action="#">
+        <input type="text" name="" id="">
+        <button type="submit">提交</button>
+        <button type="reset">重置</button>
+    </form>
+
+    <button id="bn1">按钮</button>
+    <div class="div1">
+        <div></div>
+    </div>
+    <script>
+        // change  修改  主要用于表单元素，及表单  冒泡给表单
+        // submit 表单的事件 提交表单，
+        // reset  表单的事件 重置表单
+        // select  输入框或者textarea
+        // resize  window 大小修改事件
+        // scroll 所有具备滚动条的元素   当滚动条滚动时
+        // load 加载 图片，script，视频，通信等内容的加载
+        // error  加载失败事件
+
+
+        // 当表单的内容与原来的内容不同时，失焦时触发
+
+        
+        var input=document.querySelector("input");
+        // input.addEventListener("change",changeHandler);
+
+        var form=document.querySelector("form");
+        form.addEventListener("change",formChangeHandler);
+        form.addEventListener("submit",submitHandler);
+        form.addEventListener("reset",resetHandler);
+        input.addEventListener("select",selectHandler);
+        
+
+        function changeHandler(e){
+            console.log(e)
+            // e.bubbles 触发事件时是否允许冒泡   只读
+            // e.cancelBubble=false IE8以下支持  可读可写 等同于e.stopPropagation(); 阻止事件冒泡
+            // e.cancelable 只读  如果是false  这个事件不能被e.preventDefault()取消其默认行为，如果是true，可以被取消
+            // e.currentTarget 只读 当前事件侦听的对象 与this相同
+            // e.defaultPrevented 只读  是否调用了e.preventDefault();
+            // e.eventPhase  只读 当前事件流处于第几个阶段 0无事件  1 捕获  2 目标  3 冒泡
+            // e.isTrusted 只读  true 系统派发事件 false 是通过dispatchEvent 自定义派发事件
+            // e.path  冒泡经过所有DOM对象的列表数组
+            //e.returnValue  可写可读 true 允许默认行为  false 不允许执行默认行为，等同于e.preventDefault()
+            // e.srcElement 只读  等同于e.target 目标对象（IE兼容）
+            // e.target 只读 就是事件触发的目标对象
+            // e.timeStamp 只读 从页面打开到触发事件经过时间（毫秒）
+            // e.type 只读  事件类型  事件触发的类型，侦听的类型 字符串
+            // e.stopImmediatePropagation() 阻止后续相同事件的触发（同一个目标，同一个事件，同一个事件类型，不同事件触发函数）
+            // e.stopPropagation() 停止冒泡
+            // e.preventDefault() 阻止默认事件的触发
+        }
+
+        function formChangeHandler(e){
+            console.log(e)
+        }
+
+        function submitHandler(e){
+            e.preventDefault();//阻止默认事件行为
+            console.log(e)
+        }
+
+        function resetHandler(e){
+            console.log(e)
+        }
+
+        function selectHandler(e){
+            console.log(e)
+            console.log(input.selectionStart,input.selectionEnd,input.selectionDirection);
+        }
+
+        var evt=new Event("change");
+        form.dispatchEvent(evt);
+
+
+        var bn1=document.querySelector("#bn1");
+        bn1.addEventListener("click",clickhandler1);
+        bn1.addEventListener("click",clickhandler2);
+        bn1.addEventListener("click",clickhandler3);
+
+        function clickhandler1(e){
+            console.log("aaa")
+        }
+
+        function clickhandler2(e){
+            e.stopImmediatePropagation();
+            console.log("bbb")
+        }
+
+        function clickhandler3(e){
+            console.log("ccc")
+        }
+
+
+
+        window.addEventListener("resize",resizeHandler);
+        console.log(document.documentElement.clientWidth/screen.width)
+        function resizeHandler(e){
+            // console.log(e);
+            document.documentElement.style.fontSize=document.documentElement.clientWidth/screen.width*100+"px";
+        }
+
+
+        document.addEventListener("scroll",scrollHandler);
+
+        function scrollHandler(e){
+            console.log(document.documentElement.scrollTop);
+        }
+    </script>
+</body>
+</html>

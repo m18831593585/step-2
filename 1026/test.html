@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .city ul {
+        max-height: 0;
+        overflow: hidden;
+    }
+
+    .city li[open] > ul {
+        max-height: 1000px;
+    }
+</style>
+<body>
+
+<!--
+<ul class="city">
+    <li>北京
+        <ul>
+            <li>昌平</li>
+            <li>昌平</li>
+        </ul>
+    </li>
+    <li>北京
+        <ul>
+            <li>昌平
+                <ul>
+                    <li>昌平昌平</li>
+                    <li>昌平昌平</li>
+                </ul>
+            </li>
+            <li>昌平</li>
+        </ul>
+    </li>
+    <li>北京
+        <ul>
+            <li>昌平</li>
+            <li>昌平</li>
+        </ul>
+    </li>
+</ul>
+-->
+
+<input type="text">
+
+<script>
+
+    // let ulEl
+    // init()
+    // function init() {
+    //     ulEl = document.querySelector(".city")
+    //     ulEl.addEventListener("click", clickHandler)
+    // }
+    //
+    // function clickHandler(e) {
+    //     if(e.target.constructor===HTMLUListElement || !e.target.firstElementChild) return
+    //     if(e.target.getAttribute("open")) e.target.removeAttribute("open")
+    //     else e.target.setAttribute("open","open")
+    //     console.log(e)
+    // }
+
+    // let ulEl
+    // init()
+    // function init(){
+    //     ulEl=Array.from(document.querySelectorAll("li"))
+    //     console.log(ulEl)
+    //     ulEl.forEach(function (item){
+    //         item.addEventListener("click", fn)
+    //     })
+    // }
+    //
+    // function fn(e){
+    //     e.stopPropagation()
+    //     if(!e.target.firstElementChild) return
+    //     if(!e.target.getAttribute("open")) e.target.setAttribute("open", "open")
+    //     else e.target.removeAttribute("open")
+    // }
+
+
+    // let inputEl
+    // init()
+    //
+    // function init() {
+    //     document.querySelector("input").addEventListener("select", changeHandler)
+    // }
+    //
+    // function changeHandler(e) {
+    //     this.value = this.value.substr(0, this.selectionStart) + this.value.substr(this.selectionStart, this.selectionEnd - this.selectionStart).toUpperCase() + this.value.substr(this.selectionEnd)
+    // }
+
+    init()
+    function init(){
+        let img = new Image()
+        img.src="./img/1.jpg"
+        console.log(img)
+    }
+
+
+</script>
+</body>
+</html>

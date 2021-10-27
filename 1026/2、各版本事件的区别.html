@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="clickHandler()">按钮</button>
+    <script>
+        var bn=document.querySelector("button");
+        // bn.addEventListener("click",clickHandler);
+        // // bn.removeEventListener("click",clickHandler);
+        // // bn.dispatchEvent(new Event("click"));
+
+        // var i=0;
+        // function clickHandler(e){
+        //     i++;
+        //     if(i===3){
+        //         bn.removeEventListener("click",clickHandler)
+        //     }
+        //     console.log("aaa")
+        // }
+
+
+            // bn.addEventListener("click",function(e){
+            //     console.log("aaa");
+            //     bn.removeEventListener("click",arguments.callee);
+            // })
+
+            // 只触发一次事件
+            // bn.addEventListener("click",clickHandler,{once:true});
+
+            // function clickHandler(e){
+            //     console.log("aaa")
+            // }
+
+
+            // bn.addEventListener("click",clickHandler1);
+            // setTimeout(function(){
+            //     bn.addEventListener("click",clickHandler2);
+            // },10000);
+            // function clickHandler1(e){
+            //     console.log("A")
+            // }
+            // function clickHandler2(e){
+            //     console.log("B")
+            // }
+
+            // 对于所有浏览器都兼容
+            // 只能处理系统触发事件
+            // 使用同一个元素不同做多次同一个事件
+            // 事件使用的匿名函数,清除时不可以做分开清除事件
+            // 不能触发捕获阶段
+            // console.dir(bn);
+            // bn.onclick=function(){
+            //     console.log("aaa")
+            // }
+
+            // bn.onclick=function(){
+            //     // console.log("bbb")
+            //     bn.onclick=null;
+            //     // a();
+            //     // b();
+            // }
+
+            // function a(){
+                
+            // }
+            // function b(){
+
+            // }
+
+            // 回调地狱，函数连续嵌套
+            // bn1.onclick=function(){
+            //     bn2.onclick=function(){
+            //         bn3.onclick=function(){
+
+            //         }
+            //     }
+            // }
+
+            // bn.onclick=clickHandler;
+
+            // function clickHandler(e){
+            //     // console.log(window.event);
+            //     // console.log(e)
+            //     e=e || window.event;
+            // }
+
+                // IE 8及以下浏览器
+            // bn.attachEvent("onclick",clickhandler);
+
+            // function clickhandler(e){
+            //     bn.detachEvent("onclick",clickhandler)
+            // }
+    </script>
+</body>
+</html>
