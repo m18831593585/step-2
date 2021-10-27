@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="text">
+        <input type="text">
+    </form>
+
+    <script>
+
+        // focus 聚焦   blur 失焦    针对表单元素，不能事件委托
+        // focusin 聚焦   focusout 失焦  针对表单，可以事件委托
+
+        // 表单元素  超链接  点击产生，tab切换
+
+        var input=document.querySelector("input");
+        // input.addEventListener("focus",focusHandler);
+        // input.addEventListener("blur",focusHandler);
+
+        // var form=document.querySelector("form");
+        // form.addEventListener("focusin",focusHandler)
+        // form.addEventListener("focusout",focusHandler)
+
+        // function focusHandler(e){
+        //     console.log(e.type)
+        // }
+
+            var id;
+            input.addEventListener("input",inputHandler);
+
+            function inputHandler(e){
+                // console.log(input.value)
+                /* 
+                    data: "s"  当前输入的内容
+                    inputType: "insertText"  输入方式
+                    isComposing: false  是否开启了输入法
+                */
+               if(id) return;
+                id=setTimeout(function(){
+                    setvalue(input.value);
+                    clearTimeout(id);
+                    id=undefined;
+                },500);
+            }
+
+            function setvalue(v){
+                console.log(v);
+            }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div1{
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+            left: 100px;
+            top:100px;
+        }
+        .div0{
+            width: 400px;
+            height: 50px;
+            border: 1px solid #000;
+            position: relative;
+            left: 100px;
+            top: 100px;
+        }
+    </style>
+    <script src="./js/Utils.js"></script>
+</head>
+<body>
+    <div class="div0">
+        <div class="div1"></div>
+        <div class="div1"></div>
+        <div class="div1"></div>
+        <div class="div1"></div>
+        <div class="div1"></div>
+        <div class="div1"></div>
+        <div class="div1">1</div>
+    </div>
+    <script>
+        var div1=document.querySelector(".div1");
+
+        // div1.onmousedown=function(e){
+        //     document.onmousemove=function(e1){
+        //         div1.style.left=e1.clientX-e.offsetX+"px"
+        //         div1.style.top=e1.clientY-e.offsetY+"px"
+        //     }
+        //     document.onmouseup=function(){
+        //         document.onmousemove=null;
+        //         document.onmouseup=null;
+        //     }
+        // }
+
+
+
+        // var offset={x:0,y:0};
+        // div1.addEventListener("mousedown",mousedownHandler);
+        
+        // function mousedownHandler(e){
+        //     offset.x=e.offsetX;
+        //     offset.y=e.offsetY;
+        //     document.addEventListener("mousemove",mousemoveHandler);
+        //     document.addEventListener("mouseup",mouseupHandler);
+        // }
+
+        // function mousemoveHandler(e){
+        //     div1.style.left=e.clientX-offset.x+"px";
+        //     div1.style.top=e.clientY-offset.y+"px";
+        // }
+
+        // function mouseupHandler(e){
+        //     document.removeEventListener("mousemove",mousemoveHandler);
+        //     document.removeEventListener("mouseup",mouseupHandler);
+        // }
+
+
+
+        // var offset={x:0,y:0};
+        // div1.addEventListener("mousedown",mouseHandler);
+        
+        // function mouseHandler(e){
+        //     if(e.type==="mousedown"){
+        //         offset.x=e.offsetX;
+        //         offset.y=e.offsetY;
+        //         document.addEventListener("mousemove",mouseHandler);
+        //         document.addEventListener("mouseup",mouseHandler);
+        //     }else if(e.type==="mousemove"){
+        //         div1.style.left=e.clientX-offset.x+"px";
+        //         div1.style.top=e.clientY-offset.y+"px";
+        //     }else if(e.type==="mouseup"){
+        //         document.removeEventListener("mousemove",mouseHandler);
+        //         document.removeEventListener("mouseup",mouseHandler);
+        //     }
+        // }
+
+
+
+
+
+
+
+        // var divs=document.querySelectorAll(".div1");
+        // divs.forEach(function(item){
+        //     item.addEventListener("mousedown",mouseHandler);
+        // })
+       
+        // function mouseHandler(e){
+        //     if(e.type==="mousedown"){
+        //         document.offsetX=e.offsetX;
+        //         document.offsetY=e.offsetY;
+        //         document.div=e.target;
+        //         document.addEventListener("mousemove",mouseHandler);
+        //         document.addEventListener("mouseup",mouseHandler);
+        //     }else if(e.type==="mousemove"){
+        //         // console.log(this)
+        //         this.div.style.left=e.clientX-this.offsetX+"px";
+        //         this.div.style.top=e.clientY-this.offsetY+"px";
+        //     }else if(e.type==="mouseup"){
+        //         this.removeEventListener("mousemove",mouseHandler);
+        //         this.removeEventListener("mouseup",mouseHandler);
+        //     }
+        // }
+
+
+
+
+
+    //     var div0=document.querySelector(".div0");
+    //    var rect=div0.getBoundingClientRect(); //DOMRect
+    //    console.log(rect)
+    /* 
+            x  left  相对视口的距离X
+            y  top    相对视口的距离Y
+            right  右边线相对视口距离X
+            bottom  下边线相对是视口距离Y
+            width 元素的offsetWidth
+            height 元素的offsetHeight
+    
+    */
+
+
+        /*     
+       var divs=document.querySelectorAll(".div1");
+        divs.forEach(function(item){
+            item.addEventListener("mousedown",mouseHandler);
+        })
+       
+        function mouseHandler(e){
+            if(e.type==="mousedown"){
+                document.offsetX=e.offsetX;
+                document.offsetY=e.offsetY;
+                document.div=this;
+                document.addEventListener("mousemove",mouseHandler);
+                document.addEventListener("mouseup",mouseHandler);
+            }else if(e.type==="mousemove"){
+                // console.log(this)
+                var rect=this.div.parentElement.getBoundingClientRect();
+                this.div.style.left=e.clientX-this.offsetX-rect.x+"px";
+                this.div.style.top=e.clientY-this.offsetY-rect.y+"px";
+            }else if(e.type==="mouseup"){
+                this.removeEventListener("mousemove",mouseHandler);
+                this.removeEventListener("mouseup",mouseHandler);
+            }
+        } */
+
+
+
+
+
+            
+      /*  var divs=document.querySelectorAll(".div1");
+        divs.forEach(function(item){
+            item.addEventListener("mousedown",mouseHandler);
+        })
+       
+        function mouseHandler(e){
+            if(e.type==="mousedown"){
+                document.offsetX=e.offsetX;
+                document.offsetY=e.offsetY;
+                document.div=this;
+                document.addEventListener("mousemove",mouseHandler);
+                document.addEventListener("mouseup",mouseHandler);
+            }else if(e.type==="mousemove"){
+                // console.log(this)
+                var rect=this.div.parentElement.getBoundingClientRect();
+                var x=e.clientX-this.offsetX-rect.x;
+                var y=e.clientY-this.offsetY-rect.y;
+                if(x<=0) x=0;
+                if(y<=0) y=0;
+                if(x>=rect.width-this.div.offsetWidth)x=rect.width-this.div.offsetWidth;
+                if(y>=rect.height-this.div.offsetHeight)y=rect.height-this.div.offsetHeight;
+                this.div.style.left=x+"px";
+                this.div.style.top=y+"px";
+            }else if(e.type==="mouseup"){
+                this.removeEventListener("mousemove",mouseHandler);
+                this.removeEventListener("mouseup",mouseHandler);
+            }
+        } */
+        
+
+
+        var divs=document.querySelectorAll(".div1");
+        divs.forEach(function(item){
+            Utils.dragOn(item);
+        })
+    </script>
+</body>
+</html>

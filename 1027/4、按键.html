@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .actor{
+            width: 32px;
+            height: 33px;
+            background-image: url(./img/Actor01-Braver03.png);
+            position: absolute;
+            left: 0;
+            top:0;
+        }
+    </style>
+</head>
+<body>
+    <!-- <button>按钮</button> -->
+    <div class="actor"></div>
+    <script>
+  
+        // document.addEventListener("keydown",keyHandler);
+
+        // function keyHandler(e){
+        //     console.log(e)
+        //     /* 
+
+        //         code: "KeyA"   物理键盘键名
+        //          key: "a"  键名
+        //         keyCode: 65  键码
+        //         repeat: false 按下键是否重复
+        //         which: 65  键码
+        //     */
+        // }
+
+        
+        // var actor;
+        // var x=0,y=0,speed=4,i=0;
+        // init();
+        // function init(){
+        //     actor=document.querySelector(".actor");
+        //     document.addEventListener("keydown",keyHandler);
+        // }
+
+        // function keyHandler(e){
+        //     i++;
+        //     switch(e.which){
+        //         case 37:
+        //             x-=speed;
+        //             actor.style.backgroundPositionY="-33px";
+                    
+        //         break;
+        //         case 38:
+        //             y-=speed;
+        //             actor.style.backgroundPositionY="-99px";
+        //         break;
+        //         case 39:
+        //             x+=speed;
+        //             actor.style.backgroundPositionY="-66px";
+        //         break;
+        //         case 40:
+        //             y+=speed;
+        //             actor.style.backgroundPositionY="-0px";
+        //         break;
+        //     }
+        //     actor.style.left=x+"px";
+        //     actor.style.top=y+"px";
+        //     actor.style.backgroundPositionX=-32*i+"px";
+        // }
+
+
+
+
+
+       var actor;
+       const CHANGE_TIME=50,
+             SPEED_CHANGE_TIME=30;
+        var x=0,y=0,speed=4,i=0,list=[1,3,2,0],state=-1,time=CHANGE_TIME,speedTime=SPEED_CHANGE_TIME;
+
+        init();
+        function init(){
+            actor=document.querySelector(".actor");
+            document.addEventListener("keydown",keyHandler);
+            document.addEventListener("keyup",keyHandler);
+            setInterval(animation,1);
+        }
+
+
+        function keyHandler(e){
+            state=list[e.which-37]===undefined ? -1 : list[e.which-37];
+            state=e.type==="keydown" ? state : -1;
+            if(state===-1) actor.style.backgroundPositionX="0px";
+        }
+
+        function animation(){
+            if(state===-1) return;
+            changeActor()
+            walk();
+        }
+
+        function changeActor(){
+            time--;
+            if(time>0) return;
+            time=CHANGE_TIME;
+            i++;
+            if(i>3)i=0;
+            actor.style.backgroundPositionX=-i*32+"px";
+            actor.style.backgroundPositionY=-state*33+"px"
+        }
+
+        function walk(){
+            speedTime--;
+            if(speedTime>0) return;
+            speedTime=SPEED_CHANGE_TIME;
+            actor.style.left=(state===1 ? x-=speed : state===2 ? x+=speed : x)+"px";
+            actor.style.top=(state===3 ? y-=speed : state===0 ? y+=speed : y)+"px";
+        }
+
+    </script>
+</body>
+</html>

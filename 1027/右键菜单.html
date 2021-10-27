@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            list-style: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            margin: 0;
+            padding: 0;
+            display: none;
+            z-index: 99;
+        }
+
+        li {
+            padding: 10px 20px;
+            background-color: rgb(0, 183, 255);
+            user-select: none;
+        }
+
+        li:hover {
+            background-color: skyblue
+        }
+    </style>
+    <script src="./js/Utils.js"></script>
+</head>
+
+<body>
+    <ul>
+        <li>新建</li>
+        <li>复制</li>
+        <li>剪切</li>
+        <li>粘贴</li>
+        <li>删除</li>
+    </ul>
+    <script>
+        var ul, prevElem, cloneElem;
+        var arr = ["新建", "复制", "剪切", "粘贴", "删除"];
+
+
+        init()
+
+        function init() {
+            ul = document.querySelector("ul");
+            document.addEventListener("contextmenu", contextHandler);
+            ul.addEventListener("mouseleave", contextHandler);
+            ul.addEventListener("click", clickHandler);
+
+        }
+
+        function contextHandler(e) {
+            e.preventDefault();
+            Object.assign(ul.style, {
+                display: e.type === "contextmenu" ? "block" : "none",
+                left: e.clientX - 20 + "px",
+                top: e.clientY - 20 + "px",
+            })
+        }
+
+
+        function clickHandler(e) {
+            if (e.target.nodeName !== "LI") return;
+            switch (arr.indexOf(e.target.textContent)) {
+                case 0:
+                    createElem(e.x, e.y);
+                    break;
+                case 3:
+                    pasteElem();
+                    break;
+                case 1:
+                case 2:
+                   if(copyElem(e.target)) return;
+                case 4:
+                    deleteElem()
+                    break;
+            }
+            ul.dispatchEvent(new Event("mouseleave"));
+        }
+
+        function copyElem(elem) {
+            if (!prevElem) return true;
+            cloneElem = prevElem.cloneNode(false);
+            return arr.indexOf(elem.textContent)===1;
+        }
+
+        function pasteElem(){
+            if(!cloneElem)  return;
+            document.body.appendChild(cloneElem);
+            cloneElem.addEventListener("click", clickSelectHandler);
+            selectElem(cloneElem);
+            Object.assign(cloneElem.style,{
+                left:ul.offsetLeft+"px",
+                top:ul.offsetTop+"px"
+            });
+            cloneElem=null;
+        }
+
+
+        function deleteElem() {
+            Utils.dragOff(prevElem);
+            prevElem.removeEventListener("click", clickSelectHandler);
+            var elem = prevElem;
+            if (prevElem.previousElementSibling && prevElem.previousElementSibling.nodeName === "DIV") selectElem(
+                prevElem.previousElementSibling);
+            else if (prevElem.nextElementSibling && prevElem.nextElementSibling.nodeName === "DIV") selectElem(prevElem
+                .nextElementSibling);
+            elem.remove();
+            elem = null;
+        }
+
+        function createElem(x, y) {
+            var elem = document.createElement("div");
+            Object.assign(elem.style, {
+                width: "50px",
+                height: "50px",
+                position: "absolute",
+                left: x - 25 + "px",
+                top: y - 25 + "px",
+                backgroundColor: Utils.randomColor()
+            });
+            document.body.appendChild(elem);
+            elem.addEventListener("click", clickSelectHandler);
+            selectElem(elem);
+
+        }
+
+        function clickSelectHandler(e) {
+            selectElem(e.target);
+        }
+
+        function selectElem(elem) {
+            if (prevElem) {
+                prevElem.style.border = "none";
+                Utils.dragOff(prevElem)
+            }
+            prevElem = elem;
+            prevElem.style.border = "2px solid #000";
+            Utils.dragOn(prevElem)
+        }
+    </script>
+</body>
+
+</html>
