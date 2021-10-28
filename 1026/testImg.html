@@ -3,14 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="./js/TestUtils.js"></script>
 </head>
 <body>
 
 
 <script>
 
+    let imgArr=["1.jpg","2","3","4"]
+    TestUtils.loadImage(imgArr,loadFinish,"./img/",".jpg")
 
-
+    function loadFinish(list){
+        console.log(list)
+    }
 
 </script>
 </body>

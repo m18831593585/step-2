@@ -1,6 +1,6 @@
-var Utils=(function(){
+var Utils = (function () {
     return {
-        IMG_FINISH_EVENT:"img_finish_event",
+        IMG_FINISH_EVENT: "img_finish_event",
         /* 
             预加载图片
             1、可以加载一张图，也可以加载多张图片
@@ -37,34 +37,34 @@ var Utils=(function(){
             后需要执行的回调函数finishHandler，全部存储在这个图片对象中
                         
         */
-        loadImage:function(sourceArr,finishHandler,basePath,suffix){
-            if(typeof sourceArr==="string") sourceArr=[sourceArr];
-            if(basePath && typeof basePath==="string"){
-                basePath=basePath.endsWith("/") ? basePath : basePath+"/";
-                sourceArr=sourceArr.map(function(item){
-                    item=String(item);
-                    return basePath+(item.startsWith("/") ? item.slice(1) : item);
+        loadImage: function (sourceArr, finishHandler, basePath, suffix) {
+            if (typeof sourceArr === "string") sourceArr = [sourceArr];
+            if (basePath && typeof basePath === "string") {
+                basePath = basePath.endsWith("/") ? basePath : basePath + "/";
+                sourceArr = sourceArr.map(function (item) {
+                    item = String(item);
+                    return basePath + (item.startsWith("/") ? item.slice(1) : item);
                 })
             }
-          
-            if(suffix && typeof suffix==="string"){
-                suffix=suffix.startsWith(".")? suffix : "."+suffix;
-                sourceArr=sourceArr.map(function(item){
-                    item=String(item);
+
+            if (suffix && typeof suffix === "string") {
+                suffix = suffix.startsWith(".") ? suffix : "." + suffix;
+                sourceArr = sourceArr.map(function (item) {
+                    item = String(item);
                     // if(item.endsWith(".",item.length-3) || item.endsWith(".",item.length-4))
-                    if(![item.slice(-5,-4),item.slice(-4,-3)].includes("."))item+=suffix;
+                    if (![item.slice(-5, -4), item.slice(-4, -3)].includes(".")) item += suffix;
                     return item;
                 })
             }
-           
-            var img=new Image();
-            img.src=sourceArr[0];
-            img.n=0;
-            img.finishList=[];
-            img.sourceArr=sourceArr;
-            img.finishHandler=finishHandler;
-            img.addEventListener("load",this.loadHandler);
-            img.addEventListener("error",this.errorHandler);
+
+            var img = new Image();
+            img.src = sourceArr[0];
+            img.n = 0;
+            img.finishList = [];
+            img.sourceArr = sourceArr;
+            img.finishHandler = finishHandler;
+            img.addEventListener("load", this.loadHandler);
+            img.addEventListener("error", this.errorHandler);
         },
         /* 
             加载完成执行的函数
@@ -75,23 +75,23 @@ var Utils=(function(){
              2、判断加载下一张图片是否完成，如果完成了，返回true就直接跳出
         
         */
-        loadHandler:function(e){
+        loadHandler: function (e) {
             this.finishList.push(this.cloneNode(false));
-            if(Utils.nextImg(this)) return;
+            if (Utils.nextImg(this)) return;
         },
-          /* 
-            加载失败执行的函数
-            参数
-               e 加载完成的事件对象event error
-               这个函数中的this是加载图片的侦听对象，就是上一个函数中img
-             1、先判断加载下一张图片是否完成，如果加载完成直接跳出
-             2、如果没有完成，把null添加在图片数组中
-        
-        */
-        errorHandler:function(e){
+        /*
+          加载失败执行的函数
+          参数
+             e 加载完成的事件对象event error
+             这个函数中的this是加载图片的侦听对象，就是上一个函数中img
+           1、先判断加载下一张图片是否完成，如果加载完成直接跳出
+           2、如果没有完成，把null添加在图片数组中
+
+      */
+        errorHandler: function (e) {
             this.finishList.push(null);
-           if(Utils.nextImg(this)) return;
-           
+            if (Utils.nextImg(this)) return;
+
         },
         /* 
             加载下一张图片，传入参数当前图片
@@ -110,86 +110,86 @@ var Utils=(function(){
         
         
         */
-        nextImg:function(img){
+        nextImg: function (img) {
             img.n++;
-            if(img.n>img.sourceArr.length-1){
-                img.removeEventListener("load",Utils.loadHandler)
-                img.removeEventListener("error",Utils.errorHandler)
-                if(typeof img.finishHandler==="function") img.finishHandler(img.sourceArr.length===1 ?img.finishList[0] : img.finishList);
-                else{
-                    var evt=new Event(Utils.IMG_FINISH_EVENT);
-                    evt.finishList=img.sourceArr.length===1 ?img.finishList[0] : img.finishList;
+            if (img.n > img.sourceArr.length - 1) {
+                img.removeEventListener("load", Utils.loadHandler)
+                img.removeEventListener("error", Utils.errorHandler)
+                if (typeof img.finishHandler === "function") img.finishHandler(img.sourceArr.length === 1 ? img.finishList[0] : img.finishList);
+                else {
+                    var evt = new Event(Utils.IMG_FINISH_EVENT);
+                    evt.finishList = img.sourceArr.length === 1 ? img.finishList[0] : img.finishList;
                     document.dispatchEvent(evt);
                 }
-                 return true;
-             }
-             img.src=img.sourceArr[img.n];
-             return false;
+                return true;
+            }
+            img.src = img.sourceArr[img.n];
+            return false;
         },
-        dragOn:function(elem,rect){
-            elem.addEventListener("mousedown",this.mouseHandler);
-            elem.self=this;
-            elem.rect=rect;
+        dragOn: function (elem, rect) {
+            elem.addEventListener("mousedown", this.mouseHandler);
+            elem.self = this;
+            elem.rect = rect;
         },
-        dragOff:function(elem){
-            elem.removeEventListener("mousedown",this.mouseHandler);
+        dragOff: function (elem) {
+            elem.removeEventListener("mousedown", this.mouseHandler);
         },
-        mouseHandler:function(e){
-            if(e.type==="mousedown"){
+        mouseHandler: function (e) {
+            if (e.type === "mousedown") {
                 // this div
                 e.preventDefault();
-                document.offsetX=e.offsetX;
-                document.offsetY=e.offsetY;
-                document.div=this;
-                document.addEventListener("mousemove",this.self.mouseHandler);
-                document.addEventListener("mouseup",this.self.mouseHandler);
-            }else if(e.type==="mousemove"){
+                document.offsetX = e.offsetX;
+                document.offsetY = e.offsetY;
+                document.div = this;
+                document.addEventListener("mousemove", this.self.mouseHandler);
+                document.addEventListener("mouseup", this.self.mouseHandler);
+            } else if (e.type === "mousemove") {
                 // console.log(this)document
-                var bool=true;
-                if(this.div.rect){
-                    rect=this.div.rect;
-                    if(!rect.width)rect.width=0;
-                    if(!rect.height)rect.height=0;
-                    if(!rect.x) rect.x=0;
-                    if(!rect.y) rect.y=0;
-                    if(this.div.parentElement){
-                            rect.x=this.div.parentElement.getBoundingClientRect().x;
-                            rect.y=this.div.parentElement.getBoundingClientRect().y;
+                var bool = true;
+                if (this.div.rect) {
+                    rect = this.div.rect;
+                    if (!rect.width) rect.width = 0;
+                    if (!rect.height) rect.height = 0;
+                    if (!rect.x) rect.x = 0;
+                    if (!rect.y) rect.y = 0;
+                    if (this.div.parentElement) {
+                        rect.x = this.div.parentElement.getBoundingClientRect().x;
+                        rect.y = this.div.parentElement.getBoundingClientRect().y;
                     }
-                    bool=!(!rect.width && !rect.height)
-                }else{
-                    rect=this.div.parentElement.getBoundingClientRect();
-                    if(this.div.parentElement===document.body){
-                        bool=false;
+                    bool = !(!rect.width && !rect.height)
+                } else {
+                    rect = this.div.parentElement.getBoundingClientRect();
+                    if (this.div.parentElement === document.body) {
+                        bool = false;
                     }
-                    if(this.div.parentElement.clientLeft) rect.width-=this.div.parentElement.clientLeft*2;
-                    if(this.div.parentElement.clientTop) rect.height-=this.div.parentElement.clientTop*2;
+                    if (this.div.parentElement.clientLeft) rect.width -= this.div.parentElement.clientLeft * 2;
+                    if (this.div.parentElement.clientTop) rect.height -= this.div.parentElement.clientTop * 2;
                 }
-                var x=e.clientX-this.offsetX-rect.x;
-                var y=e.clientY-this.offsetY-rect.y;
-                if(bool){
-                    if(x<=0) x=0;
-                    if(y<=0) y=0;
-                    var w=(!rect.width) ? 0 : (rect.width-this.div.offsetWidth);
-                    var h=(!rect.height) ? 0 : (rect.height-this.div.offsetHeight);
-                    if(x>=w)x=w;
-                    if(y>=h)y=h;  
+                var x = e.clientX - this.offsetX - rect.x;
+                var y = e.clientY - this.offsetY - rect.y;
+                if (bool) {
+                    if (x <= 0) x = 0;
+                    if (y <= 0) y = 0;
+                    var w = (!rect.width) ? 0 : (rect.width - this.div.offsetWidth);
+                    var h = (!rect.height) ? 0 : (rect.height - this.div.offsetHeight);
+                    if (x >= w) x = w;
+                    if (y >= h) y = h;
                 }
-                this.div.style.left=x+"px";
-                this.div.style.top=y+"px";
-            }else if(e.type==="mouseup"){
+                this.div.style.left = x + "px";
+                this.div.style.top = y + "px";
+            } else if (e.type === "mouseup") {
                 // this document
-                this.removeEventListener("mousemove",this.div.self.mouseHandler);
-                this.removeEventListener("mouseup",this.div.self.mouseHandler);
+                this.removeEventListener("mousemove", this.div.self.mouseHandler);
+                this.removeEventListener("mouseup", this.div.self.mouseHandler);
             }
         },
-        randomColor:function(a,r,g,b){
-            if(a===undefined) a=1;
-            var color="rgba(";
-            for(var i=0;i<3;i++){
-                color+=(arguments[i+1]===undefined ? ~~(Math.random()*256) : arguments[i+1])+",";
+        randomColor: function (a, r, g, b) {
+            if (a === undefined) a = 1;
+            var color = "rgba(";
+            for (var i = 0; i < 3; i++) {
+                color += (arguments[i + 1] === undefined ? ~~(Math.random() * 256) : arguments[i + 1]) + ",";
             }
-            color+=(a<0 ? Math.random().toFixed(2) : a)+")";
+            color += (a < 0 ? Math.random().toFixed(2) : a) + ")";
             return color;
         }
     }

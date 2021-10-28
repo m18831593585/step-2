@@ -1,6 +1,6 @@
-var Utils=(function(){
+var Utils = (function () {
     return {
-        IMG_FINISH_EVENT:"img_finish_event",
+        IMG_FINISH_EVENT: "img_finish_event",
         /* 
             预加载图片
             1、可以加载一张图，也可以加载多张图片
@@ -37,34 +37,34 @@ var Utils=(function(){
             后需要执行的回调函数finishHandler，全部存储在这个图片对象中
                         
         */
-        loadImage:function(sourceArr,finishHandler,basePath,suffix){
-            if(typeof sourceArr==="string") sourceArr=[sourceArr];
-            if(basePath && typeof basePath==="string"){
-                basePath=basePath.endsWith("/") ? basePath : basePath+"/";
-                sourceArr=sourceArr.map(function(item){
-                    item=String(item);
-                    return basePath+(item.startsWith("/") ? item.slice(1) : item);
+        loadImage: function (sourceArr, finishHandler, basePath, suffix) {
+            if (typeof sourceArr === "string") sourceArr = [sourceArr];
+            if (basePath && typeof basePath === "string") {
+                basePath = basePath.endsWith("/") ? basePath : basePath + "/";
+                sourceArr = sourceArr.map(function (item) {
+                    item = String(item);
+                    return basePath + (item.startsWith("/") ? item.slice(1) : item);
                 })
             }
-          
-            if(suffix && typeof suffix==="string"){
-                suffix=suffix.startsWith(".")? suffix : "."+suffix;
-                sourceArr=sourceArr.map(function(item){
-                    item=String(item);
+
+            if (suffix && typeof suffix === "string") {
+                suffix = suffix.startsWith(".") ? suffix : "." + suffix;
+                sourceArr = sourceArr.map(function (item) {
+                    item = String(item);
                     // if(item.endsWith(".",item.length-3) || item.endsWith(".",item.length-4))
-                    if(![item.slice(-5,-4),item.slice(-4,-3)].includes("."))item+=suffix;
+                    if (![item.slice(-5, -4), item.slice(-4, -3)].includes(".")) item += suffix;
                     return item;
                 })
             }
-           
-            var img=new Image();
-            img.src=sourceArr[0];
-            img.n=0;
-            img.finishList=[];
-            img.sourceArr=sourceArr;
-            img.finishHandler=finishHandler;
-            img.addEventListener("load",this.loadHandler);
-            img.addEventListener("error",this.errorHandler);
+
+            var img = new Image();
+            img.src = sourceArr[0];
+            img.n = 0;
+            img.finishList = [];
+            img.sourceArr = sourceArr;
+            img.finishHandler = finishHandler;
+            img.addEventListener("load", this.loadHandler);
+            img.addEventListener("error", this.errorHandler);
         },
         /* 
             加载完成执行的函数
@@ -75,22 +75,24 @@ var Utils=(function(){
              2、判断加载下一张图片是否完成，如果完成了，返回true就直接跳出
         
         */
-        loadHandler:function(e){
+        loadHandler: function (e) {
             this.finishList.push(this.cloneNode(false));
-            if(Utils.nextImg(this)) return;
+            // if (Utils.nextImg(this)) return;
+            Utils.nextImg(this)
         },
-          /* 
-            加载失败执行的函数
-            参数
-               e 加载完成的事件对象event error
-               这个函数中的this是加载图片的侦听对象，就是上一个函数中img
-             1、先判断加载下一张图片是否完成，如果加载完成直接跳出
-             2、如果没有完成，把null添加在图片数组中
-        
-        */
-        errorHandler:function(e){
-           if(Utils.nextImg(this)) return;
-           this.finishList.push(null);
+        /*
+          加载失败执行的函数
+          参数
+             e 加载完成的事件对象event error
+             这个函数中的this是加载图片的侦听对象，就是上一个函数中img
+           1、先判断加载下一张图片是否完成，如果加载完成直接跳出
+           2、如果没有完成，把null添加在图片数组中
+
+      */
+        errorHandler: function (e) {
+            this.finishList.push(null);
+            // if (Utils.nextImg(this)) return;
+            Utils.nextImg(this)
         },
         /* 
             加载下一张图片，传入参数当前图片
@@ -109,21 +111,21 @@ var Utils=(function(){
         
         
         */
-        nextImg:function(img){
+        nextImg: function (img) {
             img.n++;
-            if(img.n>img.sourceArr.length-1){
-                img.removeEventListener("load",Utils.loadHandler)
-                img.removeEventListener("error",Utils.errorHandler)
-                if(typeof img.finishHandler==="function") img.finishHandler(img.sourceArr.length===1 ?img.finishList[0] : img.finishList);
-                else{
-                    var evt=new Event(Utils.IMG_FINISH_EVENT);
-                    evt.finishList=img.sourceArr.length===1 ?img.finishList[0] : img.finishList;
+            if (img.n > img.sourceArr.length - 1) {
+                img.removeEventListener("load", Utils.loadHandler)
+                img.removeEventListener("error", Utils.errorHandler)
+                if (typeof img.finishHandler === "function") img.finishHandler(img.sourceArr.length === 1 ? img.finishList[0] : img.finishList);
+                else {
+                    var evt = new Event(Utils.IMG_FINISH_EVENT);
+                    evt.finishList = img.sourceArr.length === 1 ? img.finishList[0] : img.finishList;
                     document.dispatchEvent(evt);
                 }
-                 return true;
-             }
-             img.src=img.sourceArr[img.n];
-             return false;
+                // return true;
+            }
+            img.src = img.sourceArr[img.n];
+            // return false;
         }
     }
 })();

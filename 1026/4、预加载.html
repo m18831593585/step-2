@@ -11,57 +11,57 @@
 
 <body>
 
-    <script>
-        // var img=new Image();
-        // img.addEventListener("load",loadHandler);
-        // img.src="./img/1.jpg";
-       
-
-        // function loadHandler(e){
-        //     console.log(this)
-        //     img.src="./img/2.jpg"
-        // }
+<script>
+    // var img=new Image();
+    // img.addEventListener("load",loadHandler);
+    // img.src="./img/1.jpg";
 
 
-        // var sum = 0;
-        // var img = new Image();
-        // img.src = "./img/1.jpg";
-        // img.onload = function () {
-        //     sum += this.width
-        //     var img = new Image();
-        //     img.src = "./img/2.jpg";
-        //     img.onload = function () {
-        //         sum += this.width
-        //         var img = new Image();
-        //         img.src = "./img/3.jpg";
-        //         img.onload = function () {
-        //             sum += this.width
-        //             fn(sum);
-        //         }
-        //     }
-        // }
+    // function loadHandler(e){
+    //     console.log(this)
+    //     img.src="./img/2.jpg"
+    // }
 
 
-        // function fn(s){
-        //     console.log(s)
-        // }
+    // var sum = 0;
+    // var img = new Image();
+    // img.src = "./img/1.jpg";
+    // img.onload = function () {
+    //     sum += this.width
+    //     var img = new Image();
+    //     img.src = "./img/2.jpg";
+    //     img.onload = function () {
+    //         sum += this.width
+    //         var img = new Image();
+    //         img.src = "./img/3.jpg";
+    //         img.onload = function () {
+    //             sum += this.width
+    //             fn(sum);
+    //         }
+    //     }
+    // }
 
 
-        // sum=0;
-        // var s=0;
-        // for(var i=1;i<13;i++){
-        //     var img=new Image();
-        //     img.src="./img/"+i+".jpg";
-        //     img.n=i;
-        //     s++;
-        //     img.onload=function(e){
-        //        sum+=this.width;
-        //        console.log(this.n,this.src);
-        //        if(s===12){
-        //         console.log(sum)
-        //        }
-        //     }
-        // }
+    // function fn(s){
+    //     console.log(s)
+    // }
+
+
+    // sum=0;
+    // var s=0;
+    // for(var i=1;i<13;i++){
+    //     var img=new Image();
+    //     img.src="./img/"+i+".jpg";
+    //     img.n=i;
+    //     s++;
+    //     img.onload=function(e){
+    //        sum+=this.width;
+    //        console.log(this.n,this.src);
+    //        if(s===12){
+    //         console.log(sum)
+    //        }
+    //     }
+    // }
 
     //    var n=1;
     //    var arr=[];
@@ -70,7 +70,7 @@
     //         img.src="./img/"+n+".jpg";
     //         img.addEventListener("load",loadHandler);
     //     }
-        
+
 
     //     function loadHandler(e){
     //         arr.push(this);
@@ -87,9 +87,9 @@
     //             console.log(item.src,item.width);
     //         })
     //     }
-       
 
-        // loadImage();
+
+    // loadImage();
 
 
     //     var n=1;
@@ -99,7 +99,7 @@
     //         img.src="./img/"+n+".jpg";
     //         img.addEventListener("load",loadHandler);
     //     }
-        
+
 
     //     function loadHandler(e){
     //         arr.push(this);
@@ -119,8 +119,6 @@
     //     }
 
 
-
-
     //     var n=1;
     //    var arr=[];
     //    loadImage();
@@ -129,7 +127,7 @@
     //         img.src="./img/"+n+".jpg";
     //         img.addEventListener("load",loadHandler);
     //     }
-        
+
 
     //     function loadHandler(e){
     //         arr.push(this.cloneNode(false));
@@ -149,19 +147,18 @@
     //         })
     //     }
 
-        // var arr=["./img/1.jpg","./img/2.jpg","./img/3.jpg","./img/4.jpg","5"]
-        var arr=["1.jpeg","2","3","4","5.jpeg","6"]
-        Utils.loadImage(arr,finishHandler,"./img/",".jpg");
-        // document.addEventListener(Utils.IMG_FINISH_EVENT,finishHandler);
-        // Utils.loadImage(arr);
-        function finishHandler(list){
-            console.log(list)
-        }
+    // var arr=["./img/1.jpg","./img/2.jpg","./img/3.jpg","./img/4.jpg","5"]
+    var arr = ["1.jpeg", "2", "3", "4", "5.jpeg", "6"]
+    Utils.loadImage(arr, finishHandler, "./img/", ".jpg");
+    // document.addEventListener(Utils.IMG_FINISH_EVENT,finishHandler);
+    // Utils.loadImage(arr);
+    function finishHandler(list) {
+        console.log(list)
+    }
 
-        // function finishHandler(e){
-        //     console.log(e.finishList)
-        // }
-
+    // function finishHandler(e){
+    //     console.log(e.finishList)
+    // }
 
 
     // var str="abc.jpg";
@@ -169,8 +166,7 @@
     // console.log(str.slice(-4,-3))
 
 
-   
-    </script>
+</script>
 </body>
 
 </html>
