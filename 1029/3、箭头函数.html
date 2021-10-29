@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 箭头函数最终的目的是解决  this指向问题
+        // 箭头函数是匿名函数
+        // var fn=()=>{
+
+        // }
+        // var fn=function(){
+
+        // }
+
+
+
+        // var fn=item=>{
+
+        // }
+
+        // var fn=function(item){
+
+        // }
+
+        // var fn=(item,index)=>{
+
+        // }
+        // var fn=function(item,index){
+
+        // }
+
+        // 单个参数时，可以省略小括号，但是没有参数和一个以上的参数时必须有小括号
+
+
+            // 如果函数内只有一句话，并且是retrun返回一个表达式或者这句话什么也没有返回，则可以省略花括号
+        // var fn=(a,b)=>a+b;
+
+        // var fn=function(a,b){
+        //     return a+b;
+        // }
+
+
+    //     var arr=[1,2,3];
+    //     arr.sort((a,b)=>b-a);
+    //    var s=arr.reduce((value,item)=>value+item);
+    //    if(arr.some(item=>item>2)){
+
+    //    }
+
+        
+        var obj={
+            a:function(){
+                console.log(this);
+
+                function abc(){
+                    console.log(this)
+                }
+                // abc();
+                this.c();
+                // document.addEventListener("click",this.b);
+                // document.addEventListener("click",function(e){
+                //     console.log(this);//document
+                //     obj.b();
+                // });
+
+                // console.log(this)
+                // document.addEventListener("click",e=>{
+                //     console.log(this);//指向当前箭头函数外this的指向
+                //     this.b(e);
+                // })
+
+                // e=>this.b(e)  点击时调用的匿名函数，回调函数
+                // this.b(e)  执行函数
+                // document.addEventListener("click",e=>this.b(e,arguments.callee));、
+
+                // this.clickhandler=e=>this.b(e);
+                // 如果需要删除这个侦听，必须把箭头函数存储在一个属性上，然后后面调用删除
+                // document.addEventListener("click",this.clickhandler);
+                document.addEventListener("click",function(e){
+                    console.log(this)//docuement
+                //    this.b();//因为document上面没有b函数
+                })
+                
+                document.addEventListener("click",e=>{
+                    console.log(this);//obj 当前箭头函数外的this
+                    this.b();
+                })
+
+                // document.addEventListener("click",this.b);
+            },
+            b:function(e){
+                console.log(this)
+                // document.removeEventListener("click",fn);
+                document.removeEventListener("click",this.clickhandler);
+            },
+            c:function(){
+                console.log(this);
+            }
+        }
+
+        // obj.a();
+
+        // 箭头函数语句块内的this指向当前箭头函数外上下文环境中的this
+        // 箭头函数中没有arguments
+
+
+
+     
+
+        // var fn1=(a,b)=>{
+        //     console.log(arguments);
+        // }
+
+        // fn1();
+
+
+
+
+        // document.addEventListener("click",clickhandler(10))
+
+        // function clickhandler(a){
+        //     console.log(this)
+        //     // return function(e){
+        //     //     console.log(this);
+        //     // }
+        //     return (e)=>{
+        //         console.log(this);
+        //     }
+        // }
+
+
+
+        var obj={
+            a:function(){
+                console.log(this);
+            },
+            b:()=>{
+                console.log(this);
+            },
+            c(){
+                console.log(this);
+            }
+        }
+        var s=obj;
+        s.a();
+
+        // obj.a();
+        // obj.b();
+        // obj.c();
+    </script>
+</body>
+</html>

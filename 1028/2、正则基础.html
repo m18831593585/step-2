@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+   
+        // 处理字符串
+        // 判断密码中必须包含小写字母，大写字母，数字，并且起始字符不能数字，并且长度是8-16的0-9a-zA-Z
+        // /^(?=\D+\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,16}$/
+
+        // 元字符
+
+        // 字面量创建
+        // var reg=/a/g ;  //   /正则表达式内容/修饰符
+
+
+        // g   全局查找  从头找到尾
+        // i   不区分大小写
+        // m   多行查找
+        // var str="abcdeabv";
+        // str.replace(/a/g,"0");
+
+
+        // var reg=new RegExp("a","g");  //  new RegExp("正则内容","修饰符")
+
+
+
+        var  reg=/a/g;
+        // reg.exec();
+        // reg.test();
+        // console.log(reg.exec("abcdae"));//在字符串查找字符
+        // console.log(reg.test("abcdef"));//表示在字符串中是否有正则表达式的字符
+
+        // console.log(/ab|cd/g.test("aaccef"))
+
+
+        /* 
+            match
+            search
+            replace
+            split
+        
+        */
+
+
+        // console.log("abcdaef".match(/a/g))//最主要
+        // console.log("cbcdecf".search(/a|b/g));//查找下标
+       
+
+        //  var str="abcdaef".replace(/a/g,"0");
+        // var str="abcdaef".replace(/a/g,function(a,index,c){
+        //      if(index===0) return "0";
+        //      return "z";
+        // })
+        //  console.log(str)
+
+        // var arr=[];
+        // "abcdaef".replace(/a/g,function(item,index){
+        //     arr.push(index);
+        // })
+        // console.log(arr)
+
+
+        // var str="18617561432".replace(/(\d{3})(\d{4})(\d{4})/,"$1****$3");
+        // var str="18617561432".replace(/(\d{3})(\d{4})(\d{4})/,function(a,b,c,d,e,f){
+        //     console.log(a,b,c,d,e,f)
+        // });
+        // console.log(str);
+
+
+
+    //    var arr= "akdsakjds,akjdsaksjd.aksjdaskd,alkdsjewodjgwffiweof.".split(/\.|,/);
+    //    console.log(arr)
+    </script>
+</body>
+</html>

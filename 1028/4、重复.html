@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // /\d\d\d\d-\d\d-\d\d/
+
+        // /\d{4}-\d{2}-\d{2}/
+        // /\d{4}(-\d{2}){2}/
+
+        // var tel="18617564321"
+        // console.log(/\d{11}/.test(tel))
+
+
+        // console.log("asdkjaskjhdabb".match(/.{3}/g));
+
+        // 表示匹配""字符
+        // console.log("asdasd".match(/a{0}/g));
+
+        // /z.{7}z/
+        // /[aeiou]{6}/
+        // /[b-df-hj-np-tv-z]{10}/
+
+        // 贪婪匹配
+        // console.log("asdkjaskjhdabb".match(/.{1,5}/g));
+        // console.log("asdkjaskjhdabb".match(/.{0,5}/g));
+        // console.log("color".match(/colou{0,1}r/))
+        // 当,后面没有值，匹配最大，无穷
+        // console.log("asdasdasd".match(/.{1,}/g));
+
+        // console.log(/^.{0}$/.test(str.trim())
+
+        // console.log("asdasdasd".match(/a.{0,}d/g));
+
+        // {0,}     *
+        // {1,}     +
+        // {0,1}    ?
+
+
+        // console.log("colour".match(/colou?r/));
+
+        // console.log('"西游记","三国演义","水浒","红楼梦"'.match(/".*"/g));
+        // console.log('"西游记","三国演义","水浒","红楼梦"'.match(/"[^"]*"/g));
+
+
+        // /[^"]*/
+        // /x{0,3}/
+        // /y*/
+        // /z{4,}/ 
+        // "".split(/[^a-zA-Z]{6}/)
+
+
+        //    .*?    .+? 非贪婪匹配
+        // console.log("《西游记》,《三国演义》,《水浒》,《红楼梦》".match(/《.*?》/g))
+        // console.log("aadaadvdvdfswwdasaasdasdasdasa".match(/a.*?d/g))
+
+        // console.log("<div></div><span></span>".match(/<.*?>/g))
+        // var str="<div></div><span></span>".replace(/<.*?>/g,function(item){
+        //      return '"'+item.slice(1,-1)+'"';
+        // })
+        // console.log(str);
+
+        // console.log("3[ab]4[cd]".match(/\d\[.+?\]/g))
+    </script>
+</body>
+</html>

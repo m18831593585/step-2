@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // scroll 滚动条事件
+        // mousewheel
+        document.addEventListener("mousewheel",mouseHandler);
+        document.addEventListener("DOMMouseScroll",mouseHandler)
+
+        function mouseHandler(e){
+            // console.log(e)
+            var detail;
+            if(e.detail) detail=e.detail;
+            else detail=e.deltaY;
+            console.log(detail)
+            // detail: -1  //火狐
+            /* 
+            谷歌和IE
+                deltaMode: 0
+                deltaX: -0
+                deltaY: -1
+                deltaZ: 0
+                detail: 0
+                wheelDelta: 3
+                wheelDeltaX: 0
+                wheelDeltaY: 3
+             */
+
+       
+        }
+    </script>
+</body>
+</html>

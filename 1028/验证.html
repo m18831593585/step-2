@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery-3.2.1.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <script src="./js/bootstrap.js"></script>
+</head>
+
+<body>
+    <div class="col-xs-3">
+        <div class="form-group  has-feedback">
+            <label class="control-label" for="inputSuccess2">Input with success</label>
+            <input type="text" class="form-control" id="inputSuccess2">
+            <span class="glyphicon  form-control-feedback"></span>
+        </div>
+    </div>
+    <script>
+
+        // glyphicon-ok  glyphicon-remove
+        // has-success  has-error
+        var id;
+
+        init();
+       function init(){
+        var input=document.querySelector("input");
+        input.addEventListener("input",inputHandler);
+       }
+
+        function inputHandler(e){
+            if(id) return;
+            // this input
+            id=setTimeout(function(input){
+                clearTimeout(id);
+                id=undefined;
+                // this window
+                regExpString(input.value);
+            },500,this)
+        }
+
+        function regExpString(value){
+            if(regExpTest(value)){
+                document.querySelector(".has-feedback").className="form-group  has-feedback has-success";
+                document.querySelector(".glyphicon").className="glyphicon glyphicon-ok  form-control-feedback";
+            }else{
+                document.querySelector(".has-feedback").className="form-group  has-feedback has-error";
+                document.querySelector(".glyphicon").className="glyphicon glyphicon-remove  form-control-feedback";
+            }
+        }
+
+
+        function regExpTest(value){
+            // return /^[a-zA-Z]\w{7,31}$/.test(value);
+            // return /^\w+@\w+\.\w{2,4}$/.test(value);
+            // return /^\w+@\w+\.(com|net|edu|cn)(\.(cn|cc|jp|tw))?/.test(value);
+            // return /^[1-9]$|^[12]\d$|^3[01]$/.test(value);
+            // return /^\d$|^[1-9]\d$|^1\d{2}$|^2[0-4]\d$|^25[0-5]$/.test(value);
+            // return /^(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])(\.(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])){3}$/.test(value);
+            // 判断出生日期
+            // return /^(19\d{2}|20[01]\d|202[01])-(((0[13578]|1[02])-(0[1-9]|[12]\d|3[01]))|((0[2469]|11)-(0[1-9]|[12]\d|30)))$/.test(value);
+        }
+    </script>
+</body>
+
+</html>

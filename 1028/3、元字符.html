@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var str="abcdef";
+        // console.log(str.match(/cd/));
+
+
+        // console.log("colors".match(/color/));
+
+        // console.log("catcotcdt".match(/cot/g))
+
+        // .  通配符  匹配任意一个字符
+        // console.log("catcotcdt".match(/c.t/g));
+        // console.log("caatcotcdt".match(/c..t/g));
+        // console.log("caatcotcdt".match(/c........t/g));
+
+        // 使用\转义含有其他含义字符
+        // console.log("catc.tcot".match(/c\.t/g))
+
+
+        // []代表其中任意一个字符
+        // console.log("catcbtcdt".match(/c[ab]t/g))
+        // 匹配一个a或者一个b 相同字符无意义
+        // console.log("catcbtcdt".match(/[aba]/g))
+
+        // .到了[]内，就是字符.，不再是通配符
+        // console.log("abndekja".match(/a[.c]n/))
+        // []内在匹配 [ ]都需要使用\转义  （） {}
+        // console.log("abndekja".match(/a[\[\]]n/))
+
+        // console.log('abskdsd'.match(/[a-z]/))
+        // console.log('abskdsd'.match(/[a-zA-Z]/))
+        // console.log('abskdsd'.match(/[a-zA-Z0-9]/))
+        // console.log("aaaaddsdfsdf".match(/[a-Z]/));
+        // console.log("aaaaddsdfsdf".match(/[A-z]/));//会包含90-97之间的非字母字符
+
+        // console.log("31".match(/[1-31]/));//不能匹配1-31
+
+        // /[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/
+
+
+        // 反义字符  ^写在[]的最前面表示[]内的内容都不要，但是如果^在[]内不是最前面，表示^字符
+        // console.log("catcotcdt".match(/c[^o]t/g));
+        // console.log("catcotcdtc^t".match(/c[a^]t/g));
+
+        // console.log("catcotcdtc^t".match(/c[^\^]t/g))
+        // console.log("catcotcdtc^t".match(/c[^^]t/g))
+
+        // /[a-zA-Z0-9_]/   \w
+        // console.log("abcd123ABe_f.*?".match(/\w/g))
+
+        // /[^a-zA-Z0-9_]/   \W
+
+        // [0-9]    \d
+
+        // [^0-9]    \D
+
+        // 空白字符   \s
+        // 非空白字符  \S
+
+        // console.log("ab  cd".match(/\s/g));
+        // console.log("  asd asdasd asdklasd  asda dssa asd ".replace(/\s/g,""));
+
+
+        // console.log("ab  cd".match(/\S/g))
+    </script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+        // 数组解构
+        // var a=1;
+        // var b=2;
+        // var c=3;
+        // var arr=[1,2,3];
+
+        // var arr=[1,2,3];
+        // 将数组中的元素按照顺序赋值给a,b,c三个变量
+        // var [a,b,c]=arr;
+        // console.log(a,b,c);
+
+        // 交换
+        // var a=3,b=4;
+        // [a,b]=[b,a];
+        // console.log(a,b)
+
+
+        // var arr=[1,2,3];
+        // var [a,b]=arr;
+        // console.log(a,b);//a:1,b:2
+        // var [a,b,c,d]=arr;
+        // console.log(a,b,c,d);//a:1,b:2,c:3,d:undfined
+
+        // var [a,b,c,d=0]=arr;
+        // console.log(a,b,c,d);//a:1,b:2,c:3,d:0
+
+        // var [a,b=0]=arr;
+        // console.log(a,b);//a:1,b:2
+
+        // function fn([a,b=0]){
+
+        // }
+
+        // fn([3]);
+
+        // function fn(a,b=0){
+
+        // }
+        // fn(3);
+
+
+        // function fn([a,b=0]=[1,2]){
+        //     console.log(a,b);
+        // }
+        // fn([3,4]);
+        // fn([3]);
+        // fn(); 
+
+
+
+        // 对象解构
+
+        // 对象解构按key解构,没有顺序
+
+        // var obj={a:1,b:2};
+        // var {b,a}=obj;
+        // console.log(a,b);
+
+
+        // function fn({a=0,b=0}){
+        //     console.log(a,b);
+        // }
+
+        // fn({b:10});
+        // fn({a:5});
+
+
+        // function fn({a,b,c=0}={c:10,b:20,a:5}){
+        //     console.log(a,b,c);
+        // }
+
+        // fn({a:6});
+        // fn({b:10});
+        // fn({});
+        // fn();
+
+
+        // var obj={a:1,b:2,c:{d:20}};
+        // var {a,b,c:{d}}=obj;
+        // console.log(a,b,d)
+
+
+        // var obj={a:1,b:2,c:{a:10,b:20}};
+        // 解构时的冒号就是起别名
+        // 解构时的等号就是赋初值
+        // var {a,b,c:{a:a1,b:b1}}=obj;
+        // console.log(a,b,a1,b1)
+
+        // var {a,b,c:{a:a1,b:b1=0,c=0}}={a:1,b:2,c:{a:10,b:20}};
+
+
+    //     let obj = {
+    //         p: [
+    //             'Hello',
+    //             {
+    //                 y: 'World'
+    //             }
+    //         ]
+    //     };
+
+    //    var {p:[a,{y}]}=obj;
+    //    console.log(a,y);
+
+        // var obj={
+        //     x:{x:[3,6],y:[7,9],x1:{x:{x:10,y:"string"}}}
+        // }
+
+        // var {x:{x:[a,b],y:[c,d],x1:{x:{x,y:{length:len}}}}}=obj;
+        // console.log(a,b,c,d,x,len)
+
+
+
+        // var {min,max,random:r}=Math;
+
+        // console.log(min(1,2,3,4,5,6))
+        // console.log(r())
+
+        // var arr=[1,2,3,4];
+        // arr.push()
+        // var {length,push}=arr;
+        // console.log(length)
+        // push(12,13);
+
+        // 实例对象拆解时，注意不能拆解实例化方法，只能拆解实例化属性，静态属性，和静态方法
+
+
+            // var {from}=Array;
+            // var arr=from(document.querySelectorAll("div"));
+            // console.log(arr);
+
+        
+
+            // ...的使用
+        // var obj={a:1,b:2,c:3};
+        // var o={...obj};
+        // obj.a=10;//复制对象
+        // console.log(o)
+
+        // var obj={a:1,b:2,c:{a:10,b:20}};
+        // var o={...obj};
+        // obj.c.a=100;//浅复制
+        // console.log(o);
+
+
+        // function fn(a,b,...arr){
+        //     console.log(a,b,arr);
+        // }  
+        // function fn(...[{a,b}]){
+        //     console.log(a,b);
+        // }  
+
+
+
+        // function fn(...[a,b]){
+        //     console.log(a,b)
+        // }
+        // fn(3,4);
+
+        // function fn1([a,b]){
+        //     console.log(a,b);
+        // }
+        // fn1([3,4]);
+
+        // // fn(3,4,5,6,7,8);
+        // fn({a:1,b:2})
+
+
+        
+    </script>
+</body>
+
+</html>

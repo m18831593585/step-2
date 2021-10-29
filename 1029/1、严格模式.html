@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <script>
+        // console.log(/a/.test("abc"));
+        // console.log(/a/g.test("abcd"));
+
+        // 同一个正则表达式不要连用test
+        // var reg=/a/;
+        // console.log(reg.test("cabc"));
+        // console.log(reg.test("cdade"));
+
+        // ES5后期
+        "use strict";
+
+        // 未定义不能使用
+        //  a=3;
+
+
+        // 函数不能出现同名参数
+        // function fn(a,a){
+
+        // }
+
+
+        // 不能使用with
+            // var div=document.querySelector("div");
+            // with(div.style){
+            //     width="50px";
+            //     height="50px";
+            //     backgroundColor="red";
+            // }
+        
+            // width只能修改这个对象已有的属性名，如果没有的属性，则认为是作用域内的变量
+        // var c=10;
+        // var obj={a:1,b:2};
+        // with(obj){
+        //     a=10;
+        //     b=20;
+        //     c=30;
+        // }
+        // console.log(obj,c);
+
+
+
+        // 只读属性
+        // var str="aasd"
+        // str.length=3;
+
+        // var obj={a:1,b:2};
+        // Object.defineProperty(obj,"c",{
+        //     writable:false,
+        //     value:3
+        // })
+        // obj.c=10;
+
+
+        // 不能使用八进制
+        // var n=076;
+
+
+        // 不能删除不可删除属性
+        // var arr=[];
+        // delete arr.length;
+
+        // var obj={a:1};
+        // Object.defineProperty(obj,"b",{configurable:false,value:10});
+        // delete obj.b;
+
+
+        // 反射  将字符串反射为表达式或者变量
+        // console.log(eval("10+20"));
+
+
+        // eval=10;
+
+
+
+        // console.log(this)
+
+        // function fn(){
+        //     console.log(this)
+        // }
+        // fn();
+
+        // setTimeout(function(){
+        //     console.log(this)
+        // },100)
+
+        // var a=10;
+        // var obj={
+        //     a:1,
+        //     b:this.a,
+        //     c:function(fn){
+        //         // console.log(this)
+        //         fn();
+        //     }
+        // }
+
+        // function fn(){
+        //     console.log(this)
+        // }
+        // obj.c(fn);
+
+
+        // function fn1(f){
+        //     f();
+        // }
+
+        // function fn2(){
+        //     console.log(this)
+        // }
+        // fn1(fn2);
+
+
+        // var arr=[1,2,3];
+        // arr.forEach(function(){
+        //     console.log(this);
+        // })
+
+
+
+        // 回调函数与函数直接调用时this指向一致
+        // 非严格模式时 window
+        // 严格模式时  undefined
+        // 其中setTimeout和setInterval特殊，在任何情况下指向window
+    </script>
+    <script type="module">
+        // 自动严格模式
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        // symbol就是一个永远不重复的值
+        // 对象的key可以是string或者Symbol
+        // 作为对象的key来使用，目的是让key唯一
+        // var a="c";
+        // var d=Symbol();
+        // var e=Symbol();
+        // var obj={
+        //     a:1,
+        //     b:2,
+        //     [a]:3,
+        //     [d]:4,
+        //     [Symbol()]:10
+        // }
+
+        // // obj.a=10;
+        // // obj.a=10;
+        // // obj["a"]=50;
+
+        // obj[d]=20;
+        // obj[e]=30;
+
+        // obj[d]=100;
+        
+        // // console.log(obj)
+        // for(var key in obj){
+        //     console.log(key)
+        // }
+
+
+
+        // 去除魔术字符串
+        const LEFT=Symbol(),
+              RIGHT=Symbol(),
+              TOP=Symbol(),
+              BOTTOM=Symbol();
+        const list=[LEFT,TOP,RIGHT,BOTTOM];
+        var x=0,y=0;
+        var state,div;
+
+        init();
+        function init(){
+            div=document.querySelector("div");
+            setInterval(setDivMove,16);
+            document.addEventListener("keydown",keyHandler);
+        }
+
+        function keyHandler(e){
+           state=list[e.which-37];
+           console.log(state);
+        }
+
+
+        function setDivMove(){
+            switch(state){
+                case LEFT:
+                    x--;
+                break;
+                case RIGHT:
+                    x++;
+                break;
+                case TOP:
+                    y--;
+                break;
+                case BOTTOM:
+                    y++;
+                break;
+            }
+            div.style.left=x+"px"
+                div.style.top=y+"px"
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // console.log(/^a.*/.test("abced"));
+        // console.log(/a.*d$/.test("abced"));
+
+        // console.log(/^\w{6}$/.test("abcdef"))
+
+        // 首字不能是数字和下划线，整个必须是字母数字下划线 8-32
+        // /^[a-zA-Z]\w{7,31}$/
+        // /\w+@\w+\.\w{2,4}/
+
+        // |   或者
+
+        // /c[ab]t/
+        // /c[ab][td]/
+        // /cat|cbd/
+        // /a|c/ === /[ac]/
+
+        // /^[1-9]$|^[12]\d$|^3[01]$/.test(value);
+        
+        // console.log("abasde".match(/|ab|as/g))
+
+
+        // ()组
+
+        // 1、可以让很多或者部分作为一整块，还可以将多个部分作为整块做重复
+        // 2、match或者repalce可以作为筛选部分处理
+        // 3、重复筛选 ()\1+  ()\1*
+        // 4、断言 前置肯定断言  前置否定断言  后置肯定断言  后置否定断言
+
+
+        // console.log("1234567890".match(/^(\d{3})(\d{4})(\d{3})$/).slice(1))
+        // console.log("15[abc]".match(/(\d+)\[([a-zA-Z]+)\]/).slice(1))
+        // console.log("《西游记》,《三国演义》,《水浒》,《红楼梦》".match(/《(.*?)》/))
+
+        // var arr=[];
+        // var str="《西游记》,《三国演义》,《水浒》,《红楼梦》".replace(/《(.*?)》/g,function(item,$1){
+        //     // arr.push($1);
+        //     return $1;
+        // })
+        // var str="《西游记》,《三国演义》,《水浒》,《红楼梦》".replace(/《(.*?)》/g,"$1")
+
+
+        // var str="18617895654".replace(/^(\d{3})\d{4}(\d{4})$/g,"$1****$2")
+        // console.log(str)
+      
+
+
+        //    var str="5[ab]3[cd]".replace(/(\d+)\[([a-zA-Z]+)\]/g,function(item,$1,$2){
+        //        return $2.repeat($1);
+        //    })
+        //    console.log(str);
+            // "abababababcdcdcd"
+
+
+            // var str="2[2[ab]3[cd]4[2[ac]]]"
+            // var str="2[2[2[ab]2[cd]]3[c]]"
+
+
+        //     function parse(str){
+        //         if(!/(\d+)\[([a-zA-Z]+)\]/g.test(str)) return str;
+        //         str=str.replace(/(\d+)\[([a-zA-Z]+)\]/g,function(item,$1,$2){
+        //             return $2.repeat($1);
+        //         })
+        //         return parse(str);
+        //     }
+
+
+        //    str= parse(str);
+        //    console.log(str);
+
+            // "a{7}b{5}c{5}"
+        // console.log("aaaaaaabbbbbcccccd".match(/([a-zA-Z])\1+/g));//至少重复2个
+        // console.log("aaaaaaabbbbbcccccd".match(/([a-zA-Z])\1*/g));//只有一个就可以
+        // console.log("askdqjhfkjsancakjsdaskjhdaskjfhjhdasjdhashjkd".split("").sort().join("").replace(/([a-zA-Z])\1*/g,function(item){
+        //     return item[0]+"{"+item.length+"}";
+        // }))
+
+
+
+        // 断言 前置肯定断言  前置否定断言  后置肯定断言  后置否定断言
+        // 后置肯定断言
+        // console.log("abacad".replace(/a(?=c)/g,"0"));
+        // 后置否定断言
+        // console.log("abacad".replace(/a(?!c)(?!d)/g,"0"));
+
+        // console.log("30+20=50".match(/\d+$/g))
+        // 条件不占位
+        // console.log("30+20=50".match(/^(?=\d+)./g))
+
+            // 前置肯定断言
+        // console.log("bacada".replace(/(?<=c)a/g,"0"));
+        // 前置否定断言
+        // console.log("bacada".replace(/(?<!c)a/g,"0"));
+
+
+
+        // console.log("《西游记》,《三国演义》,《水浒》,《红楼梦》".match(/(?<=《).*?(?=》)/g))
+        // console.log("\u9fa5")
+        // console.log("\u4e00")
+    </script>
+</body>
+</html>
