@@ -8,8 +8,18 @@
 
 
 <script>
-    var str="2000-01-01"
-    console.log(str.match(/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/g))
+    // var str="2000-01-01"
+    // console.log(str.match(/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/g))
+    var b=10;
+    (function b(){
+        b=20;
+        console.log(window.b)
+        console.log(b,"__")
+        console.log(window.b)
+        console.log(this.b)
+
+    })()
+    console.log(b)
 </script>
 </body>
 </html>
