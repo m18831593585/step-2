@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="module">
+
+        
+        // import A from "./js/A.js";
+        import B from "./js/B.js";
+        // as 起别名
+        import {obj,fns,num as nums} from "./js/Utils.js";
+
+
+        var num=10;
+        // var a=new A("张三");
+        // console.log(a);
+        // a.play();
+
+        // var b=new B("张三",20);
+        // console.log(b.name);
+        // b.play();
+        // b.run();
+
+        console.log(obj);
+        fns();
+        console.log(num,nums);
+
+    </script>
+</body>
+</html>

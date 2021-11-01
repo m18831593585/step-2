@@ -126,6 +126,7 @@ var Utils = (function () {
             img.src = img.sourceArr[img.n];
             return false;
         },
+        
         dragOn: function (elem, rect) {
             elem.addEventListener("mousedown", this.mouseHandler);
             elem.self = this;

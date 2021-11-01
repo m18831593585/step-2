@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .ball {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-radius: 50px;
+        }
+
+        .box {
+            width: 800px;
+            height: 400px;
+            border: 1px solid #000;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+
+</div>
+<script type="module">
+    // 帧频   60帧
+    // var time=Date.now();
+    // var id;
+    // var i=0;
+    // animation();
+
+    // 非活动窗口 会停止动画等待活动窗口重新调用
+    // function animation(){
+    //    id=requestAnimationFrame(animation);
+    //     // for(var i=0;i<1000000000;i++){}
+    //     i++;
+    //     if(i>5){
+    //         // 取消帧动画
+    //         cancelAnimationFrame(id);
+    //         return;
+    //     }
+    //     console.log(Date.now()-time);
+    //     time=Date.now();
+    // }
+
+
+    // setInterval(function(){
+    //     for(var i=0;i<1000000000;i++){}
+    //     console.log(Date.now()-time);
+    //     time=Date.now();
+    // },16);
+
+
+    // var ball=document.querySelector(".ball");
+    // var x=1,y=1,speedX=2,speedY=2;
+    // animation();
+
+    // function animation(){
+    //     requestAnimationFrame(animation);
+    //     if(y>=350 || y<=0) speedY=-speedY;
+    //     if(x>=750 || x<=0) speedX=-speedX;
+    //     x+=speedX;
+    //     y+=speedY;
+    //     ball.style.left=x+"px";
+    //     ball.style.top=y+"px";
+
+    // }
+
+
+    //  import Ball from "./js/Ball.js";
+
+
+    //  var arr=[];
+    // for(var i=0;i<20;i++){
+    //     let b=new Ball();
+    //     b.appendTo(".box")
+    //     arr.push(b);
+    // }
+
+    // animation();
+    // function animation(){
+    //     requestAnimationFrame(animation);
+    //     arr.forEach(item=>{
+    //         item.update();
+    //     })
+    // }
+
+
+    // for(var i=0;i<20;i++){
+    //     let b=new Ball();
+    //     b.appendTo(".box")
+    // }
+
+    // animation();
+    // function animation(){
+    //     requestAnimationFrame(animation);
+    //     Ball.update();
+    // }
+
+
+    import Utils from "./js/Utils.js";
+    import Ball from "./js/Ball.js";
+
+    var time = 30;
+    animation();
+
+    function animation() {
+        requestAnimationFrame(animation);
+        create();
+        Ball.update();
+    }
+
+    function create() {
+        time--;
+        if (time > 0) return;
+        time = Utils.random(30, 80);
+        var b = new Ball();
+        b.appendTo(".box");
+    }
+</script>
+</body>
+</html>

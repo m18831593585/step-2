@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="module">
+    import CheckBox from "./js/CheckBox.js";
+
+    init()
+
+    function init(){
+        let arr=["111", "222", "333"]
+
+        arr.forEach(item=>{
+            let ck = new CheckBox(item, "arr")
+            ck.appendTo(document.body)
+            ck.addEventListener("CHECKED_EVENT", checkedHandler)
+        })
+
+
+    }
+
+    function checkedHandler(){
+
+    }
+
+</script>
+</body>
+</html>

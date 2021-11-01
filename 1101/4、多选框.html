@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .clear::after {
+            content: "";
+            display: block;
+            visibility: hidden;
+            clear: both;
+            height: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="div1 clear">
+
+</div>
+<div class="div2 clear">
+
+</div>
+<div class="div3 clear">
+
+</div>
+<script type="module">
+    import CheckBox from "./js/CheckBox.js";
+    import Radio from "./js/Radio.js";
+
+
+    var hobby = ["游泳", "跑步", "电影", "音乐", "舞蹈"];
+    hobby.forEach(item => {
+        let ck = new CheckBox(item, "hobby");
+        ck.addEventListener(CheckBox.CHECKED_CHANGE_EVENT, checkedHandler);
+        ck.appendTo(".div1");
+    })
+
+    function checkedHandler(e) {
+        console.log(e)
+    }
+
+
+    var arr = ["男", "女"];
+    arr.forEach(item => {
+        let radio = new Radio(item, "sex");
+        radio.appendTo(".div2");
+    })
+
+    var list = ["非常满意", "满意", "一般", "不满意"];
+    list.forEach(item => {
+        let radio = new Radio(item, "satisfied");
+        radio.appendTo(".div3");
+    })
+</script>
+</body>
+</html>

@@ -3,16 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        ul {
+            list-style: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            margin: 0;
+            padding: 0;
+            z-index: 99;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        li {
+            padding: 10px 20px;
+            background-color: rgb(0, 183, 255);
+            user-select: none;
+        }
+
+        li:hover {
+            background-color: skyblue;
+        }
+
+
+
+
+    </style>
 </head>
 <body>
+<ul class="hidden">
+    <li>新建</li>
+    <li>复制</li>
+    <li>剪切</li>
+    <li>粘贴</li>
+    <li>删除</li>
+</ul>
+<!--<div class="box1"></div>
 
 <script>
-    document.addEventListener("mousedown", fn)
-    function fn(e){
-        console.log(e)
+    let box1
+    init()
+
+    function init() {
+        box1 = document.querySelector(".box1")
+        document.addEventListener("keydown", keydownHandler)
+        Object.assign(box1.style, {
+            width: "100px",
+            height: "100px",
+            background: "red",
+            position: "absolute",
+            top: 0,
+            left: 0,
+        })
     }
 
+    function keydownHandler(e) {
+        if (e.which === 37) box1.style.left = box1.offsetLeft - 1 + "px"
+        if (e.which === 38) box1.style.top = box1.offsetTop - 1 + "px"
+        if (e.which === 39) box1.style.left = box1.offsetLeft + 1 + "px"
+        if (e.which === 40) box1.style.top = box1.offsetTop + 1 + "px"
+    }
 
+</script>-->
+
+<script>
+
+    const ulEl = document.querySelector("ul")
+    init()
+
+    function init() {
+        console.log(ulEl)
+        document.addEventListener("contextmenu", contextmenuHandler)
+        ulEl.addEventListener("mouseleave", mouseleaveHandler)
+        ulEl.addEventListener("click", clickHandler)
+
+        // console.log(Number((document.styleSheets[0].rules[4].style.width).match(/[0-9]+/g)))
+    }
+
+    function contextmenuHandler(e) {
+        console.log("contextmenu handled")
+        e.preventDefault()
+        ulEl.classList.remove("hidden")
+        console.log(e.clientX)
+        ulEl.style.left = e.clientX - 20 + "px"
+        ulEl.style.top = e.clientY - 20 + "px"
+    }
+
+    function mouseleaveHandler(e) {
+        console.log("mouseleave handled")
+        ulEl.classList.add("hidden")
+    }
+
+    function clickHandler(e) {
+        console.log("click handled")
+        console.log(Array.from(this.children).indexOf(e.target))
+        switch (Array.from(this.children).indexOf(e.target)) {
+            case 0:
+                createBox(e)
+                break
+            case 1:
+                break
+            case 2:
+                break
+            case 3:
+                break
+            case 4:
+                break
+        }
+
+
+        ulEl.classList.add("hidden")
+    }
+
+    function createBox(e){
+        let box = document.createElement("div")
+        Object.assign(box.style,{
+            width:"50px",
+            height:"50px",
+            position: "absolute",
+            boxSizing: "border-box",
+            background: randomColor()
+        })
+        box.style.left = (e.clientX - Number((box.style.width).match(/[0-9]+/g)) / 2) + "px"
+        box.style.top = (e.clientY - Number((box.style.height).match(/[0-9]+/g)) / 2) + "px"
+        document.body.appendChild(box)
+        box.addEventListener("click", selectHandler)
+    }
+
+    function selectHandler(){
+        console.log(this)
+        selectBox(this)
+    }
+
+    function selectBox(box){
+        console.log(box)
+    }
+
+    function randomColor(){
+        return "#"+(~~(Math.random()*16)).toString(16)+(~~(Math.random()*16)).toString(16)+(~~(Math.random()*16)).toString(16)+(~~(Math.random()*16)).toString(16)+(~~(Math.random()*16)).toString(16)+(~~(Math.random()*16)).toString(16)
+    }
 
 
 </script>

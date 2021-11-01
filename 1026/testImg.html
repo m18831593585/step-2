@@ -10,11 +10,12 @@
 
 <script>
 
-    let imgArr=["1.jpg","2","3","4"]
-    TestUtils.loadImage(imgArr,loadFinish,"./img/",".jpg")
-
-    function loadFinish(list){
-        console.log(list)
+    let imgArr=["1.jpg","21","31","41"]
+    // TestUtils.loadImage(imgArr,loadFinish,"./img/",".jpg")
+    TestUtils.loadImage(imgArr,"","./img/",".jpg")
+    document.addEventListener("IMG_LOAD_FINISH", loadFinish)
+    function loadFinish(evt){
+        console.log(evt.list)
     }
 
 </script>

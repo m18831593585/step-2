@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        class Human{
+            nose=1;
+            mouth=1;
+            eyes=2;
+            ear=2;
+            hand=2;
+            foot=2;
+            static num=1;
+            // 构造函数  入口函数
+           constructor(name){
+            //  console.log(this)  指实例化的对象
+                this.name=name;
+           }
+        //    实例化方法 必须通过实例化后的对象调用
+            cook(){
+                console.log("会做饭");
+                console.log(this);
+            }
+            develop(){
+                console.log("会编程");
+                console.log(this);
+            }
+            playGame(){
+                console.log("玩游戏")
+                console.log(this);
+                // Human.play()
+            }
+            // 静态方法 可以直接通过类调用
+            static play(){
+                console.log("play");
+                console.log(Human.num)
+                // var a=new Human();
+                // console.log(a.eyes)
+                // 不能使用this 这里的this和实例化的this是不同
+                // 这里的this是Human类
+            }
+
+        }
+        // new Human()  实例化类别  执行类中constructor，类中的constructor与类名相等
+        var a=new Human("王伟");
+        var b=new Human("丁雪");
+        // console.log(a,b)
+        // a.develop();
+        // b.cook();
+
+        // console.log(a.constructor===Human)
+        // console.log(arr.constructor===Array)
+
+        // 只要能找到Human类的地方，都可以直接调用
+        // console.log(Human.num);
+        // Human.play();
+
+
+
+        // class Array{
+        //     length=0;
+        //     constructor(){
+
+        //     }
+        //     push(){
+
+        //     }
+        //     slice(){
+
+        //     }
+        // 不是针对某个数组的
+        //     static from(){
+
+        //     }
+        //     static isArray(){
+
+        //     }
+        // }
+
+        // var arr=new Array();
+        // arr.push();
+        // arr.slice();
+        // Array.from();
+        // Array.isArray();
+
+
+        // 和某一个对象没有关系的方法可以使用这个方法集
+
+        // class Math{
+        //     static sin(){
+
+        //     }
+        //     static min(){
+
+        //     }
+        // }
+
+        // Math.sin();
+
+
+        // 继承
+        // 基类 父类  子类  超类 
+        // 基类  JS所有基类都是Object
+
+        // 假设A就是基类
+        class A{
+            name="a";
+            static a=10;
+            constructor(name){
+                if(name) this.name=name;
+                console.log("aaaaaa")
+            }
+            play(){
+                console.log("play");
+            }
+           static run(){
+                console.log("run")
+            }
+        }
+        // 继承 extends
+        class B extends A{
+            age=0;
+            // 因为B继承A，所以在实例化B的时候就自动执行了A的构造函数，
+            // 在这里重写了构造函数，意味着脱离了原有继承执行A的构造函数，这样写有违了继承的基本思路（必须要执行超类构造函数）
+            // 只要在子类中重写构造函数，那么第一句必须写super(参数)
+            constructor(name,age){
+                // this.walk(); 一旦没有执行构造函数，直接使用this就会报错，因为这个时候还没有继承
+                // if(name) this.name=name;
+                super(name);//super就是超类的构造函数
+                if(age) this.age=age;
+            }
+            walk(){
+                console.log("Walk")
+            }
+        }
+
+        class C extends B{
+            //继承后覆盖 override
+            // 如果希望先执行超类中的walk方法内容，在执行新的内容，使用super.walk()
+            // 这样类似于叠加或者扩展walk的方法内容
+            walk(){
+                // super 相当于超类中this
+                super.walk();
+                console.log("run Walk")
+            }
+        }
+
+        class D extends C{
+
+        }
+        class E extends C{
+
+        }
+
+        // A 就是所有类的基类，也是所有类的父类
+        // B 就是C D E的父类
+        // D 就是A B  C的子类
+        // C 就是 D的超类
+        // B 就是C的超类
+
+
+    //     var b=new B("b",10);
+    //     console.log(b.name);
+    //     b.play();
+    // console.log(B.a);
+    // B.run();
+
+        // var c=new C();
+        // console.log(c.name);
+        // c.play();
+        // c.walk();
+
+
+        // ES5 原型式面向对象  babel
+    </script>
+</body>
+</html>
