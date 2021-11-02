@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div1{
+            width: 800px;
+            
+        }
+        .div2{
+            width:1200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1"></div>
+    <div class="div2"></div>
+    <button>按钮</button>
+    <script type="module">
+        import Carousel from "./js/Carousel.js";
+        import TimeManager from "./js/TimeManager.js"
+
+
+        var list=[
+            {img:"./img/a.jpg",date:"2/Nov.2021",info:"食欲拯救计划｜阿一古～是贼拉好吃的延吉啊！"},
+            {img:"./img/b.jpg",date:"1/Nov.2021",info:"徽州古村落赏秋自驾9日攻略！给这个秋天一个说走就走的理由！"},
+            {img:"./img/c.jpg",date:"31/Oct.2021",info:"致，荆棘鸟与淘金先驱者——三赴西澳自驾笔记"},
+            {img:"./img/d.jpg",date:"30/Oct.2021",info:"我是你的俘虏【跟新疆私奔】"},
+            {img:"./img/e.jpg",date:"29/Oct.2021",info:"遇见阳朔的光与影，晨与昏，山与水"},
+        ]
+
+        var arr=[
+            {date:"12/Jul.2021",info:"No Fear in My Heart. 10天4700公里，自由散漫南疆奇遇记。",img:"./img/a1.jpeg"},
+            {date:"11/Jul.2021",info:"128座乐园！284座过山车！我的全球乐园打卡计划持续更新ing",img:"./img/b1.jpg"},
+            {date:"10/Jul.2021",info:"带着父母旅行的第四年，疫情下的Flag小旗在广州飘～谢谢你们陪着我，会勇敢坚定的走自己的路",img:"./img/c1.jpg"},
+            {date:"09/Jul.2021",info:"念念闽夏｜日子娓娓，一如夏季绵长",img:"./img/d1.jpg"},
+            {date:"08/Jul.2021",info:"30天自驾16座城市，从南到北，一万公里重新认识你。（海南-内蒙古-海南）",img:"./img/e1.jpg"},
+        ]
+        
+        var carousel=new Carousel(list);
+        carousel.appendTo(".div1");
+        
+        var carousel1=new Carousel(arr);
+        carousel1.appendTo(".div2");
+
+
+        var bn=document.querySelector("button");
+        bn.addEventListener("click",function(){
+            carousel.setData(arr);
+        })
+       
+       
+    </script>
+</body>
+</html>

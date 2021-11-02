@@ -1,6 +1,5 @@
 export default class Utils {
     static IMG_FINISH_EVENT = "img_finish_event";
-
     static loadImage(sourceArr, finishHandler, basePath, suffix) {
         if (typeof sourceArr === "string") sourceArr = [sourceArr];
         if (basePath && typeof basePath === "string") {
@@ -30,7 +29,6 @@ export default class Utils {
         img.addEventListener("load", this.loadHandler);
         img.addEventListener("error", this.errorHandler);
     }
-
     static loadHandler(e) {
         this.finishList.push(this.cloneNode(false));
         if (Utils.nextImg(this)) return;
@@ -58,17 +56,14 @@ export default class Utils {
         img.src = img.sourceArr[img.n];
         return false;
     }
-
     static dragOn(elem, rect) {
         elem.addEventListener("mousedown", this.mouseHandler);
         elem.self = this;
         elem.rect = rect;
     }
-
     static dragOff(elem) {
         elem.removeEventListener("mousedown", this.mouseHandler);
     }
-
     static mouseHandler(e) {
         if (e.type === "mousedown") {
             // this div
@@ -118,7 +113,6 @@ export default class Utils {
             this.removeEventListener("mouseup", this.div.self.mouseHandler);
         }
     }
-
     static randomColor(a, r, g, b) {
         if (a === undefined) a = 1;
         var color = "rgba(";
@@ -128,19 +122,17 @@ export default class Utils {
         color += (a < 0 ? Math.random().toFixed(2) : a) + ")";
         return color;
     }
-
-    static setCss(str) {
-        if (document.styleSheets.length === 0) {
-            var style = document.createElement("style");
+    static random(min,max){
+        return ~~(Math.random()*(max-min)+min);
+    }
+    static setCss(str){
+        if(document.styleSheets.length===0){
+            var style=document.createElement("style");
             document.head.appendChild(style);
         }
-        var styleSheet = document.styleSheets[document.styleSheets.length - 1];
-        str.replace(/\n/g, "").replace(/(.*?)\{(.*?)\}/g, function (t, $1, $2) {
-            styleSheet.addRule($1, $2, styleSheet.cssRules.length);
+        var styleSheet=document.styleSheets[document.styleSheets.length-1];
+        str.replace(/\n/g,"").replace(/(.*?)\{(.*?)\}/g,function(t,$1,$2){
+            styleSheet.addRule($1,$2,styleSheet.cssRules.length);
         })
-    }
-
-    static random(min, max){
-        return ~~(Math.random()*(max-min)+min)
     }
 }

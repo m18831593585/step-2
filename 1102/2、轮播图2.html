@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     
+        body{
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+        }
+        .carousel{
+            width: 100%;
+            height: 33.3vw;
+            position: relative;
+            overflow: hidden;
+            min-width: 1200px;
+            min-height: 400px;
+        }
+        .carousel>.img-con{
+            width: 700%;
+            position: absolute;
+            font-size: 0;
+            left:0;
+        }
+        .carousel>.img-con>img{
+            width: calc(100%/7);
+        }
+        .dot{
+            list-style: none;
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            bottom: 30px;
+            left: 50%;
+            transform: translate(-50%,0);
+        }
+        .dot>li{
+            width: 20px;
+            height: 20px;
+            border-radius: 20px;
+            border: 2px solid red;
+            float: left;
+            margin-left: 10px;
+            transition:  all 0.5s;
+        }
+        .dot>li:first-child{
+            margin-left: 0;
+        }
+
+        .left,.right{
+            position: absolute;
+            top: 50%;
+            transform: translate(0,-50%);
+        }
+        .left{
+            left:20px;
+        }
+        .right{
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel">
+        <div class="img-con">
+            <img src="./img/e.jpg">
+            <img src="./img/a.jpg">
+            <img src="./img/b.jpg">
+            <img src="./img/c.jpg">
+            <img src="./img/d.jpg">
+            <img src="./img/e.jpg">
+            <img src="./img/a.jpg">
+        </div>
+        <ul class="dot">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <img src="./img/left.png" class="left">
+        <img src="./img/right.png" class="right">
+    </div>
+    <script>
+            var imgCon,dot,left,right,prev,id;
+            var pos=1,moveBool=false;
+            init();
+            function init(){
+                imgCon=document.querySelector(".img-con");
+                dot=document.querySelector(".dot");
+                left=document.querySelector(".left");
+                right=document.querySelector(".right");
+                dot.addEventListener("click",dotClickHandler);
+                left.addEventListener("click",bnClickHandler);
+                right.addEventListener("click",bnClickHandler);
+                window.addEventListener("resize",imgConMove);
+                imgConMove(false);
+            }
+
+            function dotClickHandler(e){
+                if(moveBool) return;
+                if(e.target.nodeName!=="LI") return;
+                pos=Array.from(dot.children).indexOf(e.target)+1;
+                imgConMove();
+            }
+
+            function bnClickHandler(e){
+                if(moveBool) return;
+                this===left ? pos-- : pos++;
+                imgConMove();
+            }
+
+            function imgConMove(bool=true){
+               if(bool) imgCon.style.transition="all 0.5s";
+               moveBool=true;
+                imgCon.style.left=(-pos*imgCon.firstElementChild.offsetWidth)+"px";
+                if(pos===6 || pos===0){
+                  id=setTimeout(jumpPos,500);
+                }else{
+                    changePrev();
+                    id=setTimeout(clearTime,500);
+                }
+                
+            }
+
+            function clearTime(){
+                clearTimeout(id);
+                moveBool=false;
+            }
+
+            function jumpPos(){
+                pos=pos===6 ? 1 : 5;
+                imgCon.style.transition="none";
+                imgCon.style.left=(-pos*imgCon.firstElementChild.offsetWidth)+"px";
+                changePrev();
+                clearTime();
+            }
+
+            function changePrev(){
+                
+                if(prev){
+                    prev.style.backgroundColor="rgba(255,0,0,0)";
+                }
+              
+                prev=dot.children[pos-1];
+                prev.style.backgroundColor="rgba(255,0,0,1)";
+            }
+    </script>
+</body>
+</html>

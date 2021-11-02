@@ -20,9 +20,10 @@ export default class Ball {
     }
     randomProperty() {
         this.rect = this.elem.parentElement.getBoundingClientRect();
+        console.log(this.rect)
         this.w = Utils.random(40, 80);
-        this.x = Utils.random(0, this.rect.width - this.w);
-        this.y = Utils.random(0, this.rect.height - this.w);
+        this.x = Utils.random(1, this.rect.width - this.w);
+        this.y = Utils.random(1, this.rect.height - this.w);
         this.speedX = Utils.random(-6, 6)
         this.speedY = Utils.random(-6, 6)
         Object.assign(this.elem.style, {

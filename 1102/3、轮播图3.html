@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .carousel {
+            width: 100%;
+            height: 33.3vw;
+            min-height: 365px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .img-con {
+            width: 200%;
+            height: 100%;
+            min-width: 1200px;
+            position: absolute;
+            left: 0;
+        }
+
+        .img-con img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .img-con .title {
+            position: absolute;
+            left: 15%;
+            top: 10%;
+            color: white;
+            font-size: 20px;
+            user-select: none;
+        }
+
+        .img-con .day {
+            font-size: 30px;
+        }
+
+        .img-con .image-item {
+            width: 50%;
+            height: 100%;
+            float: left;
+            position: relative;
+        }
+
+        .dot {
+            list-style: none;
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            bottom: 30px;
+            left: 50%;
+            transform: translate(-50%, 0);
+        }
+
+        .dot a {
+            display: block;
+            width: 20px;
+            height: 20px;
+            border-radius: 20px;
+            border: 2px solid red;
+            transition: all 0.5s;
+        }
+
+        .dot > li {
+            margin-left: 10px;
+            float: left;
+        }
+
+        .dot > li:first-child {
+            margin-left: 0;
+        }
+
+        .left, .right {
+            position: absolute;
+            top: 50%;
+            transform: translate(0, -50%);
+        }
+
+        .left {
+            left: 20px;
+        }
+
+        .right {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+<script>
+
+
+    var list = [
+        {img: "./img/a.jpg", date: "2/Nov.2021", info: "食欲拯救计划｜阿一古～是贼拉好吃的延吉啊！"},
+        {img: "./img/b.jpg", date: "1/Nov.2021", info: "徽州古村落赏秋自驾9日攻略！给这个秋天一个说走就走的理由！"},
+        {img: "./img/c.jpg", date: "31/Oct.2021", info: "致，荆棘鸟与淘金先驱者——三赴西澳自驾笔记"},
+        {img: "./img/d.jpg", date: "30/Oct.2021", info: "我是你的俘虏【跟新疆私奔】"},
+        {img: "./img/e.jpg", date: "29/Oct.2021", info: "遇见阳朔的光与影，晨与昏，山与水"},
+    ]
+
+    var imgCon, dot, prev;
+    var itemList = [], bnList = [], pos = 0, direction = "left", x = 0, moveBool = false, speed = 50, autoBool = false,
+        time = 200;
+    const LEFT = Symbol(), RIGHT = Symbol();
+    init();
+
+    function init() {
+        var carousel = document.createElement("div");
+        carousel.className = "carousel";
+        createImageCon(carousel);
+        createDot(carousel);
+        createBnList(carousel);
+        document.body.appendChild(carousel);
+        animation();
+        changePrev();
+        carousel.addEventListener("mouseenter", mouseHandler);
+        carousel.addEventListener("mouseleave", mouseHandler);
+    }
+
+    function mouseHandler(e) {
+        autoBool = e.type === "mouseenter" ? false : (time = 200 && true);
+        // if(e.type==="mouseenter"){
+        //     autoBool=false;
+        // }else{
+        //     autoBool=true;
+        //     time=200;
+        // }
+    }
+
+    function createDot(carousel) {
+        dot = document.createElement("ul");
+        dot.className = "dot";
+        dot.innerHTML = list.reduce((value, item, i) => {
+            return value + `<li><a href='#${i}'></a></li>`;
+        }, "");
+        carousel.appendChild(dot);
+        dot.addEventListener("click", dotClickHandler);
+    }
+
+    function createImageCon(carousel) {
+        imgCon = document.createElement("div");
+        imgCon.className = "img-con";
+        imgCon.appendChild(getImageItem(0));
+        carousel.appendChild(imgCon);
+    }
+
+    function createBnList(carousel) {
+        for (var i = 0; i < 2; i++) {
+            var bn = createBn(i === 0);
+            bn.className = i === 0 ? "left" : "right";
+            carousel.appendChild(bn);
+            bnList.push(bn);
+            bn.addEventListener("click", bnClickHandler);
+        }
+    }
+
+    function createBn(left) {
+        var canvas = document.createElement("canvas");
+        canvas.width = 30;
+        canvas.height = 60;
+        canvas.style.backgroundColor = "rgba(0,0,0,0.4)";
+        var ctx = canvas.getContext("2d");
+        ctx.fillStyle = "#FFF";
+        ctx.shadowBlur = 3;
+        ctx.shadowOffsetX = 2;
+        ctx.shadowOffsetY = 2;
+        ctx.shadowColor = "#666";
+        ctx.beginPath();
+        ctx.moveTo(10, 30);
+        ctx.lineTo(20, 15);
+        ctx.lineTo(20, 45);
+        ctx.closePath();
+        ctx.fill();
+        if (!left) canvas.style.transform = "scale(-1,1) translate(0,-50%)";
+        return canvas;
+    }
+
+    function getImageItem(n) {
+        if (itemList[n]) return itemList[n];
+        var div = document.createElement("div");
+        div.className = "image-item";
+        div.innerHTML = `<img src="${list[n].img}">
+                <div class='title'>
+                    <div>${list[n].date.match(/(\d*)\/(.*)/).slice(1).reduce((value, item, i) => {
+            if (i === 0) value += `<span class='day'>${item}</span>`;
+            else value += "/" + item;
+            return value;
+        }, "")}</div>
+                    <span>${list[n].info}</span>
+            </div>`
+        itemList[n] = div;
+        return itemList[n];
+    }
+
+    function dotClickHandler(e) {
+        if (e.target.nodeName !== "A") return;
+        var index = Array.from(dot.children).indexOf(e.target.parentElement);
+        direction = index > pos ? LEFT : RIGHT;
+        pos = index;
+        createNextImg();
+    }
+
+
+
+    function bnClickHandler(e) {
+        if (this.className === "left") {
+            pos--;
+            if (pos < 0) pos = list.length - 1;
+            direction = RIGHT;
+        } else {
+            pos++;
+            if (pos > list.length - 1) pos = 0;
+            direction = LEFT;
+        }
+        createNextImg();
+    }
+
+
+    function createNextImg() {
+        if (direction === LEFT) {
+            x = 0;
+            imgCon.appendChild(getImageItem(pos));
+        } else if (direction === RIGHT) {
+            imgCon.insertBefore(getImageItem(pos), imgCon.firstElementChild);
+            x = -getImageItem(pos).offsetWidth;
+        }
+        imgCon.style.left = x + "px";
+        moveBool = true;
+        changePrev();
+    }
+
+    function changePrev() {
+        if (prev) {
+            prev.style.backgroundColor = "rgba(255,0,0,0)";
+        }
+        prev = dot.children[pos].firstElementChild;
+        prev.style.backgroundColor = "rgba(255,0,0,1)";
+    }
+
+
+    function animation() {
+        requestAnimationFrame(animation);
+        moveAnimation();
+        autoMove();
+    }
+
+    function moveAnimation() {
+        if (!moveBool) return;
+        if (direction === LEFT) {
+            x -= speed;
+            if (x <= -imgCon.firstElementChild.offsetWidth) {
+                imgCon.firstElementChild.remove();
+                x = 0;
+                moveBool = false;
+            }
+        } else if (direction === RIGHT) {
+            x += speed;
+            if (x >= 0) {
+                imgCon.lastElementChild.remove();
+                x = 0;
+                moveBool = false;
+            }
+        }
+        imgCon.style.left = x + "px";
+    }
+
+    function autoMove() {
+        if (!autoBool) return;
+        time--;
+        if (time > 0) return;
+        time = 200;
+        bnList[1].dispatchEvent(new MouseEvent("click"));
+    }
+
+</script>
+</body>
+</html>

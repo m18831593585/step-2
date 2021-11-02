@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .carousel{
+            width: 100%;
+            height: 33.3vw;
+            min-height: 365px;
+        }
+        .show-img{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            min-width:1200px;
+            position: relative;
+        }
+        .show-img>li{
+            position: absolute;
+            left:0;
+            top:0;
+            width: 100%;
+            height: 100%;
+            transition: all 0.5s;
+        }
+        .show-img img{
+            width: 100%;
+            min-width:1200px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .show{
+            z-index: 1;
+        }
+      
+        .show-img>li>div{
+            position: absolute;
+            left: 15%;
+            top:10%;
+            color:white;
+            font-size: 20px;
+        }
+        .show-img>li>div>div>span{
+            font-size: 30px;
+        }
+        .icon-list{
+            z-index: 2;
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            right: 50px;
+            font-size: 0;
+        }
+        .icon-list>li{
+            margin-top: 10px;
+            height: 67px;
+            border: 2px solid transparent;
+        }
+        .icon-list>li:first-child{
+            margin-top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="carousel">
+        <ul class="show-img">
+            <li>
+                <img src="./img/a.jpg">
+                <div>
+                    <div><span>2</span>/Nov.2021</div>
+                    <span>食欲拯救计划｜阿一古～是贼拉好吃的延吉啊！</span>
+                </div>
+            </li>
+            <li><img src="./img/b.jpg">
+                <div>
+                    <div><span>1</span>/Nov.2021</div>
+                    <span>徽州古村落赏秋自驾9日攻略！给这个秋天一个说走就走的理由！</span>
+                </div>
+            </li>
+            <li><img src="./img/c.jpg">
+                <div>
+                    <div><span>31</span>/Oct.2021</div>
+                    <span>致，荆棘鸟与淘金先驱者——三赴西澳自驾笔记</span>
+                </div>
+            </li>
+            <li><img src="./img/d.jpg">
+                <div>
+                    <div><span>30</span>/Oct.2021</div>
+                    <span>我是你的俘虏【跟新疆私奔】</span>
+                </div>
+            </li>
+            <li><img src="./img/e.jpg">
+                <div>
+                    <div><span>29</span>/Oct.2021</div>
+                    <span>遇见阳朔的光与影，晨与昏，山与水</span>
+                </div>
+            </li>
+        </ul>
+        <ul class="icon-list">
+            <li><a href="#0"><img src="./img/a_icon.png"></a></li>
+            <li><a href="#1"><img src="./img/b_icon.png"></a></li>
+            <li><a href="#2"><img src="./img/c_icon.png"></a></li>
+            <li><a href="#3"><img src="./img/d_icon.png"></a></li>
+            <li><a href="#4"><img src="./img/e_icon.png"></a></li>
+        </ul>
+    </div>
+    <script>
+        /* 
+        2/Nov.2021
+        食欲拯救计划｜阿一古～是贼拉好吃的延吉啊！
+                
+                1/Nov.2021
+        徽州古村落赏秋自驾9日攻略！给这个秋天一个说走就走的理由！
+
+                31/Oct.2021
+        致，荆棘鸟与淘金先驱者——三赴西澳自驾笔记
+
+
+        30/Oct.2021
+        我是你的俘虏【跟新疆私奔】
+
+
+        29/Oct.2021
+        遇见阳朔的光与影，晨与昏，山与水
+         */
+
+
+        var iconList,carousel,prevImg,showImg,prevIcon;
+        init();
+         function init(){
+            iconList=document.querySelector(".icon-list");
+            showImg=document.querySelector(".show-img");
+            carousel=document.querySelector(".carousel");
+            Array.from(showImg.children).forEach(item=>{
+                item.style.opacity=0;
+            })
+            
+            resizehandler();
+            changePrev(0);
+            window.addEventListener("resize",resizehandler);
+            window.addEventListener("hashchange",hashchangeHandler);
+            iconList.addEventListener("click",clickHandler);
+         }
+
+         function resizehandler(e){
+            iconList.style.top=(carousel.offsetHeight-iconList.offsetHeight)/2+"px";
+         }
+
+         function clickHandler(e){
+            if(e.target.nodeName!=="IMG")return;
+           var index=Array.from(iconList.children).indexOf(e.path[2]);
+           changePrev(index)
+         }
+
+
+         function changePrev(pos){
+            if(prevImg){
+                prevImg.className="";
+                prevImg.style.opacity=0;
+            }
+            if(prevIcon){
+                prevIcon.style.borderColor="transparent"
+            }
+            prevIcon=iconList.children[pos];
+            prevIcon.style.borderColor="#FF9D00";
+            prevImg=showImg.children[pos];
+            prevImg.className="show";
+            prevImg.style.opacity=1;
+         }
+
+         function hashchangeHandler(e){
+            var pos=Number(location.hash.slice(1));
+            changePrev(pos);
+         }
+    </script>
+</body>
+
+</html>
