@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+    <script type="module">
+        import StepNumber from "./js/StepNumber.js";
+
+        for(var i=0;i<10;i++){
+            let step=new StepNumber();
+            step.addEventListener(StepNumber.STEP_CHANGE_EVENT,stepChangeHandler)
+            step.appendTo("body")
+        }
+
+        function stepChangeHandler(e){
+            console.log(e)
+        }
+     
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            height: 30px;
+            margin-top: 20px;
+        }
+
+        li {
+            float: left;
+            padding: 0 40px;
+            background-color: skyblue;
+            border: 1px solid #000;
+        }
+
+        table {
+            width: 600px;
+
+            border: 1px solid #000;
+            border-collapse: collapse;
+            overflow: auto;
+        }
+
+        thead th {
+            border: 1px solid #000;
+
+        }
+
+        thead > tr {
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+<form action="#">
+    <label>用户名:</label><input type="text" name="user"><span></span><br>
+    <label>性别:</label><input type="radio" value="男" name="sex" checked><label>男</label><input type="radio" value="女"
+                                                                                              name="sex"><label>女</label><br>
+    <label>年龄:</label><input type="text" name="age"><span></span><br>
+    <label>爱好:</label>
+    <label>游泳</label><input type="checkbox" value="游泳" name="hobby">
+    <label>看书</label><input type="checkbox" value="看书" name="hobby">
+    <label>游戏</label><input type="checkbox" value="游戏" name="hobby">
+    <label>唱歌</label><input type="checkbox" value="唱歌" name="hobby"><br>
+    <label>电话:</label><input type="text" name="tel"><span></span><br>
+    <button>添加</button>
+</form>
+<ul>
+    <li>男</li>
+    <li>女</li>
+</ul>
+<table>
+    <thead>
+    <tr>
+        <th>用户名</th>
+        <th>性别</th>
+        <th>年龄</th>
+        <th>爱好</th>
+        <th>电话</th>
+    </tr>
+    </thead>
+</table>
+
+<script type="module">
+    import Form from './js/form.js';
+
+
+</script>
+<!--
+    1、添加后，男性添加在男性表中，女性添加在女性表中，点击男或女，切换表显示,添加那个性别显示那个表
+    2、添加时，必须正则验证全部通过才可以添加,不能为空，如果有一个验证不通过
+    在后面提示信息
+    3、做历史记录 +分
+ -->
+</body>
+</html>

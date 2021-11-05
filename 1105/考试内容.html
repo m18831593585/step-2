@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            height: 30px;
+            margin-top: 20px;
+        }
+
+        li {
+            float: left;
+            padding: 0 40px;
+            background-color: skyblue;
+            border: 1px solid #000;
+        }
+
+        table {
+            width: 600px;
+
+            border: 1px solid #000;
+            border-collapse: collapse;
+            overflow: auto;
+        }
+
+        thead th, tbody td {
+            border: 1px solid #000;
+
+        }
+
+        thead > tr {
+            height: 30px;
+        }
+
+        tbody td {
+            text-align: center;
+        }
+
+        #alert-msg {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<form action="#">
+    <label>用户名:</label><input type="text" name="user"><span></span><br>
+    <label>性别:</label>
+    <label for="male">男</label><input type="radio" value="男" name="sex" id="male" checked>
+    <label for="female">女</label><input type="radio" value="女" id="female" name="sex"><br>
+    <label>年龄:</label><input type="text" name="age"><span></span><br>
+    <label>爱好:</label>
+    <label>游泳</label><input type="checkbox" value="游泳" name="hobby">
+    <label>看书</label><input type="checkbox" value="看书" name="hobby">
+    <label>游戏</label><input type="checkbox" value="游戏" name="hobby">
+    <label>唱歌</label><input type="checkbox" value="唱歌" name="hobby"><br>
+    <label>电话:</label><input type="text" name="tel"><span></span><br>
+    <button>添加</button>
+    <div id="alert-msg"></div>
+</form>
+<ul>
+    <li>男</li>
+    <li>女</li>
+</ul>
+<table>
+    <thead>
+    <tr>
+        <th>用户名</th>
+        <th>性别</th>
+        <th>年龄</th>
+        <th>爱好</th>
+        <th>电话</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+
+<script>
+    let form, user, sex, age, hobby, tel, fd, currentSex, showTable, alertMsg, timeoutID
+    let maleList = [],
+        femaleList = [],
+        bnList = [],
+
+        person = {}
+
+    init()
+
+    function init() {
+        form = document.querySelector('form')
+        user = form.querySelector('input[name=user]')
+        sex = form.querySelectorAll('input[name=sex]')
+        age = form.querySelector('input[name=age]')
+        hobby = form.querySelectorAll('input[name=hobby]')
+        tel = form.querySelector('input[name=tel]')
+        bnList = document.querySelector('ul')
+        showTable = document.querySelector('table>tbody')
+        alertMsg = document.querySelector('#alert-msg')
+
+        user.addEventListener('input', inputHandler)
+        age.addEventListener('input', inputHandler)
+        tel.addEventListener('input', inputHandler)
+        form.addEventListener('submit', submitHandler)
+        form.addEventListener('reset', resetHandler)
+        bnList.addEventListener('click', bnClickHandler)
+    }
+
+    function bnClickHandler(e) {
+        currentSex = Array.from(bnList.children).indexOf(e.target) ? 0 : 1
+        render()
+    }
+
+    function resetHandler(e) {
+        e.preventDefault()
+        form.querySelectorAll('input[type=text]').forEach(item => item.value = '')
+        sex.forEach(item => item.checked = false)
+        hobby.forEach(item => item.checked = false)
+        sex[0].checked = true
+    }
+
+    function inputHandler(e) {
+        if (timeoutID) return
+        timeoutID = setTimeout(() => {
+            alertMsg.innerHTML = ""
+            if (e.target.name === 'user') verifyUser()
+            else if (e.target.name === 'age') verifyAge()
+            else if (e.target.name === 'tel') verifyTel()
+            clearTimeout(timeoutID)
+            timeoutID=undefined
+        }, 500)
+    }
+
+    function submitHandler(e) {
+        e.preventDefault()
+        fd = new FormData(form)
+        if (!verify()) return
+        generatePerson()
+        pushPersonInfo()
+        render()
+        form.dispatchEvent(new Event('reset'))
+    }
+
+    function verify() {
+        let flag = true
+        alertMsg.innerHTML = ""
+        if (!verifyUser()) flag = false
+        if (!verifyAge()) flag = false
+        if (!verifyHobby()) flag = false
+        if (!verifyTel()) flag = false
+        return flag
+    }
+
+    function verifyUser() {
+        if (!(/^[a-zA-Z0-9_-]{4,16}$/.test(user.value))) {
+            alertMsg.innerHTML += "用户名需满足4到16位（字母，数字，下划线，减号）<br>"
+            return false
+        }
+        return true
+    }
+
+    function verifyAge() {
+        if (!(/^[1-9]\d{0,3}$/.test(age.value))) {
+            alertMsg.innerHTML += "年龄需满足1到3位数字<br>"
+            return false
+        }
+        return true
+    }
+
+    function verifyTel() {
+        if (!(/^1[345789]\d{9}$/.test(tel.value))) {
+            alertMsg.innerHTML += "电话号码不正确<br>"
+            return false
+        }
+        return true
+    }
+
+    function verifyHobby() {
+        let hobbyFlag = false
+        hobby.forEach(item => {
+            if (item.checked) hobbyFlag = true
+        })
+        if (!hobbyFlag) {
+            alertMsg.innerHTML += "请选择爱好<br>"
+            return false
+        }
+        return true
+    }
+
+    function generatePerson() {
+        let data = fd.entries()
+        for (let item of data) {
+            if (item[0] === 'hobby') {
+                if (!person[item[0]]) person[item[0]] = []
+                person[item[0]].push(item[1])
+                continue
+            }
+            person[item[0]] = item[1]
+        }
+        currentSex = person.sex === "男" ? 1 : 0
+    }
+
+    function pushPersonInfo() {
+        let _person = {}
+        Object.assign(_person, person)
+        currentSex ? maleList.push(_person) : femaleList.push(_person)
+        person = {}
+    }
+
+    function render() {
+        let _list = currentSex ? maleList : femaleList
+        showTable.innerHTML = _list.reduce((value, item) => {
+            return value + `
+                <tr>
+                    <td>${item.user}</td>
+                    <td>${item.sex}</td>
+                    <td>${item.age}</td>
+                    <td>${item.hobby}</td>
+                    <td>${item.tel}</td>
+                </tr>
+            `
+        }, '')
+    }
+
+</script>
+<!--
+    1、添加后，男性添加在男性表中，女性添加在女性表中，点击男或女，切换表显示,添加那个性别显示那个表
+    2、添加时，必须正则验证全部通过才可以添加,不能为空，如果有一个验证不通过
+    在后面提示信息
+    3、做历史记录 +分
+ -->
+</body>
+</html>

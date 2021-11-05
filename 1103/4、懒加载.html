@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            float: left;
+            width: 20%;
+            box-sizing: border-box;
+            padding-left: 10px;
+            background-color: rgba(0,255,0,0.1);
+        }
+        li:first-child{
+            padding-left: 0;
+        }
+        li img{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+   <ul></ul>
+<script>
+    const COL=5;
+    var ul,img,list=new Map(),n=2;
+    init();
+    function init(){
+        ul=document.querySelector("ul");
+       for(var i=0;i<COL;i++){
+           var li=document.createElement("li");
+           ul.appendChild(li);
+           list.set(li,0);
+       }
+       loadImage();
+       document.addEventListener("scroll",scrollHandler);
+    }
+
+    function loadImage(){
+        img=new Image()
+        img.src=`./img/${n}-.jpg`;
+        img.addEventListener("load",loadHandler);
+    }
+
+    function loadHandler(e){
+        var m;
+        for(var [li,value] of list){
+            if(!m){
+                m=li;
+                continue;
+            }
+            if(list.get(m)>value){
+                m=li;
+            }
+        }
+        var img1=this.cloneNode(false);
+        m.appendChild(img1);
+        list.set(m,list.get(m)+img1.offsetHeight);
+        if(document.documentElement.scrollHeight-document.documentElement.scrollTop>4*document.documentElement.clientHeight){
+            return;
+        }
+        nextImage();
+    }
+
+    function nextImage(){
+        n++;
+        if(n>79){
+            n=2;
+        }
+        img.src=`./img/${n}-.jpg`;
+    }
+
+    function scrollHandler(e){
+        if(document.documentElement.scrollHeight-document.documentElement.scrollTop<=2*document.documentElement.clientHeight){
+            nextImage();
+        }
+    }
+
+ 
+</script>
+</body>
+</html>

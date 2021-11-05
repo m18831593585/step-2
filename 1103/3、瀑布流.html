@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            float: left;
+            width: 20%;
+            box-sizing: border-box;
+            padding-left: 10px;
+            background-color: rgba(0, 255, 0, 0.1);
+        }
+
+        li:first-child {
+            padding-left: 0;
+        }
+
+        li img {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<ul></ul>
+<!-- <script>
+    const COL=5;
+    var ul,f;
+    init();
+    function init(){
+        ul=document.querySelector("ul");
+       for(var i=0;i<COL;i++){
+           var li=document.createElement("li");
+           ul.appendChild(li);
+       }
+       f=loadImage();
+       f.next();
+    }
+
+    function *loadImage(){
+        for(var i=2;i<80;i++){
+            var img=new Image();
+            img.src=`./img/${i}-.jpg`;
+            yield img.addEventListener("load",loadHandler);
+        }
+    }
+
+    function loadHandler(e){
+        var min={height:ul.children[0].offsetHeight,index:0};
+        for(var i=1;i<ul.children.length;i++){
+           if(min.height>ul.children[i].offsetHeight){
+             min.height=ul.children[i].offsetHeight;
+             min.index=i;
+             break;
+           }
+        }
+
+        ul.children[min.index].appendChild(this);
+
+
+         f.next();
+    }
+</script> -->
+
+<!-- <script>
+ const COL=5;
+ var ul,list=[],n=2;
+ init();
+ function init(){
+     ul=document.querySelector("ul");
+    for(var i=0;i<COL;i++){
+        var li=document.createElement("li");
+        ul.appendChild(li);
+        list.push(0);
+    }
+    loadImage();
+ }
+
+ function loadImage(){
+     var img=new Image()
+     img.src=`./img/${n}-.jpg`;
+     img.addEventListener("load",loadHandler);
+ }
+
+ function loadHandler(e){
+     var min=Math.min.apply(null,list);
+     var index=list.indexOf(min);
+     var img=this.cloneNode(false);
+     ul.children[index].appendChild(img);
+     list[index]+=img.offsetHeight;
+     n++;
+     if(n>79){
+         return;
+     }
+     this.src=`./img/${n}-.jpg`;
+ }
+
+
+</script> -->
+
+<script>
+    const COL = 5;
+    var ul, list = new Map(), n = 2;
+    init();
+
+    function init() {
+        ul = document.querySelector("ul");
+        for (var i = 0; i < COL; i++) {
+            var li = document.createElement("li");
+            ul.appendChild(li);
+            list.set(li, 0);
+        }
+        loadImage();
+    }
+
+    function loadImage() {
+        var img = new Image()
+        img.src = `./img/${n}-.jpg`;
+        img.addEventListener("load", loadHandler);
+    }
+
+    function loadHandler(e) {
+        // var min=Math.min.apply(null,list);
+        // var index=list.indexOf(min);
+        var m;
+        for (var [li, value] of list) {
+            if (!m) {
+                m = li;
+                continue;
+            }
+            if (list.get(m) > value) {
+                m = li;
+            }
+        }
+        var img = this.cloneNode(false);
+        m.appendChild(img);
+        list.set(m, list.get(m) + img.offsetHeight);
+        n++;
+        if (n > 79) {
+            return;
+        }
+        this.src = `./img/${n}-.jpg`;
+    }
+
+
+</script>
+</body>
+</html>

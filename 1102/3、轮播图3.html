@@ -127,13 +127,13 @@
     }
 
     function mouseHandler(e) {
-        autoBool = e.type === "mouseenter" ? false : (time = 200 && true);
-        // if(e.type==="mouseenter"){
-        //     autoBool=false;
-        // }else{
-        //     autoBool=true;
-        //     time=200;
-        // }
+        // autoBool = e.type === "mouseenter" ? false : (time = 200 && true);
+        if(e.type==="mouseenter"){
+            autoBool=false;
+        }else{
+            autoBool=true;
+            time=200;
+        }
     }
 
     function createDot(carousel) {
@@ -184,22 +184,6 @@
         return canvas;
     }
 
-    function getImageItem(n) {
-        if (itemList[n]) return itemList[n];
-        var div = document.createElement("div");
-        div.className = "image-item";
-        div.innerHTML = `<img src="${list[n].img}">
-                <div class='title'>
-                    <div>${list[n].date.match(/(\d*)\/(.*)/).slice(1).reduce((value, item, i) => {
-            if (i === 0) value += `<span class='day'>${item}</span>`;
-            else value += "/" + item;
-            return value;
-        }, "")}</div>
-                    <span>${list[n].info}</span>
-            </div>`
-        itemList[n] = div;
-        return itemList[n];
-    }
 
     function dotClickHandler(e) {
         if (e.target.nodeName !== "A") return;
@@ -224,6 +208,22 @@
         createNextImg();
     }
 
+    function getImageItem(n) {
+        if (itemList[n]) return itemList[n];
+        var div = document.createElement("div");
+        div.className = "image-item";
+        div.innerHTML = `<img src="${list[n].img}">
+                <div class='title'>
+                    <div>${list[n].date.match(/(\d*)\/(.*)/).slice(1).reduce((value, item, i) => {
+            if (i === 0) value += `<span class='day'>${item}</span>`;
+            else value += "/" + item;
+            return value;
+        }, "")}</div>
+                    <span>${list[n].info}</span>
+            </div>`
+        itemList[n] = div;
+        return itemList[n];
+    }
 
     function createNextImg() {
         if (direction === LEFT) {
@@ -238,7 +238,7 @@
         changePrev();
     }
 
-    function changePrev() {
+    function changePrev() { // 更改当前选中的dot
         if (prev) {
             prev.style.backgroundColor = "rgba(255,0,0,0)";
         }

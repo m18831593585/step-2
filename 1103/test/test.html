@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script type="module">
+    import TimeManager from "./js/TimeManager.js";
+
+    let item = {
+        update: function () {
+            console.log("123")
+        }
+    }
+    let tm = TimeManager.getInstance()
+    tm.add(item)
+
+    let i={
+        update: function () {
+            console.log("456")
+        }
+    }
+
+    let ii = TimeManager.getInstance()
+    ii.add(i)
+
+    setTimeout(()=>{
+        tm.remove(item)
+        ii.remove(i)
+    },1000)
+
+
+</script>
+</body>
+</html>

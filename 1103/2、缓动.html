@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+
+        }
+    </style>
+    <link rel="stylesheet" href="./css/animate.min.css">
+    <!-- <script src="./js/Tween.js"></script> -->
+</head>
+<body>
+    <div class="animated fadeInLeftBig">你好</div>
+    <!-- <script>
+        document.addEventListener("click",clickHandler);
+        var div=document.querySelector("div");
+        animation();
+        function clickHandler(e){
+            var tween=new TWEEN.Tween({x:div.offsetLeft,y:div.offsetTop,r:0});
+            tween.to({x:e.clientX-25,y:e.clientY-25,r:2600},2000);
+            tween.easing(TWEEN.Easing.Bounce.Out)
+            tween.repeat(1);
+            tween.yoyo(true);
+            tween.onUpdate(update);
+            tween.start();
+        }
+
+        function update(){
+            // console.log(this);
+            div.style.left=this.x+"px";
+            div.style.top=this.y+"px";
+            div.style.transform="rotate("+this.r+"deg)";
+        }
+
+        function animation(){
+            requestAnimationFrame(animation);
+            TWEEN.update();
+        }
+    </script> -->
+</body>
+</html>

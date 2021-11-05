@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .carousel {
+            width: 784px;
+            height: 332px;
+            border: 1px solid #000;
+            position: relative;
+            margin: auto;
+            left: 0;
+            right: 0;
+            overflow: hidden;
+        }
+
+        .img_con {
+            width: 200%;
+            height: 261px;
+            position: absolute;
+            left: 0;
+        }
+
+        .img_con > .show_img {
+            width: 784px;
+            height: 261px;
+        }
+
+        .icon_carousel {
+            width: 100%;
+            height: 71px;
+            position: absolute;
+            bottom: 0;
+            overflow: hidden;
+        }
+
+        .icon_carousel > .icon_con {
+            height: 71px;
+            position: absolute;
+            left: 0;
+            font-size: 0;
+            /* background-color: rgba(0,255,0,0.2); */
+        }
+
+        .left, .right {
+            position: absolute;
+            top: 100.5px;
+        }
+
+        .left {
+            left: 20px;
+        }
+
+        .right {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+
+
+<script>
+    let imgList = [
+        {id: 1001, icon: "../img/a1_icon.jpeg", img: "../img/a1.png"},
+        {id: 1002, icon: "../img/b1_icon.jpeg", img: "../img/b1.png"},
+        {id: 1003, icon: "../img/c1_icon.jpeg", img: "../img/c1.png"},
+        {id: 1004, icon: "../img/d1_icon.jpeg", img: "../img/d1.png"},
+        {id: 1005, icon: "../img/e1_icon.jpeg", img: "../img/e1.png"},
+        {id: 1006, icon: "../img/a_icon.png", img: "../img/a.jpg"},
+        {id: 1007, icon: "../img/b_icon.png", img: "../img/b.jpg"},
+        {id: 1008, icon: "../img/c_icon.png", img: "../img/c.jpg"},
+        {id: 1009, icon: "../img/d_icon.png", img: "../img/d.jpg"},
+        {id: 1010, icon: "../img/e_icon.png", img: "../img/e.jpg"},
+        {id: 1003, icon: "../img/c1_icon.jpeg", img: "../img/c1.png"},
+    ]
+
+    const LEFT = Symbol(),
+        RIGHT = Symbol(),
+        SPEED = 20
+    let loadedImgList = []
+
+
+    init()
+
+    function init() {
+        let carousel = document.createElement("div")
+        carousel.className = "carousel"
+        createImgCon(carousel)
+        createIconList(carousel)
+        createBn(carousel)
+        document.body.appendChild(carousel)
+        changePrev()
+        animation()
+    }
+
+    function createImgCon(carousel) {
+        let imgCon = document.createElement("div")
+        imgCon.className="img_con"
+        imgCon.appendChild(getImage(0))
+        carousel.appendChild(imgCon)
+    }
+
+    function createIconList(carousel){
+        let iconCarousel = document.createElement("div")
+        iconCarousel.className = "icon_carousel"
+        let iconCon = document.createElement("div")
+        iconCon.className = "icon_con"
+        iconCon.style.width = imgList.length * 112 + "px"
+        imgList.forEach(item=>{
+            let img = new Image()
+            img.src = item.icon
+            iconCon.appendChild(img)
+        })
+
+    }
+
+
+
+
+    function getImage(n) {
+        if (loadedImgList[n]) return loadedImgList[n]
+        let img = new Image()
+        img.src = imgList[n].img
+        loadedImgList[n] = img
+        return loadedImgList[n]
+    }
+
+
+</script>
+</body>
+</html>

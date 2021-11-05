@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .zoom{
+            position: relative;
+        }
+        .zoom>.mini-image{
+            width: 450px;
+            height: 450px;
+            position: absolute;
+            border: 1px solid #ccc;
+            background-image: url(./img/iphone/1.jpg);
+            background-size: 100% 100%;
+        }
+        .zoom>.zoom-image{
+            width: 540px;
+            height: 540px;
+            position: absolute;
+            left: 452px;
+            border: 1px solid #ccc;
+            background-image: url(./img/iphone/1.jpg);
+            display: none;
+        }
+        .zoom .mask{
+            width: 303.75px;
+            height: 303.75px;
+            position: absolute;
+            display: none;
+            background-color: rgba(230, 200, 4, 0.3);
+        }
+        .carousel{
+            position: absolute;
+            top: 464px;
+            width: 452px;
+            height: 58px;
+        }
+        .carousel>.left{
+            width: 22px;
+            height: 32px;
+            background-image: url(./img/iphone/download.png);
+            float: left;
+            margin-top: 12px;
+            position: relative;
+        }
+        .carousel>.right{
+            width: 22px;
+            height: 32px;
+            background-image: url(./img/iphone/download-1.png);
+            background-position: -78px 0;
+            float: left;
+            top: 12px;
+            position: absolute;
+            right: 0;
+        }
+        .carousel>.carousel-con{
+            float: left;
+            width: 380px;
+            height: 58px;
+            overflow: hidden;
+            position: absolute;
+            margin: auto;
+            left: 0;
+            right: 0;
+        }
+        .carousel>.carousel-con>.img-con
+        {
+            width: 760px;
+            height: 58px;
+            font-size: 0;
+            left: 0;
+            transition: all 0.5s;
+            position: absolute;
+        }
+        .carousel>.carousel-con>.img-con>img{
+            width: 54px;
+            height: 54px;
+            border: 2px solid transparent;
+            margin: 0 9px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="zoom">
+            <div class="mini-image">
+                <div class="mask"></div>
+            </div>
+            <div class="zoom-image"></div>
+        </div>
+        <div class="carousel">
+            <div class="left"></div>
+            <div class="carousel-con">
+                <div class="img-con">
+                    <img src="./img/iphone/icon_1.jpg">
+                    <img src="./img/iphone/icon_2.jpg">
+                    <img src="./img/iphone/icon_3.jpg">
+                    <img src="./img/iphone/icon_4.jpg">
+                    <img src="./img/iphone/icon_5.jpg">
+                    <img src="./img/iphone/icon_6.jpg">
+                    <img src="./img/iphone/icon_7.jpg">
+                    <img src="./img/iphone/icon_8.jpg">
+                    <img src="./img/iphone/icon_9.jpg">
+                    <img src="./img/iphone/icon_10.jpg">
+                </div>
+            </div>
+            <div class="right"></div>
+        </div>
+    </div>
+    <script>
+
+           var mini,zoom,mask,carousel,prev,left,right;
+        
+            init();
+            function init(){
+                mini=document.querySelector(".mini-image");
+                zoom=document.querySelector(".zoom-image");
+                mask=document.querySelector(".mask");
+                left=document.querySelector(".left");
+                right=document.querySelector(".right");
+                carousel=document.querySelector(".carousel-con");
+                mini.addEventListener("mouseenter",mouseHandler);
+                carousel.addEventListener("mouseover",mouseoverHandler);
+                left.addEventListener("click",bnClickHandler);
+                right.addEventListener("click",bnClickHandler);
+            }
+
+            function mouseHandler(e){
+                if(e.type==="mouseenter"){
+                    mask.style.display=zoom.style.display="block";
+                    mini.addEventListener("mousemove",mouseHandler);
+                    mini.addEventListener("mouseleave",mouseHandler);
+                }else if(e.type==="mouseleave"){
+                    mask.style.display=zoom.style.display="none";
+                    mini.removeEventListener("mousemove",mouseHandler);
+                    mini.removeEventListener("mouseleave",mouseHandler);
+                }else if(e.type==="mousemove"){
+                    moveMask(e.clientX,e.clientY)
+                }
+            }
+
+
+            function moveMask(x,y){
+                var rect=mini.getBoundingClientRect();
+                x=x-mask.offsetWidth/2-rect.left;
+                y=y-mask.offsetHeight/2-rect.top;
+                    if(x<=0) x=0;
+                    if(y<=0) y=0;
+                    if(x>=rect.width-mask.offsetWidth) x=rect.width-mask.offsetWidth;
+                    if(y>=rect.height-mask.offsetHeight) y=rect.height-mask.offsetHeight;
+                    Object.assign(mask.style,{
+                        left:x+"px",
+                        top:y+"px",
+                    })
+                    Object.assign(zoom.style,{
+                        backgroundPositionX:-x*(zoom.offsetWidth/mask.offsetWidth)+"px",
+                        backgroundPositionY:-y*(zoom.offsetHeight/mask.offsetHeight)+"px",
+                    })
+            }
+
+            function mouseoverHandler(e){
+                if(e.target.nodeName!=="IMG")return;
+                // var index=Array.from(this.firstElementChild.children).indexOf(e.target);
+                changePrev(e.target);
+            }
+
+            function changePrev(img){
+                if(prev){
+                    prev.style.borderColor="transparent"
+                }
+                prev=img;
+                prev.style.borderColor="#e53e41"
+                mini.style.backgroundImage=zoom.style.backgroundImage=`url(${img.src.replace("icon_","")})`
+            }
+
+            function bnClickHandler(e){
+                if(this===left){
+                    carousel.firstElementChild.style.left="0px";
+                }else{
+                    carousel.firstElementChild.style.left="-380px";
+                }
+            }
+    </script>
+</body>
+</html>

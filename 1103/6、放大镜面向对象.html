@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div class="div1"></div>
+<script type="module">
+    // import Zoom from "./js/Zoom.js";
+    // let zoom=new Zoom();
+    // zoom.addEventListener(Zoom.SIZE_FINISH_EVENT,zoomHandler)
+    // zoom.appendTo(".div1");
+    // zoom.setImage("./img/4-.jpg")
+
+    // function zoomHandler(e){
+    //     console.log(e.height)
+    // }
+
+    // import Carousel from "./js/Carousel.js";
+    import ZoomShow from "./js/ZoomShow.js"
+
+    var list = [
+        {id: 1001, icon: "./img/iphone/icon_1.jpg", img: "./img/iphone/1.jpg"},
+        {id: 1002, icon: "./img/iphone/icon_2.jpg", img: "./img/iphone/2.jpg"},
+        {id: 1003, icon: "./img/iphone/icon_3.jpg", img: "./img/iphone/3.jpg"},
+        {id: 1004, icon: "./img/iphone/icon_4.jpg", img: "./img/iphone/4.jpg"},
+        {id: 1005, icon: "./img/iphone/icon_5.jpg", img: "./img/iphone/5.jpg"},
+        {id: 1006, icon: "./img/iphone/icon_6.jpg", img: "./img/iphone/6.jpg"},
+        {id: 1007, icon: "./img/iphone/icon_7.jpg", img: "./img/iphone/7.jpg"},
+        {id: 1008, icon: "./img/iphone/icon_8.jpg", img: "./img/iphone/8.jpg"},
+        {id: 1009, icon: "./img/iphone/icon_9.jpg", img: "./img/iphone/9.jpg"},
+        {id: 1010, icon: "./img/iphone/icon_10.jpg", img: "./img/iphone/10.jpg"},
+        {id: 1011, icon: "./img/iphone/icon_2.jpg", img: "./img/iphone/2.jpg"},
+    ]
+
+    var zoom = new ZoomShow(list);
+    zoom.appendTo(".div1");
+</script>
+</body>
+</html>

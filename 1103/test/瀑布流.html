@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            float: left;
+            width: 20%;
+            box-sizing: border-box;
+            padding-left: 10px;
+        }
+
+        li:first-child {
+            padding-left: 0;
+        }
+
+        li img {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<ul></ul>
+
+<script>
+    const COL = 5 // 瀑布流列数
+    var ul, // ul元素
+        img, // img元素
+        liHeightList = new Map(), // 存储ul中的li, key为li元素, value为li元素的高度
+        n = 2 // 瀑布流中的图片文件名的前缀
+    init()
+
+    function init() {
+        ul = document.querySelector("ul")
+        for (let i = 0; i < COL; i++) {
+            let li = document.createElement("li")
+            ul.appendChild(li)
+            liHeightList.set(li, 0) // 将li元素和高度存入map
+        }
+        document.addEventListener("scroll", scrollHandler)
+        loadImg()
+    }
+
+    function loadImg() {
+        img = new Image()
+        img.addEventListener("load", loadHandler)
+        img.src = `../img/${n}-.jpg`
+    }
+
+    function loadHandler(e) {
+        let lowerLi // 最矮的的li元素
+        for (let [key, value] of liHeightList) { // 遍历map里的每一列
+            if (!lowerLi) {
+                lowerLi = key
+                continue
+            }
+            if (liHeightList.get(lowerLi) > value) {
+                lowerLi = key
+            }
+        }
+
+        let img = this.cloneNode(false) // 克隆图片
+        lowerLi.appendChild(img) // 将图片添加到最矮的li元素中
+        liHeightList.set(lowerLi, liHeightList.get(lowerLi) + img.offsetHeight) // 更新添加图片后li元素的高度
+        if (document.documentElement.scrollHeight <= 2 * document.documentElement.clientHeight) {
+            continueLoadImg()
+        }
+    }
+
+    function continueLoadImg() {
+        n++
+        if (n > 79) {
+            n = 2
+        }
+        img.src = `../img/${n}-.jpg`
+    }
+
+    function scrollHandler(e) {
+        if (document.documentElement.scrollHeight - document.documentElement.scrollTop < 2 * document.documentElement.clientHeight) {
+            continueLoadImg()
+        }
+    }
+
+</script>
+</body>
+</html>
