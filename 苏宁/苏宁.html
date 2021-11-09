@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script type='module'>
+    let arr = [
+        {
+            id: 1001,
+            list: [
+                {id: 100101, img: "./img/100101.jpg", price: 5599},
+                {id: 100102, img: "./img/100102.jpg", price: 5599},
+                {id: 100103, img: "./img/100103.jpg", price: 5599},
+                {id: 100104, img: "./img/100104.jpg", price: 5599},
+                {id: 100105, img: "./img/100105.jpg", price: 5599},
+                {id: 100106, img: "./img/100101.jpg", price: 5599},
+                {id: 100107, img: "./img/100102.jpg", price: 5599},
+                {id: 100108, img: "./img/100103.jpg", price: 5599},
+                {id: 100109, img: "./img/100104.jpg", price: 5599},
+                {id: 1001010, img: "./img/100105.jpg", price: 5599},
+            ],
+            info: "Apple iPhone 12苏宁自营苏宁自营苏宁自营苏宁自营苏宁自营苏宁自营苏宁自营",
+            arguments: ["128GB", "6.1英寸"],
+            judge: 259754,
+            ershou: true,
+            shop: "苏宁自营",
+            shopinfo: false,
+            icons: {
+                icon1: ["3期免息"],
+                icon2: ["大聚惠"],
+                icon3: ['领劵5190-200'],
+                icon4: ["赠品"]
+            },
+            double11: true,
+            xiangqing: false,
+            scroll: true
+        },
+        {
+            id: 1002,
+            list: [
+                {id: 100201, img: "./img/100201.jpg", price: 599},
+                {id: 100202, img: "./img/100202.png", price: 599}
+            ],
+            info: "小米 Redmi 8A",
+            arguments: ["4GB", "64GB", "6.22英寸"],
+            judge: 159754,
+            ershou: false,
+            shop: "苏宁自营",
+            shopinfo: false,
+            icons: null,
+            double11: true,
+            xiangqing: false,
+            scroll: false
+        },
+        {
+            id: 1003,
+            list: [
+                {id: 100301, img: "./img/100301.jpg", price: 5999},
+                {id: 100302, img: "./img/100302.jpg", price: 5999},
+                {id: 100303, img: "./img/100303.jpg", price: 5999},
+                {id: 100304, img: "./img/100304.jpg", price: 5999}
+            ],
+            info: "Apple iPhone 13",
+            arguments: ['128GB', '6.1英寸'],
+            judge: 4754,
+            ershou: false,
+            shop: "苏宁自营",
+            shopinfo: false,
+            icons: {
+                icon1: ["3期免息"],
+                icon2: ["大聚惠"],
+                icon3: ["赠品"]
+            },
+            double11: true,
+            xiangqing: false,
+            scroll: false
+        },
+        {
+            id: 1004,
+            list: [
+                {id: 100401, img: "./img/100401.jpg", price: 1199}
+            ],
+            info: "荣耀play5T活力版 6+128极光蓝 超级",
+            arguments: ['6GB', '128GB', '6.6英寸'],
+            judge: 1800,
+            ershou: false,
+            shop: "苏宁自营",
+            shopinfo: true,
+            icons: null,
+            double11: true,
+            xiangqing: true,
+            scroll: false
+        },
+        {
+            id: 1005,
+            list: [
+                {id: 100501, img: "./img/100501.jpg", price: 6388},
+                {id: 100502, img: "./img/100502.jpg", price: 6388},
+                {id: 100503, img: "./img/100503.jpg", price: 6388},
+            ],
+            info: "华为 P50 Pro",
+            arguments: ["8GB", '256GB', "6.6英寸"],
+            judge: 1890,
+            ershou: false,
+            shop: "苏宁自营",
+            shopinfo: false,
+            icons: {
+                icon1: ["12期免息"],
+                icon2: ["大聚惠"],
+                icon3: ['满6488-100'],
+                icon4: ["赠品"]
+            },
+            double11: true,
+            xiangqing: false,
+            scroll: false
+        },
+        {
+            id: 1006,
+            list: [
+                {id: 100601, img: "./img/100601.jpg", price: 2299},
+            ],
+            info: "小米 Redmi K40",
+            arguments: ["12GB", '256GB', "6.67英寸"],
+            judge: 37566,
+            ershou: false,
+            shop: "苏宁自营",
+            shopinfo: false,
+            icons: {
+                icon1: ["6期免息"],
+                icon2: ["预定"],
+                icon3: ["赠品"]
+            },
+            double11: true,
+            xiangqing: true,
+            scroll: false
+        },
+        {
+            id: 1007,
+            list: [
+                {id: 100701, img: "./img/100701.png", price: 1199},
+            ],
+            info: "荣耀play5T 8+128幻夜黑 22.5W超级",
+            arguments: ["8GB", '128GB', "6.5英寸"],
+            judge: 2789,
+            ershou: false,
+            shop: "苏宁自营",
+            shopinfo: true,
+            icons: null,
+            double11: true,
+            xiangqing: true,
+            scroll: false
+        },
+        {
+            id: 1008,
+            list: [
+                {id: 100801, img: "./img/100801.png", price: 2649},
+            ],
+            info: "华为 nova 9",
+            arguments: ['128GB', "6.1英寸"],
+            judge: 456,
+            ershou: false,
+            shop: "苏宁自营",
+            shopinfo: false,
+            icons: {
+                icon1: ['大聚惠'],
+                icon2: ['满2699-50']
+            },
+            double11: true,
+            xiangqing: false,
+            scroll: false
+        },
+        {
+            id: 1009,
+            list: [
+                {id: 100901, img: "./img/100901.jpg", price: 2599},
+                {id: 100902, img: "./img/100902.jpg", price: 2599},
+                {id: 100903, img: "./img/100903.jpg", price: 2599},
+                {id: 100904, img: "./img/100904.jpg", price: 2599}
+            ],
+            info: "荣耀50 8GB+128GB 初雪水晶 10亿色",
+            arguments: ['8GB', '128GB', "6.57英寸"],
+            judge: 31899,
+            ershou: false,
+            shop: "苏宁自营",
+            shopinfo: false,
+            icons: {
+                icon1: ["6期免息"],
+                icon2: ["预定"],
+                icon3: ["赠品"]
+            },
+            double11: true,
+            xiangqing: true,
+            scroll: false
+        },
+        {
+            id: 10010,
+            list: [
+                {id: 1001001, img: "./img/1001001.png", price: 2299},
+            ],
+            info: "小米 (MI)Redmi K40 5G 12+256GB",
+            arguments: ['12GB', '256GB', "6.67英寸"],
+            judge: 37898,
+            ershou: false,
+            shop: "苏宁自营",
+            shopinfo: false,
+            icons: {
+                icon1: ['6期免息'],
+                icon2: ['预定'],
+                icon3: ['赠品']
+            },
+            double11: true,
+            xiangqing: true,
+            scroll: false
+        },
+        {
+            id: 10011,
+            list: [
+                {id: 1001101, img: "./img/1001101.jpg", price: 1699},
+            ],
+            info: "OPPO K9",
+            arguments: ["8GB", "256GB", "90Hz"],
+            judge: 159754,
+            ershou: true,
+            shop: "苏宁自营",
+            shopinfo: false,
+            icons: {
+                icon1: ["3期免息"],
+                icon2: ["大聚惠"],
+                icon3: ['领劵5190-200'],
+                icon4: ["赠品"]
+            },
+            double11: true,
+            xiangqing: false,
+            scroll: false
+
+        },
+
+        {
+            id: 10012,
+            list: [
+                {id: 1001201, img: "./img/1001201.png", price: 3899},
+            ],
+            info: "iQOO 8 传奇版",
+            arguments: ["12GB", "256GB", "120W闪充"],
+            judge: 159754,
+            ershou: true,
+            shop: "苏宁自营",
+            shopinfo: false,
+            icons: {
+                icon1: ["3期免息"],
+                icon2: ["大聚惠"],
+                icon3: ['领劵5190-200'],
+                icon4: ["赠品"]
+            },
+            double11: true,
+            xiangqing: false,
+            scroll: false
+
+        },
+
+        {
+            id: 10013,
+            list: [
+                {id: 1001301, img: "./img/1001301.png", price: 2799},
+            ],
+            info: "vivo S10",
+            arguments: ["8GB", "256GB", "天玑1100"],
+            judge: 159754,
+            ershou: true,
+            shop: "苏宁自营",
+            shopinfo: false,
+            icons: {
+                icon1: ["3期免息"],
+                icon2: ["大聚惠"],
+                icon3: ['领劵5190-200'],
+                icon4: ["赠品"]
+            },
+            double11: true,
+            xiangqing: false,
+            scroll: false
+
+        },
+
+        {
+            id: 10014,
+            list: [
+                {id: 1001401, img: "./img/1001401.jpg", price: 1999},
+            ],
+            info: "[赠1年碎屏险]OPPO K9 幻彩之翼",
+            arguments: ["8GB", "256GB", "高通骁龙768G"],
+            judge: 159754,
+            ershou: true,
+            shop: "苏宁自营",
+            shopinfo: false,
+            icons: {
+                icon1: ["3期免息"],
+                icon2: ["大聚惠"],
+                icon3: ['领劵5190-200'],
+                icon4: ["赠品"]
+            },
+            double11: true,
+            xiangqing: false,
+            scroll: false
+
+        },
+
+        {
+            id: 10015,
+            list: [
+                {id: 1001501, img: "./img/1001501.jpg", price: 1939},
+            ],
+            info: "荣耀Play5",
+            arguments: ["8GB", "256GB", "6400万超清四摄"],
+            judge: 159754,
+            ershou: true,
+            shop: "苏宁自营",
+            shopinfo: false,
+            icons: {
+                icon1: ["3期免息"],
+                icon2: ["大聚惠"],
+                icon3: ['领劵5190-200'],
+                icon4: ["赠品"]
+            },
+            double11: true,
+            xiangqing: false,
+            scroll: false
+
+        },
+
+        {
+            id: 10016,
+            list: [
+                {id: 1001601, img: "./img/1001601.png", price: 1999},
+            ],
+            info: "vivo T1x",
+            arguments: ["8GB", "256GB", "120Hz"],
+            judge: 159754,
+            ershou: true,
+            shop: "苏宁自营",
+            shopinfo: false,
+            icons: {
+                icon1: ["3期免息"],
+                icon2: ["大聚惠"],
+                icon3: ['领劵5190-200'],
+                icon4: ["赠品"]
+            },
+            double11: true,
+            xiangqing: false,
+            scroll: false
+
+        },
+
+        {
+            id: 10017,
+            list: [
+                {id: 1001701, img: "./img/1001701.png", price: 2299},
+            ],
+            info: "小米 (MI)Redmi K40",
+            arguments: ["12GB", "256GB", "4520mAh"],
+            judge: 159754,
+            ershou: true,
+            shop: "苏宁自营",
+            shopinfo: false,
+            icons: {
+                icon1: ["3期免息"],
+                icon2: ["大聚惠"],
+                icon3: ['领劵5190-200'],
+                icon4: ["赠品"]
+            },
+            double11: true,
+            xiangqing: false,
+            scroll: false
+
+        },
+
+        {
+            id: 10018,
+            list: [
+                {id: 1001801, img: "./img/1001801.png", price: 3499},
+            ],
+            info: "荣耀50 Pro",
+            arguments: ["8GB", "256GB", "100W超级快充"],
+            judge: 159754,
+            ershou: true,
+            shop: "苏宁自营",
+            shopinfo: false,
+            icons: {
+                icon1: ["3期免息"],
+                icon2: ["大聚惠"],
+                icon3: ['领劵5190-200'],
+                icon4: ["赠品"]
+            },
+            double11: true,
+            xiangqing: false,
+            scroll: false
+
+        },
+
+        {
+            id: 10019,
+            list: [
+                {id: 1001901, img: "./img/1001901.png", price: 2699},
+            ],
+            info: "realme 真我GT 大师探索版",
+            arguments: ["8GB", "128GB", "120Hz曲面屏"],
+            judge: 159754,
+            ershou: true,
+            shop: "苏宁自营",
+            shopinfo: false,
+            icons: {
+                icon1: ["3期免息"],
+                icon2: ["大聚惠"],
+                icon3: ['领劵5190-200'],
+                icon4: ["赠品"]
+            },
+            double11: true,
+            xiangqing: false,
+            scroll: false
+
+        },
+
+        {
+            id: 10020,
+            list: [
+                {id: 1002001, img: "./img/1002001.png", price: 7948},
+            ],
+            info: "苹果(Apple) iPhone 12 Pro Max",
+            arguments: ["128GB", "海蓝色"],
+            judge: 159754,
+            ershou: true,
+            shop: "苏宁自营",
+            shopinfo: false,
+            icons: {
+                icon1: ["3期免息"],
+                icon2: ["大聚惠"],
+                icon3: ['领劵5190-200'],
+                icon4: ["赠品"]
+            },
+            double11: true,
+            xiangqing: false,
+            scroll: false
+
+        },
+
+
+    ]
+
+    import Goods from './js/Goods.js'
+
+    arr.forEach(item => {
+        let goods = new Goods(item);
+        goods.appendTo("body");
+    })
+</script>
+</body>
+
+</html>

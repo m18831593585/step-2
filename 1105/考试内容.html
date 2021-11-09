@@ -132,7 +132,7 @@
             else if (e.target.name === 'age') verifyAge()
             else if (e.target.name === 'tel') verifyTel()
             clearTimeout(timeoutID)
-            timeoutID=undefined
+            timeoutID = undefined
         }, 500)
     }
 
@@ -146,14 +146,29 @@
         form.dispatchEvent(new Event('reset'))
     }
 
-    function verify() {
+    function verify(item) {
         let flag = true
         alertMsg.innerHTML = ""
-        if (!verifyUser()) flag = false
-        if (!verifyAge()) flag = false
-        if (!verifyHobby()) flag = false
-        if (!verifyTel()) flag = false
-        return flag
+
+        switch (item) {
+            case 'user':
+                verifyUser()
+                return
+            case 'age':
+                verifyAge()
+                return
+            case 'tel':
+                verifyTel()
+                return
+            default:
+                return flag && verifyUser() && verifyAge() && verifyHobby() && verifyTel()
+        }
+
+        // if (!verifyUser()) flag = false
+        // if (!verifyAge()) flag = false
+        // if (!verifyHobby()) flag = false
+        // if (!verifyTel()) flag = false
+        // return flag
     }
 
     function verifyUser() {

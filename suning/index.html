@@ -6,17 +6,18 @@
 </head>
 <body>
 
-<div class="box"></div>
 
 <script type="module">
-    import Form from './js/Form.js'
+    import Goods from './js/Goods.js'
+    let goods
 
     init()
     function init() {
-        let form = new Form()
-        form.appendTo('.box')
+        arr.forEach(item => {
+            let goods = new Goods(item);
+            goods.appendTo(".container");
+        })
     }
-
 </script>
 </body>
 </html>

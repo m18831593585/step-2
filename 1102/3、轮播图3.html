@@ -108,7 +108,9 @@
     ]
 
     var imgCon, dot, prev;
-    var itemList = [], bnList = [], pos = 0, direction = "left", x = 0, moveBool = false, speed = 50, autoBool = false,
+    var itemList = [], bnList = [], pos = 0, direction = "left",
+        x = 0, // 当前滑动的距离
+        moveBool = false, speed = 50, autoBool = false,
         time = 200;
     const LEFT = Symbol(), RIGHT = Symbol();
     init();

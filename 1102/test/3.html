@@ -104,84 +104,149 @@
         {img: "./img/d.jpg", date: "30/Oct.2021", info: "我是你的俘虏【跟新疆私奔】"},
         {img: "./img/e.jpg", date: "29/Oct.2021", info: "遇见阳朔的光与影，晨与昏，山与水"},
     ]
+    const LEFT = Symbol(),
+        RIGHT = Symbol(),
+        SPEED = 50
 
-    const LEFT = Symbol(), RIGHT = Symbol()
-
-    let bnList = [],
-        loadedImageList = [],
-        bn,
-        dot,
-        currentPosition = 0,
+    let loadedImg = [],
+        pos = 0,
+        x = 0,
+        timer = 200,
+        currentDot = 0,
+        dotList = [],
         direction = LEFT,
-        img = new Image()
-
+        imgCon,
+        moveBool = false,
+        bnList = []
 
     init()
 
     function init() {
-        let carousel = document.querySelector(".carousel") ? document.querySelector(".carousel") : document.createElement("div")
+        let carousel = document.createElement("div")
         carousel.className = "carousel"
-        createImgContainer(carousel)
-        createBn(carousel)
-        createDot(carousel)
+        document.body.appendChild(carousel)
 
+        createImgCon(carousel)
+        createDot(carousel)
+        createLeftAndRight(carousel)
+        animation()
+
+        bnList.forEach((item)=>item.addEventListener("click", bnClickListener))
 
     }
 
-    function createDot(parent) {
+    function bnClickListener(e) {
+        if (e.target.className === "left") {
+            direction = LEFT
+        } else if (e.target.className === "right") {
+            direction = RIGHT
+        } else {
+            return
+        }
+        moveBool = true
+        move()
+    }
+
+    function animation() {
+        requestAnimationFrame(animation)
+        createNextImg()
+    }
+
+    function createNextImg() {
+        if (moveBool) return
+        if (direction === LEFT) {
+            x = 0
+            imgCon.appendChild(getImageItem(pos))
+        } else if (direction === RIGHT) {
+            imgCon.insertBefore(getImageItem(pos), imgCon.firstChild)
+            x = -getImageItem(pos).offsetWidth
+        }
+        imgCon.style.left = x + "px"
+        moveBool = true
+        move()
+        changeDot()
+    }
+
+    function changeDot() {
+        if (currentDot) {
+            currentDot.style.backgroundColor = "rgba(255,0,0,0)"
+        }
+        currentDot = dotList[pos].firstElementChild
+        currentDot.style.backgroundColor = "rgba(255,0,0,1)"
+    }
+
+    function move() {
+        if (!moveBool) return
+        // timer--
+        // if (timer !== 0) return
+
+        if (direction === LEFT) {
+            x += SPEED
+            imgCon.style.left = x + "px"
+            if (x >= imgCon.firstElementChild.offsetWidth) {
+                imgCon.removeChild(imgCon.firstElementChild)
+                imgCon.style.left = "0"
+                moveBool = false
+                timer = 200
+            }
+        } else if (direction === RIGHT) {
+            x -= SPEED
+            imgCon.style.left = x + "px"
+            if (x >= 0) {
+                imgCon.removeChild(imgCon.lastElementChild)
+                imgCon.style.left = "0"
+                moveBool = false
+                timer = 200
+            }
+        }
+    }
+
+
+    function createLeftAndRight(carousel) {
+        for (let i = 0; i < 2; i++) {
+            let bn = drawBn(i)
+            bn.className = i ? "left" : "right"
+            bnList[i] = bn
+            carousel.appendChild(bn)
+        }
+    }
+
+    function createDot(carousel) {
         let dot = document.createElement("ul")
         dot.className = "dot"
-        dot.innerHTML = list.reduce((value, item, index) => {
+        dot.innerHTML = `
+        ${list.reduce((value, item, index) => {
             return value + `<li><a href="#${index}"></a></li>`
-        }, "")
-        dot.addEventListener("click", dotClickHandler)
-        parent.appendChild(dot)
+        }, "")}
+        `
+        carousel.appendChild(dot)
+        dotList = Array.from(dot.children)
+        console.log(dotList)
     }
 
-    function dotClickHandler(e) {
-        if (e.target.nodeName !== "A") return
+    function createImgCon(carousel) {
+        imgCon = document.createElement("div")
+        imgCon.className = "img-con"
+        imgCon.appendChild(getImageItem(0))
+        carousel.appendChild(imgCon)
 
     }
 
-    function createBn(parent) {
-        for (let i = 0; i < 2; i++) {
-            bn = drawBn(Boolean(i))
-            bn.className = Boolean(i) ? "left" : "right"
-            // bnList.push(bn)
-            bn.addEventListener("click", bnClickHandler)
-            parent.appendChild(bn)
-        }
-    }
-
-    function bnClickHandler(e) {
-        if (this.className === "left") {
-
-        } else if (this.className === "right") {
-
-        }
-    }
-
-    function createImgContainer(parent) {
-        let imgContainer = document.createElement("div")
-        imgContainer.className = "img-con"
-
-        loadImage()
-        parent.appendChild(imgContainer)
-    }
-
-    function loadImage(targetPosition) {
-        // if (currentPosition === targetPosition) return
-        // if (!loadedImageList[targetPosition]) {
-        //     img.src = list[targetPosition].img
-        //     loadedImageList[targetPosition] = img
-        // }
-        // if (currentPosition < targetPosition) {
-        //     direction = LEFT
-        //
-        // } else {
-        //     direction = RIGHT
-        // }
-
+    function getImageItem(n) {
+        let imageItem = document.createElement("div")
+        imageItem.className = "image-item"
+        imageItem.innerHTML = `
+            <img src="${list[n].img}" alt="">
+            <div class="title"><div>${list[n].date.match(/(.*?)(\/.*)/).slice(1).reduce((value, item) => {
+            if (!value) return value + `<span class="day">${item}</span>`
+            return value + item
+        }, "")}
+            </div>
+            <span>${list[n].info}</span>
+            </div>
+        `
+        loadedImg[n] = imageItem
+        return loadedImg[n]
     }
 
 

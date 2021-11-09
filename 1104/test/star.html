@@ -6,17 +6,13 @@
 </head>
 <body>
 
-<div class="box"></div>
-
 <script type="module">
-    import Form from './js/Form.js'
-
+    import Star from './js/Star.js';
     init()
     function init() {
-        let form = new Form()
-        form.appendTo('.box')
+        let star = new Star("test");
+        star.appendTo("body");
     }
-
 </script>
 </body>
 </html>
