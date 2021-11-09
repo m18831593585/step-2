@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 要使用await，必须写在async函数中
+        // await只能等待Promise
+        // async function fn() {
+        //     // await  等待
+        //     return 1;
+        // }
+
+        // function fn1() {
+        //     return new Promise(function (resolve, reject) {
+        //         resolve(1);
+        //     })
+        // }
+
+        // var a = fn();
+        // a.then(function (res) {
+        //     console.log(res);
+        // })
+
+        // async 执行后返回一个promise对象
+
+
+    //     function loadImage(src) {
+    //         return new Promise(function (resolve, reject) {
+    //             var img = new Image();
+    //             img.src = src;
+    //             img.onload = function () {
+    //                 resolve(img); //只能传一个参数
+    //             }
+    //             img.onerror = function (err) {
+    //                 reject(err)
+    //             }
+    //         });
+    //     }
+
+    //    async function loads(){
+    //         var arr=[];
+    //         for(var i=1;i<13;i++){
+    //             var img=await loadImage(`./img/${i}.jpg`);
+    //             arr.push(img.src);
+    //         }
+    //         console.log(arr);
+    //     }
+
+    //     loads();
+
+
+
+    function showLight(light){
+        return new Promise(function(resolve,reject){
+            setTimeout(function(){
+                console.log(light);
+                resolve();
+            },2000);
+        })
+    }
+
+    async function show(){
+        await showLight("红灯");
+        await setTimeout(function(){
+            console.log("aaaa")
+        },5000);
+        await showLight("绿灯");
+    }
+    show();
+
+
+    const  showTime=async ()=>{
+
+    }
+
+    // 阻塞式同步
+    </script>
+</body>
+
+</html>

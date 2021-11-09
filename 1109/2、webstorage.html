@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // localStorage
+        // sessionStorage
+        // localStorage.setItem("name","xietian")
+        // localStorage.name="xietian";
+        // console.log(localStorage.getItem("name"));
+        // console.log(localStorage.name);
+
+
+        // for(var key in localStorage){
+        //     console.log(key,localStorage[key]);
+        // }
+
+        // console.log(localStorage)
+        // localStorage.clear()
+
+        // localStorage.removeItem("name");
+        // delete localStorage.name;
+
+
+            // var keys=Object.keys(localStorage);
+            // console.log(keys)
+
+            // Object.keys(localStorage).forEach(key=>{
+            //     console.log(key,localStorage[key]);
+            // })
+
+        // sessionStorage.a=10;
+
+        /* 
+        webStorage是sessionStorage和localStorage的总称
+            1、sessionStorage是会话级存储（关闭浏览器丢失），localStorage是长期存储（永久存在）
+            2、webStorage存储量大，可以存5M左右，cookie仅能存5K，webStorage不会自动在客户端和服务
+            端传送
+            3、localStorage是按域存储，不区分路径，cookie按域存储，区分路径（顶级域名、一级域名。。）
+            sessionStorage区分窗口，同一个页面不同窗口打开也不共享
+            4、localStorage有storage事件驱动，可以完成跨页面处理内容
+        
+        */
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <style>
+        body{
+            width: 100%;
+            
+        }
+    </style> -->
+</head>
+<body>
+    <ul></ul>
+    <script>
+        // document.body.style.height=document.documentElement.clientHeight+"px";
+        // window.addEventListener("storage",storageHandler);
+
+
+        // function storageHandler(e){
+        //     // console.log(e)
+        //     console.log(e.newValue)
+        //     document.body.style.backgroundColor=e.newValue;
+        // }
+
+
+        var ul=document.querySelector("ul");
+       
+        window.addEventListener("storage",storageHandler);
+        storageHandler();
+
+        function storageHandler(e){
+            var arr=localStorage.list;
+            try{
+                arr=JSON.parse(arr);
+            }catch(e){
+                arr=[];
+            }
+            ul.innerHTML=arr.reduce((v,t)=>{
+                return v+`<li>${t}</li>`;
+            },"")
+        }
+
+       
+    </script>
+</body>
+</html>

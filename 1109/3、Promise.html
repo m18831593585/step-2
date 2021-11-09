@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var p=new Promise(function(resolve,reject){
+        //     resolve();
+        // })
+        // p.then(function(){
+
+        // }).catch(function(){
+
+        // })
+
+        //     init();
+        //     // console.log("aaa")
+        //    function init(){
+        //         var img=new Image();
+        //         img.src="./img/1.jpg";
+        //         img.addEventListener("load",loadHandler);
+        //         console.log("aaa")
+        //    }
+
+        // //    console.log("bb")
+        //     function loadHandler(e){    
+        //         console.log("bbb")
+        //     }
+
+
+
+        // var img=new Image();
+        // img.src="./img/1.jpg";
+        // img.onload=function(){
+        //     console.log("bbb")
+        // }
+        // console.log("aaa")
+
+
+        // var p=new Promise(function(resolve,reject){
+        //     // resolve,reject这两个参数都是回调函数
+        //     var img=new Image();
+        //     img.src="./img/1.jpg";
+        //     img.onload=function(){
+        //         resolve();
+        //     }
+        //     img.onerror=function(){
+        //         reject();
+        //     }
+        // })
+
+        // p.then(function(){
+        //     console.log("aaa");
+        // }).catch(function(){
+        //     console.log("bbb")
+        // })
+
+
+
+        // var img=new Image();
+        // img.src="./img/1.jpg";
+        // img.onload=function(){
+        //     var img1=new Image();
+        //     img1.src="./img/2.jpg";
+        //     img1.onload=function(){
+        //         var img2=new Image();
+        //         img2.src="./img/3.jpg";
+        //         img3.onload=function(){
+
+        //         }
+        //     }
+        // }
+
+
+        // function loadImage(src) {
+        //     return new Promise(function (resolve, reject) {
+        //         var img = new Image();
+        //         img.src = src;
+        //         img.onload = function () {
+        //             resolve(img); //只能传一个参数
+        //         }
+        //         img.onerror = function (err) {
+        //             reject(err)
+        //         }
+        //     });
+
+        // }
+
+
+        //    var p= loadImage("./img/1.jpg")
+        //    p.then(function(){
+
+        //    }).catch(function(){
+
+        //    })
+        // p.then(function(){
+
+        // },function(){
+
+        // })
+        // 链式调用
+        // var arr=[];
+        // loadImage("./img/1.jpg").then(function(img){
+        //     arr.push(img);
+        //     return loadImage("./img/2.jpg")
+        // }).then(function(img){
+        //     arr.push(img);
+        //     return loadImage("./img/3.jpg")
+        // }).then(function(img){
+        //     arr.push(img);
+        //     return loadImage("./img/4.jpg")
+        // }).then(function(img){
+        //     arr.push(img);
+        //    console.log(arr);
+        // })
+
+
+
+
+
+        // function showLight(light){
+        //     return new Promise(function(resolve,reject){
+        //         setTimeout(function(){
+        //             console.log(light);
+        //             resolve();
+        //         },2000);
+        //     })
+        // }
+
+
+        // function fn(){
+        //     showLight("红灯").then(function(){
+        //         return showLight("黄灯");
+        //     }).then(function(){
+        //         return showLight("绿灯");
+        //     }).then(function(){
+        //         fn();
+        //     })
+        // }
+        // fn();
+
+
+        // class Promise1 {
+        //     f1;
+        //     f2;
+        //     fn;
+        //     ids;
+        //     state="pending";
+        //     constructor(fn) {
+        //         this.fn = fn;
+
+        //         this.ids=setTimeout(()=>{
+        //             clearTimeout(this.ids);
+        //             this.ids=undefined;
+        //             this.fn((res)=>this.resolve(res), (err)=>this.reject(err));
+        //         })
+        //     }
+        //     then(f1) {
+        //         this.f1 = f1;
+        //         // return this;
+        //     }
+        //     catch (f2) {
+        //         this.f2 = f2;
+        //         // return this;
+        //     }
+        //     resolve(res){
+        //         if(this.state!=="pending") return;
+        //         this.state="fulfilled"
+        //          var p=this.f1(res);
+        //         p.f1=this.f1;
+        //         p.f2=this.f2;
+        //         return p;
+        //     }
+        //     reject(err){
+        //         if(this.state!=="pending") return;
+        //         this.state="rejected";
+        //         var p=this.f1(res);
+        //         p.f1=this.f1;
+        //         p.f2=this.f2;
+        //         return  p;
+        //     }
+        // }
+
+
+        // var p=new Promise1(function(resolve,reject){
+        //     setTimeout(function(){
+        //         resolve()
+        //     },2000);
+        // })
+        // p.then(function(){
+        //     console.log("aaa");
+        // })
+
+
+        // 1\不能连续then
+        // 2、原Promise，then的时候是异步，这样是同步，错误的
+        // 3、出现即执行了then又执行了catch
+
+        // _____________
+
+        // function showLight1(light) {
+        //     return new Promise1(function (resolve, reject) {
+        //         // setTimeout(function () {
+        //         //     console.log(light);
+        //         //     resolve();
+        //         // }, 2000);
+        //         reject();
+        //         resolve();
+
+        //     })
+        // }
+
+        // console.log("aaa__1");
+        // showLight1("红灯").then(function(){
+        //     console.log("bbb___1");
+        // }).catch(function(){
+        //     console.log("ccc___1")
+        // })
+        // console.log("ddd__1");
+
+
+        // // ________
+        // function showLight(light) {
+        //     return new Promise(function (resolve, reject) {
+        //         reject();
+        //         resolve();
+
+        //     })
+        // }
+
+        // console.log("aaa");
+        // showLight("红灯").then(function(){
+        //     console.log("bbb");
+        // }).catch(function(){
+        //     console.log("ccc");
+        // })
+        // console.log("ddd");
+
+
+
+
+        // -----------------
+
+        //  function showLight1(light) {
+        //     return new Promise1(function (resolve, reject) {
+        //         setTimeout(function () {
+        //             console.log(light);
+        //             resolve();
+        //         }, 2000);
+        //     })
+        // }
+
+        // showLight1("红灯").then(function(){
+        //         console.log("aaa")
+        //         return showLight1("黄灯");
+        //     }).then(function(){
+        //         console.log("bbb")
+        //     })
+
+
+
+        // var p=new Promise(function(resolve,reject){
+        // //    reject();
+        // })
+        // console.log(p);
+        // fulfilled  resolve 调用时的状态
+        // 状态机分为3中 pending fulfilled  rejected 
+        // 默认状态是pending,当执行resolve函数时，状态被修改为fulfilled状态，这时候，如果再执行
+        // reject函数时，判断当前状态是否是pending，如果不是pending状态就不在执行reject函数
+        // 如果当前状态是pending状态，执行了reject方法时，状态被修改为rejected状态
+        // 再次执行resolve方法，发现状态不是pending状态，就会跳出不在执行resolve函数
+        // 在promise中，只能执行一次resolve或者一次reject
+
+
+
+
+        // ---------------继续
+
+        // const list=[(res)=>{
+        //     console.log(res)
+        // },(err)=>{
+        //     console.log(err)
+        // }];
+
+        // new Promise((resolve,reject)=>{
+        //     resolve("aa");
+        // }).then(...list);
+
+
+        // var p=new Promise(function(resolve,reject){
+        //     resolve();
+        // })
+
+        // p.then(function(){
+        //     console.log("aaa");
+        // }).then(function(){
+        //     console.log("bbb")
+        // }).then(function(){
+        //     console.log("ccc")
+        // })
+
+
+        // var p=new Promise(function(resolve,reject){
+        //     reject();
+        // })
+
+        // 不管开始执行时是哪一种方式，执行后都会返回一个新的Promise，并且这个Promise的状态是fulfilled
+        // 连续catch是不会被触发的
+        // p.then(function(){
+        //     console.log("aaa");
+        // }).catch(function(){
+        //     console.log("ERROR")
+        // }).then(function(){
+        //     console.log("bbb")
+        // }).then(function(){
+        //     console.log("ccc")
+        // })
+
+
+        // Promise.all();
+        // Promise.race()
+
+
+        function loadImage(src) {
+            return new Promise(function (resolve, reject) {
+                var img = new Image();
+                img.src = src;
+                img.onload = function () {
+                    resolve(img); //只能传一个参数
+                }
+                img.onerror = function (err) {
+                    reject(err)
+                }
+            });
+        }
+
+        var arr=[];
+        for(var i=1;i<13;i++){
+            arr.push(loadImage("./img/"+i+".jpg"));
+        }
+        // 将promise对象的数组，按照顺序从前向后全部执行完成，然后将每一次resolve传出结果放在一个新数组中
+        // 并且将其在then中函数返回
+        // Promise.all(arr).then(function(list){
+        //     list.forEach(item=>{
+        //         console.log(item.src)
+        //     })
+        // })
+
+        // 谁的异步先完成，就先返回谁
+        // Promise.race(arr).then(function(img){
+        //     console.log(img.src);
+        // })
+
+
+        // Promise.resolve()
+        // Promise.reject();
+
+        // 相同
+        // var p=Promise.resolve(1);
+
+        // var p=new Promise(function(resolve,reject){
+        //     resolve(1);
+        // })
+
+
+        // 微任务和宏任务
+        // console.log("aaaa");
+        // setTimeout(function(){
+        //     console.log("dddd")   
+        // })
+        // Promise.resolve().then(function(){
+        //     console.log("bbb");//异步
+        // });
+        // console.log("ccc");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <button>red</button>
+    <button>green</button>
+    <button>blue</button> -->
+    <script>
+        // document.addEventListener("click",clickHandler);
+
+
+        // function clickHandler(e){
+        //     if(e.target.nodeName!=="BUTTON") return;
+        //     localStorage.bgc=e.target.textContent;
+        // }
+
+
+
+        var arr=[];
+        var i=0;
+        document.addEventListener("click",clickHandler);
+
+        function clickHandler(e){
+            arr.push(i++);
+            localStorage.list=JSON.stringify(arr);
+        }
+    </script>
+</body>
+</html>

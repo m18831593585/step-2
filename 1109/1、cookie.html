@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./md5.js"></script>
+</head>
+<body>
+    <script>
+        // var a;
+        // if(!a)a=1;
+        // a++;
+        // console.log(a)
+
+
+        // 本地存储
+        // cookie  webstorage（localstorage，sessionStroage）;
+        // 存储在本地文件中，但是这个本地文件不可以找到
+
+        // document.cookie="a=1";
+
+        // console.log(document.cookie);
+        // var arr=document.cookie.split("=");
+        // var key=arr[0];
+        // var value=Number(arr[1]);
+        // // console.log(key,value)
+        // document.cookie=key+"="+(value+1);
+
+
+        // cookie中只能存储字符串，如果是对象或者数组，就需要使用JSON.stringify转换字符串存储
+        // 清除方式
+        // 1、cookie存储是有时效，当关闭浏览器时，cookie将会自动丢失
+        // 2、通过浏览器设置清除cookie
+        // 3、可以通过浏览器设置不保留cookie
+        // 4、在浏览器的控制面板中应用中的存储项有cookie，可以选择清除或者全部清除
+        // document.cookie="a=1"
+
+
+        // console.log(document.cookie);
+        // document.cookie="a=0";
+        // if(!/(?<=(;\s)?)arr(?=\=)/.test(document.cookie))document.cookie="arr=[]";
+        // var a=document.cookie.split("=");
+        // var key=a[0];
+        // var value=a[1];
+        // var arr=JSON.parse(value);
+        // arr.push(1);
+        // document.cookie=key+"="+JSON.stringify(arr);
+
+        // document.cookie="a=1";
+        // document.cookie="b=true";
+        // document.cookie="c=a";
+        // document.cookie="d=4";
+        // document.cookie="e=[1,2,3]";
+        // document.cookie='f={"a":1,"b":2}';
+
+        // console.log(document.cookie)
+
+
+    //     function getCookieObj(){
+    //         var obj={};
+    //         var arr=document.cookie.split(";");
+    //         for(var i=0;i<arr.length;i++){
+    //             var arr1=arr[i].split("=");
+    //            var key=arr1[0].trim();
+    //            var value=isNaN(arr1[1]) ? arr1[1] : Number(arr1[1]);
+    //            try{
+    //                value=JSON.parse(value);
+    //            }catch(e){
+
+    //            }
+    //             obj[key]=value;
+    //         }
+    //        return obj;
+    //     }
+    //   var obj=  getCookieObj();
+    //   console.log(obj)
+
+        // console.log(document.cookie)
+        // console.log(document.cookie.match(/[^;\s]+=.+?((?=;)|$)/g))
+       
+
+        // 获取cookie
+        // function getCookieObj(){
+        //     var obj={};
+        //     document.cookie.replace(/([^;\s]+)=(.+?)((?=;)|$)/g,function(item,$1,$2){
+        //         try{$2=JSON.parse($2);}
+        //         catch(e){}
+        //         obj[$1]=$2;
+        //     })
+        //     return obj;
+        // }
+
+        // var o= getCookieObj();
+        // console.log(o);
+
+
+            // cookie只能做临时存储，但是如果有需要时，我们也可以给它指定存储时间
+            // var date=new Date();
+       
+            // date.setFullYear(2121);
+            // document.cookie="name=xietian;expires="+date.toUTCString();
+            // console.log(document.cookie)
+
+            // function setCookie(key,value,date){
+
+            // }
+
+            
+            // function setCookie({key,value,year,month,day,hour,minutes,add=false}){
+            //     var date=new Date();
+            //     year=year!==undefined ? year : (add ? year=0 : new Date().getFullYear());
+            //     month=month!==undefined ? month : (add ? month=0 : new Date().getMonth());
+            //     day=day!==undefined ? day : (add ? day=0 : new Date().getDate());
+            //     hour=hour!==undefined ? hour : (add ? hour=0 : new Date().getHours());
+            //     minutes=minutes!==undefined ? minutes : (add ? minutes=0 : new Date().getMinutes());
+            //     if(add){
+            //         date.setFullYear(date.getFullYear()+year,date.getMonth()+month,date.getDate()+day);
+            //         date.setHours(date.getHours()+hour,date.getMinutes()+minutes);
+            //     }else{
+            //         date.setFullYear(year,month,day);
+            //         date.setHours(hour,minutes);
+            //     }
+            //     document.cookie=key+"="+value+";expires="+date.toUTCString();
+            // }
+
+            // setCookie({key:"a",value:2,month:10,add:true})
+            // setCookie({key:"b",value:3,year:2025})
+
+                // 如果设置为当前时间的cookie就会清除该数据
+            // document.cookie="a=1;expires="+new Date().toUTCString();
+
+
+            // cookie最重要的特征
+           /*   1、可以在同一个域的客户端和服务端进行传递，当网页访问或者跳转到服务端的程序中，
+            cookie会自动携带到服务端，因为同域访问中都能获取到该域中存储的cookie
+                2、cookie因为自动携带在客户端和服务端中自动传输，cookie本身就不能太大，不超过5k
+                3、当关闭浏览器时，会话级的存储会被清除，有时间设定的数据会被保留
+                4、cookie存储时，是按照域来存储，也就是不同域中的数据是不能互相访问的，而且
+                cookie存储时也是根据目录结构存储，这样的目录结构分为顶级域、一级域和二级域等等
+                cookie是按照各种域存储的，可以从低于域访问到高级域的存储数据，但是高级域不能访问到
+                低级域存储的数据  document.cookie="key=value;path=/路径"
+                5、cookie是明文的，不安全，因此存储一些数据时需要考虑加密
+                 */
+
+                //  document.cookie="aaa=3";
+
+
+            // var use="xietian";
+            // var pass="xie123";
+            // token
+            
+        //    var str=hex_md5(use+pass+"20211201");
+        // var str=hex_md5(use);
+        //    console.log(str)
+
+        //    console.log(hex_md5("x"))
+    //   var str= Array(100).fill(1).reduce((v,t)=>{
+    //         return hex_md5(v);
+    //     },use)
+
+    // for(var i=0;i<1000000;i++){
+    //     use=hex_md5(use);
+    // }
+    // console.log(use)
+
+
+    // 精准投放
+    // XSS攻击
+
+
+    
+    </script>
+</body>
+</html>
