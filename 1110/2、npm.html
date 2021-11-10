@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./node_modules/lodash/lodash.js"></script>
+</head>
+<body>
+    <script>
+        // npm   node package manager
+
+
+        // npm init  初始化配置   过程中会提示很多问题
+        // npm init -y 自动确认
+        // package.json 配置文件
+        /*
+         1、可以把当前的项目上传到npmjs官方网站的库里，为所有人提供当前项目的共享，这个文件就是上传所需要的配置文件
+         2、在执行node通过这个配置文件的命令来执行node代码，完成传参等需要
+         3、项目当中将会使用大量其他包（插件），这些包对于当前这个项目来说就是依赖，这些依赖配置需要
+         分门别类进行归纳，以方便再次更新对应包，在项目上线前做打包时对于依赖包进行确认打包
+         4、用于使用ES6模块化
+        
+
+         name  项目名 不允许使用大写 -  /  @ 区分单词，一般不要使用数字  npmjs库是一个非常庞大的库
+         version 版本号  当前项目的版本  
+          1.2.3  
+           1是大版本 大的结构发生改变时修改大版本，
+           2就是小版本  大版本中代码需要迭代新的内容时
+           3就是微版本  修改各版本中的bug，优化性能
+        description 描述 这个包的使用作用，以方便被搜索到
+        main 执行文件的入口
+        scripts 所有脚本的集合
+        keywords 关键词  这个包在别人搜索该关键词可以被找到
+        author  作者 英文花名 中文花名
+        license 版权证
+
+        "type": "module",  使用ES6模块化
+        */
+
+
+        // npm  i  插件名
+        /* 
+            这个全局会安装在node所在文件夹下，因为该node是全局环境变量中，所以直接可以执行命令
+            npm  i  插件名  -g
+            全局安装，这个插件主要适用于命令类型插件  cli
+            npm i nrm -g   nrm 切换npm下载镜像源
+            npm i yarn -g   yarn 与npm一样，也是包管理器
+            npm i anywhere -g  web服务工具
+            npm i http-server -g web服务工具,可以做代理
+            npm i nodemon -g 如果修改了node文件，自动重新执行该node文件
+
+
+            下面两个都会安装在当前文件夹的node_modules文件夹中,
+            dependencies 在package.json中dependencies就是项目依赖，安装后都会在这里显示
+            npm i 插件名  --save 
+            npm i 插件名  -S
+            npm i 插件名 
+            安装项目依赖插件 项目依赖插件  项目上线后，运行仍然需要使用的插件
+            npm i jquery -S  js中DOM的快速开发插件
+            npm i lodash -S 
+
+
+
+            npm i 插件名  --save-dev
+            npm i 插件名  -D
+            devDependencies 在package.json中devDependencies就是开发依赖，安装后都会在这里显示
+            安装开发依赖插件  开发依赖插件  在开发时使用，上线时不在需要了，比如打包工具，测试工具
+             npm i gulp -D
+
+
+             npm uninstall 插件名  -g
+             npm uninstall 插件名  -S
+             npm uninstall 插件名  -D
+
+              ErrorNo -4048
+             npm cache verify 清除缓存
+             npm cache clean  --force 强制清除缓存
+
+        
+        */
+
+
+        // var  arr=[1,2,3,4,5,6];
+        // var arr1=arr.reduce((v,t)=>{
+        //     if(v.length===0) v.push([]);
+        //     if(v[v.length-1].length===4) v.push([]);
+        //     v[v.length-1].push(t);
+        //     return v;
+        // },[]);
+        // console.log(arr1)
+
+        // var arr1=_.chunk(arr,3);
+        // console.log(arr1)
+    </script>
+</body>
+</html>

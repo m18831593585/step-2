@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // load  error 加载都需要时间
+        // setTimeout setInterval requestAnimationFrame
+
+
+        // var p=new Promise()
+
+        function loadImage(){
+            return new Promise(function(resolve,reject){
+                var img=new Image();
+                img.src="a.jpg";
+                img.onload=function(){
+                    resolve(img);
+                    img.onload=null;
+                }
+                img.onerror=function(){
+                    reject();
+                }
+                // img.addEventListener("load",function(){
+                //     resolve();
+                // })
+            })
+        }
+
+
+        // loadImage().then(function(){
+
+        // }).catch(function(){
+
+        // })
+
+        // loadImage().then(function(){
+
+        // },function(){
+
+        // })
+
+
+        // Promise.all().then(function(){
+
+        // })
+        // Promise.race().then(function(){
+
+        // })
+        // Promise.resolve()
+        // Promise.reject()
+
+
+        // async function fn(){
+        //     var img;
+        //     await loadImage().then(function(_img){
+        //         img=_img;
+        //     }).catch(function(){
+
+        //     })
+        //     console.log(img);
+        // }
+
+        // async function fn(){
+        //     // 将loadImage的resolve传参赋予img
+        //     var img=await loadImage()
+        //     console.log(img);
+        // }
+
+        // fn();
+
+
+        // function fns(a){
+        //     return new Promise(function(resolve,reject){
+        //         setTimeout(resolve,2000,a);
+        //     })
+        // }
+
+
+        // fns("abc").then(function(a){
+        //     console.log(a);
+        // })
+
+        // async function fn1(){
+        //     var str=await fns("abc");
+        //     console.log(str)
+        // }
+
+        // fn1();
+    </script>
+</body>
+</html>

@@ -2,29 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90f6d3f6-3e27-4771-8ffa-fa8075c3803a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1、cookie.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2、webstorage.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/3、Promise.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4、async和await.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/a.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/a/a.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/a/b/b.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/b.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/11.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/12.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/9.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/md5.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/随堂/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/随堂/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/随堂/test.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +20,27 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="master" />
+                    <option name="lastUsedInstant" value="1636504552" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$/.." />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
   <component name="ProjectId" id="20f0ArDm0B4u9Xfvv8xKHH7BCPc" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -55,7 +55,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../1104" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="MTHome" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
