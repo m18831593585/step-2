@@ -68,6 +68,12 @@
 
     async function show(){
         await showLight("红灯");
+        await showLight("黄灯");
+        await showLight("绿灯");
+    }
+
+    async function show(){
+        await showLight("红灯");
         await setTimeout(function(){
             console.log("aaaa")
         },5000);
