@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 路由
+        var xhr=new XMLHttpRequest();
+        xhr.open("GET","http://localhost:4020/news/?type=2&use=xietian&age=30");
+        xhr.addEventListener("load",loadHandler);
+        xhr.send();
+
+        function loadHandler(e){
+            console.log(xhr.response);
+        }
+
+        // var xhr=new XMLHttpRequest();
+        // xhr.open("POST","http://localhost:4020/shoppinglist");
+        // // xhr.open("POST","http://localhost:4020/shoppinglist/add");
+        // // xhr.open("POST","http://localhost:4020/shoppinglist/remove");
+        // xhr.addEventListener("load",loadHandler);
+        // xhr.send("a=1&b=2");
+        //
+        // function loadHandler(e){
+        //     console.log(xhr.response);
+        // }
+
+
+
+    </script>
+</body>
+</html>

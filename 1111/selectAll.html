@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+    let data
+
+    init()
+    function init(){
+        let xhr = new XMLHttpRequest()
+        xhr.open('GET', 'http://localhost:4020/selectAll')
+        xhr.addEventListener('load', loadHandler)
+        xhr.send()
+    }
+
+    function loadHandler(){
+        data = JSON.parse(this.responseText)
+        console.log(data)
+        if (data.data) render()
+    }
+
+    function render(){
+        document.body.innerHTML = `
+        <table>
+            <tr><th>用户名</th><th>姓名</th><th>性别</th><th>年龄</th><th>电话</th><th>邮箱</th></tr>
+            ${Array.from(data).reduce((value, item) => {
+                value + `
+                    <tr>
+                        <td>${item.user}</td>
+                        <td>${item.name}</td>
+                        <td>${item.sex}</td>
+                        <td>${item.age}</td>
+                        <td>${item.tel}</td>
+                        <td>${item.email}</td>
+                    </tr>
+                `
+        },"")}
+        </table>
+        `
+
+    }
+
+</script>
+</body>
+</html>

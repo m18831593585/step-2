@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.js"></script>
+</head>
+<body>
+    <div class="col-xs-4 col-xs-offset-4">
+        <h2 class="text-center">用户登录</h2>
+        <form action="#" class="">
+            <div class="form-group has-feedback">
+                <label class="control-label" for="user">User:</label>
+                <input type="text" class="form-control" id="user" name="user">
+                <span class="glyphicon  form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <label class="control-label" for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password">
+                <span class="glyphicon  form-control-feedback"></span>
+            </div>
+           
+            <div class="col-xs-offset-7">
+                <button class="btn btn-default" id="sign-in">登录</button>
+                &emsp; &emsp; &emsp;
+                <a href="./signup.html" class="btn btn-default">注册</a>
+            </div>
+        </form>
+    </div>
+    <script type="module">
+        import ajax from "./js/AJAX.js"
+        var form,ids;
+        var m=new Map();
+
+        init();
+    function init(){
+
+        form=document.querySelector("form");
+        form.addEventListener("input",inputHandler);
+        form.addEventListener("submit",submitHandler);
+    }
+
+    function clearTime(input){
+        return new Promise(function(resolve,reject){
+           ids=setTimeout(function(){
+                clearTimeout(ids);
+                ids=undefined;
+                resolve(input.value);
+            },500);
+        })
+    }
+
+   async function inputHandler(e){
+       if(e.target.name==="sex") return;
+        if(ids) return;
+        var value=await clearTime(e.target);
+        if(judgeInput(e.target.name,value)){
+            m.set(e.target.name,e.target.name==="age" ? Number(value) : value);
+            e.target.parentElement.className="form-group has-success has-feedback"
+            e.target.nextElementSibling.className="glyphicon glyphicon-ok form-control-feedback"
+        }else{
+            m.delete(e.target);
+            e.target.parentElement.className="form-group has-error has-feedback"
+            e.target.nextElementSibling.className="glyphicon glyphicon-remove form-control-feedback"
+        }
+    }
+
+    function judgeInput(name,value){
+        switch(name){
+            case "user":
+                return /^\w{8,16}$/.test(value);
+            case "password":
+                return /^(?=\D+\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9~!@#$%^&*-_+=.,";'\\\|\/]{8,16}$/.test(value);
+            case "name":
+                return /^[\u4e00-\u9fd5]{2,4}$/.test(value);
+            case "age":
+                return /^[1-9]$|^[1-9]\d$|^1[0-2]\d$/.test(value);
+            case 'tel':
+                return /^1\d{10}$/.test(value);
+            case "email":
+                return /^\w+@\w+\.\w+$/.test(value);
+           
+        }
+    }
+
+    async function submitHandler(e){
+        e.preventDefault();
+      
+        if(m.size<2)return;
+        var data=Object.fromEntries(m);
+         var res=await ajax("http://localhost:4020/signIn",{method:"post",body:JSON.stringify(data)});
+        if(res){
+            console.log("登陆成功")
+            location.href="./selectAll.html";
+        }else{
+            console.log("登录失败")
+        }
+    }
+
+  
+    </script>
+</body>
+</html>

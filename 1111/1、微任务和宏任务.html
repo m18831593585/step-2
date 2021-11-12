@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            微任务  每个任务流最后执行   Promise的then或者catch方法中的回调函数，await
+            宏任务  下一个任务列的最前面执行
+
+        */
+
+        // console.log(1);
+        // console.log(2);
+        // fn();
+        // console.log(3);
+        // console.log(4);
+
+
+
+
+        // function fn(){
+        //     console.log(6);
+        //     console.log(7);
+        // }
+
+
+
+        // console.log(1);
+        // console.log(2);
+        // document.addEventListener("abc",abcHandler);
+        // // document.addEventListener("abc",abcHandler1);
+        // console.log(3);
+        // var evt=new Event("abc");
+        // document.dispatchEvent(evt);
+        // console.log(4);
+
+
+
+
+
+        // function abcHandler(){
+        //     console.log(5);
+        //     console.log(6);
+        // }
+
+
+        /*   function fn(){
+              console.log(1);
+              console.log(2);
+              // fn1();
+          }
+
+          function fn1(){
+              console.log(3)
+              console.log(4)
+              // fn2();
+          }
+
+          function fn2(){
+              console.log(5)
+              console.log(6)
+          }
+
+          fn();
+          fn1();
+          fn2();
+          console.log(7) */
+
+
+
+        // console.log(1);
+        // console.log(2);
+        // setTimeout(fn)
+        // console.log(5);
+        // for(var i=0;i<1000000000;i++){
+
+        // }
+
+        // console.log(6)
+        // new Promise(function(resolve,reject){
+        //     console.log(7)
+        //     resolve(9);
+        //     console.log(8)
+        // }).then(function(n){
+        //     console.log(n)
+        // })
+        // // console.log(6)
+        // console.log(10)
+        // for(var i=0;i<1000000000;i++){
+
+        // }
+        // console.log(12)
+
+        // function fn(){
+        //     console.log(4);
+        // }
+
+
+
+        // setTimeout(function(){
+        //     console.log(1);
+        // },1000)
+
+        // console.log("a")
+        // Promise.resolve().then(function () {
+        //     console.log(1)
+        //     Promise.resolve().then(function () {
+        //         console.log(3)
+        //     })
+        // })
+        // console.log("b")
+
+
+
+        // async function fn(){
+        //     console.log(1);
+        //     await console.log(2)
+        //     console.log(3);
+        // }
+
+        // console.log("a");
+        // fn();
+        // console.log("b");
+
+        /* async function fn(){
+            console.log(1);
+            await Promise.resolve().then(function(){
+                console.log(2)
+            })
+            console.log(3);
+        }
+
+        console.log("a");
+        fn();
+        console.log("b"); */
+    </script>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+        //  for(var i=0;i<1000000000;i++){
+
+        // }
+        // setTimeout(function(){
+        //     console.log(2)
+        // },1)
+
+        // console.log(11)
+        // console.log("c")
+        // Promise.resolve().then(function () {
+        //     console.log(2)
+        //     Promise.resolve().then(function () {
+        //         console.log(4)
+        //     })
+        // })
+        // console.log("d")
+    </script>
+
+
+<script>
+//    Promise.resolve().then(function(){
+//         setTimeout(function(){
+//             console.log(2);
+//         })
+//     })
+
+//     setTimeout(function(){
+//         Promise.resolve().then(function(){
+//             console.log(1);
+//         })
+//     })
+
+    // 优先触发宏任务就是优先创建任务列（同时）
+    
+
+
+   /*  new Promise(function(resolve,reject){
+        resolve();
+    }).then(function(){
+        console.log(1)
+        return new Promise(function(resolve,reject){
+            resolve();
+        })
+    }).then(function(){
+        console.log(2);
+        return new Promise(function(resolve,reject){
+            resolve();
+        })
+    }).then(function(){
+        console.log(3)
+        return new Promise(function(resolve,reject){
+            resolve();
+        })
+    }).then(function(){
+        console.log(4)
+    })
+
+
+    Promise.resolve().then(function(){
+        console.log(11);
+        return Promise.resolve();
+    }).then(function(){
+        console.log(22);
+        return Promise.resolve();
+    }).then(function(){
+        console.log(33);
+        return Promise.resolve();
+    }).then(function(){
+        console.log(44);
+    })
+
+
+    Promise.resolve().then(function(){
+        console.log(111);
+    }).then(function(){
+        console.log(222);
+    }).then(function(){
+        console.log(333)
+    }).then(function(){
+        console.log(444)
+    }).then(function(){
+        console.log(555)
+    }).then(function(){
+        console.log(666)
+    }).then(function(){
+        console.log(777)
+    }) */
+
+
+    // new Promise(function(resolve,reject){
+    //     resolve();
+    // }).then(function(){
+    //     Promise.resolve().then(function(){
+    //         console.log(1);
+    //     })
+    // }).then(function(){
+    //     console.log(2)
+    // })
+
+
+    console.log(1);
+
+      new Promise(function (res, rej) {
+        console.log(2);
+        res();
+      })
+        .then(function () {
+          console.log(3);
+          Promise.resolve().then(function () {
+            console.log(5);
+            setTimeout(function () {
+              console.log(6);
+              Promise.resolve().then(function () {
+                console.log(7);
+              });
+              setTimeout(function () {
+                console.log(8);
+              }, 0);
+            }, 0);
+          });
+        })
+        .then(function () {
+          console.log(4);
+        });
+
+
+
+      setTimeout(function () {
+        console.log(9);
+        new Promise(function (res) {
+          res();
+          console.log(10);
+        }).then(function () {
+          console.log(11);
+        });
+      });
+
+
+
+      Promise.resolve().then(function () {
+        setTimeout(function () {
+          Promise.resolve().then(function () {
+            console.log(12);
+          });
+          console.log(13);
+        }, 0);
+      });
+
+
+
+      setTimeout(function () {
+        setTimeout(function () {
+          setTimeout(function () {
+            Promise.resolve().then(function () {
+              console.log(14);
+            });
+            console.log(15);
+          }, 0);
+          console.log(16);
+        }, 0);
+        console.log(17);
+      }, 0);
+
+
+
+      console.log(18);
+
+
+      new Promise(function (res) {
+        console.log(19);
+        setTimeout(function () {
+          console.log(20);
+        }, 0);
+      }); 
+    
+
+
+    // 1，2，18，19，3，5,4,9,10,11,17,20,13,12,6,7,16,8,15,14
+</script>
+</body>
+
+</html>
