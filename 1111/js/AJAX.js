@@ -1,5 +1,5 @@
 // export default class AJAX{
-    
+
 //     constructor(url,callback,{method="GET",body=null}={method:"GET",body:null}){
 //         var xhr=new XMLHttpRequest();
 //         xhr.callback=callback;
@@ -18,19 +18,20 @@
 //     }
 // }
 
-export default function(url,{method="GET",body=null}={method:"GET",body:null}){
-    return new Promise(function(resolve,reject){
-        var xhr=new XMLHttpRequest();
-        xhr.open(method,url);
+export default function (url, {method = "GET", body = null} = {method: "GET", body: null}) {
+    return new Promise(function (resolve, reject) {
+        var xhr = new XMLHttpRequest();
+        xhr.open(method, url);
         xhr.send(body);
-        xhr.onload=function(){
-            var data=xhr.response;
-            try{
-                data=JSON.parse(data);
-            }catch(e){};
+        xhr.onload = function () {
+            var data = xhr.response;
+            try {
+                data = JSON.parse(data);
+            } catch (e) {
+            }
             resolve(data);
         }
-        xhr.onerror=function(e){
+        xhr.onerror = function (e) {
             reject(e)
         }
     })

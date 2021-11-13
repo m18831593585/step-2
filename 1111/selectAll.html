@@ -21,16 +21,18 @@
 
     function loadHandler(){
         data = JSON.parse(this.responseText)
+        data = data.data
         console.log(data)
-        if (data.data) render()
+        if (data) render()
     }
 
     function render(){
+        console.log(data)
         document.body.innerHTML = `
         <table>
             <tr><th>用户名</th><th>姓名</th><th>性别</th><th>年龄</th><th>电话</th><th>邮箱</th></tr>
-            ${Array.from(data).reduce((value, item) => {
-                value + `
+            ${data.reduce((value, item) => {
+                return value + `
                     <tr>
                         <td>${item.user}</td>
                         <td>${item.name}</td>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="">
+    <input type="text" name="name" value="<?php echo $name; ?>">
+    <input type="text" name="age" value="<?php echo $age; ?>">
+    <input type="submit" value="提交">
+
+</form>
+<button>123</button>
+<script>
+    let form = document.querySelector('form');
+    let button = document.querySelector('button');
+    button.onclick = function () {
+        form.reset();
+    }
+</script>
+</body>
+</html>
