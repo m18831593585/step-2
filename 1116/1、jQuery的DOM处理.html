@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 50px;
+            height: 50px;
+            background-color: red;
+        }
+    </style>
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
+</head>
+<body>
+    <!-- <div>
+        <span>1</span>
+    </div> -->
+
+    <!-- <span>1</span>
+    <span>2</span>
+    <span>3</span>
+    <span>4</span>
+    <span>5</span> -->
+    <div>
+        <span>1</span>
+    </div>
+    <script>
+        // 创建DOM元素
+        // console.log($("<div></div>"))
+
+        // 返回body
+        // $("body").append("<div></div>");
+        // 这里返回前面创建的div
+        // $("<div></div>").appendTo("body");
+
+        // $("div").prepend("<p></p>");
+        // var p=document.createElement("p");
+        // var div= document.querySelector("div");
+        //  div.insertBefore(p,div.firstChild)
+
+        // $("<p></p>").prependTo("div");
+
+
+        // $("div").after("<p></p>")
+        // $("<p></p>").insertAfter("div");
+
+
+        // $("div").before("<p></p>");
+        // $("<p></p>").insertBefore("div");
+
+        // $("span").wrap("<div></div>");//包裹
+        // $("span").unwrap();//去掉外部包裹
+
+        // $("span").wrapAll("<div></div>");
+
+        // $("span").wrapInner("<a href='#'></a>")
+
+        // $("span").clone(true).appendTo("body");
+
+       var divs=$("div").click(function(){
+            $(this).css("backgroundColor","green");
+        });
+        // $("div").clone(false).appendTo("body");
+        // $("div").clone(true).appendTo("body");//true 将事件也复制下来
+
+        // 不但从DOM树中删除了divs，而且还将事件也删除
+        // divs.remove();
+        // 仅将DOM从DOM树种删除，不删除事件，重新放入时，事件仍然存在
+        // divs.detach();
+         // divs.appendTo("body");
+        // 清空divs的子元素
+        // divs.empty();
+       
+        // 替换
+        // $("<p></p>").replaceAll("div");
+        // $("div").replaceWith("<p></p>");
+
+     
+    </script>
+</body>
+</html>

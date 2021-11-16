@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            visibility: hidden;
+        }
+    </style>
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li class="li0"></li>
+        <li>2</li>
+        <li></li>
+        <li></li>
+    </ul>
+    <ul>
+        <span></span>
+        <li></li>
+        <li></li>
+        <li>2</li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div class="div1">1</div>
+    <div>
+       <span class="div1"></span>
+    </div>
+    <script>
+        // 所有li中第一个元素
+        // $("li:first").text(1)
+        // $("li").first()
+
+        // 所有li的父元素第一个子元素必须是li的
+        // $("li:first-child").text(1);
+
+         // 所有li的父元素第一个li子元素
+        // $("li:first-of-type").text(1);
+
+        // $("li:last");
+        // $("li").last();
+        // $("li:last-child");
+        // $("li:last-of-type");
+
+        // $("li:nth-child(1)");
+        // $("li:nth-of-type(1)");
+
+        // $("li:nth-child(odd)")
+        // $("li:nth-child(even)")
+
+
+        // $("li:ony-child")
+
+        // 否定伪类
+        // $("li:not(.li1)");
+        // $("li").not(".li1")
+
+        // $("li:even")
+        // $("li:odd")
+
+        // $("li:eq(2)");//选择jQuery对象列表中第2个jQuery对象
+        // $("li").eq(2)
+
+        // $("li:gt(2)");//li列表中大于2下标所有jQuery对象
+        // $("li:lt(2)")//li列表中小于2下标所有jQuery对象
+
+        // $(":header");//h1-h6
+        // $(":animated");//所有有动画的元素
+        // $(":focus");//所有聚焦对象
+
+        // 空元素
+    //    console.log( $("div:empty"))
+
+    // 查看所有div的后代中拥有className是div1的div元素
+//    console.log( $("div:has(.div1)"))
+        // console.log($("div").has(".div1"))
+
+// 判断该class是div1的元素是否是空元素
+        // console.log($(".div1:parent"))
+
+        // 后代内容中有2字符的li
+        // console.log($("li:contains(2)"))
+
+        // $(".div1").parent();//获取当前的父元素
+        // $(".div1").parents();//获取div1的所有父元素列表
+        // $(".div1").parentsUntil("body")  获取所有父元素列表中向上到body为止之间的所有父元素
+
+        // $(":hidden");//不可见元素，不会获取visibility: hidden;
+        // $(":visible");//可见元素
+
+
+        // 不能连缀，这俩个是布尔值
+        // 判断li中是否有.li0
+    //    console.log( $("li").is(".li0"))
+    // 只能判断class
+    // console.log($("li").hasClass("li0"));
+
+    // $("li").slice(0,4)
+    </script>
+</body>
+</html>

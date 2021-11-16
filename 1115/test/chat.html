@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        textarea {
+            width: 700px;
+            height: 600px;
+            resize: none;
+            background-color: white;
+            overflow: auto;
+        }
+
+        input {
+            height: 30px;
+            line-height: 30px;
+            font-size: 25px;
+            width: 100px;
+        }
+
+        input[name=msg] {
+            width: 400px;
+
+        }
+
+        button {
+            width: 80px;
+            height: 30px;
+        }
+    </style>
+
+    </style>
+
+</head>
+<body>
+
+<textarea disabled aria-label="chat-area"></textarea>
+<form action="#">
+    <input type="text" name="user">说：
+    <input type="text" name="msg">
+    <button type="submit">提交</button>
+</form>
+
+
+<script>
+
+    let textarea
+    let form
+    init()
+
+    function init() {
+        textarea = document.querySelector('textarea')
+        form = document.querySelector('form')
+        form.addEventListener('submit',submitHandler)
+        setInterval(getData,100)
+    }
+
+    async function submitHandler(e) {
+        e.preventDefault()
+        let formData = new FormData(form)
+        let res = await fetch("http://10.9.28.164:8080/postMsg",{
+            method:'POST',
+            body:JSON.stringify({
+                user:formData.get('user'),
+                msg:formData.get('msg')
+            })
+        })
+        res = await res.json()
+        if (!res.result) alert(res.err)
+        console.log(res)
+        form.reset()
+    }
+
+    async function getData(){
+        let data = await fetch("http://10.9.28.164:8080/getMsg")
+        data = await data.json()
+        textarea.innerHTML = data.data.reduce((v,t) => {
+            return v + `${t.user}:${t.msg}\n`
+        },"")
+    }
+
+</script>
+</body>
+</html>

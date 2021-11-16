@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
+</head>
+<body>
+    <div></div>
+    <script>
+        // $.extend({
+        //     randomColor:function(){
+        //         return Array(6).fill(1).reduce((v,t)=>{
+        //             return v+Math.floor(Math.random()*16).toString(16);
+        //         },"#")
+        //     },
+        //     compact:function(arr){
+        //         return arr.filter(t=>t);
+        //     }
+        // });
+
+        // $.each()
+
+        // console.log($.compact([1,4,"a",0,undefined,null,7]))
+
+        // (function(){
+        //     $.fn.bgc=function(color){
+        //         if(color===undefined)  return this.css("backgroundColor")
+        //         this.css("backgroundColor",color);
+        //         return this;
+        //     }
+        // })();
+
+        // $("div").width(50).height(50).bgc("red");
+        // console.log($("div").bgc());
+
+
+
+        /* 
+            1、ajax
+            2、get、post、load
+            3、getJSON，getScript
+        
+        
+        */
+
+        // $.getJSON("./config.json",function(data){
+        //     console.log(data);
+        // })
+
+        // $.getScript("./a.js",function(script){
+        //     console.log(script);
+        // })
+        // $.getScript("./a.js");
+
+
+        // JSONP通信
+        // $.getScript("http://localhost:4050?a=1&b=2&callback=fn");
+        // function fn(obj){
+        //     console.log(obj)
+        // }
+
+
+
+        // $.get("http://localhost:4020",{a:1,b:2},function(data){
+        //     console.log(data);
+        // })
+
+
+        // $.post("http://localhost:4020",{a:10,b:20},function(data){
+        //     console.log(data);
+        // })
+
+
+        // $(document).load("http://localhost:4020",{a:1,b:2},function(data){
+        //     console.log(data);
+        // })
+        // $("div").load("./3、动画.html");
+
+
+        // $.ajax({
+        //     url:"http://localhost:4020",
+        //     method:"post",
+        //     data:{a:1,b:2},
+        //     success:function(data){
+        //         console.log(data);
+        //     }
+        // })
+
+
+        // jsonp通信
+        function fn(obj){
+            console.log(obj)
+        }
+        $.ajax({
+            url:"http://localhost:4050",
+            data:{a:1,b:2,callback:"fn"},
+            dataType:"jsonp"
+        })
+    </script>
+</body>
+</html>

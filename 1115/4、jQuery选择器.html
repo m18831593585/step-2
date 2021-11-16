@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
+    <style>
+        div{
+            width: 50px;
+            height: 50px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div id="div1"></div>
+    <div></div>
+    <div></div>
+    <div id="div2"></div>
+    <div></div>
+    <ul>
+        <li></li>
+        <li class="li0 li1"></li>
+        <li class="li1 li2"></li>
+        <li></li>
+    </ul>
+    <script>
+        // var div=$("div");
+        // console.log(div);
+
+        // $("div").text(1);
+
+        // jQuery对象不能使用js的方法 ,jQuery中将js的所有方法重新全部实现了一遍
+        // 获取jQuery对象中其中某一个DOM对象
+        // $("div")[0].textContent="a"
+        // console.log($("div").get(0))
+        // 将jQuery对象转换为一个数组列表
+        // var list=Array.from($("div"));
+        // console.log(list)
+  
+        // DOM转换为jQuery对象
+        // var div=document.querySelector("div");
+        // console.log($(div))
+
+
+        // $("div")
+        // $(".div1")
+        // $("#div1")
+        // $("div.div1")
+        // $("div .div1")
+        // $("div+.div1")
+        // $("div>.div1")
+
+        // $("ul>").text(1)
+
+       
+        // $(".div1").find("div");// $(".div1 div");
+        // $("ul").children();//$("ul>");
+
+        // $("#div1").next();//$("#div1+*")
+        // $("#div1").nextAll();//$("#div1~*")
+
+        // 选择div1到div2之间的元素
+        // console.log($("#div1").nextUntil("#div2"))
+
+        // $("#div1").prev();//上一个
+        // $("#div1").prevAll();//上面所有兄弟
+        // $("#div2").prevUntil("#div1");//div2向上到div1直接的所有元素
+
+        // $("#div1").siblings();//所有兄弟元素
+
+        // $("div").click(function(e){
+        //     $(this).css("backgroundColor","red").siblings("div").css("backgroundColor","green");
+        // })
+
+
+        // $("[id]")
+        // $("[data=a]")
+        // $("[data^=a]")
+        // $("[data$=a]")
+        // $("[data|=a]")//以a起头后面紧跟- 或者就是a
+        // $("[data~=a]")//以a起头后面紧跟空格，或者就是a
+        // $("[data!=a]")
+        // $("[data*=a]")//在data属性中包含a字符
+
+        // $("[class~=li1]").text(1);
+    </script>
+</body>
+</html>

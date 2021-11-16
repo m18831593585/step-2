@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div2{
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            padding: 5px;
+            border: 1px solid #000;
+            margin: 10px;
+            position: absolute;
+            top:100px;
+            left:100px;
+        }
+        .div1{
+            background-color: greenyellow;
+        }
+        .div3{
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+            position: relative;
+            left: 200px;
+            top:300px;
+        }
+    </style>
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
+</head>
+<body>
+    <div class="div3">
+        <div class="div2" id="1" a="1"></div>
+        <div id="2" a="2" class="div1 div2"></div>
+        <div id="3" a="3" class="div2"></div>
+        <div id="4" a="4" class="div2"></div>
+    </div>
+    <input type="checkbox" value="1">
+    <input type="checkbox" value="2">
+    <input type="checkbox" value="3">
+    <input type="checkbox" value="4">
+    <script>
+        // attr  prop  data
+        // 获取第一个的标签属性
+        // console.log($("div").attr("a"))
+
+        // $("div").attr("b",2);
+
+        // 删除所有的标签属性
+        // $("div").removeAttr("a");
+
+        // $("div").attr("a",function(index,value){
+        //     return index+10;
+        // })
+
+        // $("div").attr({
+        //     a:10,
+        //     b:20
+        // })
+
+        // $("div").attr({
+        //     a:function(index,item){
+        //         return index+10;
+        //     },
+        //     b:function(index,item){
+        //         return index*10
+        //     }
+        // })
+
+
+
+        // $("div").prop("abc",10);
+        // console.log($("div").prop("abc"))
+
+        // $("div").abc=10;
+        // console.log($("div").abc);
+
+
+        // function $1(seletor){
+        //     var list=document.querySelectorAll(seletor);
+        //     return list;
+        // }
+
+        // $1("div").abc=1;
+
+        // console.log($1("div").abc)
+
+
+        // var divs=$("div");
+        // divs.abc=10;
+        // console.log(divs.abc)
+
+        // $("div").prop("abc",10);
+        // console.log($("div").prop("abc"))
+        // 这里直接设置到DOM属性上了
+        // $("div").prop("abc",1)
+
+        // console.log( $("div"))
+
+        // $("input").prop("type","password")
+        // $("input").prop("value","1231231")
+
+        // $("input").prop("checked",true);
+        // $(document).click(function(){
+        //   if(!$("input").attr("checked"))  $("input").attr("checked","checked")
+        //   else $("input").removeAttr("checked");
+        // })
+
+
+
+        // $(document).click(function(){
+        //     $("input").prop("checked",!$("input").prop("checked"))
+        // });
+
+
+        // $("input").prop({a:1,b:2});
+        // console.log($("input"))
+        // $("input").prop({
+        //     a:function(index){
+        //         return index
+        //     },
+        //     b:function(index){
+        //         return index+1;
+        //     }
+        // })
+        // console.log($("input"))
+
+        // 不能删除标签属性
+        // $("div").prop("a",1);
+        // console.log($("div").prop("a"));
+        // $("div").removeProp("id");
+        // console.log($("div").prop("a"));
+
+
+        // $("input").attr("disabled","")
+        // $("input").prop("disabled",true);
+        // 只设置数据值，并不影响标签的显示和特征
+        // $("input").data("disabled",true);
+        // console.log($("input").data("disabled"))
+
+        // $("input").data("id","1")
+        // $("input").prop("id","1")
+        // $("input").removeProp("id");
+        // $("input").removeAttr("id");
+
+        // 设置在DOM对象的其中一个属性的映射对象中
+        // $("input").data("ab","1");
+        // console.log($("input"))
+
+        // $("input").removeData("ab");
+
+// CSS 行内样式
+        // $("div").css("width","50px");
+        // console.log($("div").css("width"))
+        // 直接可以获取到DOM的计算后css样式
+        // console.log($("div").css("height"))
+
+        // $("div").css("width","")
+
+        // $("div").css({
+        //     width:100,
+        //     height:"100px",
+        //     backgroundColor:"green"
+        // })
+
+
+        // $("div").css({
+        //     width:function(i,v){
+        //         return (i+1)*50
+        //     },
+        //     height:function(i,v){
+        //         return (i+1)*50
+        //     },
+        //     backgroundColor:function(){
+        //         return "#"+Array(6).fill(1).reduce((v,t)=>v+Math.floor(Math.random()*16).toString(16),"")
+        //     }
+        // })
+
+        // 获取第一个元素的多个css
+        // console.log($("div").css(["width","height"]))
+
+
+        // $("div").addClass("div1 div2");
+        // $("div").removeClass("div1");
+
+
+        // $("div").click(function(){
+        //     $(this).toggleClass("div1");
+        // })
+
+
+
+            // 可以获取到css以及行内样式计算后的宽度，而且是数值，css获取到的宽度是字符串
+        // console.log($("div").width())
+        // $("div").width(100);
+        // $("div").width(function(index){
+        //     return index*100
+        // })
+
+        // console.log($("div").height())
+
+            // 获取内容宽度和padding
+    //    console.log( $("div").innerWidth())
+
+    // $("div").innerWidth(120);
+// 获取内容宽度和padding+边线
+    // console.log($("div").outerWidth());
+    // $("div").outerWidth(120);
+
+    // 获取内容宽度和padding+边线+margin,只能获取不能设置值
+    // console.log($("div").outerWidth(true));
+
+
+            // console.log($(".div2").offset());//相对页面左上角page，可以修改
+            // console.log($(".div2").position());//相对父容器，不能修改
+
+            // $(".div2").offset({left:600,top:400});//设置绝对页面左上角的位置
+            // $(".div2").css({left:400,top:300})
+
+            // console.log($(".div2").scrollLeft())
+            // console.log($(".div2").scrollTop())
+
+    </script>
+</body>
+</html>

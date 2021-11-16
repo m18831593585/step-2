@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
+</head>
+<body>
+<div class="row col-xs-5">
+    <div class="btn-group dropdown col-xs-4" id="province">
+        <button class="btn btn-default show-txt"></button>
+        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+        </ul>
+    </div>
+    <div class="btn-group dropdown col-xs-4" id="city">
+        <button class="btn btn-default show-txt"></button>
+        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+        </ul>
+    </div>
+    <div class="btn-group dropdown col-xs-4" id="county">
+        <button class="btn btn-default show-txt"></button>
+        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+        </ul>
+    </div>
+</div>
+
+
+<script>
+
+    init()
+
+    function init(){
+        getData("province")
+    }
+
+    async function getData(type){
+
+        switch (type) {
+            case 'province':
+                let province = await fetch('http://localhost:4020/province',{method:'POST'})
+                province = await province.json()
+                console.log(province)
+
+                break;
+        }
+
+    }
+
+
+    // test()
+
+    async function test(){
+        let data = await fetch('http://localhost:4020/province')
+        data = await data.json()
+        console.log(data)
+    }
+
+
+</script>
+
+</body>
+</html>

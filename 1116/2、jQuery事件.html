@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 50px;
+            height: 50px;
+            background-color: red;
+        }
+    </style>
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
+</head>
+<body>
+    <div></div>
+    <img src="./img/a.JPG">
+    <script>
+        // $("div").bind("click",function(){
+
+        // })
+
+        // $("div").unbind("click",function(){
+
+        // })
+
+
+        // $("div").on("click",clickHandler);
+        // // 只处理事件
+        // $("div").one("click",function(){
+
+        // })
+
+        // function clickHandler(e){
+        //     $("div").off("click",clickHandler);
+        // }
+
+
+
+        // 这样会将两个事件都删除
+        // $("div").on("click",function(){
+        //     $("div").off("click");
+        //     console.log("aaa")
+        // })
+        // $("div").on("click",function(){
+        //     console.log("bbb")
+        // })
+
+
+        // $("div").on("click.a",function(){
+        //     $("div").off("click.a");
+        //     console.log("aaa")
+        // })
+        // $("div").on("click.b",function(){
+        //     console.log("bbb")
+        // })
+
+
+
+        // $("div").click(function(e){
+        //     console.log("aaa")
+        //     $("div").off("click");
+        // })
+
+        // $("div").hover(function(){
+        //     $(this).css("backgroundColor","green")
+        // },function(){
+        //     $(this).css("backgroundColor","red")
+        // })
+
+        // var img=document.querySelector("img");
+        // window.onload=function(){
+        //     // console.log("bbb")
+        //     console.log(img.width,"bbbb")
+        // }
+        // $(document).ready(function(){
+        //     // console.log("aaa")
+        //     console.log(img.width,"aaa")
+        // })
+    //     $(window).on("load",function(){
+    //       console.log("bbb")
+    //   })
+
+    // $("div").on("click",function(e){
+    //     // e.preventDefault();
+    //     // e.stopPropagation();
+    //     console.log("000");
+    // })
+    // $("div").on("click",function(e){
+    //     // e.preventDefault();
+    //     // e.stopPropagation();
+    //     e.stopImmediatePropagation();
+    //     console.log("aaa");
+    // })
+
+    // $("div").on("click",function(e){
+    //     // e.preventDefault();
+    //     // e.stopPropagation();
+    //     // e.stopImmediatePropagation();
+    //     console.log("bbb");
+    // })
+
+
+    //传参
+    // init();
+    // function init(){
+    //     var obj={a:1};
+    //     $("div").on("click",obj,clickHandler);
+    // }
+
+    // function clickHandler(e){
+    //     console.log(e)
+    // }
+
+    // $("div").click({a:1,b:2},clickHandler);
+
+    // function clickHandler(e){
+    //     console.log(e.data);
+    // }
+
+
+
+    // $("div").click(function(e){
+    //     console.log(e);
+    // });
+
+
+    // $("div").trigger("click");
+
+
+    // $("div").on("chilema",function(e,a,b){
+    //     console.log(e,a,b)
+    // })
+
+    // $("div").trigger("chilema",[1,2]);
+    // $("div").trigger("chilema",{a:1,b:2});
+    // $("div").triggerHandler("chilema");
+    // $("div").triggerHandler("chilema",[1,2]);
+
+
+
+    // $("div").on("click",function(e){
+    //     return "a";
+    // })
+
+    // var key=$("div").triggerHandler("click");
+    // console.log(key);
+    </script>
+</body>
+</html>

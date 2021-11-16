@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            font-size: 40px;
+        }
+    </style>
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
+</head>
+<body>
+    <div>
+        <span>a</span>
+    </div>
+    <ul class="city">
+        <li>北京
+            <ul>
+                <li>海淀</li>
+                <li>朝阳</li>
+                <li>昌平
+                    <ul>
+                        <li>小汤山</li>
+                        <li>沙河</li>
+                        <li>回龙观</li>
+                        <li>天通苑</li>
+                        <li>霍营</li>
+                        <li>阳坊</li>
+                    </ul>
+                </li>
+                <li>大兴</li>
+                <li>密云</li>
+                <li>顺义</li>
+            </ul>
+        </li>
+        <li>河北</li>
+        <li>山西</li>
+        <li>陕西
+            <ul>
+                <li>西安</li>
+                <li>咸阳
+                    <ul>
+                        <li>三原</li>
+                        <li>礼泉</li>
+                        <li>淳华</li>
+                        <li>富平</li>
+                        <li>泾阳</li>
+                    </ul>
+                </li>
+                <li>宝鸡</li>
+                <li>铜川</li>
+                <li>榆林</li>
+            </ul>
+        </li>
+        <li>河南</li>
+        <li>山东</li>
+    </ul>
+    <script>
+        // $("div").hide(2000);
+        // $("div").hide(2000,function(){
+        //     console.log("动画完毕")
+        // });
+
+        // $("div").hide(2000).show(2000);
+        // $("div").toggle(2000);
+
+
+        // $("div").slideUp(2000);
+        // $("div").slideUp(2000).slideDown(2000);
+
+        // $("li").click(function(e){
+        //     e.stopPropagation();
+        //     $(this).children().slideToggle(500);
+        // })
+
+        // init();
+        // function init(){
+        //     $("div").fadeOut(10).fadeIn(10,init);
+        // }
+
+
+        // $("div").fadeTo(2000,0.5);
+        // $("div").fadeToggle(2000);
+
+
+        // $("div").animate({
+        //     left:1000
+        // },2000)
+
+        // $(document).click(function(e){
+        //     $("div").animate({left:e.clientX,top:e.clientY},2000);
+        // })
+
+        // $("div").animate({left:500},2000).animate({top:500},2000);
+    </script>
+</body>
+</html>

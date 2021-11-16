@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.js"></script>
+</head>
+<body>
+<!--    <div class="btn-group">-->
+<!--        <button class="btn btn-default">1</button>-->
+<!--        <button class="btn btn-default">2</button>-->
+<!--        <button class="btn btn-default">3</button>-->
+<!--    </div>-->
+
+<!--    <ul class="nav nav-tabs">-->
+<!--        <li class="active"><a href="#">Home</a></li>-->
+<!--        <li><a href="#">Shop</a></li>-->
+<!--        <li><a href="#">Contact</a></li>-->
+<!--    </ul>-->
+<!--    <script>-->
+<!--        $("ul").click(function (e){-->
+<!--            if(e.target.nodeName!=="A")return;-->
+<!--            $(".active").removeClass("active");-->
+<!--            $(e.target).parent().addClass("active");-->
+<!--        })-->
+<!--    </script>-->
+
+<!--    <ul class="breadcrumb">-->
+<!--        <li><a href="#">A</a></li>-->
+<!--        <li><a href="#">B</a></li>-->
+<!--        <li><a href="#">C</a></li>-->
+<!--        <li class="active">D</li>-->
+<!--    </ul>-->
+
+
+<!--标签-->
+<!--    <ul class="breadcrumb">-->
+
+<!--    </ul>-->
+<!--<script>-->
+<!--        var str="C:/game/box/boom.exe";-->
+<!--        createMenu(str);-->
+<!--       function createMenu(str){-->
+<!--           $(".breadcrumb").html(str.split("/").reduce((v,t,i,arr)=>{-->
+<!--               if(i<arr.length-1) v+=`<li><a href="#">${t}</a></li>`;-->
+<!--               else v+=`<li class="active">${t}</li>`;-->
+<!--               return v;-->
+<!--           },"")).one("click",clickHandler);-->
+<!--       }-->
+
+<!--       function  clickHandler(e){-->
+<!--           var index= Array.from(this.children).indexOf(e.target.parentElement);-->
+<!--           var s=str.split("/").slice(0,index+1).join("/");-->
+<!--           createMenu(s);-->
+<!--       }-->
+<!--</script>-->
+
+
+<!--<nav>-->
+<!--    <ul class="pagination">-->
+<!--        <li><a href="#" class="left">&laquo;</a></li>-->
+<!--        <li class="active"><a href="#">1</a></li>-->
+<!--        <li><a href="#">2</a></li>-->
+<!--        <li><a href="#">3</a></li>-->
+<!--        <li><a href="#">4</a></li>-->
+<!--        <li><a href="#">5</a></li>-->
+<!--        <li><a href="#">6</a></li>-->
+<!--        <li><a href="#">7</a></li>-->
+<!--        <li><a href="#">8</a></li>-->
+<!--        <li><a href="#" class="right">&raquo;</a></li>-->
+<!--    </ul>-->
+<!--</nav>-->
+<!--<script>-->
+<!--        $("ul").on("click",clickHandler);-->
+
+<!--        function  clickHandler(e){-->
+<!--            if(e.target.nodeName!=="A") return;-->
+<!--            if(e.target.className==="left"){-->
+<!--                if(e.target.parentElement===$(".active").prev()[0]) return;-->
+<!--                $(".active").removeClass("active").prev().addClass("active");-->
+<!--            }else if(e.target.className==="right"){-->
+<!--                if(e.target.parentElement===$(".active").next()[0]) return;-->
+<!--                $(".active").removeClass("active").next().addClass("active");-->
+<!--            }else{-->
+<!--                $(".active").removeClass("active");-->
+<!--                $(e.target).parent().addClass("active");-->
+<!--            }-->
+<!--            var num=$(".active").text();-->
+<!--            console.log(num);-->
+<!--        }-->
+<!--</script>-->
+
+
+
+<!--<div class="btn-group">-->
+<!--    <button class="btn btn-default">15</button>-->
+<!--    <button class="btn btn-default">20</button>-->
+<!--    <button class="btn btn-default">30</button>-->
+<!--</div>-->
+<!--<div class="row">-->
+<!--    <div class="col-xs-6 col-xs-offset-3">-->
+<!--        <table class="table table-condensed table-bordered table-hover">-->
+<!--            <thead>-->
+<!--            <tr>-->
+<!--                <th>id</th>-->
+<!--                <th>name</th>-->
+<!--                <th>price</th>-->
+<!--                <th>num</th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+
+<!--            </tbody>-->
+<!--        </table>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div class="row">-->
+<!--    <nav class="col-xs-10 col-xs-offset-2">-->
+<!--        <ul class="pagination">-->
+<!--            <li><a href="#" class="left">&laquo;</a></li>-->
+<!--            <li><a href="#" class="right">&raquo;</a></li>-->
+<!--        </ul>-->
+<!--    </nav>-->
+<!--</div>-->
+<!--<script>-->
+<!--        var arr=[];-->
+<!--        var pageNum=20;-->
+<!--        for(var i=0;i<300;i++){-->
+<!--            arr.push({id:1000+i,name:"商品"+i,price:2000+i,num:1})-->
+<!--        }-->
+
+<!--        init();-->
+<!--        function  init(){-->
+<!--            createShow();-->
+<!--            $("button").click(function (e){-->
+<!--                pageNum=Number($(this).text());-->
+<!--                createShow();-->
+<!--            })-->
+<!--        }-->
+
+<!--        function createShow(){-->
+<!--            createTable(1);-->
+<!--            var sum=Math.ceil(arr.length/pageNum);-->
+<!--            $(".pagination").html(`-->
+<!--            <li><a href="#" class="left">&laquo;</a></li>-->
+<!--               ${Array(sum).fill(1).reduce((v,t,i)=>{-->
+<!--                return v+`<li class="${i===0 ? 'active' :''}"><a href="#">${i+1}</a></li>`-->
+<!--            },"")}-->
+<!--            <li><a href="#" class="right">&raquo;</a></li>-->
+<!--            `).on("click",clickHandler);-->
+<!--        }-->
+
+<!--        function clickHandler(e){-->
+<!--            if(e.target.nodeName!=="A") return;-->
+<!--            if(e.target.className==="left"){-->
+<!--                if(e.target.parentElement===$(".active").prev()[0]) return;-->
+<!--                $(".active").removeClass("active").prev().addClass("active");-->
+<!--            }else if(e.target.className==="right"){-->
+<!--                if(e.target.parentElement===$(".active").next()[0]) return;-->
+<!--                $(".active").removeClass("active").next().addClass("active");-->
+<!--            }else{-->
+<!--                $(".active").removeClass("active");-->
+<!--                $(e.target).parent().addClass("active");-->
+<!--            }-->
+<!--            var num=$(".active").text();-->
+<!--            createTable(Number(num));-->
+<!--        }-->
+
+<!--        function createTable(pos){-->
+<!--           var list= arr.slice((pos-1)*pageNum,pos*pageNum);-->
+<!--            $("table>tbody").html(list.reduce((v,t)=>{-->
+<!--                return v+`<tr>${Object.keys(t).reduce((value,item)=>{-->
+<!--                    return value+`<td>${t[item]}</td>`;-->
+<!--                },"")}</tr>`-->
+<!--            },""))-->
+<!--        }-->
+<!--</script>-->
+
+
+
+<!--<button class="btn btn-default" data-toggle="modal" data-target="#my-modal">open</button>-->
+<!--<div class="modal fade" id="my-modal">-->
+<!--    <div class="modal-dialog">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <button class="close" data-dismiss="modal">&times;</button>-->
+<!--                <h3 class="modal-title text-center">注册信息</h3>-->
+<!--            </div>-->
+<!--            <div class="media-body">-->
+<!--                    <br>-->
+<!--                    <br>-->
+<!--                    <br>-->
+<!--                    <br>-->
+<!--                    <br>-->
+<!--                    <form id="formA" action="#" class="form-horizontal">-->
+<!--                        <div class="form-group has-feedback">-->
+<!--                            <label class="control-label col-xs-3">用户名:</label>-->
+<!--                            <div class="col-xs-6">-->
+<!--                                <input type="text" name="user" class="form-control">-->
+<!--                                <span class="glyphicon  form-control-feedback"></span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="form-group  has-feedback">-->
+<!--                            <label class="control-label col-xs-3">密码:</label>-->
+<!--                            <div class="col-xs-6">-->
+<!--                                <input type="password" name="password" class="form-control">-->
+<!--                                <span class="glyphicon  form-control-feedback"></span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </form>-->
+<!--                    <br>-->
+<!--                    <br>-->
+<!--                    <br>-->
+<!--                    <br>-->
+<!--                    <br>-->
+
+<!--            </div>-->
+<!--            <div class="modal-footer">-->
+<!--                <button class="btn btn-success" data-dismiss="modal" form="formA">关闭</button>-->
+<!--                <button class="btn btn-danger">注册</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--    <script>-->
+<!--        $("input").on("input",function (){-->
+<!--            if(judge($(this).attr("name"),$(this).val())){-->
+<!--                $(this).parents(".form-group").removeClass("has-error").addClass("has-success");-->
+<!--                $(this).next().removeClass("glyphicon-remove").addClass("glyphicon-ok");-->
+<!--            }else{-->
+<!--                $(this).parents(".form-group").removeClass("has-success").addClass("has-error");-->
+<!--                $(this).next().removeClass("glyphicon-ok").addClass("glyphicon-remove");-->
+<!--            }-->
+<!--        })-->
+
+
+<!--        function  judge(name,value){-->
+<!--            switch (name){-->
+<!--                case "user":-->
+<!--                    return /^\w{8,16}$/.test(value);-->
+<!--                case "password":-->
+<!--                    return  /^(?=\D+\d)(?=.*[a-z])(?=.*[A-Z])\w{8,16}$/.test(value);-->
+<!--            }-->
+<!--        }-->
+
+<!--    </script>-->
+
+
+
+
+
+
+
+
+
+    <div id="my-carousel" class="carousel slide">
+        <ol class="carousel-indicators">
+            <li data-target="#my-carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#my-carousel" data-slide-to="1"></li>
+            <li data-target="#my-carousel" data-slide-to="2"></li>
+            <li data-target="#my-carousel" data-slide-to="3"></li>
+            <li data-target="#my-carousel" data-slide-to="4"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="./img/a.jpg" alt="...">
+            </div>
+            <div class="item">
+                <img src="./img/b.jpg" alt="...">
+            </div>
+            <div class="item">
+                <img src="./img/c.jpg" alt="...">
+            </div>
+            <div class="item">
+                <img src="./img/d.jpg" alt="...">
+            </div>
+            <div class="item">
+                <img src="./img/e.jpg" alt="...">
+            </div>
+        </div>
+
+        <a class="left carousel-control" href="#my-carousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#my-carousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
+
+</body>
+</html>
