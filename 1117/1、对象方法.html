@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+        // var o={};
+
+        // var o=new Object();
+
+        // var o1=Object.create(o);
+        // "use strict";
+        // var a="b";
+        // var b=Symbol();
+        // var o={
+        //     a:1,
+        //     [a]:2,
+        //     [b]:3,
+        //     b:function(){
+
+        //     },
+        //     c(){
+
+        //     },
+        //     d:()=>{
+        //         console.log(this)
+        //     },
+        //     e:this.a
+            
+        // }
+    
+        // o.d()
+        // // fn();
+        // // function fn(){
+        // //     console.log(this)
+        // // }
+
+        // let fn=()=>{
+        //     console.log(this);
+        // }
+        // fn();
+
+
+        // var obj={
+        //     a:1,b:2
+        // }
+        //  var o=Object.create(obj);
+        //  o.c=10;
+        //  console.log(o.__proto__===obj);
+        // obj.a=100;
+        // o.a=1000;
+        
+        // console.log(o)
+
+        //  原型链 就是对象的继承链  __proto__
+
+        // var o1=Object.create(o);
+        // o1.d=200;
+      
+
+
+        // console.log(o1.d,o1.c,o1.a);
+
+        // var obj1={a:1,b:2};
+        // var o1={c:10,d:obj1};
+        // console.log(o1,o);
+
+
+       /*  当通过对象获取某个key的值，首先查找当前对象的属性（对象属性），如果没有查找到
+        就去原型链中查找，遇到就近的key是返回这个原型链上的key对应的value
+        如果设置属性值时，只能设置该对象的属性（对象属性），不能设置原型属性
+       
+       */
+
+    //    o1.__proto__.__proto__.b=0.1;
+    //    console.log(o1);
+
+
+
+// 使用场景1
+        // var o={a:1,b:2,c:3};
+        // var o1=Object.create(o);
+        // var o2=Object.create(o);
+            
+        // o1.a=100;
+        // o2.c=100;
+        // console.log(o1.a,o2.a);
+        // console.log(o1.c,o2.c);
+        // delete o2.c;
+        // console.log(o2.c)
+
+
+    //使用场景2
+            
+    // var o={
+    //     create(){
+    //        this.div=document.createElement("div");
+    //        Object.assign(this.div.style,{
+    //            width:"50px",
+    //            height:"50px",
+    //            backgroundColor:"red"
+    //        }) 
+           
+    //     }
+    // }
+
+    // var o1=Object.create(o);
+    // o1.play=function(){
+    //     this.create();
+    //     document.body.appendChild(this.div);
+    //     this.div.addEventListener("click",e=>{
+    //         this.div.style.backgroundColor="green";
+    //     })
+    // }
+
+
+    // o1.play();
+
+    // var o2=Object.create(o);
+    // o2.play=function(){
+    //     this.create();
+    //     document.body.appendChild(this.div);
+    //     this.div.addEventListener("click",e=>{
+    //         this.div.style.backgroundColor="blue";
+    //     })
+    // }
+    // o2.play();
+
+
+
+    // 对象的方法
+    // var o={a:1};
+    // var o1=Object.create(o);
+    // o1.b=10;
+    // o1.c=100;
+
+    // 构造函数
+    // console.log(o.constructor===Object);
+
+    // var div=document.createElement("div");
+    // console.log(div);
+
+    // console.log(o1)
+
+
+    // 判断该属性是否是对象的对象属性，不是原型链属性
+    // console.log(o1.hasOwnProperty("b"));
+
+    // for(var key in o1){
+    //    if(o1.hasOwnProperty(key)) console.log(key)
+    // }
+
+
+
+    // o是不是o1的原型
+        // console.log(o.isPrototypeOf(o1));
+
+        // console.log(Element.prototype.isPrototypeOf(div))
+
+        // 对象中该属性是否可枚举
+        // console.log(o1.propertyIsEnumerable("c"));
+        // o1.__proto__.__proto__.abc=function(){
+
+        // }
+        // console.log(o1.__proto__.__proto__.propertyIsEnumerable("abc"));
+        // console.log(o1.__proto__.__proto__.propertyIsEnumerable("isPrototypeOf"));
+        // console.log(o1)
+
+
+        // for(var key in o1.__proto__.__proto__){
+        //     console.log(key);
+        // }
+    
+
+
+        // console.log(o1.toLocaleString());
+
+        // 如果需要隐式转换为字符串时调用该方法
+        // console.log(o1.toString());
+        // 如果需要隐式转换为值时调用该方法
+        // console.log(o1.valueOf());
+
+
+        // var o1={a:1};
+        // console.log(o1+1);//2;
+
+
+        // 5-"2"
+
+        // console.log(new String("2"))
+
+        // 对象类的方法
+        // console.dir(Object);//静态属性和方法
+        // console.dir(Object.__proto__);//构造函数的原型链  Object是类，也是构造函数  new Object()   Function.prototype===Object.__proto__
+        // console.dir(Object.prototype);//var o={};   o.__proto__===Object.prototype
+            // String.fromCharCode
+
+    // 浅复制
+        // var o={a:1};
+        // var obj={b:2};
+        // var obj1={a:3,c:10}
+    //    var o1=Object.assign({},o,1,obj1);
+    //    console.log(o1,o)
+        // var o1={};
+        // Object.assign(o1,o,obj,obj1);
+        // console.log(o1);
+
+            
+    // Object.assign1=function(target,...source){
+    //     for(var i=0;i<source.length;i++){
+    //         if(typeof source[i]!=="object" || source[i]===null)continue;
+    //         for(var key in source[i]){
+    //             target[key]=source[i][key];
+    //         }
+    //     }
+    //     return target;
+    // }
+
+
+        // var o={a:1};
+        // var o1=Object.create(o);
+        // o1.b=10;
+        // var o2=Object.assign({},o1);
+        // console.log(o2);
+
+
+        // var obj={};
+        // Object.defineProperty(obj,"a",{
+        //     enumerable:true,
+        //     configurable:true,
+        //     writable:true,
+        //     value:1,
+        // })
+
+        // Object.defineProperty(obj,"a",{
+        //     enumerable:true,
+        //     configurable:true,
+        //     set:function(v){
+
+        //     },
+        //     get:function(){
+
+        //     }
+        // })
+
+
+
+        // var obj={};
+        // obj.b=10;
+        // 不可枚举
+        // Object.defineProperty(obj,"a",{
+        //     enumerable:false,
+        //     configurable:true,
+        //     writable:true,
+        //     value:1,
+        // })
+    
+        // for(var key in obj){
+        //     console.log(key)
+        // }
+
+        // 不可枚举所有不能复制
+        // var o=Object.assign({},obj);
+        // console.log(o)
+
+        // 不能删除和不可修改描述对象
+        // Object.defineProperty(obj,"a",{
+        //     enumerable:true,
+        //     configurable:false,
+        //     writable:true,
+        //     value:1,
+        // })
+
+        //  不能删除
+        // delete obj.a;
+        // obj.a=10;
+        // console.log(obj)
+
+        // 不能重新定义a属性
+        // Object.defineProperty(obj,"a",{
+        //     enumerable:true,
+        //     configurable:true,
+        //     writable:true,
+        //     value:1,
+        // })
+
+
+        // 不可写，不可修改 a属性就是一个只读属性
+        // Object.defineProperty(obj,"a",{
+        //     enumerable:true,
+        //     configurable:true,
+        //     writable:false,
+        //     value:1,
+        // })
+
+        // obj.a=100;
+        // console.log(obj)
+
+            // value就是a属性的值
+        // Object.defineProperty(obj,"a",{
+        //     enumerable:true,
+        //     configurable:true,
+        //     writable:true,
+        //     value:function(){
+        //         console.log("aa")
+        //     },
+        // })
+
+        // console.log(obj)
+
+        // 所有描述对象的属性值都是默认为false
+        // Object.defineProperty(obj,"a",{
+        //     writable:true,
+        //     value:1,
+        // })
+        // console.log(obj)
+
+
+        var obj={};
+        obj.b=10;
+        Object.defineProperties(obj,{
+            a:{
+                enumerable:true,
+                value:1
+            },
+            b:{
+                enumerable:false,
+                value:10
+            },
+            c:{
+                enumerable:false,
+                value:function(){
+                    console.log("aaa")
+                }
+            }
+        })
+       
+      
+
+        // var d=Symbol();
+        // obj[d]=10;
+        // console.log(obj)
+
+            // 获取所有属性名转换为数组，可以获取所有属性名
+            // 获取对象的所有字符串属性
+        // var arr=Object.getOwnPropertyNames(obj);
+        // 获取对象的所有Symbol属性
+        // var arr1=Object.getOwnPropertySymbols(obj);
+        // console.log(arr1);
+            // console.log(arr);
+            // 只能获取可枚举
+        // console.log(Object.keys(obj));
+
+        
+        // var arr=Object.getOwnPropertyNames(obj).concat(Object.getOwnPropertySymbols(obj));
+        // console.log(arr);
+
+        //   for(var key in obj){
+        //     console.log(key,obj[key]);
+        // }
+
+        // for(var i=0;i<arr.length;i++){
+        //     console.log(arr[i],obj[arr[i]]);
+        // }
+
+        // for(var i=0;i<arr.length;i++){
+        //     // 获取属性的描述对象
+        //     var disc=Object.getOwnPropertyDescriptor(obj,arr[i]);
+        //     console.log(arr[i],disc);
+        // }
+
+            // 只能获取到所有字符串属性的描述对象
+        // console.log(Object.getOwnPropertyDescriptors(obj))
+
+
+        // 冻结（不能删除，不能修改属性，并且不能扩展属性）
+        // var obj={a:1,b:2};
+        // Object.freeze(obj);
+        // 判断对象是否被冻结
+        // console.log(Object.isFrozen(obj))
+        // var arr=[1,2,3,4];
+        // Object.freeze(arr);
+    //    obj.a=10;
+    //    arr[0]=10;
+    //    console.log(arr)
+
+        // 枚举类型
+        // const COLOR={RED:"red",GREEN:"green",BLUE:"blue"};
+        // Object.freeze(COLOR);
+        //    COLOR.RED=1;
+            
+        // var o1=Object.assign({},obj);
+        // o1.a=100;
+        // console.log(o1)
+        
+       
+
+        // 不删删除，不能扩展，但是可以修改属性的值
+        // var obj={a:1,b:2};
+        // Object.seal(obj);
+        // 判断是否通过seal设置过
+        // console.log(Object.isSealed(obj))
+        // obj.c=3;
+        // delete obj.a;
+        // obj.a=10;
+        // console.log(obj)
+
+
+        // 可以删除，可以修改属性，但是不能扩展
+        // var obj={a:1,b:2};
+        // Object.preventExtensions(obj);
+        // Object.isExtensible(obj);//是否可以扩展
+        // obj.a=10;
+        // delete obj.a;
+        // obj.c=10;
+        // console.log(obj)
+
+
+
+        // var obj={a:1,b:2};
+        // 将对象转换为迭代对象
+        // console.log(Object.entries(obj))
+        // 以对象产生一个map对象
+        // var m=new Map(Object.entries(obj));
+        // console.log(m)
+
+
+        // var m=new Map();
+        // m.set("a",1);
+        // m.set("b",1);
+        // 将迭代器转换为对象
+        // console.log(Object.fromEntries(m))
+
+
+        // var obj={a:1,b:2};
+        // var o=Object.create(obj);
+        // o.c=10;
+        // 判断是否有该对象属性
+        // console.log(Object.hasOwn(obj,"a"))
+        // console.log(Object.hasOwn(obj,"b"))
+        // console.log(Object.hasOwn(obj,"c"))
+        // console.log(Object.hasOwn(o,"c"))
+        // console.log(Object.hasOwn(o,"b"))
+
+        // var arr=[1,2,3];
+        // 判断是否有该数组的下标
+        // console.log(Object.hasOwn(arr,3))
+
+
+        // 判断两个值是否绝对相等 类似于===，但是可以判断NaN是否相等
+        // console.log(Object.is(1,"1"))
+        // console.log(Object.is(1,1))
+        // console.log(Object.is(NaN,NaN))
+
+        // var obj={a:1,b:2};
+        // 将对象所有属性名转换为数组
+        // console.log(Object.keys(obj))
+        // 将对象所有的属性值转换为数组
+        // console.log(Object.values(obj))
+
+        // var obj={a:1,b:2};
+        // var o=Object.create(obj);
+        // console.log(Object.getPrototypeOf(o))//获取o的原型链  o.__proto__
+
+        // 设置o的原型链为一个新对象，替换原来的原型链
+        // Object.setPrototypeOf(o,{c:10});
+        // console.log(o);
+
+
+        // var o={a:1};
+        // Object.setPrototypeOf(o,[].__proto__);
+        // console.log(o)
+
+
+        // var divs=document.getElementsByTagName("div");
+        //     Object.setPrototypeOf(divs,Array.prototype);
+        // divs.push(1)
+        // console.log(divs)
+        //  console.dir(Object);
+
+
+
+
+
+
+        
+  </script>
+</body>
+</html>

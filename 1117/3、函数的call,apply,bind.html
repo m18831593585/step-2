@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+        // "use strict";
+        // function fn(a,b){
+        //     // console.log("aaa")
+        //     console.log(this,a,b);
+        // }
+
+        
+
+        // var obj={a:1,b:2};
+        // fn(1,2);
+        // fn.call(undefined,1,2);
+        // fn.apply(null,[1,2]);
+        /* 
+            call,apply  执行函数
+            如果带入第一个参数，在函数中的this将执行指向这个参数
+            var o={a:1}
+            fn.call(o)
+            fn.apply(o)
+            fn函数中的this将指向o
+            如果传入的是undefined或者null，非严格模式时，this指向window
+            严格模式时，传入什么this指向什么
+            
+            bind 给函数内部绑定this的指向，并且返回新函数
+            执行合格新函数后，里面的this都是指向绑定的元素
+
+
+            call,apply区别
+            在于执行函数时，传入原函数的参数方式不同
+            call从第二个参数开始传入原函数的参数，一个个传入
+            apply第二个参数是一个数组，将所有参数放置在这个数组中传入（可以是列表）
+        
+        */
+
+
+        // function fn(){
+        //     for(var i=0;i<arguments.length;i++){
+        //         arguments[i].textContent=this;
+        //     }
+        // }
+
+        // fn.apply(10,document.querySelectorAll("div"));
+
+
+    //   var divs=Array.prototype.slice.apply(document.querySelectorAll("div"));
+    //   console.log(divs)
+        // var arr=[10,20,29,42,11]
+    // var max=Math.max.apply(null,arr);
+     
+    // console.log(max);
+    // console.log(Math.max(...arr));
+    // var Math={
+    //     max:function(){
+    //         var max=arguments[0];
+    //         for(var i=1;i<arguments.length;i++){
+    //             if(arguments[i]>max) max=arguments[i];
+    //         }
+    //         return max;
+    //     }
+    // }
+
+        
+
+    // bind
+
+    // function fn(){
+    //     console.log(this)
+    // }
+    // fn.call({a:1});
+
+    // var obj={a:1,b:2};
+
+    // var fn=clickhandler.bind(obj);
+
+    // document.addEventListener("click",fn);
+
+    // function clickhandler(e){
+    //     console.log(this);
+    // }
+
+
+
+
+
+    // function fns(a,b){
+    //     console.log(this,a,b);
+    // }
+
+    // fns.bind({a:1})(2,3);
+
+    // setTimeout(fns.bind({a:1}),500)
+    </script>
+</body>
+</html>
