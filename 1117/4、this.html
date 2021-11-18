@@ -1,284 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
 </head>
 <body>
-    <script>
-        //   "use strict";
-        // 1------  任何清空下直接在script中写入的this都是window
-      
-        // console.log(this)
+<script>
+    //   "use strict";
+    // 1------  任何清空下直接在script中写入的this都是window
 
-        // 2------ 函数中的this
-        // 如果非严格模式this指向window，严格模式时，this指向undefined
+    // console.log(this)
 
-        // function fn(){
-        //     console.log(this);
-        // }
-        // fn();
+    // 2------ 函数中的this
+    // 如果非严格模式this指向window，严格模式时，this指向undefined
 
-        // 3---- 箭头函数
-        // 不管是否严格模式，this都指向箭头函数外上下文环境的this指向
+    // function fn(){
+    //     console.log(this);
+    // }
+    // fn();
 
-        // var fn=()=>{
-        //     console.log(this);
-        // }
-        // fn();
+    // 3---- 箭头函数
+    // 不管是否严格模式，this都指向箭头函数外上下文环境的this指向
 
-        // 4-----对象中this
-        // 对象属性的this 指向对象外上下文环境的this
-        // this--->window
-        // var a=10;
-        // var obj={
-        //     a:this.a
-        // }
-        // console.log(obj.a)
+    // var fn=()=>{
+    //     console.log(this);
+    // }
+    // fn();
 
-        // 对象方法(普通函数)中的this，指向当前对象(谁执行该方法，this就指向谁)
-        // var  obj={
-        //     a:1,
-        //     b:function(){
-        //         console.log(this);
-        //     }
-        // }
+    // 4-----对象中this
+    // 对象属性的this 指向对象外上下文环境的this
+    // this--->window
+    // var a=10;
+    // var obj={
+    //     a:this.a
+    // }
+    // console.log(obj.a)
 
-        // 这里的this与第三条箭头函数中的this指向相同，指向对象外上下文环境中this
-            // var obj={
-            //     a:1,
-            //     b:()=>{
-            //         // this--->window
-            //         console.log(this)
-            //     }
-            // }
+    // 对象方法(普通函数)中的this，指向当前对象(谁执行该方法，this就指向谁)
+    // var  obj={
+    //     a:1,
+    //     b:function(){
+    //         console.log(this);
+    //     }
+    // }
 
-
-
-            // var o={
-            //     a:1,
-            //     b:function(){
-            //         console.log(this)
-            //         var fn=()=>{
-            //             // 3-->箭头函数
-            //             console.log(this);
-            //         }
-            //         fn();
-
-            //         function fns(){
-            //             // 2-->函数指向
-            //             console.log(this);
-            //         }
-            //         fns();
-            //         this.d();
-            //     },
-            //     c:()=>{
-            //          // 3-->箭头函数
-            //         console.log(this);
-            //     },
-            //     d:function(){
-            //         console.log(this)
-            //     }
-            // }
-            
-            // o.b();
-            // o.c();
+    // 这里的this与第三条箭头函数中的this指向相同，指向对象外上下文环境中this
+    // var obj={
+    //     a:1,
+    //     b:()=>{
+    //         // this--->window
+    //         console.log(this)
+    //     }
+    // }
 
 
-            // var o={
-            //     a:1,
-            //     b:function(){
-            //         console.log(this===o1);
-            //         console.log(this===o);
-            //     }
-            // }
+    // var o={
+    //     a:1,
+    //     b:function(){
+    //         console.log(this)
+    //         var fn=()=>{
+    //             // 3-->箭头函数
+    //             console.log(this);
+    //         }
+    //         fn();
 
-            
-            // var o1=Object.create(o);
-            // o1.b();
+    //         function fns(){
+    //             // 2-->函数指向
+    //             console.log(this);
+    //         }
+    //         fns();
+    //         this.d();
+    //     },
+    //     c:()=>{
+    //          // 3-->箭头函数
+    //         console.log(this);
+    //     },
+    //     d:function(){
+    //         console.log(this)
+    //     }
+    // }
 
-        // 5-----回调函数的this指向
-
-        // 1)、 setTimeout，setInterval回调函数
-        // 不管是否是严格模式都会指向window
-        // function fn(){
-        //     console.log(this)
-        // }
-
-        // setTimeout(fn,500);
-
-       
-        
-      // 2）、这种通过别函数内执行当前回调函数中 2-->函数
-            // function fn(){
-            //     console.log(this)
-            // }
-
-            // function fn1(f){
-            //     f();
-            // }
-            // fn1(fn);
-            
-
-        // fn();
-        // function fn(){
-        //     requestAnimationFrame(fn);
-        //     console.log(this);
-        // }
-
-        // 递归函数  2->函数
-        // var i=0;
-        // function fn(){
-        //     console.log(this)
-        //     i++;
-        //     if(i>3) return;
-        //     fn();
-        // }
-        // fn();
-
-        // var obj={
-        //     a:1,
-        //     b:function(){
-        //         console.log(this);
-        //     },
-        //     c:function(f){
-        //         f();
-        //     }
-        // }
-
-        // obj.c(obj.b);
+    // o.b();
+    // o.c();
 
 
-        // 3）、默认状态数组部分遍历方法中回调函数中this 2-->函数
-        // 数组的部分遍历方法中如果在最后一个参数中给入内容，那么这个函数中this将会被指向这个给入的内容(有thisArg参数)
-        // var arr=[1,2,3,4];
-        // arr.forEach(function(){
-        //     console.log(this);
-        // })
-        // 
-        // var arr=[1,2,3,4];
-        // arr.forEach(function(){
-        //     console.log(this)
-        // },{a:1})
+    // var o={
+    //     a:1,
+    //     b:function(){
+    //         console.log(this===o1);
+    //         console.log(this===o);
+    //     }
+    // }
 
 
-        // var arr=[1,2,3,4];
-        // arr.filter()
-        // arr.forEach()
-        // arr.every();
-        // arr.find();
-        // arr.findIndex();
-        // arr.map();
-        // arr.some();
-        // arr.filter(function(item,index,arr){
-        //     console.log(this)
-        // },{a:1})
+    // var o1=Object.create(o);
+    // o1.b();
 
-        // arr.flatMap(function(item,index,arr){
-        //     console.log(this)
-        // },{a:1})
+    // 5-----回调函数的this指向
+
+    // 1)、 setTimeout，setInterval回调函数
+    // 不管是否是严格模式都会指向window
+    // function fn(){
+    //     console.log(this)
+    // }
+
+    // setTimeout(fn,500);
 
 
-        
+    // 2）、这种通过别函数内执行当前回调函数中 2-->函数
+    // function fn(){
+    //     console.log(this)
+    // }
 
-        //4）、 回调函数时，如果使用arguments对应项执行回调，那么在被指向的函数中this指向回调该函数的那个函数中上下文环境中arguments
-        // function fn(){
-        //     console.log(this)
-        // }
-
-        // function fn1(){
-        //     arguments[0]()
-        // }
-        // fn1(fn);
+    // function fn1(f){
+    //     f();
+    // }
+    // fn1(fn);
 
 
-        // 5）事件中的回调函数,this指向事件侦听的对象(e.currentTarget)
-        // document.addEventListener("click",clickHandler);
+    // fn();
+    // function fn(){
+    //     requestAnimationFrame(fn);
+    //     console.log(this);
+    // }
 
-        // function clickHandler(e){
-        //     console.log(this)
-        // }
+    // 递归函数  2->函数
+    // var i=0;
+    // function fn(){
+    //     console.log(this)
+    //     i++;
+    //     if(i>3) return;
+    //     fn();
+    // }
+    // fn();
 
-        // document.addEventListener("click",clickHandler);
+    // var obj={
+    //     a:1,
+    //     b:function(){
+    //         console.log(this);
+    //     },
+    //     c:function(f){
+    //         f();
+    //     }
+    // }
 
-        // function clickHandler(e){
-        //    setTimeout(function(){
-               
-        //    })
-        // }
-
-
-        // 6、call，apply，bind方法执行时this的指向
-        // 如果call,apply,bind传参时，第一个参数传入的是null或者undefined
-        // 非严格模式下指向window
-        // 严格模式下，传入什么指向什么
-
-        // 如果第一个参数传入的不是null或者undefined，在这个函数中this将会指向被传入这个参数
-
-
-            // function fn(){
-            //     console.log(this)
-            // }
-            // fn.call({a:1});
-            // fn.apply({a:1})
-
-            // var obj={a:1,b:2};
-
-            // var fn=clickhandler.bind(obj);
-
-            // document.addEventListener("click",fn);
-
-            // function clickhandler(e){
-            //     console.log(this);
-            // }
-        
-
-        // 7、在ES6的类中this的指向
-
-        // 构造函数中的this指向实例当前类所产生的新的实例对象
-        // 类中实例化方法中this指向谁执行该方法，this指向谁
-        // 类中静态方法中this执行该类或者该类的构造函数
-        // 类中实例化箭头方法，this仍然指向当前类实例化的实例对象
-        // class Box{
-        //    constructor(){
-        //        console.log(this)
-        //    }
-        //    play(){
-        //        console.log(this)
-        //    }
-        //    static run(){
-        //        console.log(this)
-        //    }
-        //    a=()=>{
-        //        console.log(this);
-        //    }
-        // }
-
-        // var b=new Box();
-        // b.a();
+    // obj.c(obj.b);
 
 
-        // 8、ES5的原型对象中this的指向
-        // 在原型的方法中，this指向实例化当前构造函数的实例化对象（谁执行该方法，this指向谁）
+    // 3）、默认状态数组部分遍历方法中回调函数中this 2-->函数
+    // 数组的部分遍历方法中如果在最后一个参数中给入内容，那么这个函数中this将会被指向这个给入的内容(有thisArg参数)
+    // var arr=[1,2,3,4];
+    // arr.forEach(function(){
+    //     console.log(this);
+    // })
+    //
+    // var arr=[1,2,3,4];
+    // arr.forEach(function(){
+    //     console.log(this)
+    // },{a:1})
 
-        // function Box(){
 
-        // }
-        // Box.prototype.play=function(){
-        //     console.log(this);
-        // }
-        // // 等同于箭头函数
-        // Box.prototype.run=()=>{
-        //     console.log(this)
-        // }
+    // var arr=[1,2,3,4];
+    // arr.filter()
+    // arr.forEach()
+    // arr.every();
+    // arr.find();
+    // arr.findIndex();
+    // arr.map();
+    // arr.some();
+    // arr.filter(function(item,index,arr){
+    //     console.log(this)
+    // },{a:1})
 
-        // var b=new Box();
-        // b.play();
-        // b.run();
+    // arr.flatMap(function(item,index,arr){
+    //     console.log(this)
+    // },{a:1})
 
-       
-    </script>
+
+    //4）、 回调函数时，如果使用arguments对应项执行回调，那么在被指向的函数中this指向回调该函数的那个函数中上下文环境中arguments
+    // function fn(){
+    //     console.log(this)
+    // }
+
+    // function fn1(){
+    //     arguments[0]()
+    // }
+    // fn1(fn);
+
+
+    // 5）事件中的回调函数,this指向事件侦听的对象(e.currentTarget)
+    // document.addEventListener("click",clickHandler);
+
+    // function clickHandler(e){
+    //     console.log(this)
+    // }
+
+    // document.addEventListener("click",clickHandler);
+
+    // function clickHandler(e){
+    //    setTimeout(function(){
+
+    //    })
+    // }
+
+
+    // 6、call，apply，bind方法执行时this的指向
+    // 如果call,apply,bind传参时，第一个参数传入的是null或者undefined
+    // 非严格模式下指向window
+    // 严格模式下，传入什么指向什么
+
+    // 如果第一个参数传入的不是null或者undefined，在这个函数中this将会指向被传入这个参数
+
+
+    // function fn(){
+    //     console.log(this)
+    // }
+    // fn.call({a:1});
+    // fn.apply({a:1})
+
+    // var obj={a:1,b:2};
+
+    // var fn=clickhandler.bind(obj);
+
+    // document.addEventListener("click",fn);
+
+    // function clickhandler(e){
+    //     console.log(this);
+    // }
+
+
+    // 7、在ES6的类中this的指向
+
+    // 构造函数中的this指向实例当前类所产生的新的实例对象
+    // 类中实例化方法中this指向谁执行该方法，this指向谁
+    // 类中静态方法中this执行该类或者该类的构造函数
+    // 类中实例化箭头方法，this仍然指向当前类实例化的实例对象
+    // class Box{
+    //    constructor(){
+    //        console.log(this)
+    //    }
+    //    play(){
+    //        console.log(this)
+    //    }
+    //    static run(){
+    //        console.log(this)
+    //    }
+    //    a=()=>{
+    //        console.log(this);
+    //    }
+    // }
+
+    // var b=new Box();
+    // b.a();
+
+
+    // 8、ES5的原型对象中this的指向
+    // 在原型的方法中，this指向实例化当前构造函数的实例化对象（谁执行该方法，this指向谁）
+
+    // function Box(){
+
+    // }
+    // Box.prototype.play=function(){
+    //     console.log(this);
+    // }
+    // // 等同于箭头函数
+    // Box.prototype.run=()=>{
+    //     console.log(this)
+    // }
+
+    // var b=new Box();
+    // b.play();
+    // b.run();
+
+
+</script>
 </body>
 </html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        // var obj={
+        //     _c:0,
+        //     a:1,
+        //     b:function(a){
+        //         return a+1;
+        //     },
+        //     // set 方法中有且仅有一个参数
+        //     set c(value){
+        //         console.log("aaaa")
+        //         this._c=value;
+        //     },
+        //     // get方法不能有参数，而且必须使用return返回结果
+        //     get c(){
+        //         console.log("bbbbb")
+        //         return this._c;
+        //     }
+        // }
+
+        // 对象属性：1、通过等号赋值 2、存储数据
+        // obj.a=2;
+        // console.log(obj.a);
+
+        // 对象方法: 1、执行可以传递多个参数，2、执行可以返回结果 3、执行可以完成多条语句运行
+        // obj.b(3);//执行可以传参
+        // var o=obj.b(4);//执行返回结果
+        // 执行函数可以执行多条语句
+
+
+        // 希望通过赋值，并且存储数据，然后执行多条语句
+
+        // obj.c=10;//就是执行了obj中set c这个方法
+
+        // console.log(obj.c);//就会调用get c这个方法
+
+
+        // console.log(obj.c);
+
+
+        // var timestamp=0;
+        // var obj={
+        //     time:0,
+        //     sum:0,
+        //     _num:0,
+        //     set num(value){
+        //         this._num=value;
+        //         if(timestamp-this.time<1000){
+        //             this.sum++;
+        //         }
+        //         this.time=timestamp;
+        //     },
+        //     get num(){
+        //         return this._num;
+        //     }
+        // }
+
+        // document.addEventListener("click",clickHandler);
+
+        // function clickHandler(e){
+        //     timestamp=e.timeStamp;
+        //     obj.num++;
+        //     console.log(obj.sum);
+        // }
+
+
+        // 对已有的对象添加set和get 方法
+    //     var div=document.querySelector("div");
+
+    //    Object.defineProperty(div,"x",{
+    //        enumerable:true,
+    //        configurable:true,
+    //         set:function(value){
+    //             this._x=parseInt(value);
+    //             this.style.left=/px/.test(String(value)) ? value : value+"px";
+    //         },
+    //         get:function(){
+    //            if(this._x===undefined) this._x=this.offsetLeft;
+    //             return this._x;
+    //         }
+    //    })
+      
+    //    setInterval(function(){
+    //         div.x++;
+    //    },16);
+
+
+
+    // 数据驱动显示
+
+    //1、需要有一个临时变量来存储set赋值的结果，get返回的结果
+    //   临时变量不要被可枚举，也不能删除
+    // 2、set 和 get两个方法都需要成对出现，如果只写一个set，这个属性就是只写属性
+    // 如果只写一个get，这个属性是只读属性
+    var obj={}
+    // Object.defineProperties(obj,{
+    //     _a:{
+    //         writable:true,
+    //         value:0
+    //     },
+    //     a:{
+    //         enumerable:true,
+    //         set(value){
+    //             this._a=value;
+    //         },
+           
+    //     }
+    // })
+    // Object.defineProperties(obj,{
+    //     _a:{
+    //         writable:true,
+    //         value:0
+    //     },
+    //     a:{
+    //         enumerable:true,
+    //        get(){
+    //           return  this._a;
+    //        }
+    //     }
+    // })
+
+
+    // for(var key in obj){
+    //     console.log(key)
+    // }
+
+    // obj.a=10;
+    // console.log(obj.a);
+
+
+    // class Box{
+    //     _num=0;
+    //     constructor(){
+
+    //     }
+    //     set num(value){
+    //         this._num=value;
+    //     }
+    //     get num(){
+    //         return this._num;
+    //     }
+    // }
+
+    // getter  就是调用get方法
+    // setter  就是调用set方法
+    // var b=new Box();
+    // b.num++;
+    // console.log(b);
+
+
+    // console.log(document.querySelector("div"))
+
+    // Object.defineProperties(div,{
+    //     onclick:{
+    //         set(fn){
+
+    //         },
+    //         get(){
+
+    //         }
+    //     }
+    // })
+    // div.onclick=function(){
+
+    // }
+
+
+
+    </script>
+</body>
+</html>

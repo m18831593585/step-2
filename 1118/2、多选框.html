@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="module">
+        // import CheckBox from "./js/CheckBox.js";
+
+        // var ck=new CheckBox("全选");
+        // ck.appendTo("body");
+        // ck.addEventListener(CheckBox.CHECKED_CHANGE_EVENT,checkChangeHandler);
+        
+        // var arr=["游戏","游泳","看书","听音乐","旅行"];
+        // var list=[];
+        // arr.forEach(item=>{
+        //     var ck1=new CheckBox(item);
+        //     ck1.appendTo("body");
+        //     ck1.addEventListener(CheckBox.CHECKED_CHANGE_EVENT,checkChangeHandler)
+        //     list.push(ck1);
+        // })
+
+        // function checkChangeHandler(e){
+        //     if(this===ck){
+        //         list.forEach(function(ck1){
+        //             ck1.checked=ck.checked;
+        //         });
+        //     }else{
+        //         ck.checked=list.every(t=>t.checked);
+        //     }
+        // }
+
+
+        import Radio from "./js/Radio.js";
+
+        var arr=["游戏","游泳","看书","听音乐","旅行"];
+        arr.forEach(item=>{
+            let ck=new Radio(item,"hobby");
+            ck.appendTo("body");
+        })
+        
+    </script>
+</body>
+</html>

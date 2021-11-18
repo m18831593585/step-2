@@ -8,18 +8,18 @@
     <script src="./node_modules/lodash/lodash.js"></script>
 </head>
 <body>
-    <script>
+<script>
 
-     var d = Symbol();
-      var e = Symbol();
-      var ss = { a: 1 };
-      var date = new Date();
-      var divs=document.createElement("div");
-      divs.setAttribute("a","3");
-      date.setFullYear(2022);
+    var d = Symbol();
+    var e = Symbol();
+    var ss = {a: 1};
+    var date = new Date();
+    var divs = document.createElement("div");
+    divs.setAttribute("a", "3");
+    date.setFullYear(2022);
 
-       
-      var obj = {
+
+    var obj = {
         a: 1,
         b: 2,
         c: [1, 2, 3],
@@ -28,68 +28,68 @@
         [d]: "aaa",
         z: divs,
         d: {
-          e: date,
-          f: /a/g,
-          g: function (s) {
-            console.log(s);
-          },
-          h: {},
+            e: date,
+            f: /a/g,
+            g: function (s) {
+                console.log(s);
+            },
+            h: {},
         },
-      };
-      obj.d.g.ssss=10;
-      obj.eee=new Uint8Array([97,98,99]);
-      Object.defineProperties(obj.d.h, {
+    };
+    obj.d.g.ssss = 10;
+    obj.eee = new Uint8Array([97, 98, 99]);
+    Object.defineProperties(obj.d.h, {
         i: {
-          value: 10,
+            value: 10,
         },
         j: {
-          configurable: true,
-          writable: true,
-          value: [1, 2, 3, 4],
+            configurable: true,
+            writable: true,
+            value: [1, 2, 3, 4],
         },
         k: {
-          writable: true,
-          value: {
-            l: {},
-            m: "abcde",
-            n: true,
-            o: [1, 2, 3],
-          },
+            writable: true,
+            value: {
+                l: {},
+                m: "abcde",
+                n: true,
+                o: [1, 2, 3],
+            },
         },
         [e]: {
-          value: ["a", "b", "c", "e"],
+            value: ["a", "b", "c", "e"],
         },
-      });
-      obj.z.style.width = "50px";
-      obj.z.style.height = "50px";
-      obj.z.style.backgroundColor = "red";
+    });
+    obj.z.style.width = "50px";
+    obj.z.style.height = "50px";
+    obj.z.style.backgroundColor = "red";
 
-      Object.defineProperties(obj.d.h.k.l, {
+    Object.defineProperties(obj.d.h.k.l, {
         p: {
-          value: function () {
-            console.log("p");
-          },
+            value: function () {
+                console.log("p");
+            },
         },
         q: {
-          value: {
-            r: { a: 1 },
-            j: { b: 2 },
-          },
+            value: {
+                r: {a: 1},
+                j: {b: 2},
+            },
         },
-      });
-      var a_1 = { a: 1 };
-      var a_2 = { b: 2 };
-      obj.yy.set("name", "xietian");
-      obj.yy.set(a_1, a_2);
+    });
+    var a_1 = {a: 1};
+    var a_2 = {b: 2};
+    obj.yy.set("name", "xietian");
+    obj.yy.set(a_1, a_2);
 
-      Object.defineProperty(obj, "www", {
+    Object.defineProperty(obj, "www", {
         set: function (_v) {
-          this.a = _v;
+            this.a = _v;
         },
         get: function () {
-          return this.a;
+            return this.a;
         },
-      });
+    });
 
 
     //   console.log(obj)
@@ -125,9 +125,9 @@
     //     if(i>3) return s;
     //     fn3(i,s)
     // }
-   
-//    var s=fn(0)
-//    console.log(s)
+
+    //    var s=fn(0)
+    //    console.log(s)
 
 
     // function fn(i,s){
@@ -143,7 +143,7 @@
     //     if(s===undefined) s={sum:0}
     //     s.sum+=i;
     //     i++;
-    //     if(i>3) return s; 
+    //     if(i>3) return s;
     //     fn(i,s);
     // }
     // function fn1(i,s){
@@ -172,72 +172,71 @@
     // console.log(o)
 
 
-   /*  function cloneObject(source,target){
-        if(target===undefined) target=new source.constructor();
-        var names=Object.getOwnPropertyNames(source).concat(Object.getOwnPropertySymbols(source));
-        for(var i=0;i<names.length;i++){
-            switch(typeof source[names[i]]){
-                case "object":
-                    if(source[names[i]!==null]){
-                        
-                        break;
-                    }
-                case "number":
-                case "boolean":
-                case "string":
-                case "symbol":
-                case "undefined":
-                    break;
+    /*  function cloneObject(source,target){
+         if(target===undefined) target=new source.constructor();
+         var names=Object.getOwnPropertyNames(source).concat(Object.getOwnPropertySymbols(source));
+         for(var i=0;i<names.length;i++){
+             switch(typeof source[names[i]]){
+                 case "object":
+                     if(source[names[i]!==null]){
+
+                         break;
+                     }
+                 case "number":
+                 case "boolean":
+                 case "string":
+                 case "symbol":
+                 case "undefined":
+                     break;
+             }
+         }
+         return target;
+     }
+    */
+
+    // var date=new Date();
+    // date.setFullYear(2045);
+    // console.log(date)
+
+    // var date1=new Date(date);
+    // console.log(date1);
+
+
+    function cloneObject(source, target) {
+        if (target === undefined) {
+            if (Node.prototype.isPrototypeOf(source)) {
+                target = document.createElement(source.nodeName);
+                target.style = source.style.cssText;
+            } else if (source.constructor === Uint8Array) {
+                target = new source.constructor(Array.from(source));
+            } else if (source.constructor === Date || source.constructor === RegExp || source.constructor === Set || source.constructor === Map) {
+                target = new source.constructor(source);
+            } else if (source.constructor === Function) {
+                var arg = source.toString().match(/\((.*?)\)/)[1];
+                var content = source.toString().replace(/\n|\r/g, "").match(/\{(.*)\}/)[1];
+                target = new Function(arg, content)
+            } else {
+                target = new source.constructor();
+            }
+        }
+        var names = Object.getOwnPropertyNames(source).concat(Object.getOwnPropertySymbols(source));
+        for (var i = 0; i < names.length; i++) {
+            if (names[i] === "prototype") continue;
+            var desc = Object.getOwnPropertyDescriptor(source, names[i]);
+            if ((typeof desc.value === "object" && desc.value !== null) || typeof desc.value === "function") {
+                var o = cloneObject(desc.value)
+                Object.defineProperty(target, names[i], {
+                    value: o,
+                    enumerable: desc.enumerable,
+                    writable: desc.writable,
+                    configurable: desc.configurable
+                })
+            } else {
+                Object.defineProperty(target, names[i], desc);
             }
         }
         return target;
     }
- */
-
-// var date=new Date();
-// date.setFullYear(2045);
-// console.log(date)
-
-// var date1=new Date(date);
-// console.log(date1);
-    
-
- function cloneObject(source,target){
-        if(target===undefined){
-            if(Node.prototype.isPrototypeOf(source)){
-                target=document.createElement(source.nodeName);
-                target.style=source.style.cssText;
-            }else if(source.constructor===Uint8Array){
-                target=new source.constructor(Array.from(source));
-            }else if(source.constructor===Date || source.constructor===RegExp || source.constructor===Set || source.constructor===Map){
-                target=new source.constructor(source);
-            }else if(source.constructor===Function){
-                var arg=source.toString().match(/\((.*?)\)/)[1];
-                var content=source.toString().replace(/\n|\r/g,"").match(/\{(.*)\}/)[1];
-                target=new Function(arg,content)
-            }else {
-                target=new source.constructor();
-            } 
-        }
-        var names=Object.getOwnPropertyNames(source).concat(Object.getOwnPropertySymbols(source));
-        for(var i=0;i<names.length;i++){
-            if(names[i]==="prototype") continue;
-            var desc=Object.getOwnPropertyDescriptor(source,names[i]);
-           if((typeof desc.value==="object" && desc.value!==null) || typeof desc.value==="function"){
-              var o=cloneObject(desc.value)
-              Object.defineProperty(target,names[i],{
-                  value:o,
-                  enumerable:desc.enumerable,
-                  writable:desc.writable,
-                  configurable:desc.configurable
-              })
-           }else{
-                Object.defineProperty(target,names[i],desc);
-           }
-        }
-        return target;
-    }
-
 
 
     // var o=cloneObject(obj);
@@ -245,15 +244,15 @@
     // obj.d.g.ssss=1000;
     // console.log(o,obj)
 
-//   console.log(new Uint16Array([1,2,3]))
-// var o2={a:1,b:2,c:{d:10}}
-//    var o1=_.cloneDeep(o2);
-//    o2.c.d=100;
-//    console.log(o1,o2)
+    //   console.log(new Uint16Array([1,2,3]))
+    // var o2={a:1,b:2,c:{d:10}}
+    //    var o1=_.cloneDeep(o2);
+    //    o2.c.d=100;
+    //    console.log(o1,o2)
 
     // var o1=_.cloneDeep(obj);
     // obj.d.g.ssss=1000;
     // console.log(o1)
-    </script>
+</script>
 </body>
 </html>

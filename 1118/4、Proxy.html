@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+
+        // var obj={}
+
+        // var p=new Proxy(obj,{
+        //     set:function(o,key,value){
+        //         // o-->obj   key 设置属性  value设置的属性值
+        //         value=~~value;
+        //         value=Math.abs(value);
+        //         o[key]=value;
+        //     },
+        //     get:function(o,key){
+        //         var value=o[key];
+        //         value=~~value;
+        //         value=Math.abs(value);
+        //         return value;
+        //     }
+        // });
+
+        // obj就是源对象，p就是代理对象
+        // obj有什么，p就有什么
+        // p有什么，obj不一定有
+        // p.a=1;
+        // p.b=2;
+        // obj.c=10;
+        // console.log(p.c,obj);
+
+
+        // p.a=10;//调用了代理的set方法  a就是key  10就是value
+        // obj.a=10;//不会调用代理的set方法
+        
+        // p.a="a";
+        // p.a=-100;
+        // p.a=true;
+        // p.b="s";
+        // obj.c="f"
+        // console.log(obj);
+        // console.log(p.c);
+        // console.log(obj.c);
+
+
+
+        // obj={
+        //     id:"xietian"
+        // }
+
+        // obj.id="abc"
+
+        // var p=new Proxy(obj,{
+        //     set:function(o,key,value){
+        //         if(key==="id") return;
+        //         o[key]=value;
+        //     }
+        // })
+
+        // p.id="aaa";
+        // p.abc="aaa";
+        // console.log(obj)
+
+
+
+        // 不能在div中增加x,y属性，使用代理设置x++和y++，
+        // 或者设置x的值是某个数字，这个div的left和top发生变化
+
+
+        // var div=document.querySelector("div");
+        // var p=new Proxy(div,{
+        //     set:function(o,key,value){
+        //         if(!/^x$|^y$/.test(key))return;
+        //         if(typeof value==="number" || value.slice(-2)!=="px") value+="px";
+        //         if(key==="x"){
+        //             o.style.left=value;
+        //         }else if(key==="y"){
+        //             o.style.top=value;
+        //         }
+        //     },
+        //     get:function(o,key){
+        //         if(!/^x$|^y$/.test(key))return o[key];
+        //         if(key==="x") return o.offsetLeft;
+        //         if(key==="y") return o.offsetTop;
+        //     }
+        // });
+
+
+        // p.x=200;
+        // div的left就变成200
+        // p.y=200;
+        // div的top就变成200
+
+        // div.x=200;
+        // p.x++;
+      
+        // p.x++;  p.x=p.x+1;
+        // p.x++;
+
+
+        // deleteProperty
+        // var obj={a:1,b:2};
+        // var p=new Proxy(obj,{
+        //     deleteProperty:function(o,key){
+        //         if(key==="a") return;
+        //         delete o[key];
+        //     }
+        // })
+        // delete p.a;
+        // delete p.b;
+        // // delete obj.a;
+        // console.log(obj);
+
+
+
+        // getPrototypeOf  setPrototypeOf
+        // var obj={a:1,b:2,c:3};
+        // var o1=Object.create(obj);
+        // o1.d=10;
+        // var p=new Proxy(o1,{
+        //    getPrototypeOf:function(o){
+        //        var o2=Object.getPrototypeOf(o)
+        //        o2.e=10;
+        //         return o2;
+        //    },
+        //    setPrototypeOf:function(o1,protoValue){
+        //        if(Array.isArray(protoValue)) return true;
+        //         Object.setPrototypeOf(o1,protoValue);
+        //         return true;
+        //    }
+        // })
+
+    //    var a=Object.getPrototypeOf(p)
+    //     console.log(o1)
+
+    // var o3=[1,2,3];
+    // Object.setPrototypeOf(p,o3);
+    // console.log(o1);
+
+
+            
+    // 是否可以扩展和设置不扩展
+            // var obj={a:1,b:2};
+
+            // var p=new Proxy(obj,{
+            //     isExtensible(obj){
+            //         return Object.isExtensible(obj);
+            //     },
+            //     preventExtensions(obj){
+            //         Object.seal(obj);
+            //         return true;
+            //     }
+            // })
+            // Object.preventExtensions(p);
+            // // obj.c=10;
+            // // delete obj.a;
+
+            // // console.log(obj)
+            // console.log(Object.isExtensible(p))
+          
+
+      
+
+
+            // getOwnPropertyDescriptor
+            // var obj={};
+            // Object.defineProperties(obj,{
+            //     a:{
+            //         writable:true,
+            //         value:1
+            //     },
+            //     b:{
+            //         value:10
+            //     }
+            // });
+
+
+            // var p=new Proxy(obj,{
+            //     getOwnPropertyDescriptor(o,key){
+            //         var desc=Object.getOwnPropertyDescriptor(o,key);
+            //         desc.value=10;
+            //         return desc;
+            //     }
+            // });
+
+            // var desc=Object.getOwnPropertyDescriptor(p,"a");
+            // var desc1=Object.getOwnPropertyDescriptor(obj,"a");
+            // console.log(desc1)
+
+
+
+            // defineProperty
+            // var obj={};
+            // var p=new Proxy(obj,{
+            //     defineProperty(o,key,desc){
+            //         if(key==="a") return true;
+            //         Object.defineProperty(o,key,desc);
+            //         return true;
+            //     }
+            // })
+
+            // Object.defineProperty(p,"b",{
+            //     value:10,
+            //     enumerable:true
+            // });
+            // console.log(obj)
+            // p.b=10;
+            // p.a=100;
+            // console.log(obj)
+
+
+
+
+            // var obj={a:1,b:2,c:3};
+            // Object.defineProperty(obj,"d",{
+            //     value:10
+            // })
+            // var p=new Proxy(obj,{
+            //     has(o,key){
+            //         if(key==="__proto__") return false;
+            //         return key in o
+            //     }
+            // })
+
+
+
+            // ownKeys
+
+            // var s=Symbol();
+            // var obj={a:1,b:2,c:3,[s]:10};
+            // var p=new Proxy(obj,{
+            //     ownKeys(o){
+            //         return Reflect.ownKeys(o);
+            //     }
+            // })
+
+        //    var names=Object.getOwnPropertyNames(p)
+        // var names=Object.getOwnPropertySymbols(p);
+        //    console.log(names)
+
+
+        // 获取对象所有的属性
+        //   var names=Reflect.ownKeys(obj)
+        //   console.log(names)
+            
+
+        // apply
+        // var fn=function(a,b){
+        //     var s=a+b;
+        //     console.log(a,b)
+        //     console.log(this)
+        //     console.log(s);
+        //     return s;
+        // }
+        // var fn1=function(){
+        //     console.log("fn1");
+        // }
+
+        // var p=new Proxy(fn,{
+        //     apply(f,thisArg,argArray){
+        //         // if(thisArg===null) thisArg={a:1,b:2};
+        //         if(!argArray || argArray.length<f.length){
+        //             var len=argArray.length;
+        //             argArray.length=f.length;
+        //             argArray.fill(0,len);
+        //         }
+        //         fn1();
+        //       return f.apply(thisArg,argArray);
+        //     }
+        // })
+
+    // apply call 或者直接执行代理函数，都会执行apply
+    //   var s= p.apply({a:1},[3,4]);
+    //   console.log(s)
+
+    // var s=p.apply(null,[6]);
+    // console.log(s)
+
+    //  var s=p.call({a:1},3);
+
+    // p(2);
+    // fn(3,4)
+
+
+
+
+            // class Box{
+            //     a;
+            //     b;
+            //     constructor(a,b){
+            //         this.a=a;
+            //         this.b=b;
+            //     }
+            //     init(){
+            //         console.log("init");
+            //     }
+            // }
+
+
+            // var b=new Box(3,4);
+            // console.log(b.a,b.b)
+
+            // var p=new Proxy(Box,{
+            //     construct(F,argArr,newTarget){
+            //         // console.log(newTarget)//代理对象
+            //         var o=new F(...argArr);
+            //         o.init();
+            //         return o;
+            //     }
+            // })
+
+            // var b=new p(3,4);
+            // console.log(b)
+
+            // var b=new Box();
+    </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/a.js"></script>
+    <script src="./js/b.js"></script>
+</head>
+<body>
+    <script>
+
+
+        // function fn(){
+        //     var a=1;
+        //     return function(){
+        //         console.log("aa");
+        //         a++;
+        //         console.log(a)
+        //     }
+        // }
+
+        // var f=fn();
+        // f();
+
+            // 可以存在私有的变量
+    //   var Utils=(function(){
+        // var s=1;
+    //         return {
+    //             a:1,
+    //             b:function(){
+
+    //             }
+    //         }
+    //     })();
+
+
+
+        // var a;
+        // var s=100;
+        // if(!a)a=10;
+        // console.log(s+a);
+        // document.onclick=function(){
+        //     f();
+        // }
+
+        // 函数中的局部变量，如果没有在函数内的其他函数中调用，这函数执行完成后会被销毁
+        // 但是一旦在函数中的其他函数中调用时，这个局部变量就会被保存起来
+        // 只要使用闭包，比如会造成内存泄漏
+
+        /* var obj={a:1}
+       document.addEventListener("click",clickHandler.bind(obj));
+
+       function clickHandler(e){
+           console.log(this);
+       } */
+
+
+    //    var obj={a:1}
+    //    document.addEventListener("click",clickHandler(obj));
+
+
+    //    function clickHandler(obj){
+    //         return function(e){
+    //             console.log(e,obj);
+    //         }
+    //    }
+
+        function clickhandler(e){
+            console.log(this,e)
+        }
+
+        function bind(fn,thisArg){
+            return function(e){
+                fn.apply(thisArg,arguments);
+            }
+        }
+
+
+        var fns=bind(clickhandler,{a:1});
+        document.addEventListener("click",fns);
+
+    </script>
+</body>
+</html>
