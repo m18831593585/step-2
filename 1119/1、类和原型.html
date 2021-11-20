@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div></div>
+    <div>3</div>
+
+    <script>
+        // class Box{
+        //     a;
+        //     static NUM=1;
+        //     constructor(a){
+        //         this.a=a;
+        //     }
+        //     play(){
+        //         console.log("play");
+        //     }
+        //     static run(){
+        //         console.log("run");
+        //     }
+        // }
+
+
+        // var b=new Box();
+        // console.log(b.constructor===Box)
+
+        // var arr=[];
+        // console.log(arr.constructor===Array)
+
+        // 只有Function有prototype
+
+
+        // function Box(a){
+        //     this.a=a;
+        // }
+
+        // Box.prototype.a=0;
+        // Box.prototype.play=function(){
+        //     console.log("play")
+        // }
+
+        // Box.NUM=1;
+        // Box.run=function(){
+        //     console.log("run");
+        // }
+
+
+        // Box.run();
+        // var b=new Box(1);
+        // b.play();
+
+
+
+
+
+
+
+        // function Box() {
+
+        // }
+        // Box.prototype.a=10;
+        // console.dir(Box);
+        // Box.prototype   这个属性只有函数有
+        // Function
+        // Box.prototype.constructor  就是原型构造函数，任何函数的原型构造函数都是自身
+
+        // var o={a:1};
+        // console.log(o)
+
+        // console.log(Box.constructor===Function);
+
+        // 为了可以使用构造函数创建出实例化对象，并且让这些实例化对象拥有该函数中设定的实例化方法和属性
+        // 就给构造函数设定了一个prototype属性，并且要求把把所有实例化方法和属性写在这个属性下，
+        // 这样在实例对象时就可以把这个属性的所有内容放在实例化对象中
+
+        // Box.a=10;
+        // Box.prototype.a=10;
+        // 类的prototype下面的所有属性和方法，都会被放在实例化的__proto__这个属性下面
+        // 用来区分原型属性和对象属性
+
+        // Box.prototype={
+        //     a:1,
+        //     b:function(){
+        //         console.log("aa")
+        //     }
+        // }
+        // var b=new Box();
+        // console.log(b);
+        // console.log(b.__proto__===Box.prototype)
+        // 实例化的原型链等同于类的原型
+
+
+
+        // Array.prototype.chunk=function(n){
+        //    if(typeof n!=="number") throw new TypeError("参数类型有误，请输入数值");
+        //    if(n<1 || !Number.isInteger(n)) throw new RangeError("输入数据不能为小数或者负数");
+        //    var arr=[];
+        //    for(var i=0;i<this.length;i++){
+        //        if(!arr[arr.length-1] || arr[arr.length-1].length===n) arr[arr.length]=[];
+        //        arr[arr.length-1].push(this[i]);
+        //    }
+        //    return arr;
+        // }
+
+        // var arr=[1,2,3,4,5,6,7];
+        //    var arr1=arr.chunk(0);
+        //    console.log(arr)
+
+
+        //     Object.defineProperties(Array.prototype,{
+        //         chunk:{
+        //             value:function(n){
+        //                 if(typeof n!=="number") throw new TypeError("参数类型有误，请输入数值");
+        //                 if(n<1 || !Number.isInteger(n)) throw new RangeError("输入数据不能为小数或者负数");
+        //                 var arr=[];
+        //                 for(var i=0;i<this.length;i++){
+        //                     if(!arr[arr.length-1] || arr[arr.length-1].length===n) arr[arr.length]=[];
+        //                     arr[arr.length-1].push(this[i]);
+        //                 }
+        //                 return arr;
+        //             }
+        //         },
+        //         filter_1:{
+        //             value:function(fn,thisArg){
+        //                 if(typeof fn!=="function") throw new TypeError(fn+" is not a function")
+        //                 var arr=[];
+        //                for(var i=0;i<this.length;i++){
+        //                     if(fn.call(thisArg,this[i],i,this)) arr[arr.length]=this[i];
+        //                }
+        //                return arr;
+        //             }
+        //         }
+        //     })
+        //     var arr=[1,2,3,4,5,6,7];
+        //    var arr1=arr.filter_1(1);
+        //     // var arr2=arr.filter(1);
+        //     console.log(arr1,arr2);
+
+
+
+
+        //     function getSum(){
+
+        //     }
+
+        //    var fn=getSum.currying();
+        //    fn(1,2,3);
+        //    fn(4,5);
+        //    fn(6);
+        //    var s=fn();
+
+
+        //    getSum.bind()
+
+
+
+        // function fn(){
+
+        // }
+        // fn.bind({a:1});
+
+
+        // Function.prototype.bind_1=function(thisArg){
+        //     var fn=this;
+        //     return function(){
+        //        fn.apply(thisArg,arguments);
+        //     }
+        // }
+
+        // function fn(a,b){
+        //     console.log(this,a,b)
+        // }
+        // var f=fn.bind_1({a:1})
+        // var f=fn.bind({a:1})
+        // f(3,5);
+
+        Array.prototype.concat_1 = function () {
+            var array = [];
+            for (var i = -1; i < arguments.length; i++) {
+                var item;
+                if (i === -1) item = this;
+                else item = arguments[i];
+                if (item && item.constructor === Array) {
+                    for (var j = 0; j < item.length; j++) {
+                        array[array.length] = item[j];
+                    }
+                } else {
+                    array[array.length] = item;
+                }
+            }
+            return array;
+        }
+
+
+        //     var arr1=[1,2,3,4];
+        //   var arr2=arr1.concat_1([3,4,5],[6,7,8])
+        //     console.log(arr2)
+        // Array.prototype.concat_1.apply([1,2,3],[[4,5],[6,7]])
+
+        //     Function.prototype.currying = function () {
+        //         var fn = this;
+        //         var arr = [];
+        //         return function () {
+        //             if (arguments.length === 0) {
+        //                 var value=fn.apply(null,arr);
+        //                 arr.length=0;
+        //                 return value;
+        //             } else {
+        //                 // arr=arr.concat(...arguments);
+        //                 arr = Array.prototype.concat.apply(arr, arguments);
+        //             }
+        //         }
+        //     }
+
+
+        //     function fn(){
+        //         return [...arguments].reduce((v,t)=>v+t);
+        //     }
+        //    var f=fn.currying()
+        //     f(1,2);
+        //     f(4,5);
+        //     f(6);
+        //    var s=f()
+        //    console.log(s)
+
+        // Object.defineProperty(HTMLElement.prototype,"setStyle",{
+        //     value:function(style){
+        //         Object.keys(style).forEach(key=>{
+        //            if(/width|height|left|top|right|bottom|margin|padding/.test(key)){
+        //                if(typeof style[key]==="number") style[key]+="px";
+        //            }
+        //            Object.assign(this.style,style);
+        //         })
+        //     }
+        // })
+
+
+        // var div=document.querySelector("div");
+        // div.setStyle({
+        //     width:50,
+        //     height:50,
+        //     backgroundColor:"red"
+        // })
+
+        // var p=document.querySelector("p");
+        // p.setStyle({
+        //     width:100,
+        //     height:"100px",
+        //     backgroundColor:"green"
+        // })
+
+
+
+        // 反柯里化
+        // Array.prototype.slice.call(divs)
+
+        Function.prototype.unCurrying = function () {
+            var fn = this
+            return function (...rest) {
+                // rest[0] 就是执行函数fn时，替代fn函数中的this
+                // rest[1-] 就是执行fn函数时传入的参数
+                // return Function.prototype.call.apply(fn, rest)
+                return fn.apply(rest[0],rest.slice(1));
+            }
+        }
+
+
+        // function fn(){
+
+        // }
+        // fn.call({a:1},a,b)
+
+        // call.apply(fn,[{a:1},a,b])
+        // call 函数中的this是fn
+        // call函数的第0个参数就是要替代fn函数中的this
+    //   var filter=Array.prototype.filter.unCurrying();
+
+    // var divs=document.querySelectorAll("div");
+    //  var arr1=filter(divs,function(item){
+    //     return item.innerHTML.length===0;
+    //   })
+    //   console.log(arr1)
+
+
+
+    class Box{
+        a=1;
+        constructor(){
+
+        }
+        play(n){
+            this.a+=n;
+        }
+    }
+
+
+    // var b=new Box();
+    // b.play();
+    // console.log(b.a);
+    // var o={a:2};
+    // var play=Box.prototype.play.unCurrying();
+
+    // play(o,2);
+    // console.log(o);
+    </script>
+</body>
+
+</html>

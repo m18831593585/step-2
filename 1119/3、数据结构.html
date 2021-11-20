@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        紧密结构的特征 删除前面，后面会向前补位，插入元素，会向后挪动，有length，可以排序
+            数组
+            一维数组
+                按顺序排列的紧密集合
+                可以使用下标逐一访问，并且通过改变下标获取相邻的数据，这样就会建立两者的关系
+                插入速度慢，查找速度慢，删除速度慢
+            二维数组
+                可以形成二维表模式，也就是横纵唯一
+                [x,y]
+                [x-1,y-1],[x,y-1],[x+1,y-1]
+                [x-1,y]            [x+1,y]
+                [x-1,y+1],[x,y+1],[x+1,y+1]
+            
+
+
+            Set 集合
+            松散结构 无法排序，数据唯一，插入速度快，查找需要遍历速度慢，删除速度快，无法获取前后关系，有Size 
+            根据添加的先后顺序遍历
+
+            Object 对象
+            松散结构 无法排序，key唯一，插入，查找，删除速度快，无法获取前后关系，没有长度，遍历顺序不固定
+            如果key是字符串，根据添加先后遍历，如果是数值，根据数值大小遍历，如果既有字符串又有数值，先遍历数值
+            key仅支持字符串和Symbol类型，如果非字符串或者symbol就会隐式转换为字符串，for in遍历无法遍历symbol类型
+
+
+            Map  映射类型
+            松散结构，无法排序，key唯一，插入，查找，删除速度快，无法获取前后关系，有size，遍历顺序固定，根据添加
+            的先后顺序遍历,key可以是任意类型，如果是引用类型，则以引用地址作为key存储数据
+
+            弱引用的set和map，只能存引用类型，引用被设为null清除时，set或者map中也自动清除
+            WeakSet
+            WeakMap
+
+            链表
+            有序的，可以排序，松散结构，链表没有长度，插入删除速度快，查找需要遍历查找速度慢
+            上下关系清晰，并且可以循环操作处理，存储消耗大
+        
+        
+        */
+
+        // var arr=new Array(100);
+        // arr[60]=2;
+        // console.log(arr);
+
+
+
+        // var arr=[1,2,3];
+        // delete arr[1];
+        // arr.shift();
+        // arr.shift();
+        // console.log(arr);
+
+
+        // var o={}
+        // o.c=1;
+        // o[2]=3;
+        // o[1]=4;
+        // o.b=10;
+
+        // for(var key in o){
+        //     console.log(key,o[key])
+        // }
+
+
+        // var m=new Map();
+        // m.set("c",1);
+        // m.set(2,3);
+        // m.set(1,4);
+        // m.set("b",10);
+        // for(var [key,value] of m){
+        //     console.log(key,value)
+        // }
+
+
+
+        // var o1={value:1};
+        // var o2={value:2};
+        // var o3={value:3};
+        // var o4={value:4};
+        // var o5={value:5};
+
+       /*  o1.next=o2;
+        o2.next=o3;
+        o3.next=o4;
+        o4.next=o5;
+
+        console.log(o1) */
+
+
+
+        /* o1.next=o2;
+        o2.next=o3;
+        o3.next=o4;
+        o4.next=o5;
+        o5.prev=o4;
+        o4.prev=o3;
+        o3.prev=o2;
+        o2.prev=o1;
+        console.log(o1) */
+
+
+        // o1.next=o2;
+        // o2.next=o3;
+        // o3.next=o4;
+        // o4.next=o5;
+        // o5.next=o1;
+        // console.log(o1)
+
+
+        /* 
+        // Hash 表
+            0  链表1-->链表2->链表3
+            1  链表3-->链表1->链表1
+            2  链表4-->链表3->链表2
+            3  链表5-->链表4->链表1
+
+        // 树结构 
+                ->链表2->链表5
+            链表1->链表3
+                ->链表4
+                查找
+        
+        */
+    </script>
+</body>
+</html>

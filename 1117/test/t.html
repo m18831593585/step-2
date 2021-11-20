@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    var d = Symbol();
+    var e = Symbol();
+    var ss = {a: 1};
+    var date = new Date();
+    var divs = document.createElement("div");
+    divs.setAttribute("a", "3");
+    date.setFullYear(2022);
+
+
+    var obj = {
+        a: 1,
+        b: 2,
+        c: [1, 2, 3],
+        zz: new Set([1, 2, ss]),
+        yy: new Map(),
+        [d]: "aaa",
+        z: divs,
+        d: {
+            e: date,
+            f: /a/g,
+            g: function (s) {
+                console.log(s);
+            },
+            h: {},
+        },
+    };
+    obj.d.g.ssss = 10;
+    obj.eee = new Uint8Array([97, 98, 99]);
+    Object.defineProperties(obj.d.h, {
+        i: {
+            value: 10,
+        },
+        j: {
+            configurable: true,
+            writable: true,
+            value: [1, 2, 3, 4],
+        },
+        k: {
+            writable: true,
+            value: {
+                l: {},
+                m: "abcde",
+                n: true,
+                o: [1, 2, 3],
+            },
+        },
+        [e]: {
+            value: ["a", "b", "c", "e"],
+        },
+    });
+    obj.z.style.width = "50px";
+    obj.z.style.height = "50px";
+    obj.z.style.backgroundColor = "red";
+
+    Object.defineProperties(obj.d.h.k.l, {
+        p: {
+            value: function () {
+                console.log("p");
+            },
+        },
+        q: {
+            value: {
+                r: {a: 1},
+                j: {b: 2},
+            },
+        },
+    });
+    var a_1 = {a: 1};
+    var a_2 = {b: 2};
+    obj.yy.set("name", "xietian");
+    obj.yy.set(a_1, a_2);
+
+    Object.defineProperty(obj, "www", {
+        set: function (_v) {
+            this.a = _v;
+        },
+        get: function () {
+            return this.a;
+        },
+    });
+
+    function cloneObject(source, target) {
+        if (target === undefined) {
+            if (source.constructor === Function) {
+                let arg = source.toString().match(/\((.*?)\)/)[1]
+                let content = source.toString().replace(/[\n\r]/g, "").match(/{(.*)}/)[1]
+                target = new Function(arg, content)
+            } else if (source.constructor === Uint8Array) {
+                target = new source.constructor(Array.from(source));
+            } else if (Node.prototype.isPrototypeOf(source)) {
+                target = document.createElement(source.nodeName)
+                // Object.assign(target.style, source.style)
+                target.style = source.style.cssText
+            } else if (source.constructor === Date || source.constructor === Map || source.constructor === Set || source.constructor === RegExp) {
+                target = new source.constructor(source)
+            } else {
+                target = new source.constructor()
+            }
+        }
+        let names = Reflect.ownKeys(source)
+        for (let i = 0; i < names.length; i++) {
+            if (names[i] === "prototype") continue;
+            let desc = Object.getOwnPropertyDescriptor(source, names[i])
+            if (typeof desc.value === "object" && desc.value !== null || typeof desc.value === "function") {
+                let o = cloneObject(desc.value)
+                Object.defineProperty(target, names[i], {
+                    value: o,
+                    enumerable: desc.enumerable,
+                    writable: desc.writable,
+                    configurable: desc.configurable
+                })
+            } else {
+                Object.defineProperty(target, names[i], desc)
+            }
+        }
+        return target
+    }
+
+    let oo = cloneObject(obj)
+    console.log(oo,obj)
+
+</script>
+
+</body>
+</html>

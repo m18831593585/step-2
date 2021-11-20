@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    class Box1 {
+        constructor(a) {
+            // this.a=a;
+            // console.log(a);
+        }
+
+        play() {
+            console.log(this.a, "---play");
+        }
+    }
+
+    class Ball1 extends Box1 {
+        constructor(a) {
+            super(a)
+        }
+    }
+
+    var a = new Box1();
+    var b = new Ball1();
+    console.log(a)
+    console.log(b);
+
+
+    function Box(a) {
+        this.a = a;
+        console.log(a);
+    }
+
+    Box.prototype.play = function () {
+        // console.log("play");
+        console.log(this.a, "---play");
+    }
+
+
+    // var b=new Box(3);
+    // b.play();
+
+    // function Ball(a){
+    //     Box.apply(this,arguments);
+    // }
+
+
+    // function F(){
+
+    // }
+    // F.prototype=Box.prototype;
+    // Ball.prototype=new F();
+
+    // var c=new Ball(1);
+    // // c.__proto__=new Box();
+    // console.log(c)
+
+
+    Function.prototype.extends = function (superClass) {
+        // this  继承的子类
+        function F() {
+        }
+
+        F.prototype = superClass.prototype;
+        if (superClass.prototype.constructor !== superClass) {
+            Object.defineProperty(superClass.prototype, "constructor", {
+                value: superClass
+            })
+        }
+        var proto = this.prototype;
+        this.prototype = new F();
+        var names = Reflect.ownKeys(proto);
+        for (var i = 0; i < names.length; i++) {
+            var desc = Object.getOwnPropertyDescriptor(proto, names[i]);
+            Object.defineProperty(this.prototype, names[i], desc);
+        }
+        this.prototype.super = function (arguments) {
+            superClass.apply(this, arguments);
+        }
+        this.prototype.supers = superClass.prototype;
+    }
+
+
+    function Ball(a) {
+        this.super(arguments);
+    }
+
+    Ball.prototype.run = function () {
+        console.log("run")
+    }
+    Ball.prototype.play = function () {
+        this.supers.play.apply(this, arguments)
+        console.log("aaa")
+    }
+
+    Ball.extends(Box);
+    var b = new Ball(5);
+    b.play();
+</script>
+</body>
+</html>
