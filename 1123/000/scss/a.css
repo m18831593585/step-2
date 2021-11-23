@@ -1,0 +1,171 @@
+.div1, .div2 > .div3 {
+  border-left-color: chartreuse;
+  border-left-width: 1px;
+  border-left-style: solid;
+}
+
+.div3 {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}
+
+.ab-1 {
+  width: 10px;
+  height: 20px;
+}
+
+.div1, .div2 > .div3 {
+  width: 10px;
+  height: 5px;
+}
+
+.div2 {
+  width: 20px;
+  height: 10px;
+}
+
+.div3 {
+  width: 30px;
+  height: 15px;
+}
+
+.div4 {
+  width: 40px;
+  height: 20px;
+}
+
+.div5 {
+  width: 50px;
+  height: 25px;
+}
+
+.div6 {
+  width: 60px;
+  height: 30px;
+}
+
+.div7 {
+  width: 70px;
+  height: 35px;
+}
+
+.div8 {
+  width: 80px;
+  height: 40px;
+}
+
+.div9 {
+  width: 90px;
+  height: 45px;
+}
+
+.div10 {
+  width: 100px;
+  height: 50px;
+}
+
+.div-red {
+  width: 10pxpx;
+  height: 5pxpx;
+}
+
+.div-green {
+  width: 10pxpx;
+  height: 5pxpx;
+}
+
+.div-blue {
+  width: 10pxpx;
+  height: 5pxpx;
+}
+
+.div-red {
+  width: 10px;
+  height: 20px;
+  background-color: red;
+}
+
+.div-green {
+  width: 20px;
+  height: 30px;
+  background-color: green;
+}
+
+.div-blue {
+  width: 30px;
+  height: 40px;
+  background-color: blue;
+}
+
+.div-a {
+  color: red;
+}
+
+.div-b {
+  color: blue;
+}
+
+.div-c {
+  color: green;
+}
+
+.div-d {
+  color: orange;
+}
+
+.div-1 {
+  width: 10px;
+  height: 5px;
+  background-color: red;
+}
+
+.div-2 {
+  width: 20px;
+  height: 10px;
+  background-color: red;
+}
+
+.div-3 {
+  width: 30px;
+  height: 15px;
+  background-color: red;
+}
+
+.div-4 {
+  width: 40px;
+  height: 20px;
+  background-color: red;
+}
+
+.div-5 {
+  width: 50px;
+  height: 25px;
+  background-color: red;
+}
+
+.div-6 {
+  width: 60px;
+  height: 30px;
+  background-color: red;
+}
+
+.div-7 {
+  width: 70px;
+  height: 35px;
+  background-color: red;
+}
+
+.div-8 {
+  width: 80px;
+  height: 40px;
+  background-color: red;
+}
+
+.div-9 {
+  width: 90px;
+  height: 45px;
+  background-color: red;
+}
+
+/*# sourceMappingURL=a.css.map */

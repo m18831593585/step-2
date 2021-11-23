@@ -1,0 +1,63 @@
+// @mixin set-block($w,$h) {
+//     width: $w+px;
+//     height: $h+px;
+// }
+// @for $i from 1 through 10{
+//     .div#{$i}{
+//         @include set-block($i*10, $i*5);
+//     }
+// }
+// @for $i from 1 through 5{
+//     ul>li:nth-child(#{$i}){
+//         left:$i*10+px;
+//     }
+// }
+// @each $color in red,green,blue {
+//     .div-#{$color}{
+//         width: 50px;
+//         height: 50px;
+//         background-color: $color;
+//     }
+// }
+// @each $w,$h,$color in (50px,50px,red),(100px,100px,green),(200px,200px,blue){
+//     .div-#{$color}{
+//         width: $w;
+//         height: $h;
+//         background-color: $color;
+//     }
+// }
+// @each $name,$value in (a:red,b:blue,c:green,d:orange) {
+//     .div-#{$name}{
+//         color:$value;
+//     }
+// }
+
+// $i:1;
+// @while $i<10 {
+//     .div-#{$i}{
+//         width: $i*10+px;
+//         height: $i*10+px;
+//         background-color: red;
+//     }
+//     $i:$i+1;
+// }
+
+@function get-sum($n){
+    @if $n<50{
+        $n:$n + 50;
+    }@else if $n>100{
+        $n:$n - 10;
+    }@else{
+        $n:$n + 20;
+    }
+    @return $n;
+}
+@mixin set-block {
+    width: get-sum(50)+px;
+    height: get-sum(120)+px;
+    background-color: red;
+}
+
+.div1{
+    @include set-block();
+}

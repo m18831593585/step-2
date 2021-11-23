@@ -11,27 +11,25 @@
 
     console.dir(Array.prototype)
 
-    Function.prototype.extends = function(superClass) {
-
+    Function.prototype.extends = function (superClass) {
         function F(){}
-        F.prototype = superClass.prototype;
-        if (superClass.prototype.constructor !== superClass) { // 如果父类的构造函数不是自己的构造函数
-            Object.defineProperty(superClass.prototype, "constructor", {
+        F.prototype = superClass.prototype
+        if(superClass.prototype.constructor !== superClass) {
+            Object.defineProperty(superClass, "constructor", {
                 value: superClass
             })
         }
-
-        var childProto = this.prototype
+        let proto = this.prototype
         this.prototype = new F()
-        var names = Reflect.ownKeys(childProto)
-        for (var i = 0; i < names.length; i++) {
-            var desc = Object.getOwnPropertyDescriptor(childProto, names[i])
+        let names = Reflect.ownKeys(proto)
+        for (let i = 0; i < names.length; i++) {
+            let desc = Object.getOwnPropertyDescriptor(proto, names[i])
             Object.defineProperty(this.prototype, names[i], desc)
         }
-
-
-
-
+        this.prototype.super = function (arguments){
+            superClass.apply(this, arguments)
+        }
+        this.prototype.supers = superClass.prototype
     }
 
 

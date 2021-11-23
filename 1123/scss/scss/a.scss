@@ -1,0 +1,58 @@
+$size:50px;
+// .div1{
+//     width: $size;
+//     height: $size;
+//     background-color: blue;
+//     .div2{
+//         color: burlywood;
+//     }
+//     &:hover{
+//         background-color: chartreuse;
+//     }
+//     .div3+&{
+//         color: orange;
+//     }
+//     +.div4{
+//         color: orchid;
+//         .div6{
+//             color: white;
+//         }
+//     }
+//     >.div5{
+//         color: palegoldenrod;
+//     }
+// }
+
+// .div1{
+//     background:{
+//         color: yellow;
+//         size: 100% 100%;
+//     }
+// }
+// .div1{
+//     border:{
+//         left:{
+//             color: yellow;
+//             style:solid;
+//             width: 1px;
+//         }
+//     }
+// }
+// .div2{
+//     @import "b";
+// }
+
+@mixin set-wh($w,$h,$c:red) {
+    width: $w*2+px;
+    height: $h+30+px;
+    background-color: $c;
+    left:#{$w+20}px;
+    top:if($w<50,50px,$w+px);
+}
+.div1{
+    @include set-wh(70,50,green);
+   
+}
+.div2>.div3{
+    @extend .div1;
+}

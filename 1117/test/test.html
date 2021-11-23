@@ -89,41 +89,41 @@
         },
     });
 
-    function cloneObject(obj) {
-        let _obj
-        if (Node.prototype.isPrototypeOf(obj)) {
-            let _obj = document.createElement(obj.nodeName)
-            _obj.style = obj.cssText
-        } else if (['Date', 'RegExp', 'Set', 'Map'].includes(typeof obj)) {
-            _obj = new obj.constructor(obj)
-        } else if (obj.constructor === Uint8Array) {
-            _obj = new obj.constructor(Array.from(obj))
-        } else if (obj.constructor === Function) {
-            let arg = obj.toString().match(/\((.*?)\)/)[1]
-            let body = obj.toString().replace(/[\n\r]/g, "").match(/{.*}/)[1]
-            _obj = new Function(arg, body)
-        } else {
-            _obj = new obj.constructor()
-        }
 
-        let props = Reflect.ownKeys(obj)
-
-        for (let i = 0; i < props.length; i++) {
-            if (props[i] === 'prototype') continue
-            let desc = Object.getOwnPropertyDescriptor(obj, props[i])
-            if (typeof desc.value === 'object' && desc.value !== null || typeof desc.value === 'function') {
-                let _o = cloneObject(desc.value)
-                Object.defineProperty(_obj, props[i], {
-                    value: _o,
-                    enumerable: desc.enumerable,
-                    writable: desc.writable,
-                    configurable: desc.configurable
-                })
+    function cloneObject(obj, newObj) {
+        if (newObj === undefined) {
+            if (Node.prototype.isPrototypeOf(obj)) {
+                newObj = document.createElement(obj.nodeName)
+                newObj.style = obj.cssText
+            } else if (obj.constructor === Uint8Array) {
+                newObj = new Uint8Array(Array.from(obj))
+            } else if (["Map", "Set", "Date", "RegExp"].includes(typeof obj)) {
+                newObj = new obj.constructor(obj)
+            } else if (obj.constructor === Function) {
+                let arg = obj.toString().match(/\((.*?)\)/)[1]
+                let body = obj.toString().replace(/[\n\r]/g, "").match(/{(.*)}/)[1]
+                newObj = new Function(arg, body)
             } else {
-                Object.defineProperty(_obj, props[i], desc)
+                newObj = new obj.constructor()
             }
         }
-        return _obj
+
+        let names = Reflect.ownKeys(obj)
+        for (let i = 0; i < names.length; i++) {
+            let desc = Object.getOwnPropertyDescriptor(obj, names[i])
+            if (typeof desc.value === "object") {
+                let _o = cloneObject(desc.value)
+                Object.defineProperty(newObj, names[i], {
+                    value: _o,
+                    enumerable: desc.enumerable,
+                    configurable: desc.configurable,
+                    writeable: desc.writable
+                })
+            } else {
+                Object.defineProperty(newObj,names[i],desc)
+            }
+        }
+        return newObj
     }
 
 

@@ -1,0 +1,121 @@
+//$size: 50px; // 定义变量
+//.div1 {
+//	width: $size*2; // 100px
+//	height: $size*2;
+//	background-color: red;
+//
+//	.div2 { // .div1 .div2选择器嵌套
+//		width: $size; // 50px
+//		height: $size;
+//		background-color: green;
+//	}
+//
+//	&:hover { // & 父选择器 .div1:hover选择器
+//		background-color: chartreuse;
+//	}
+//
+//	.div3 + & { // .div3 + .div1选择器
+//		background-color: blue;
+//	}
+//
+//	+ .div4 { // .div1 + .div4选择器
+//		background-color: yellow;
+//	}
+//
+//	> .div5 { // .div1 > .div5选择器
+//		background-color: orange;
+//	}
+//}
+
+.div1 { // 属性嵌套
+	border: {
+		left: {
+			color: chartreuse;
+			width: 1px;
+			style: solid;
+		}
+	}
+}
+
+.div2 {
+	@import "b"; // 导入b.scss文件
+}
+
+@mixin set-wh($w,$h,$c:red) { // 定义mixin $c参数默认值为red
+	width: $w;
+	height: $h;
+	background-color: $c;
+}
+
+.div3 {
+	@include set-wh(100px, 100px);
+}
+
+.div2 > .div3 {
+	@extend .div1; // 继承div1的属性
+}
+
+$a: ab;
+$v: height;
+.#{$a}-1 { // .ab-1选择器
+	width: 10px;
+	#{$v}: 20px; // height: 20px
+}
+
+@mixin set-block($w,$h) {
+	width: $w+px;
+	height: $h+px;
+	@if $w<50px { // 条件判断
+		$w: 50px;
+	} @else if $w>100px {
+		$w: 100px;
+	} @else {
+		$w: $w;
+	}
+}
+
+
+@for $i from 1 through 10 { // 循环, $i为循环变量
+	.div#{$i} {
+		@include set-block($i*10, $i*5);
+	}
+}
+
+@each $color in red, green, blue { // 循环, $color为当前循环的值
+	.div-#{$color} {
+		@include set-block(10px, 5px);
+	}
+}
+
+@each $w, $h, $color in (10px, 20px, red), (20px, 30px, green), (30px, 40px, blue) { // 循环, $w,$h,$color为当前循环的值
+	.div-#{$color} {
+		width: $w;
+		height: $h;
+		background-color: $color;
+	}
+}
+
+@each $name, $value in (a:red, b:blue, c:green, d:orange) {
+	.div-#{$name} {
+		color: $value;
+	}
+}
+
+$i: 1;
+@while $i<10 {
+	.div-#{$i} {
+		width: $i*10px;
+		height: $i*5px;
+		background-color: red;
+	}
+	$i: $i+1;
+}
+
+@function get-sum($n) { // 定义函数
+	@if ($n<50) {
+		$n: $n + 50;
+	} @else if $n>100 {
+		$n: $n - 50;
+	}
+	@return $n;
+}

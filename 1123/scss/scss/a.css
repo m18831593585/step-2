@@ -1,0 +1,8 @@
+.div1, .div2 > .div3 {
+  width: 140px;
+  height: 80px;
+  background-color: green;
+  left: 90px;
+  top: 70px;
+}
+/*# sourceMappingURL=a.css.map */

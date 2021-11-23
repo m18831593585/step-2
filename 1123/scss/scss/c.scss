@@ -1,0 +1,24 @@
+$a:ab;
+$v:height;
+@mixin set-block($w,$h) {
+    // @if $w<50px {
+    //     $w:50px;
+    // }@else {
+    //     $w:100px;
+    // }
+    @if $w<50px {
+        $w:50px;
+    }@else if $w>100px{
+        $w:100px;
+    }
+    
+    width: $w;
+    height: $h;
+}
+.#{$a}-1{
+    width: 10px;
+    #{$v}:20px;
+}
+.div1{
+    @include set-block(160px,60px );
+}
