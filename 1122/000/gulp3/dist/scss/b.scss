@@ -1,0 +1,9 @@
+@mixin setWH($w, $h) {
+	width: $w;
+	height: $h;
+	background-color: blue;
+}
+
+.div2{
+	@include setWH(100px, 200px);
+}

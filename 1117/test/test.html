@@ -89,80 +89,41 @@
         },
     });
 
-
-    function cloneObject2(source, target) {
-        if (target === undefined) { // 如果没有指定target，则创建一个新的对象
-            if (Node.prototype.isPrototypeOf(source)) { // 如果是dom对象
-                target = document.createElement(source.nodeName); // 创建一个新的dom对象
-                target.style = source.style.cssText; // 将样式复制
-            } else if (source.constructor === Uint8Array) { // 如果是Uint8Array对象
-                target = new source.constructor(Array.from(source)); // 创建一个新的Uint8Array对象
-            } else if (source.constructor === Date || source.constructor === RegExp || source.constructor === Set || source.constructor === Map) {
-                target = new source.constructor(source); // 如果是Date, 正则, Set, Map对象，则创建一个新的对象, 把原来的属性复制过去
-            } else if (source.constructor === Function) { // 如果是函数
-                var arg = source.toString().match(/\((.*?)\)/)[1]; // 获取函数的参数
-                var content = source.toString().replace(/[\n\r]/g, "").match(/{(.*)}/)[1]; // 获取函数的函数体
-                target = new Function(arg, content) // 创建一个新的函数
-            } else {
-                target = new source.constructor(); // 创建一个新的对象
-            }
+    function cloneObject(obj) {
+        let _obj
+        if (Node.prototype.isPrototypeOf(obj)) {
+            let _obj = document.createElement(obj.nodeName)
+            _obj.style = obj.cssText
+        } else if (['Date', 'RegExp', 'Set', 'Map'].includes(typeof obj)) {
+            _obj = new obj.constructor(obj)
+        } else if (obj.constructor === Uint8Array) {
+            _obj = new obj.constructor(Array.from(obj))
+        } else if (obj.constructor === Function) {
+            let arg = obj.toString().match(/\((.*?)\)/)[1]
+            let body = obj.toString().replace(/[\n\r]/g, "").match(/{.*}/)[1]
+            _obj = new Function(arg, body)
+        } else {
+            _obj = new obj.constructor()
         }
-        var names = Object.getOwnPropertyNames(source).concat(Object.getOwnPropertySymbols(source)); // 获取所有的属性名, 包括可枚举属性和symbol
-        for (var i = 0; i < names.length; i++) {
-            if (names[i] === "prototype") continue; // 如果是原型属性，则跳过
-            var desc = Object.getOwnPropertyDescriptor(source, names[i]); // 获取属性描述
-            if ((typeof desc.value === "object" && desc.value !== null) || typeof desc.value === "function") { // 如果是函数或对象(非null), 则递归调用
-                var o = cloneObject(desc.value) // 获取属性值
-                Object.defineProperty(target, names[i], { // 定义属性
-                    value: o, // 属性值
+
+        let props = Reflect.ownKeys(obj)
+
+        for (let i = 0; i < props.length; i++) {
+            if (props[i] === 'prototype') continue
+            let desc = Object.getOwnPropertyDescriptor(obj, props[i])
+            if (typeof desc.value === 'object' && desc.value !== null || typeof desc.value === 'function') {
+                let _o = cloneObject(desc.value)
+                Object.defineProperty(_obj, props[i], {
+                    value: _o,
                     enumerable: desc.enumerable,
                     writable: desc.writable,
                     configurable: desc.configurable
                 })
             } else {
-                Object.defineProperty(target, names[i], desc);
+                Object.defineProperty(_obj, props[i], desc)
             }
         }
-        return target;
-    }
-
-
-
-    function cloneObject(source, target) {
-        if(target === undefined) {
-            if(Node.isPrototypeOf(source)){
-                target = document.createElement(source.nodeName)
-                target.style = source.style.cssText
-            }else if(source.constructor === Date || source.constructor === RegExp || source.constructor === Set || source.constructor === Map){
-                target = new source.constructor(source)
-            }else if(source.constructor === Uint8Array){
-                target = new source.constructor(Array.from(source))
-            }else if(source.constructor === Function){
-                let args = source.toString().match(/\((.*?)\)/)[1]
-                let body = source.toString().replace(/[\n\r]/g,"").match(/{(.*?)}/)[1]
-                target = new Function(args,body)
-            }else {
-                target = new source.constructor()
-            }
-        }
-
-        let names = Object.getOwnPropertyNames(source).concat(Object.getOwnPropertySymbols(source))
-        for (let i = 0; i < names.length; i++){
-            if(names[i] === "prototype") continue
-            let descriptor = Object.getOwnPropertyDescriptor(source, names[i])
-            if (typeof descriptor.value === "object" && descriptor.value !== null || typeof descriptor.value === "function"){
-                let obj = cloneObject(descriptor.value)
-                Object.defineProperty(obj, names[i], {
-                    value:obj,
-                    enumerable :descriptor.enumerable,
-                    writable: descriptor.writable,
-                    configurable: descriptor.configurable
-                })
-            } else {
-                Object.defineProperty(obj, names[i], descriptor)
-            }
-        }
-        return target
+        return _obj
     }
 
 

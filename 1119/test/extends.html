@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+    console.dir(Array.prototype)
+
+    Function.prototype.extends = function(superClass) {
+
+        function F(){}
+        F.prototype = superClass.prototype;
+        if (superClass.prototype.constructor !== superClass) { // 如果父类的构造函数不是自己的构造函数
+            Object.defineProperty(superClass.prototype, "constructor", {
+                value: superClass
+            })
+        }
+
+        var childProto = this.prototype
+        this.prototype = new F()
+        var names = Reflect.ownKeys(childProto)
+        for (var i = 0; i < names.length; i++) {
+            var desc = Object.getOwnPropertyDescriptor(childProto, names[i])
+            Object.defineProperty(this.prototype, names[i], desc)
+        }
+
+
+
+
+    }
+
+
+</script>
+</body>
+</html>

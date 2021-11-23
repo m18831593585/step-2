@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    function currying(fn){
+        let arr=[]
+        return function (){
+            if(arguments.length === 0) {
+                fn(...arr)
+                arr.length = 0
+            } else {
+                arr = arr.concat(Array.from(arguments))
+            }
+        }
+    }
+
+    let test = currying(function(){
+        console.log(Array.from(arguments))
+    })
+
+
+
+
+</script>
+</body>
+</html>
